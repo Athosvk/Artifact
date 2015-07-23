@@ -1,0 +1,12 @@
+﻿Build started 23/07/2015 12:09:41.
+     1>Project "C:\Users\Athos\Documents\Visual Studio 2013\Projects\C++ excercises\BadEngine\GraphicTutorials\GraphicTutorials.vcxproj" on node 2 (Build target(s)).
+     1>Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Athos\Documents\Visual Studio 2013\Projects\C++ excercises\BadEngine\Debug\GraphicTutorials.exe" /INCREMENTAL /NOLOGO SDL2.lib SDL2main.lib glew32.lib opengl32.lib BadEngine.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Athos\Documents\Visual Studio 2013\Projects\C++ excercises\BadEngine\Debug\GraphicTutorials.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Athos\Documents\Visual Studio 2013\Projects\C++ excercises\BadEngine\Debug\GraphicTutorials.lib" /MACHINE:X86 Debug\Main.obj
+         Debug\MainGame.obj
+         Debug\TestSprite.obj
+         GraphicTutorials.vcxproj -> C:\Users\Athos\Documents\Visual Studio 2013\Projects\C++ excercises\BadEngine\Debug\GraphicTutorials.exe
+     1>Done Building Project "C:\Users\Athos\Documents\Visual Studio 2013\Projects\C++ excercises\BadEngine\GraphicTutorials\GraphicTutorials.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.47

@@ -1,0 +1,26 @@
+﻿Build started 23/07/2015 12:09:41.
+     1>Project "C:\Users\Athos\Documents\Visual Studio 2013\Projects\C++ excercises\BadEngine\BadEngine\BadEngine.vcxproj" on node 2 (Build target(s)).
+     1>Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"C:\Users\Athos\Documents\Visual Studio 2013\Projects\C++ excercises\BadEngine\Debug\BadEngine.lib" /NOLOGO Debug\Camera2D.obj
+         Debug\Color.obj
+         Debug\ErrorHandler.obj
+         Debug\Game.obj
+         Debug\GameTime.obj
+         Debug\GLSLProgram.obj
+         Debug\GLTexture.obj
+         Debug\ImageLoader.obj
+         Debug\IOManager.obj
+         Debug\Keyboard.obj
+         Debug\MathHelper.obj
+         Debug\Mouse.obj
+         Debug\PicoPNG.obj
+         Debug\ResourceManager.obj
+         Debug\Sprite.obj
+         Debug\TextureCache.obj
+         Debug\Window.obj
+         BadEngine.vcxproj -> C:\Users\Athos\Documents\Visual Studio 2013\Projects\C++ excercises\BadEngine\Debug\BadEngine.lib
+     1>Done Building Project "C:\Users\Athos\Documents\Visual Studio 2013\Projects\C++ excercises\BadEngine\BadEngine\BadEngine.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.19
