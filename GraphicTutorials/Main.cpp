@@ -1,5 +1,4 @@
 #include <BadEngine/Game.h>
-#include <iostream>
 
 #include "MainGame.h"
 

@@ -5,8 +5,8 @@ namespace BadEngine
 {
     struct GLTexture
     {
-        GLuint id;
-        float width;
-        float height;
+        GLuint id = 0;
+        float width = 0.0f;
+        float height = 0.0f;
     };
 }
