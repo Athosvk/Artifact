@@ -11,5 +11,9 @@ uniform sampler2D sampler;
 
 void main() 
 {
-	color = texture(sampler, fragmentUVCoordinate);
+	vec4 resultingColor = texture(sampler, fragmentUVCoordinate);
+	float greyScale = (resultingColor.r + resultingColor.g + resultingColor.b) / 3;
+	color.r = greyScale;
+	color.g = greyScale;
+	color.b = greyScale;
 }

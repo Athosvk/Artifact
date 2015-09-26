@@ -1,7 +1,6 @@
 #include <SDL2.0.3\SDL.h>
 
 #include "GameTime.h"
-#include "MathHelper.h"
 
 namespace BadEngine
 {
@@ -15,21 +14,21 @@ namespace BadEngine
         m_SampleCount = a_FrameSampleCount;
     }
 
-    double GameTime::getCurrentTime()
+    double GameTime::getCurrentTime() const
     {
         return m_CurrentTime;
     }
 
-    double GameTime::getDeltaTime()
+    double GameTime::getDeltaTime() const
     {
         return m_DeltaTime;
     }
 
-    double GameTime::getAverageDeltaTime()
+    double GameTime::getAverageDeltaTime() const
     {
         double average = 0;
-        int averageCount = m_CurrentFrame > m_SampleCount ? m_SampleCount : m_CurrentFrame;
-        for(int i = 0; i < m_SampleCount; i++)
+        auto averageCount = m_CurrentFrame > m_SampleCount ? m_SampleCount : m_CurrentFrame;
+        for(auto i = 0; i < m_SampleCount; i++)
         {
             average += m_Samples[i];
         }

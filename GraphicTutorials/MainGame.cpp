@@ -1,12 +1,12 @@
 #include <iostream>
 #include <glm/glm.hpp>
 
-#include <BadEngine/ErrorHandler.h>
 #include <BadEngine/ImageLoader.h>
 #include <BadEngine/Color.h>
-#include <BadEngine/GLSLProgram.h>
 #include <BadEngine/Keyboard.h>
 #include <BadEngine/MathHelper.h>
+#include <BadEngine/GLTexture.h>
+#include <BadEngine/Camera2D.h>
 
 #include "TestSprite.h"
 #include "MainGame.h"
@@ -16,8 +16,9 @@ MainGame::MainGame() : Game(1024, 768, 0, "GameEngine")
     setBackgroundColor(BadEngine::Color(0, 45, 75, 0));
     m_Sprites.push_back(new BadEngine::Sprite(glm::vec2(512.0f - 50.0f, 50.0f), "Textures/PNG/CharacterRight_Walk1.png", 20, 20));
     m_Sprites.push_back(new BadEngine::Sprite(glm::vec2(512.0f - 50.0f, 384.0f - 50.0f), "Textures/PNG/CharacterRight_Walk1.png", 125, 125));
-    m_Sprites.push_back(new TestSprite(glm::vec2(-25.0f, -25.0f), 50.0f, 50.0f));
-    printf(" *** OpenGL version: %s *** \n You need at least version %5.2f to run the game. \n", glGetString(GL_VERSION), m_OpenGLVersion);
+    m_Sprites.push_back(new TestSprite(glm::vec2(-25.0f, -25.0f), 125.0f, 125.0f));
+    printf(" *** OpenGL version: %s *** \n You need at least version %5.2f to run the game. \n", 
+           reinterpret_cast<const char*>(glGetString(GL_VERSION)), m_OpenGLVersion);
 }
 
 MainGame::~MainGame()
@@ -30,13 +31,13 @@ MainGame::~MainGame()
 
 void MainGame::draw()
 {
-    Game::draw();  
+    Game::draw();
 
-    std::vector<BadEngine::Sprite *>::iterator iterator = m_Sprites.begin();
+    auto iterator = m_Sprites.begin();
     while(iterator != m_Sprites.end())
     {
-        (*iterator)->draw(&m_Camera);
-        iterator++;
+        (*iterator)->draw(m_Camera);
+        ++iterator;
     }
 }
 
@@ -49,12 +50,12 @@ void MainGame::update()
         std::cout << "FPS: " << 1 / m_GameTime.getAverageDeltaTime() << std::endl;
     }
 
-    glm::vec2 targetPosition = m_Camera.getPosition();
-    float zoomFactor = m_Camera.getZoomFactor();
-    float rotation = m_Camera.getRotation();
+    auto targetPosition = m_Camera->getPosition();
+    auto zoomFactor = m_Camera->getZoomFactor();
+    auto rotation = m_Camera->getRotation();
     if(BadEngine::Keyboard::isDown(BadEngine::KeyCode::Down))
     {
-        targetPosition.y = BadEngine::MathHelper::clamp(targetPosition.y - 5, 0, 924);
+        targetPosition.y = BadEngine::MathHelper::clamp(targetPosition.y + 5, 0, 924);
     }
     if(BadEngine::Keyboard::isDown(BadEngine::KeyCode::Left))
     {
@@ -66,7 +67,7 @@ void MainGame::update()
     }
     if(BadEngine::Keyboard::isDown(BadEngine::KeyCode::Up))
     {
-        targetPosition.y = BadEngine::MathHelper::clamp(targetPosition.y + 5, 0, 668);
+        targetPosition.y = BadEngine::MathHelper::clamp(targetPosition.y - 5, 0, 668);
     }
     if(BadEngine::Keyboard::isDown(BadEngine::KeyCode::W))
     {
@@ -88,7 +89,7 @@ void MainGame::update()
     {
         rotation = 0;
     }
-    m_Camera.setPosition(targetPosition);
-    m_Camera.setZoomFactor(zoomFactor);
-    m_Camera.setRotation(rotation);
+    m_Camera->setPosition(targetPosition);
+    m_Camera->setZoomFactor(zoomFactor);
+    m_Camera->setRotation(rotation);
 }

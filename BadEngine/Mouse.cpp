@@ -1,7 +1,4 @@
-#include <SDL2.0.3/SDL.h>
-
 #include "Mouse.h"
-
 
 Mouse::Mouse()
 {

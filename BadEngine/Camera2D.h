@@ -1,7 +1,4 @@
 #pragma once
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-
 #include "Window.h"
 
 namespace BadEngine
@@ -15,6 +12,8 @@ namespace BadEngine
         glm::mat4 m_Transform = glm::mat4(1.0f);
         glm::mat4 m_OrthoMatrix = glm::mat4(1.0f);
         bool m_MatrixIsDirty = false;
+        
+        const Window* m_Window = nullptr;
 
     public:
         Camera2D(const Window* a_Window);
@@ -33,7 +32,7 @@ namespace BadEngine
     private:
         void setMatrixDirty();
         void constructMatrix();
-        void applyScale(float a_ScreenWidth, float a_ScreenHeight);
-        void applyRotation(float a_ScreenWidth, float a_ScreenHeight);
+        void applyScale();
+        void applyRotation();
     };
 }

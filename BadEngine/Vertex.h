@@ -1,8 +1,8 @@
 #pragma once
-#include <GL/glew.h>
 #include <glm/glm.hpp>
 
 #include "Color.h" 
+
 namespace BadEngine
 {
     struct Vertex

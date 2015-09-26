@@ -8,4 +8,5 @@ TestSprite::TestSprite(glm::vec2 a_Position, float a_Width, float a_Height) : Sp
 
 TestSprite::~TestSprite()
 {
+    Sprite::~Sprite();
 }

@@ -1,5 +1,4 @@
 #pragma once
-#include <glm/glm.hpp>
 
 namespace BadEngine
 {
@@ -8,5 +7,4 @@ namespace BadEngine
     public:
         static float clamp(float a_Value, float a_Min, float a_Max);
     };
-
 }

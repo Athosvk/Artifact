@@ -6,7 +6,6 @@ namespace BadEngine
     {
     }
 
-
     SpriteBatch::~SpriteBatch()
     {
     }

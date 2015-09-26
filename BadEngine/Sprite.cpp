@@ -4,10 +4,8 @@
 
 #include "Sprite.h"
 #include "Vertex.h"
-#include "ImageLoader.h"
 #include "ResourceManager.h"
 #include "GLSLProgram.h"
-#include "ErrorHandler.h"
 #include "Camera2D.h"
 
 namespace BadEngine
@@ -18,9 +16,9 @@ namespace BadEngine
     Sprite::Sprite(const glm::vec2 a_Position,
                    const std::string a_TextureFilePath, const float a_Width, const float a_Height,
                    const std::string a_VertexShaderPath, const std::string a_FragmentShaderPath) :
-        m_ShaderProgram(GLSLProgram(a_VertexShaderPath, a_FragmentShaderPath)),
-        m_Texture(ResourceManager::getTexture(a_TextureFilePath)),
         m_Position(a_Position),
+        m_Texture(ResourceManager::getTexture(a_TextureFilePath)),
+        m_ShaderProgram(GLSLProgram(a_VertexShaderPath, a_FragmentShaderPath)),
         m_Width(a_Width),
         m_Height(a_Height)
     {
@@ -83,25 +81,25 @@ namespace BadEngine
         m_ShaderProgram.linkShaders();
     }
 
-    void Sprite::draw(const Camera2D* a_Camera)
+    void Sprite::draw(const Camera2D* a_Camera) const
     {
         m_ShaderProgram.setAsCurrent();
         glActiveTexture(GL_TEXTURE0);
 
-        GLint textureLocation = m_ShaderProgram.getUniformLocation("sampler");
+        auto textureLocation = m_ShaderProgram.getUniformLocation("sampler");
         glUniform1i(textureLocation, 0);
 
-        GLint cameraTransformLocation = m_ShaderProgram.getUniformLocation("cameraTransform");
-        glm::mat4 cameraTransform = a_Camera->getTransform();
+        auto cameraTransformLocation = m_ShaderProgram.getUniformLocation("cameraTransform");
+        auto cameraTransform = a_Camera->getTransform();
         
         glUniformMatrix4fv(cameraTransformLocation, 1, GL_FALSE, &cameraTransform[0][0]);
 
-        glBindTexture(GL_TEXTURE_2D, m_Texture.id);
+        m_Texture.bind();
         glBindBuffer(GL_ARRAY_BUFFER, m_VboID);
 
-        glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*) offsetof(Vertex, position));
-        glVertexAttribPointer(1, 4, GL_UNSIGNED_BYTE, GL_TRUE, sizeof(Vertex), (void*) offsetof(Vertex, color));
-        glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*) offsetof(Vertex, uvCoordinate));
+        glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(offsetof(Vertex, position)));
+        glVertexAttribPointer(1, 4, GL_UNSIGNED_BYTE, GL_TRUE, sizeof(Vertex), reinterpret_cast<void*>(offsetof(Vertex, color)));
+        glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(offsetof(Vertex, uvCoordinate)));
 
         glDrawArrays(GL_TRIANGLES, 0, 6);
 

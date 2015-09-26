@@ -17,6 +17,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameTime.cpp" />
     <ClCompile Include="GLSLProgram.cpp" />
+    <ClCompile Include="GLTexture.cpp" />
     <ClCompile Include="ImageLoader.cpp" />
     <ClCompile Include="IOManager.cpp" />
     <ClCompile Include="Keyboard.cpp" />
@@ -41,6 +42,7 @@
     <ClInclude Include="ImageLoader.h" />
     <ClInclude Include="IOManager.h" />
     <ClInclude Include="Keyboard.h" />
+    <ClInclude Include="Keycode.h" />
     <ClInclude Include="MathHelper.h" />
     <ClInclude Include="Mouse.h" />
     <ClInclude Include="PicoPNG.h" />

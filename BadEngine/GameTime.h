@@ -1,5 +1,4 @@
 #pragma once
-#include <vector>
 
 namespace BadEngine
 {
@@ -16,9 +15,11 @@ namespace BadEngine
     public:
         GameTime();
         ~GameTime();
-        double getCurrentTime();
-        double getDeltaTime();
-        double getAverageDeltaTime();
+
+        double getCurrentTime() const;
+        double getDeltaTime() const;
+        double getAverageDeltaTime() const;
+
         void setFrameSampleCount(int a_FrameSampleCount);
         void update();
     };

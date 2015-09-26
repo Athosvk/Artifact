@@ -2,6 +2,7 @@
 #include <map>
 
 #include "GLTexture.h"
+
 namespace BadEngine
 {
     class TextureCache
@@ -11,6 +12,7 @@ namespace BadEngine
     public:
         TextureCache();
         ~TextureCache();
+
         GLTexture getTexture(const std::string& a_FilePath);
         void cacheTexture(const std::string& a_FilePath, const GLTexture& a_Texture);
     };

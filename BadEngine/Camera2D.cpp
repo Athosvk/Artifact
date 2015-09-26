@@ -1,8 +1,11 @@
+#include <glm/gtc/matrix_transform.hpp>
+
 #include "Camera2D.h"
 
 namespace BadEngine
 {
     Camera2D::Camera2D(const Window* a_Window)
+        : m_Window(a_Window)
     {
         constructMatrix();
     }
@@ -58,33 +61,33 @@ namespace BadEngine
 
     void Camera2D::constructMatrix()
     {
-        float screenWidth = static_cast<float>(Window::getCurrent()->getWidth());
-        float screenHeight = static_cast<float>(Window::getCurrent()->getHeight());
+        auto screenWidth = static_cast<float>(m_Window->getWidth());
+        auto screenHeight = static_cast<float>(m_Window->getHeight());
         
         m_OrthoMatrix = glm::ortho(0.0f, screenWidth, 0.0f, screenHeight);
         m_Transform = m_OrthoMatrix;
 
-        glm::vec3 screenCentre = glm::vec3(screenWidth / 2, screenHeight / 2, 0);
+        auto screenCentre = glm::vec3(screenWidth / 2, screenHeight / 2, 0);
         m_Transform = glm::translate(m_Transform, screenCentre);
 
-        applyRotation(screenWidth, screenHeight);
-        applyScale(screenWidth, screenHeight);
+        applyRotation();
+        applyScale();
 
-        glm::vec3 translation = glm::vec3(m_Position.x, m_Position.y, 0);
+        auto translation = glm::vec3(-m_Position.x, -m_Position.y, 0);
         m_Transform = glm::translate(m_Transform, translation);
 
         m_MatrixIsDirty = false;
     }
 
-    void Camera2D::applyScale(float a_ScreenWidth, float a_ScreenHeight)
+    void Camera2D::applyScale()
     {
-        glm::vec3 scale = glm::vec3(m_ZoomFactor, m_ZoomFactor, 1);
+        auto scale = glm::vec3(m_ZoomFactor, m_ZoomFactor, 1);
         m_Transform = glm::scale(m_Transform, scale);
     }
 
-    void Camera2D::applyRotation(float a_ScreenWidth, float a_ScreenHeight)
+    void Camera2D::applyRotation()
     {
-        glm::vec3 rotationVector = glm::vec3(0, 0, 1);
+        auto rotationVector = glm::vec3(0, 0, 1);
         m_Transform = glm::rotate(m_Transform, m_Rotation, rotationVector);
     }
 

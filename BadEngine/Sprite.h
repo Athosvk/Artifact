@@ -26,8 +26,8 @@ namespace BadEngine
         Sprite::Sprite(const glm::vec2 a_Position, const std::string a_TextureFilePath,
                        const float a_Width, const float a_Height,
                        const std::string a_VertexShaderPath = s_DefaultVertexShader, const std::string a_FragmentShaderPath = s_DefaultFragmentShader);        
-        ~Sprite();
-        void draw(const Camera2D* a_Camera);
+        virtual ~Sprite();
+        void draw(const Camera2D* a_Camera) const;
 
    protected:
         float getWidth() const;
@@ -36,6 +36,5 @@ namespace BadEngine
     private:
         void createVBO();
         void initShaders();
-        void setSampler();
     };
 }

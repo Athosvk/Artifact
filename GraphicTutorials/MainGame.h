@@ -1,12 +1,8 @@
 #pragma once
-#include <string>
 #include <vector>
 
-#include <BadEngine/GLSLProgram.h>
 #include <BadEngine/Sprite.h>
-#include <BadEngine/GLTexture.h>
 #include <BadEngine/Game.h>
-#include <BadEngine/Camera2D.h>
 
 class MainGame : public BadEngine::Game
 {

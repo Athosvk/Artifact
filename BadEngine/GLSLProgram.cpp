@@ -1,6 +1,6 @@
 #include <fstream>
 #include <vector>
-#include <iostream>
+#include <string>
 
 #include "GLSLProgram.h"
 #include "ErrorHandler.h"
@@ -27,7 +27,7 @@ namespace BadEngine
         loadAndCompileShader(m_FragmentShaderID, m_FragmentShader);
     }
 
-    GLuint GLSLProgram::getUniformLocation(const std::string& a_UniformName)
+    GLuint GLSLProgram::getUniformLocation(const std::string& a_UniformName) const
     {
         GLint location = glGetUniformLocation(m_ProgramID, a_UniformName.c_str());
         if(location == GL_INVALID_INDEX)
@@ -55,7 +55,7 @@ namespace BadEngine
         }
     }
 
-    void GLSLProgram::loadAndCompileShader(GLuint a_ShaderID, const std::string& a_FilePath)
+    void GLSLProgram::loadAndCompileShader(GLuint a_ShaderID, const std::string& a_FilePath) const
     {
         std::ifstream shaderFile(a_FilePath);
         if(shaderFile.fail())
@@ -74,7 +74,7 @@ namespace BadEngine
 
         shaderFile.close();
 
-        const char* contents = fileContents.c_str();
+        auto contents = fileContents.c_str();
         glShaderSource(a_ShaderID, 1, &contents, nullptr);
 
         glCompileShader(a_ShaderID);
@@ -90,14 +90,14 @@ namespace BadEngine
         }
     }
 
-    void GLSLProgram::linkShaders()
+    void GLSLProgram::linkShaders() const
     {
         glAttachShader(m_ProgramID, m_VertexShaderID);
         glAttachShader(m_ProgramID, m_FragmentShaderID);
         glLinkProgram(m_ProgramID);
 
-        GLint linked = 0;
-        glGetProgramiv(m_ProgramID, GL_LINK_STATUS, &((int) linked));
+        auto linked = GL_FALSE;
+        glGetProgramiv(m_ProgramID, GL_LINK_STATUS, &linked);
 
         if(linked == GL_FALSE)
         {
@@ -119,7 +119,7 @@ namespace BadEngine
         glBindAttribLocation(m_ProgramID, m_AttributeCount++, a_AttributeName.c_str());
     }
 
-    void GLSLProgram::printShaderInfoLog(GLuint a_ShaderID)
+    void GLSLProgram::printShaderInfoLog(GLuint a_ShaderID) const
     {
         GLint maxLength = 0;
         glGetShaderiv(a_ShaderID, GL_INFO_LOG_LENGTH, &maxLength);
@@ -129,28 +129,28 @@ namespace BadEngine
         std::printf("%s\n", &(log[0]));
     }
 
-    void GLSLProgram::printProgramInfoLog(GLuint a_ProgramID)
+    void GLSLProgram::printProgramInfoLog(GLuint a_ProgramID) const
     {
-        GLint maxLength = 0;
+        auto maxLength = 0;
         glGetProgramiv(m_ProgramID, GL_INFO_LOG_LENGTH, &maxLength);
 
         std::vector<char> errorLog(maxLength);
-        glGetProgramInfoLog(m_ProgramID, maxLength, &maxLength, &errorLog[0]);
+        glGetProgramInfoLog(a_ProgramID, maxLength, &maxLength, &errorLog[0]);
         std::printf("%s\n", &(errorLog[0]));
     }
 
-    void GLSLProgram::setAsCurrent()
+    void GLSLProgram::setAsCurrent() const
     {
         glUseProgram(m_ProgramID);
-        for(int i = 0; i < m_AttributeCount; i++)
+        for(auto i = 0; i < m_AttributeCount; i++)
         {
             glEnableVertexAttribArray(i);
         }
     }
 
-    void GLSLProgram::resetCurrent()
+    void GLSLProgram::resetCurrent() const
     {
-        for(int i = 0; i < m_AttributeCount; i++)
+        for(auto i = 0; i < m_AttributeCount; i++)
         {
             glDisableVertexAttribArray(i);
         }

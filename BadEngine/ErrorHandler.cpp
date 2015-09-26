@@ -1,5 +1,6 @@
 #include <SDL2.0.3/SDL.h>
 #include <iostream>
+#include <string>
 
 #include "ErrorHandler.h"
 
@@ -12,6 +13,6 @@ namespace BadEngine
         char tmp;
         std::cin >> tmp;
         SDL_Quit();
-        exit(1);
+        exit(EXIT_FAILURE);
     }
 }

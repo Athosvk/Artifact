@@ -36,16 +36,29 @@ namespace BadEngine
 
     void Keyboard::clear()
     {
-        for(int i = 0; i < SDL_NUM_SCANCODES; ++i)
+        clearPrevious();
+        clearCurrent();
+    }
+
+    void Keyboard::clearPrevious()
+    {
+        for(auto i = 0; i < SDL_NUM_SCANCODES; ++i)
+        {
+            m_PreviouslyPressed[i] = false;
+        }
+    }
+
+    void Keyboard::clearCurrent()
+    {
+        for(auto i = 0; i < SDL_NUM_SCANCODES; ++i)
         {
             m_CurrentlyPressed[i] = false;
-            m_PreviouslyPressed[i] = false;
         }
     }
 
     void Keyboard::update()
     {
-        for(int i = 0; i < SDL_NUM_SCANCODES; ++i)
+        for(auto i = 0; i < SDL_NUM_SCANCODES; ++i)
         {
             m_PreviouslyPressed[i] = m_CurrentlyPressed[i];
         }
