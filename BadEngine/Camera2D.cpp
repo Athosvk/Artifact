@@ -1,4 +1,3 @@
-#include <glm/gtc/matrix_transform.hpp>
 
 #include "Camera2D.h"
 
