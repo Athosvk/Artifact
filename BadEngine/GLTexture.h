@@ -12,7 +12,7 @@ namespace BadEngine
         float m_Height = 0.0f;
 
     public:
-        GLTexture::GLTexture(float a_Width, float a_Height);
+        GLTexture(float a_Width, float a_Height);
         
         void bind() const;
         void unbind() const;
