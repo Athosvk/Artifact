@@ -30,7 +30,7 @@ namespace BadEngine
         int getHeight() const;
         void clear() const;
         void renderCurrentFrame() const;
-
         void initialiseSDLWindow();
+        void initialiseGL() const;
     };
 }

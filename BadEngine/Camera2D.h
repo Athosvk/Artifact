@@ -15,10 +15,10 @@ namespace BadEngine
         glm::mat4 m_OrthoMatrix = glm::mat4(1.0f);
         bool m_MatrixIsDirty = false;
         
-        const Window* m_Window = nullptr;
+        const Window& m_Window;
 
     public:
-        Camera2D(const Window* a_Window);
+        Camera2D(const Window& a_Window);
         ~Camera2D();
 
         glm::vec2 getPosition() const;

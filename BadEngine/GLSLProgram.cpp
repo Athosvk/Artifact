@@ -4,6 +4,8 @@
 
 #include "GLSLProgram.h"
 #include "ErrorHandler.h"
+#include "GL.h"
+#include <iostream>
 
 namespace BadEngine
 {
@@ -20,6 +22,7 @@ namespace BadEngine
     void GLSLProgram::createAndCompileShaders()
     {
         m_ProgramID = glCreateProgram();
+        std::cout << "Program id is: " << m_ProgramID;
         createVertexShader();
         createFragmentShader();
 
@@ -29,7 +32,7 @@ namespace BadEngine
 
     GLuint GLSLProgram::getUniformLocation(const std::string& a_UniformName) const
     {
-        GLint location = glGetUniformLocation(m_ProgramID, a_UniformName.c_str());
+        auto location = glGetUniformLocation(m_ProgramID, a_UniformName.c_str());
         if(location == GL_INVALID_INDEX)
         {
             throwFatalError("Uniform " + a_UniformName + " not found in shader");
@@ -42,7 +45,7 @@ namespace BadEngine
         m_VertexShaderID = glCreateShader(GL_VERTEX_SHADER);
         if(m_VertexShaderID == 0)
         {
-            throwFatalError("Failed to initialise vertex shader");
+            throwFatalError("Failed to initialise vertex shader: " + GL::getErrorString());
         }
     }
 
@@ -51,7 +54,7 @@ namespace BadEngine
         m_FragmentShaderID = glCreateShader(GL_FRAGMENT_SHADER);
         if(m_FragmentShaderID == 0)
         {
-            throwFatalError("Failed to initialise fragment shader");
+            throwFatalError("Failed to initialise fragment shader " + GL::getErrorString());
         }
     }
 
@@ -121,7 +124,7 @@ namespace BadEngine
 
     void GLSLProgram::printShaderInfoLog(GLuint a_ShaderID) const
     {
-        GLint maxLength = 0;
+        auto maxLength = 0;
         glGetShaderiv(a_ShaderID, GL_INFO_LOG_LENGTH, &maxLength);
 
         std::vector<char> log(maxLength);

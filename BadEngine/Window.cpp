@@ -2,6 +2,7 @@
 
 #include "Window.h"
 #include "ErrorHandler.h"
+#include "GL.h"
 
 namespace BadEngine
 {
@@ -25,6 +26,7 @@ namespace BadEngine
         }
 
         initialiseSDLWindow();
+        initialiseGL();
     }
 
     Window::~Window()
@@ -35,6 +37,8 @@ namespace BadEngine
 
     void Window::initialiseSDLWindow()
     {
+        SDL_Init(SDL_INIT_EVERYTHING);
+
         m_SDLWindow = SDL_CreateWindow(m_Name.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, m_Width, m_Height, m_CurrentFlags);
         if(m_SDLWindow == nullptr)
         {
@@ -67,5 +71,16 @@ namespace BadEngine
     void Window::renderCurrentFrame() const
     {
         SDL_GL_SwapWindow(m_SDLWindow);
+    }
+
+    void Window::initialiseGL() const
+    {
+        auto initCode = glewInit();
+        if(initCode != GLEW_OK)
+        {
+            throwFatalError("Could not init glew, error: " + GL::getErrorString(initCode));
+        }
+        SDL_GL_SetSwapInterval(1);
+        SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
     }
 }

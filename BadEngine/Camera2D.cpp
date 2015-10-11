@@ -3,7 +3,7 @@
 
 namespace BadEngine
 {
-    Camera2D::Camera2D(const Window* a_Window)
+    Camera2D::Camera2D(const Window& a_Window)
         : m_Window(a_Window)
     {
         constructMatrix();
@@ -60,8 +60,8 @@ namespace BadEngine
 
     void Camera2D::constructMatrix()
     {
-        auto screenWidth = static_cast<float>(m_Window->getWidth());
-        auto screenHeight = static_cast<float>(m_Window->getHeight());
+        auto screenWidth = static_cast<float>(m_Window.getWidth());
+        auto screenHeight = static_cast<float>(m_Window.getHeight());
         
         m_OrthoMatrix = glm::ortho(0.0f, screenWidth, 0.0f, screenHeight);
         m_Transform = m_OrthoMatrix;

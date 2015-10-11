@@ -1,17 +1,11 @@
-#include <iostream>
-
 #include "Game.h"
-#include "ErrorHandler.h"
 
 namespace BadEngine
 {
-    Game::Game(int a_ScreenWidth, int a_ScreenHeight, Uint32 a_WindowFlags, std::string a_WindowName)    
+    Game::Game(int a_ScreenWidth, int a_ScreenHeight, Uint32 a_WindowFlags, std::string a_WindowName)
+        : m_Window(a_ScreenWidth, a_ScreenHeight, a_WindowFlags, a_WindowName),
+        m_Camera(m_Window)
     {
-        initSDL();
-        m_Window = new Window(a_ScreenWidth, a_ScreenHeight, a_WindowFlags, a_WindowName);
-        m_Camera = new Camera2D(m_Window);
-        initGL();
-        SDL_GL_SetSwapInterval(1);
     }
 
     Game::~Game()
@@ -21,21 +15,6 @@ namespace BadEngine
     void Game::setBackgroundColor(Color a_Color) const
     {
         glClearColor(a_Color.r / 255.0f, a_Color.g / 255.0f, a_Color.b / 255.0f, a_Color.a / 255.0f);
-    }
-
-    void Game::initSDL() const
-    {
-        SDL_Init(SDL_INIT_EVERYTHING);
-        SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-    }
-
-    void Game::initGL() const
-    {
-        auto initCode = glewInit();
-        if(initCode != GLEW_OK)
-        {
-            throwFatalError("Could not init glew, error: " + std::string(reinterpret_cast<const char*>(glewGetErrorString(initCode))));
-        }
     }
 
     void Game::draw()
@@ -52,17 +31,17 @@ namespace BadEngine
     {
         while(m_CurrentGameState == GameState::Play)
         {
-            m_Window->clear();
+            m_Window.clear();
             processEvents();
             update();
             draw();
-            m_Window->renderCurrentFrame();
+            m_Window.renderCurrentFrame();
         }
     }
 
     void Game::update()
     {
-        m_Camera->update();
+        m_Camera.update();
         m_Keyboard.update();
         m_GameTime.update();
     }

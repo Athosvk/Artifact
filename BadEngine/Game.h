@@ -17,11 +17,11 @@ namespace BadEngine
     protected:
         const float m_OpenGLVersion = 3.00f;
 
-        Window* m_Window;
+        Window m_Window;
         GameState m_CurrentGameState = GameState::Play;
         GameTime m_GameTime = GameTime();
         Keyboard m_Keyboard = Keyboard();
-        Camera2D* m_Camera;
+        Camera2D m_Camera;
         double m_FixedUpdateInterval = 0.15;
         
     private:
@@ -39,8 +39,6 @@ namespace BadEngine
         virtual void fixedUpdate();
 
     private:
-        void initSDL() const;
-        void initGL() const;
         void startGameLoop();
         void processFixedUpdates();
         void processEvents();

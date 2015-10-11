@@ -19,6 +19,7 @@ MainGame::MainGame() : Game(1024, 768, 0, "GameEngine")
     m_Sprites.push_back(new TestSprite(glm::vec2(-25.0f, -25.0f), 125.0f, 125.0f));
     printf(" *** OpenGL version: %s *** \n You need at least version %5.2f to run the game. \n", 
            reinterpret_cast<const char*>(glGetString(GL_VERSION)), m_OpenGLVersion);
+    m_Camera.setZoomFactor(2.0f);
 }
 
 MainGame::~MainGame()
@@ -36,7 +37,7 @@ void MainGame::draw()
     auto iterator = m_Sprites.begin();
     while(iterator != m_Sprites.end())
     {
-        (*iterator)->draw(m_Camera);
+        (*iterator)->draw(&m_Camera);
         ++iterator;
     }
 }
@@ -50,9 +51,9 @@ void MainGame::update()
         std::cout << "FPS: " << 1 / m_GameTime.getAverageDeltaTime() << std::endl;
     }
 
-    auto targetPosition = m_Camera->getPosition();
-    auto zoomFactor = m_Camera->getZoomFactor();
-    auto rotation = m_Camera->getRotation();
+    auto targetPosition = m_Camera.getPosition();
+    auto zoomFactor = m_Camera.getZoomFactor();
+    auto rotation = m_Camera.getRotation();
     if(BadEngine::Keyboard::isDown(BadEngine::KeyCode::Down))
     {
         targetPosition.y = BadEngine::MathHelper::clamp(targetPosition.y + 5, 0, 924);
@@ -71,11 +72,11 @@ void MainGame::update()
     }
     if(BadEngine::Keyboard::isDown(BadEngine::KeyCode::W))
     {
-        zoomFactor = BadEngine::MathHelper::clamp(zoomFactor + 0.005f, 0.01f, 1.0f);
+        zoomFactor = BadEngine::MathHelper::clamp(zoomFactor + 0.05f, 0.01f, 2.0f);
     }
     if(BadEngine::Keyboard::isDown(BadEngine::KeyCode::S))
     {
-        zoomFactor = BadEngine::MathHelper::clamp(zoomFactor - 0.005f, 0.01f, 1.0f);
+        zoomFactor = BadEngine::MathHelper::clamp(zoomFactor - 0.05f, 0.01f, 2.0f);
     }
     if(BadEngine::Keyboard::isDown(BadEngine::KeyCode::Q))
     {
@@ -89,7 +90,7 @@ void MainGame::update()
     {
         rotation = 0;
     }
-    m_Camera->setPosition(targetPosition);
-    m_Camera->setZoomFactor(zoomFactor);
-    m_Camera->setRotation(rotation);
+    m_Camera.setPosition(targetPosition);
+    m_Camera.setZoomFactor(zoomFactor);
+    m_Camera.setRotation(rotation);
 }

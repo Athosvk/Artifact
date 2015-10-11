@@ -61,7 +61,7 @@ namespace BadEngine
         vertexData[5].position = glm::vec2(m_Position.x + m_Width, m_Position.y + m_Height);
         vertexData[5].uvCoordinate = glm::vec2(1.0f, 1.0f);
 
-        for(int i = 0; i < 6; i++)
+        for(auto i = 0; i < 6; i++)
         {
             vertexData[i].color = Color(255, 255, 255, 255);
         }
