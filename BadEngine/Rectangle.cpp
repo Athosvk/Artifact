@@ -45,12 +45,22 @@ namespace BadEngine
                          (m_MinPosition.x + m_MaxPosition.y) / 2);
     }
 
-    glm::vec2 Rectangle::getMin() const
+    glm::vec2 Rectangle::getTopLeft() const
     {
         return m_MinPosition;
     }
 
-    glm::vec2 Rectangle::getMax() const
+    glm::vec2 Rectangle::getTopRight() const
+    {
+        return m_MinPosition + glm::vec2(getWidth(), 0);
+    }
+
+    glm::vec2 Rectangle::getBottomLeft() const
+    {
+        return m_MinPosition + glm::vec2(0, getHeight());
+    }
+
+    glm::vec2 Rectangle::getBottomRight() const
     {
         return m_MaxPosition;
     }

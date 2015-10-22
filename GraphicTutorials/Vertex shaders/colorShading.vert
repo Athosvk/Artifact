@@ -17,6 +17,5 @@ void main()
 	gl_Position = transformedPosition;
 	
 	fragmentColor = vertexColor;
-	
     fragmentUVCoordinate = vec2(vertexUVCoordinate.x, 1.0 - vertexUVCoordinate.y);
 }

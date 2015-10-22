@@ -80,7 +80,8 @@ namespace BadEngine
         {
             throwFatalError("Could not init glew, error: " + GL::getErrorString(initCode));
         }
-        SDL_GL_SetSwapInterval(1);
+
         SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+        SDL_GL_SetSwapInterval(1);
     }
 }

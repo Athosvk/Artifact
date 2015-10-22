@@ -26,9 +26,8 @@ namespace BadEngine
 
     double GameTime::getAverageDeltaTime() const
     {
-        double average = 0;
-        auto averageCount = m_CurrentFrame > m_SampleCount ? m_SampleCount : m_CurrentFrame;
-        for(auto i = 0; i < m_SampleCount; i++)
+        auto average = 0.0;
+        for(auto i = 0; i < m_SampleCount; ++i)
         {
             average += m_Samples[i];
         }
@@ -38,11 +37,10 @@ namespace BadEngine
 
     void GameTime::update()
     {
-        m_CurrentFrame++;
         m_DeltaTime = m_CurrentTime - m_PreviousTime;
         m_PreviousTime = m_CurrentTime;
         m_CurrentTime = SDL_GetTicks() * 0.001;
-        m_Samples[m_CurrentFrame % m_SampleCount] = m_DeltaTime;
+        m_Samples[++m_CurrentFrame % m_SampleCount] = m_DeltaTime;
     }
 
     GameTime::~GameTime()

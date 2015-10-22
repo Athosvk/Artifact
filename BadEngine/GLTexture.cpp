@@ -30,4 +30,9 @@ namespace BadEngine
         glGenerateMipmap(GL_TEXTURE_2D);
         unbind();
     }
+
+    GLuint GLTexture::getID() const
+    {
+        return m_ID;
+    }
 }

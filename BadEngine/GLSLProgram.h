@@ -20,8 +20,8 @@ namespace BadEngine
         void linkShaders() const;
         void addAttribute(const std::string& a_AttributeName);
 
-        void setAsCurrent() const;
-        void resetCurrent() const;
+        void enable() const;
+        void disable() const;
         GLuint getUniformLocation(const std::string& a_UniformName) const;
 
     private:

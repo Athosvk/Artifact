@@ -24,7 +24,7 @@ MainGame::MainGame() : Game(1024, 768, 0, "GameEngine")
 
 MainGame::~MainGame()
 {
-    for(unsigned int i = 0; i < m_Sprites.size(); i++)
+    for(unsigned int i = 0; i < m_Sprites.size(); ++i)
     {
         delete m_Sprites[i];
     }

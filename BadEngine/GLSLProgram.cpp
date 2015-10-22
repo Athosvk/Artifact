@@ -5,7 +5,6 @@
 #include "GLSLProgram.h"
 #include "ErrorHandler.h"
 #include "GL.h"
-#include <iostream>
 
 namespace BadEngine
 {
@@ -22,7 +21,6 @@ namespace BadEngine
     void GLSLProgram::createAndCompileShaders()
     {
         m_ProgramID = glCreateProgram();
-        std::cout << "Program id is: " << m_ProgramID;
         createVertexShader();
         createFragmentShader();
 
@@ -60,6 +58,7 @@ namespace BadEngine
 
     void GLSLProgram::loadAndCompileShader(GLuint a_ShaderID, const std::string& a_FilePath) const
     {
+        //TODO: Move loading to own method (+class)
         std::ifstream shaderFile(a_FilePath);
         if(shaderFile.fail())
         {
@@ -82,7 +81,7 @@ namespace BadEngine
 
         glCompileShader(a_ShaderID);
 
-        GLint compiled = 0;
+        auto compiled = 0;
         glGetShaderiv(a_ShaderID, GL_COMPILE_STATUS, &compiled);
 
         if(compiled == GL_FALSE)
@@ -92,7 +91,7 @@ namespace BadEngine
             throwFatalError("Failed to compile shader " + a_FilePath);
         }
     }
-
+    
     void GLSLProgram::linkShaders() const
     {
         glAttachShader(m_ProgramID, m_VertexShaderID);
@@ -142,18 +141,18 @@ namespace BadEngine
         std::printf("%s\n", &(errorLog[0]));
     }
 
-    void GLSLProgram::setAsCurrent() const
+    void GLSLProgram::enable() const
     {
         glUseProgram(m_ProgramID);
-        for(auto i = 0; i < m_AttributeCount; i++)
+        for(auto i = 0; i < m_AttributeCount; ++i)
         {
             glEnableVertexAttribArray(i);
         }
     }
 
-    void GLSLProgram::resetCurrent() const
+    void GLSLProgram::disable() const
     {
-        for(auto i = 0; i < m_AttributeCount; i++)
+        for(auto i = 0; i < m_AttributeCount; ++i)
         {
             glDisableVertexAttribArray(i);
         }

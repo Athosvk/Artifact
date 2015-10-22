@@ -6,6 +6,7 @@
 #include "GLTexture.h"
 #include "GLSLProgram.h"
 #include "Camera2D.h"
+#include "VBO.h"
 
 namespace BadEngine
 {
@@ -13,7 +14,7 @@ namespace BadEngine
     {
     protected:
         glm::vec2 m_Position;
-        GLuint m_VboID = 0;
+        VBO m_VBO;
         GLTexture m_Texture;
         GLSLProgram m_ShaderProgram;
         float m_Width;
@@ -34,7 +35,7 @@ namespace BadEngine
         float getHeight() const;
 
     private:
-        void createVBO();
+        void createVBO() const;
         void initShaders();
     };
 }

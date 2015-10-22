@@ -28,19 +28,11 @@ namespace BadEngine
 
     Sprite::~Sprite()
     {
-        if(m_VboID != 0)
-        {
-            glDeleteBuffers(0, &m_VboID);
-        }
+      
     }
 
-    void Sprite::createVBO()
+    void Sprite::createVBO() const
     {
-        if(m_VboID == 0)
-        {
-            glGenBuffers(1, &m_VboID);
-        }
-
         Vertex vertexData[6];
 
         vertexData[0].position = glm::vec2(m_Position.x + m_Width, m_Position.y + m_Height);
@@ -61,15 +53,12 @@ namespace BadEngine
         vertexData[5].position = glm::vec2(m_Position.x + m_Width, m_Position.y + m_Height);
         vertexData[5].uvCoordinate = glm::vec2(1.0f, 1.0f);
 
-        for(auto i = 0; i < 6; i++)
+        for(auto i = 0; i < 6; ++i)
         {
-            vertexData[i].color = Color(255, 255, 255, 255);
+            vertexData[i].color = Color::White;
         }
 
-        glBindBuffer(GL_ARRAY_BUFFER, m_VboID);
-        glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData), vertexData, GL_STATIC_DRAW);
-
-        glBindBuffer(GL_ARRAY_BUFFER, 0);
+        m_VBO.setData(vertexData);
     }
 
     void Sprite::initShaders()
@@ -83,7 +72,7 @@ namespace BadEngine
 
     void Sprite::draw(const Camera2D* a_Camera) const
     {
-        m_ShaderProgram.setAsCurrent();
+        m_ShaderProgram.enable();
         glActiveTexture(GL_TEXTURE0);
 
         auto textureLocation = m_ShaderProgram.getUniformLocation("sampler");
@@ -95,17 +84,17 @@ namespace BadEngine
         glUniformMatrix4fv(cameraTransformLocation, 1, GL_FALSE, &cameraTransform[0][0]);
 
         m_Texture.bind();
-        glBindBuffer(GL_ARRAY_BUFFER, m_VboID);
+        m_VBO.bind();
 
         glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(offsetof(Vertex, position)));
-        glVertexAttribPointer(1, 4, GL_UNSIGNED_BYTE, GL_TRUE, sizeof(Vertex), reinterpret_cast<void*>(offsetof(Vertex, color)));
+        glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(offsetof(Vertex, color)));
         glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(offsetof(Vertex, uvCoordinate)));
 
         glDrawArrays(GL_TRIANGLES, 0, 6);
 
-        glBindBuffer(GL_ARRAY_BUFFER, 0);
+        m_VBO.unbind();
 
-        m_ShaderProgram.resetCurrent();
+        m_ShaderProgram.disable();
     }
 
     float Sprite::getWidth() const
