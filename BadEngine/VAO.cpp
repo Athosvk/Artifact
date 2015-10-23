@@ -7,6 +7,7 @@ VAO::VAO()
 
 VAO::~VAO()
 {
+    glDeleteVertexArrays(1, &m_ID);
 }
 
 void VAO::bind() const
