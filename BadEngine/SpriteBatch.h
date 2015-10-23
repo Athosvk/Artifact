@@ -81,7 +81,7 @@ namespace BadEngine
 
     private:
         void renderBatches() const;
-        void createVAO() const;
+        void constructVAO() const;
         void sortGlyphs();
         void createRenderBatches();
         void initShaders();

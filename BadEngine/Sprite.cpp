@@ -22,7 +22,7 @@ namespace BadEngine
         m_Width(a_Width),
         m_Height(a_Height)
     {
-        createVBO();
+        constructVBO();
         initShaders();
     }
 

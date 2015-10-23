@@ -12,7 +12,7 @@ namespace BadEngine
         m_ShaderProgram(GLSLProgram(s_DefaultVertexShader, s_DefaultFragmentShader)),
         m_Camera(a_Camera)
     {
-        createVAO();
+        constructVAO();
         initShaders();
     }
 
@@ -63,7 +63,7 @@ namespace BadEngine
         m_Glyphs.push_back(glyph);
     }
 
-    void SpriteBatch::createVAO() const
+    void SpriteBatch::constructVAO() const
     {
         m_VAO.bind();
         m_VBO.bind();

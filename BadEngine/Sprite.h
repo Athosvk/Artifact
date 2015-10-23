@@ -34,7 +34,7 @@ namespace BadEngine
         float getHeight() const;
 
     private:
-        void createVBO() const;
+        void constructVBO() const;
         void initShaders();
     };
 }
