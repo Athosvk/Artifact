@@ -144,18 +144,10 @@ namespace BadEngine
     void GLSLProgram::enable() const
     {
         glUseProgram(m_ProgramID);
-        for(auto i = 0; i < m_AttributeCount; ++i)
-        {
-            glEnableVertexAttribArray(i);
-        }
     }
 
     void GLSLProgram::disable() const
     {
-        for(auto i = 0; i < m_AttributeCount; ++i)
-        {
-            glDisableVertexAttribArray(i);
-        }
         glUseProgram(0);
     }
 }

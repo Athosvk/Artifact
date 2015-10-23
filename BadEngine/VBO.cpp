@@ -12,12 +12,13 @@ namespace BadEngine
         glDeleteBuffers(1, &m_ID);
     }
 
-    template<int TSize>
-    void VBO::setData(Vertex(&a_Data)[TSize]) const
+    void VBO::uploadData(Vertex* a_Data, unsigned int a_VertexCount) const
     {
-        glBindBuffer(GL_ARRAY_BUFFER, m_ID);
-        glBufferData(GL_ARRAY_BUFFER, sizeof(a_Data), a_Data, GL_STATIC_DRAW);
-        glBindBuffer(GL_ARRAY_BUFFER, 0);
+        bind();
+        //Orphan the buffer
+        glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * a_VertexCount, nullptr, GL_DYNAMIC_DRAW);
+        glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(Vertex) * a_VertexCount, a_Data);
+        unbind();
     }
 
     void VBO::bind() const

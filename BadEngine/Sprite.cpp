@@ -58,7 +58,7 @@ namespace BadEngine
             vertexData[i].color = Color::White;
         }
 
-        m_VBO.setData(vertexData);
+        m_VBO.uploadData<6>(vertexData);
     }
 
     void Sprite::initShaders()

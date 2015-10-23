@@ -10,8 +10,10 @@
 
 #include "TestSprite.h"
 #include "MainGame.h"
+#include <BadEngine/ResourceManager.h>
 
-MainGame::MainGame() : Game(1024, 768, 0, "GameEngine")
+MainGame::MainGame() : Game(1024, 768, 0, "GameEngine"),
+    m_SpriteBatch(&m_Camera)
 {
     setBackgroundColor(BadEngine::Color(0, 45, 75, 0));
     m_Sprites.push_back(new BadEngine::Sprite(glm::vec2(512.0f - 50.0f, 50.0f), "Textures/PNG/CharacterRight_Walk1.png", 20, 20));
@@ -34,12 +36,25 @@ void MainGame::draw()
 {
     Game::draw();
 
-    auto iterator = m_Sprites.begin();
-    while(iterator != m_Sprites.end())
+    //for(auto sprite : m_Sprites)
     {
-        (*iterator)->draw(&m_Camera);
-        ++iterator;
+        m_Sprites[2]->draw(&m_Camera);
     }
+    m_SpriteBatch.begin();
+
+    BadEngine::Rectangle rectangle2 = BadEngine::Rectangle(glm::vec2(512.0f - 50.0f, 384.0f - 50.0f), 125, 125);
+    BadEngine::Rectangle uvRectangle2 = BadEngine::Rectangle(glm::vec2(0, 0), 1, 1);
+    m_SpriteBatch.draw(BadEngine::ResourceManager::getTexture("Textures/PNG/CharacterRight_Walk1.png"), rectangle2, uvRectangle2);
+   
+    BadEngine::Rectangle rectangle(glm::vec2(15, 15), 250, 250);
+    BadEngine::Rectangle uvRectangle(glm::vec2(0, 0), 1, 1);
+    m_SpriteBatch.draw(BadEngine::ResourceManager::getTexture("Textures/PNG/CharacterRight_Walk1.png"), rectangle, uvRectangle, BadEngine::Color::White);
+
+    rectangle = BadEngine::Rectangle(glm::vec2(-25.0f, -25.0f), 125, 125);
+    uvRectangle = BadEngine::Rectangle(glm::vec2(0, 0), 0, 0);
+    //m_SpriteBatch.draw(BadEngine::ResourceManager::getTexture("Textures/PNG/CharacterRight_Walk1.png"), rectangle, uvRectangle);
+
+    m_SpriteBatch.end();
 }
 
 void MainGame::update()

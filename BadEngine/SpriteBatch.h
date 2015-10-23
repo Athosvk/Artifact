@@ -5,6 +5,8 @@
 #include "GLTexture.h"
 #include "Rectangle.h"
 #include "VBO.h"
+#include "GLSLProgram.h"
+#include "Camera2D.h"
 
 namespace BadEngine
 {
@@ -18,7 +20,7 @@ namespace BadEngine
     class SpriteBatch
     {
     private:
-        class SharedBatch
+        class RenderBatch
         {
         public:
             GLTexture texture;
@@ -26,12 +28,11 @@ namespace BadEngine
             GLuint offset;
 
         public:
-            SharedBatch(GLTexture a_Texture, GLuint a_VertexCount = 0, GLuint a_Offset = 0) :
+            RenderBatch(GLTexture a_Texture, GLuint a_VertexCount = 0, GLuint a_Offset = 0) :
                 texture(a_Texture),
                 vertexCount(a_VertexCount),
                 offset(a_Offset)
             {
-                
             }
         };
 
@@ -57,14 +58,19 @@ namespace BadEngine
             };
         };
 
+        static const std::string SpriteBatch::s_DefaultVertexShader;
+        static const std::string SpriteBatch::s_DefaultFragmentShader;
+
         GLuint m_VaoID = 0;
         VBO m_VBO = VBO();
         std::vector<Glyph*> m_Glyphs = std::vector<Glyph*>();
-        std::vector<SharedBatch> m_RenderBatches;
+        std::vector<RenderBatch> m_RenderBatches;
         ESpriteSortMode m_SortMode = ESpriteSortMode::Texture;
+        GLSLProgram m_ShaderProgram;
+        const Camera2D* m_Camera;
 
     public:
-        SpriteBatch();
+        SpriteBatch(const Camera2D* a_Camera);
         ~SpriteBatch();
 
         void begin(ESpriteSortMode a_SpriteSortMode = ESpriteSortMode::Texture);
@@ -73,9 +79,11 @@ namespace BadEngine
         void end();
 
     private:
-        void renderBatches();
+        void renderBatches() const;
         void createVAO();
         void sortGlyphs();
         void createRenderBatches();
+        void initShaders();
+        void clear();
     };
 }
