@@ -23,7 +23,6 @@ namespace BadEngine
             delete glyph;
         }
         clear();
-        glDeleteVertexArrays(1, &m_VaoID);
     }
 
     void SpriteBatch::clear()
@@ -64,24 +63,24 @@ namespace BadEngine
         m_Glyphs.push_back(glyph);
     }
 
-    void SpriteBatch::createVAO()
+    void SpriteBatch::createVAO() const
     {
-        glGenVertexArrays(1, &m_VaoID);
-        glBindVertexArray(m_VaoID);
-
+        m_VAO.bind();
         m_VBO.bind();
 
-        for(auto i = 0; i < 3; ++i)
+        const auto AttributeCount = 3u;
+        for(auto i = 0; i < AttributeCount; ++i)
         {
             glEnableVertexAttribArray(i);
         }
+
         glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(offsetof(Vertex, position)));
         glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(offsetof(Vertex, color)));
         glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(offsetof(Vertex, uvCoordinate)));
 
-        glBindVertexArray(0);
+        m_VAO.unbind();
 
-        for(auto i = 0; i < 3; ++i)
+        for(auto i = 0; i < AttributeCount; ++i)
         {
             glDisableVertexAttribArray(i);
         }
@@ -118,7 +117,7 @@ namespace BadEngine
 
     void SpriteBatch::renderBatches() const
     {
-        glBindVertexArray(m_VaoID);
+        m_VAO.bind();
         glActiveTexture(GL_TEXTURE0);
         
         m_ShaderProgram.enable();
@@ -137,6 +136,7 @@ namespace BadEngine
         }
 
         m_ShaderProgram.disable();
+        m_VAO.unbind();
     }
 
     void SpriteBatch::createRenderBatches()

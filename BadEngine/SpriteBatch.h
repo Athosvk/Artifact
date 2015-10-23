@@ -7,6 +7,7 @@
 #include "VBO.h"
 #include "GLSLProgram.h"
 #include "Camera2D.h"
+#include "VAO.h"
 
 namespace BadEngine
 {
@@ -61,7 +62,7 @@ namespace BadEngine
         static const std::string SpriteBatch::s_DefaultVertexShader;
         static const std::string SpriteBatch::s_DefaultFragmentShader;
 
-        GLuint m_VaoID = 0;
+        VAO m_VAO = VAO();
         VBO m_VBO = VBO();
         std::vector<Glyph*> m_Glyphs = std::vector<Glyph*>();
         std::vector<RenderBatch> m_RenderBatches;
@@ -80,7 +81,7 @@ namespace BadEngine
 
     private:
         void renderBatches() const;
-        void createVAO();
+        void createVAO() const;
         void sortGlyphs();
         void createRenderBatches();
         void initShaders();

@@ -83,6 +83,12 @@ namespace BadEngine
         
         glUniformMatrix4fv(cameraTransformLocation, 1, GL_FALSE, &cameraTransform[0][0]);
 
+        const auto AttributeCount = 3u;
+        for(auto i = 0; i < AttributeCount; ++i)
+        {
+            glEnableVertexAttribArray(i);
+        }
+
         m_Texture.bind();
         m_VBO.bind();
 
@@ -92,6 +98,10 @@ namespace BadEngine
 
         glDrawArrays(GL_TRIANGLES, 0, 6);
 
+        for(auto i = 0; i < AttributeCount; ++i)
+        {
+            glDisableVertexAttribArray(i);
+        }
         m_VBO.unbind();
 
         m_ShaderProgram.disable();
