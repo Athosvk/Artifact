@@ -17,10 +17,15 @@ namespace BadEngine
         float getWidth() const;
         float getHeight() const;
         float getRadius() const;
-        glm::vec2 getCentre() const;
+        glm::vec2 getPosition() const;
         glm::vec2 getTopLeft() const;
         glm::vec2 getTopRight() const;
         glm::vec2 getBottomLeft() const;
         glm::vec2 getBottomRight() const;
+        void setWidth(float a_Width);
+        void setHeight(float a_Height);
+        void setMinPosition(glm::vec2 a_MinPosition);
+        void setMaxPosition(glm::vec2 a_MaxPosition);
+        void setPosition(glm::vec2 a_Position);
     };
 }

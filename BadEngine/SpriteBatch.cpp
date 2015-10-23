@@ -18,15 +18,15 @@ namespace BadEngine
 
     SpriteBatch::~SpriteBatch()
     {
-        for(auto glyph : m_Glyphs)
-        {
-            delete glyph;
-        }
         clear();
     }
 
     void SpriteBatch::clear()
     {
+        for(auto glyph : m_Glyphs)
+        {
+            delete glyph;
+        }
         m_RenderBatches.clear();
         m_Glyphs.clear();
     }
