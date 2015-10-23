@@ -11,7 +11,7 @@ namespace BadEngine
     GLTexture ImageLoader::loadPNG(const std::string& a_FilePath)
     {
         std::vector<unsigned char> fileData;
-        IOManager::tryReadBinary(fileData, a_FilePath);
+        IOManager::readBinary(fileData, a_FilePath);
 
         unsigned long width;
         unsigned long height;

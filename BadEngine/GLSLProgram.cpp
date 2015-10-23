@@ -1,10 +1,10 @@
 #include <fstream>
 #include <vector>
-#include <string>
 
 #include "GLSLProgram.h"
 #include "ErrorHandler.h"
 #include "GL.h"
+#include "IOManager.h"
 
 namespace BadEngine
 {
@@ -53,27 +53,11 @@ namespace BadEngine
 
     void GLSLProgram::loadAndCompileShader(GLuint a_ShaderID, const std::string& a_FilePath) const
     {
-        //TODO: Move loading to own method (+class)
-        std::ifstream shaderFile(a_FilePath);
-        if(shaderFile.fail())
-        {
-            perror(a_FilePath.c_str());
-            throwFatalError("Failed to open " + a_FilePath);
-        }
+        std::vector<char> shaderContents;
+        IOManager::readText(shaderContents, a_FilePath);
+        auto contentBuffer = shaderContents.data();
 
-        std::string fileContents = "";
-        std::string line;
-
-        while(std::getline(shaderFile, line))
-        {
-            fileContents += line + "\n";
-        }
-
-        shaderFile.close();
-
-        auto contents = fileContents.c_str();
-        glShaderSource(a_ShaderID, 1, &contents, nullptr);
-
+        glShaderSource(a_ShaderID, 1, &contentBuffer, nullptr);
         glCompileShader(a_ShaderID);
 
         auto compiled = 0;
