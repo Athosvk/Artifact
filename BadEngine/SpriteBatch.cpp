@@ -23,6 +23,7 @@ namespace BadEngine
             delete glyph;
         }
         clear();
+        glDeleteVertexArrays(1, &m_VaoID);
     }
 
     void SpriteBatch::clear()
