@@ -9,18 +9,13 @@
 namespace BadEngine
 {
     GLSLProgram::GLSLProgram(const std::string& a_VertexShaderPath, const std::string& a_FragmentShaderPath) :
-        m_AttributeCount(0),
-        m_ProgramID(0),
-        m_VertexShaderID(0),
-        m_FragmentShaderID(0)
+        m_VertexShader(a_VertexShaderPath),
+        m_FragmentShader(a_FragmentShaderPath)
     {
-        m_VertexShader = a_VertexShaderPath;
-        m_FragmentShader = a_FragmentShaderPath;
     }
 
     void GLSLProgram::createAndCompileShaders()
     {
-        m_ProgramID = glCreateProgram();
         createVertexShader();
         createFragmentShader();
 

@@ -12,8 +12,9 @@ class Mouse
 {
 public:
     Mouse();
-    static glm::vec2 getPosition();
-    static void setPosition(glm::vec2 a_Position);
-    static void simulatePress();
+
+    glm::vec2 getPosition();
+    void setPosition(glm::vec2 a_Position);
+    void simulatePress();
 };
 

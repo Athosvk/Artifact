@@ -16,9 +16,9 @@ MainGame::MainGame() : Game(1024, 768, 0, "GameEngine"),
     m_SpriteBatch(&m_Camera)
 {
     setBackgroundColor(BadEngine::Color(0, 45, 75, 0));
-    m_Sprites.push_back(new BadEngine::Sprite(glm::vec2(512.0f - 50.0f, 50.0f), "Textures/PNG/CharacterRight_Walk1.png", 20, 20));
-    m_Sprites.push_back(new BadEngine::Sprite(glm::vec2(512.0f - 50.0f, 384.0f - 50.0f), "Textures/PNG/CharacterRight_Walk1.png", 500, 500));
-    m_Sprites.push_back(new TestSprite(glm::vec2(-25.0f, -25.0f), 125.0f, 125.0f));
+    m_Sprites.push_back(new BadEngine::Sprite(glm::vec2(512.0f - 50.0f, 50.0f), "Textures/PNG/CharacterRight_Walk1.png", 20, 20, m_ResourceManager));
+    m_Sprites.push_back(new BadEngine::Sprite(glm::vec2(512.0f - 50.0f, 384.0f - 50.0f), "Textures/PNG/CharacterRight_Walk1.png", 500, 500, m_ResourceManager));
+    m_Sprites.push_back(new TestSprite(glm::vec2(-25.0f, -25.0f), 125.0f, 125.0f, m_ResourceManager));
     printf(" *** OpenGL version: %s *** \n You need at least version %5.2f to run the game. \n", 
            reinterpret_cast<const char*>(glGetString(GL_VERSION)), m_OpenGLVersion);
     m_Camera.setZoomFactor(2.0f);
@@ -40,15 +40,15 @@ void MainGame::draw()
 
     BadEngine::Rectangle rectangle2(glm::vec2(512.0f - 50.0f, 384.0f - 50.0f), 15, 15);
     BadEngine::Rectangle uvRectangle2(glm::vec2(0, 0), 1, 1);
-    m_SpriteBatch.draw(BadEngine::ResourceManager::getTexture("Textures/PNG/CharacterRight_Walk1.png"), rectangle2, uvRectangle2);
+    m_SpriteBatch.draw(m_ResourceManager.getTexture("Textures/PNG/CharacterRight_Walk1.png"), rectangle2, uvRectangle2);
    
-    BadEngine::Rectangle rectangle(glm::vec2(15, 15), 250, 250);
-    BadEngine::Rectangle uvRectangle(glm::vec2(0, 0), 4, 4);
-    m_SpriteBatch.draw(BadEngine::ResourceManager::getTexture("Textures/PNG/CharacterRight_Walk1.png"), rectangle, uvRectangle, BadEngine::Color::White);
+    BadEngine::Rectangle rectangle(glm::vec2(15, 15), 500, 500);
+    BadEngine::Rectangle uvRectangle(glm::vec2(0, 0), 75, 75);
+    m_SpriteBatch.draw(m_ResourceManager.getTexture("Textures/PNG/CharacterRight_Walk1.png"), rectangle, uvRectangle, BadEngine::Color::White);
 
     rectangle = BadEngine::Rectangle(glm::vec2(-25.0f, -25.0f), 125, 125);
     uvRectangle = BadEngine::Rectangle(glm::vec2(0, 0), 1, 1);
-   m_SpriteBatch.draw(BadEngine::ResourceManager::getTexture("Textures/PNG/CharacterRight_Walk1.png"), rectangle, uvRectangle);
+    m_SpriteBatch.draw(m_ResourceManager.getTexture("Textures/PNG/CharacterRight_Walk1.png"), rectangle, uvRectangle);
 
     m_SpriteBatch.end();
     for(auto sprite : m_Sprites)

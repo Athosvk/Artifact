@@ -15,7 +15,7 @@ namespace BadEngine
     class Window
     {
     private:
-        Uint32 m_CurrentFlags;
+        Uint32 m_CurrentFlags = SDL_WINDOW_OPENGL;
         SDL_Window* m_SDLWindow;
         SDL_GLContext m_GLContext;
         int m_Width;

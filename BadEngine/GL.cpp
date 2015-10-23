@@ -2,14 +2,6 @@
 
 #include "GL.h"
 
-GL::GL()
-{
-}
-
-GL::~GL()
-{
-}
-
 std::string GL::getErrorString()
 {
     auto error = glGetError();

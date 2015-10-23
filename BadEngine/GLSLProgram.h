@@ -6,10 +6,10 @@ namespace BadEngine
     class GLSLProgram
     {
     private:
-        int m_AttributeCount;
-        GLuint m_ProgramID;
-        GLuint m_VertexShaderID;
-        GLuint m_FragmentShaderID;
+        int m_AttributeCount = 0;
+        GLuint m_ProgramID = glCreateProgram();
+        GLuint m_VertexShaderID = 0;
+        GLuint m_FragmentShaderID = 0;
         std::string m_VertexShader;
         std::string m_FragmentShader;
 

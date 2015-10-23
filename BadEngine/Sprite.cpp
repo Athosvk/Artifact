@@ -13,11 +13,12 @@ namespace BadEngine
     const std::string Sprite::s_DefaultVertexShader = "Vertex shaders/colorShading.vert";
     const std::string Sprite::s_DefaultFragmentShader = "Fragment shaders/colorShading.frag";
 
-    Sprite::Sprite(const glm::vec2 a_Position,
-                   const std::string a_TextureFilePath, const float a_Width, const float a_Height,
-                   const std::string a_VertexShaderPath, const std::string a_FragmentShaderPath) :
+    Sprite::Sprite(glm::vec2 a_Position,
+                   const std::string a_TextureFilePath, float a_Width, float a_Height,
+                   BadEngine::ResourceManager& a_ResourceManager,
+                   const std::string& a_VertexShaderPath, const std::string& a_FragmentShaderPath) :
         m_Position(a_Position),
-        m_Texture(ResourceManager::getTexture(a_TextureFilePath)),
+        m_Texture(a_ResourceManager.getTexture(a_TextureFilePath)),
         m_ShaderProgram(GLSLProgram(a_VertexShaderPath, a_FragmentShaderPath)),
         m_Width(a_Width),
         m_Height(a_Height)
@@ -31,7 +32,7 @@ namespace BadEngine
       
     }
 
-    void Sprite::createVBO() const
+    void Sprite::constructVBO() const
     {
         Vertex vertexData[6];
 

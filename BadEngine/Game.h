@@ -4,6 +4,7 @@
 #include "Color.h"
 #include "Keyboard.h"
 #include "Camera2D.h"
+#include "ResourceManager.h"
 
 namespace BadEngine
 {
@@ -22,6 +23,7 @@ namespace BadEngine
         GameTime m_GameTime = GameTime();
         Keyboard m_Keyboard = Keyboard();
         Camera2D m_Camera;
+        ResourceManager m_ResourceManager = ResourceManager();
         double m_FixedUpdateInterval = 0.15;
         
     private:

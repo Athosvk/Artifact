@@ -6,8 +6,7 @@
 
 namespace BadEngine
 {
-    Window::Window(int a_Width, int a_Height, Uint32 a_Flags, std::string a_Name)
-        : m_CurrentFlags(SDL_WINDOW_OPENGL),
+    Window::Window(int a_Width, int a_Height, Uint32 a_Flags, std::string a_Name) :
         m_Width(a_Width),
         m_Height(a_Height),
         m_Name(a_Name)
