@@ -85,7 +85,7 @@ namespace BadEngine
     {
         if(BadEngine::Keyboard::isDown(BadEngine::KeyCode::Down))
         {
-            m_Position.y = BadEngine::MathHelper::clamp(m_Position.y + 15, -2000, 2000);
+            m_Position.y = BadEngine::MathHelper::clamp(m_Position.y - 15, -2000, 2000);
         }
         if(BadEngine::Keyboard::isDown(BadEngine::KeyCode::Left))
         {
@@ -97,7 +97,7 @@ namespace BadEngine
         }
         if(BadEngine::Keyboard::isDown(BadEngine::KeyCode::Up))
         {
-            m_Position.y = BadEngine::MathHelper::clamp(m_Position.y - 15, -2000, 2000);
+            m_Position.y = BadEngine::MathHelper::clamp(m_Position.y + 15, -2000, 2000);
         }
 
         if(BadEngine::Keyboard::isDown(BadEngine::KeyCode::W))

@@ -34,8 +34,8 @@ void MainGame::draw()
     for(auto i = 0; i < 1500; i++)
     {
         rectangle.setPosition(rectangle.getPosition() + glm::vec2(0, 1));
-        rectangle.setHeight(100 - i * 0.1f);
-        rectangle.setWidth(100 - i * 0.1f);
+        rectangle.setHeight(100 - i * 0.07f);
+        rectangle.setWidth(100 - i * 0.07f);
         static auto texture = m_ResourceManager.getTexture("Textures/PNG/CharacterRight_Walk1.png");
         m_SpriteBatch.draw(texture, rectangle, uvRectangle, BadEngine::Color::White);
     }
