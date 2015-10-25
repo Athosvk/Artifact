@@ -34,9 +34,9 @@ namespace BadEngine
     void SpriteBatch::begin(ESpriteSortMode a_SpriteSortMode)
     {
         m_SortMode = a_SpriteSortMode;
-        auto currentSize = m_Glyphs.size();
+        auto previousSize = m_Glyphs.size();
         clear();
-        m_Glyphs.reserve(currentSize);
+        m_Glyphs.reserve(previousSize);
     }
 
     void SpriteBatch::end()
