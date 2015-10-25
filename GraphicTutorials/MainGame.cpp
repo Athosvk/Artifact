@@ -3,8 +3,6 @@
 
 #include <BadEngine/ImageLoader.h>
 #include <BadEngine/Color.h>
-#include <BadEngine/Keyboard.h>
-#include <BadEngine/MathHelper.h>
 #include <BadEngine/GLTexture.h>
 #include <BadEngine/Camera2D.h>
 
@@ -38,7 +36,7 @@ void MainGame::draw()
         rectangle.setPosition(rectangle.getPosition() + glm::vec2(0, 1));
         rectangle.setHeight(100 - i * 0.1f);
         rectangle.setWidth(100 - i * 0.1f);
-        static BadEngine::GLTexture texture = m_ResourceManager.getTexture("Textures/PNG/CharacterRight_Walk1.png");
+        static auto texture = m_ResourceManager.getTexture("Textures/PNG/CharacterRight_Walk1.png");
         m_SpriteBatch.draw(texture, rectangle, uvRectangle, BadEngine::Color::White);
     }
     m_SpriteBatch.end();
@@ -48,7 +46,7 @@ void MainGame::update()
 {
     Game::update();
 
-    static int counter = 0;
+    static auto counter = 0;
     if(counter++ % 100 == 0)
     {
         std::cout << "FPS: " << 1 / m_GameTime.getAverageDeltaTime() << std::endl;
@@ -57,42 +55,7 @@ void MainGame::update()
     auto targetPosition = m_Camera.getPosition();
     auto zoomFactor = m_Camera.getZoomFactor();
     auto rotation = m_Camera.getRotation();
-    if(BadEngine::Keyboard::isDown(BadEngine::KeyCode::Down))
-    {
-        targetPosition.y = BadEngine::MathHelper::clamp(targetPosition.y + 5, 0, 924);
-    }
-    if(BadEngine::Keyboard::isDown(BadEngine::KeyCode::Left))
-    {
-        targetPosition.x = BadEngine::MathHelper::clamp(targetPosition.x - 5, 0, 924);
-    }
-    if(BadEngine::Keyboard::isDown(BadEngine::KeyCode::Right))
-    {
-        targetPosition.x = BadEngine::MathHelper::clamp(targetPosition.x + 5, 0, 668);
-    }
-    if(BadEngine::Keyboard::isDown(BadEngine::KeyCode::Up))
-    {
-        targetPosition.y = BadEngine::MathHelper::clamp(targetPosition.y - 5, 0, 668);
-    }
-    if(BadEngine::Keyboard::isDown(BadEngine::KeyCode::W))
-    {
-        zoomFactor = BadEngine::MathHelper::clamp(zoomFactor + 0.05f, 0.01f, 2.0f);
-    }
-    if(BadEngine::Keyboard::isDown(BadEngine::KeyCode::S))
-    {
-        zoomFactor = BadEngine::MathHelper::clamp(zoomFactor - 0.05f, 0.01f, 2.0f);
-    }
-    if(BadEngine::Keyboard::isDown(BadEngine::KeyCode::Q))
-    {
-        rotation += 0.05f;
-    }
-    if(BadEngine::Keyboard::isDown(BadEngine::KeyCode::E))
-    {
-        rotation -= 0.05f;
-    }
-    if(BadEngine::Keyboard::isDown(BadEngine::KeyCode::Space))
-    {
-        rotation = 0;
-    }
+  
     m_Camera.setPosition(targetPosition);
     m_Camera.setZoomFactor(zoomFactor);
     m_Camera.setRotation(rotation);
