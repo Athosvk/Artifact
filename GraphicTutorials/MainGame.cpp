@@ -35,10 +35,11 @@ void MainGame::draw()
 
     for(auto i = 0; i < 1500; i++)
     {
-        rectangle.setHeight((1520 - i) * 0.5f);
-        rectangle.setWidth((1520 - i) * 0.5f);
-        m_SpriteBatch.draw(m_ResourceManager.getTexture("Textures/PNG/CharacterRight_Walk1.png"),
-                           rectangle, uvRectangle, BadEngine::Color::White);
+        rectangle.setPosition(rectangle.getPosition() + glm::vec2(0, 1));
+        rectangle.setHeight(100 - i * 0.1f);
+        rectangle.setWidth(100 - i * 0.1f);
+        static BadEngine::GLTexture texture = m_ResourceManager.getTexture("Textures/PNG/CharacterRight_Walk1.png");
+        m_SpriteBatch.draw(texture, rectangle, uvRectangle, BadEngine::Color::White);
     }
     m_SpriteBatch.end();
 }
@@ -47,7 +48,8 @@ void MainGame::update()
 {
     Game::update();
 
-    if(fmod(m_GameTime.getCurrentTime(), 0.5f) >= 0.48f)
+    static int counter = 0;
+    if(counter++ % 100 == 0)
     {
         std::cout << "FPS: " << 1 / m_GameTime.getAverageDeltaTime() << std::endl;
     }
