@@ -5,9 +5,9 @@
 #include <BadEngine/Color.h>
 #include <BadEngine/GLTexture.h>
 #include <BadEngine/Camera2D.h>
+#include <BadEngine/ResourceManager.h>
 
 #include "MainGame.h"
-#include <BadEngine/ResourceManager.h>
 
 MainGame::MainGame() : Game(1024, 768, 0, "GameEngine"),
     m_SpriteBatch(&m_Camera)
@@ -15,7 +15,7 @@ MainGame::MainGame() : Game(1024, 768, 0, "GameEngine"),
     setBackgroundColor(BadEngine::Color(0, 45, 75, 0));
     printf(" *** OpenGL version: %s *** \n You need at least version %5.2f to run the game. \n", 
            reinterpret_cast<const char*>(glGetString(GL_VERSION)), m_OpenGLVersion);
-    m_Camera.setZoomFactor(2.0f);
+    m_Camera.setZoomFactor(1.0f);
 }
 
 MainGame::~MainGame()
@@ -28,15 +28,22 @@ void MainGame::draw()
 
     m_SpriteBatch.begin();
 
-    BadEngine::Rectangle rectangle(glm::vec2(15, 15), 500, 500);
+    BadEngine::Rectangle rectangle(glm::vec2(15, 15), 15, 15);
     BadEngine::Rectangle uvRectangle(glm::vec2(0, 0), 1, 1);
 
-    for(auto i = 0; i < 1500; i++)
+    rectangle.setWidth(100);
+    rectangle.setHeight(100);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+
+    for(auto i = 0; i < 10; i++)
     {
-        rectangle.setPosition(rectangle.getPosition() + glm::vec2(0, 1));
-        rectangle.setHeight(100 - i * 0.07f);
-        rectangle.setWidth(100 - i * 0.07f);
+        rectangle.setPosition(rectangle.getPosition() + glm::vec2(0, 15.0f * i));
+ 
+        std::cout << "Rectangle width: "<< rectangle.getWidth() << "\n";
+        std::cout << "Rectangle height: " << rectangle.getHeight() << "\n";
         static auto texture = m_ResourceManager.getTexture("Textures/PNG/CharacterRight_Walk1.png");
+        if(i == 4)
+            glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
         m_SpriteBatch.draw(texture, rectangle, uvRectangle, BadEngine::Color::White);
     }
     m_SpriteBatch.end();

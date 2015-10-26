@@ -89,7 +89,7 @@ namespace BadEngine
     {
         glm::vec2 dimensions(getWidth(), getHeight());
 
-        m_MinPosition = a_Position - dimensions;
-        m_MaxPosition = a_Position + dimensions;
+        m_MinPosition = a_Position - (dimensions * 0.5f);
+        m_MaxPosition = a_Position + (dimensions * 0.5f);
     }
 }
