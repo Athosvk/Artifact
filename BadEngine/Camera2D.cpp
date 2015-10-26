@@ -53,7 +53,7 @@ namespace BadEngine
 
     void Camera2D::update()
     {
-        //if(m_MatrixIsDirty)
+        if(m_MatrixIsDirty)
         {
             constructMatrix();
         }
@@ -120,6 +120,7 @@ namespace BadEngine
         {
             m_Rotation = 0;
         }
+        m_MatrixIsDirty = true;
     }
 
     void Camera2D::applyScale()
