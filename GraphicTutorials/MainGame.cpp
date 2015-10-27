@@ -8,6 +8,7 @@
 #include <BadEngine/ResourceManager.h>
 
 #include "MainGame.h"
+#include <BadEngine/MathHelper.h>
 
 MainGame::MainGame() : Game(1024, 768, 0, "GameEngine"),
     m_SpriteBatch(&m_Camera)
@@ -25,7 +26,6 @@ MainGame::~MainGame()
 void MainGame::draw()
 {
     Game::draw();
-
     m_SpriteBatch.begin();
 
     BadEngine::Rectangle rectangle(glm::vec2(15, 15), 15, 15);
@@ -33,20 +33,18 @@ void MainGame::draw()
 
     rectangle.setWidth(100);
     rectangle.setHeight(100);
+
     glBlendFunc(GL_SRC_ALPHA, GL_ONE);
 
     for(auto i = 0; i < 10; i++)
     {
-        rectangle.setPosition(rectangle.getPosition() + glm::vec2(0, 15.0f * i));
- 
-        std::cout << "Rectangle width: "<< rectangle.getWidth() << "\n";
-        std::cout << "Rectangle height: " << rectangle.getHeight() << "\n";
+        rectangle.setPosition(rectangle.getPosition() + glm::vec2(0, BadEngine::MathHelper::pingPong(m_Accumulator, 1.0f, 50.0f)));
         static auto texture = m_ResourceManager.getTexture("Textures/PNG/CharacterRight_Walk1.png");
-        if(i == 4)
-            glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
         m_SpriteBatch.draw(texture, rectangle, uvRectangle, BadEngine::Color::White);
     }
     m_SpriteBatch.end();
+    
 }
 
 void MainGame::update()
@@ -62,8 +60,15 @@ void MainGame::update()
     auto targetPosition = m_Camera.getPosition();
     auto zoomFactor = m_Camera.getZoomFactor();
     auto rotation = m_Camera.getRotation();
-  
+
     m_Camera.setPosition(targetPosition);
     m_Camera.setZoomFactor(zoomFactor);
     m_Camera.setRotation(rotation);
+}
+
+
+void MainGame::fixedUpdate()
+{
+    m_Accumulator += 1.5f;
+
 }
