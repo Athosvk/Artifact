@@ -37,6 +37,7 @@ namespace BadEngine
             processEvents();
             update();
             draw();
+            processFixedUpdates();
             m_Window.renderCurrentFrame();
         }
     }
@@ -53,7 +54,7 @@ namespace BadEngine
         m_FixedUpdateTimer += m_GameTime.getDeltaTime();
         while(m_FixedUpdateTimer >= m_FixedUpdateInterval)
         {
-            m_FixedUpdateInterval -= m_FixedUpdateInterval;
+            m_FixedUpdateTimer -= m_FixedUpdateInterval;
             fixedUpdate();
         }
     }

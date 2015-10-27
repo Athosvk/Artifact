@@ -24,7 +24,7 @@ namespace BadEngine
         Keyboard m_Keyboard = Keyboard();
         Camera2D m_Camera;
         ResourceManager m_ResourceManager = ResourceManager();
-        double m_FixedUpdateInterval = 0.15;
+        double m_FixedUpdateInterval = 0.030;
         
     private:
         double m_FixedUpdateTimer = 0.0;
