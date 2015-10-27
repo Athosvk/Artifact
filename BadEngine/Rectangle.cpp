@@ -41,8 +41,8 @@ namespace BadEngine
 
     glm::vec2 Rectangle::getPosition() const
     {
-        return glm::vec2((m_MinPosition.x + m_MaxPosition.y) / 2,
-                         (m_MinPosition.x + m_MaxPosition.y) / 2);
+        return glm::vec2((m_MinPosition.x + m_MaxPosition.x) / 2,
+                         (m_MinPosition.y + m_MaxPosition.y) / 2);
     }
 
     glm::vec2 Rectangle::getTopLeft() const
