@@ -16,5 +16,6 @@ public:
     glm::vec2 getPosition();
     void setPosition(glm::vec2 a_Position);
     void simulatePress();
+    void process();
 };
 

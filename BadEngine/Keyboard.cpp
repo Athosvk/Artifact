@@ -68,5 +68,6 @@ namespace BadEngine
         {
             m_CurrentlyPressed[iterator->keysym.scancode] = iterator->type != SDL_KEYUP;
         }
+        m_KeyboardEvents.clear();
     }
 };
