@@ -8,7 +8,6 @@
 #include <BadEngine/ResourceManager.h>
 
 #include "MainGame.h"
-#include <BadEngine/MathHelper.h>
 
 MainGame::MainGame() : Game(1024, 768, 0, "GameEngine"),
     m_SpriteBatch(&m_Camera)
@@ -28,23 +27,12 @@ void MainGame::draw()
     Game::draw();
     m_SpriteBatch.begin();
 
-    BadEngine::Rectangle rectangle(glm::vec2(15, 15), 15, 15);
+    BadEngine::Rectangle rectangle(glm::vec2(15, 15), 100, 100);
     BadEngine::Rectangle uvRectangle(glm::vec2(0, 0), 1, 1);
 
-    rectangle.setWidth(100);
-    rectangle.setHeight(100);
-
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE);
-
-    for(auto i = 0; i < 10; i++)
-    {
-        rectangle.setPosition(rectangle.getPosition() + glm::vec2(0, BadEngine::MathHelper::pingPong(m_Accumulator, 1.0f, 50.0f)));
-        static auto texture = m_ResourceManager.getTexture("Textures/PNG/CharacterRight_Walk1.png");
-
-        m_SpriteBatch.draw(texture, rectangle, uvRectangle, BadEngine::Color::White);
-    }
+    static auto texture = m_ResourceManager.getTexture("Textures/PNG/CharacterRight_Walk1.png");
+    m_SpriteBatch.draw(texture, rectangle, uvRectangle, BadEngine::Color::White);
     m_SpriteBatch.end();
-    
 }
 
 void MainGame::update()
@@ -56,19 +44,9 @@ void MainGame::update()
     {
         std::cout << "FPS: " << 1 / m_GameTime.getAverageDeltaTime() << std::endl;
     }
-
-    auto targetPosition = m_Camera.getPosition();
-    auto zoomFactor = m_Camera.getZoomFactor();
-    auto rotation = m_Camera.getRotation();
-
-    m_Camera.setPosition(targetPosition);
-    m_Camera.setZoomFactor(zoomFactor);
-    m_Camera.setRotation(rotation);
 }
 
 
 void MainGame::fixedUpdate()
 {
-    m_Accumulator += 1.5f;
-
 }
