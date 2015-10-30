@@ -46,6 +46,7 @@ namespace BadEngine
     {
         m_Camera.update();
         m_Keyboard.update();
+        m_Mouse.update();
         m_GameTime.update();
     }
 
@@ -78,6 +79,13 @@ namespace BadEngine
             case SDL_KEYUP:
                 m_Keyboard.process(evnt.key);
                 break;
+            case SDL_MOUSEBUTTONUP:
+            case SDL_MOUSEBUTTONDOWN:
+                m_Mouse.process(evnt.button);
+            case SDL_MOUSEMOTION:
+                m_Mouse.process(evnt.motion);
+            case SDL_MOUSEWHEEL:
+                m_Mouse.process(evnt.wheel);
             }
         }
     }

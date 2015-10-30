@@ -5,6 +5,7 @@
 #include "Keyboard.h"
 #include "Camera2D.h"
 #include "ResourceManager.h"
+#include "Mouse.h"
 
 namespace BadEngine
 {
@@ -22,6 +23,7 @@ namespace BadEngine
         GameState m_CurrentGameState = GameState::Play;
         GameTime m_GameTime = GameTime();
         Keyboard m_Keyboard = Keyboard();
+        Mouse m_Mouse = Mouse();
         Camera2D m_Camera;
         ResourceManager m_ResourceManager = ResourceManager();
         double m_FixedUpdateInterval = 0.030;
