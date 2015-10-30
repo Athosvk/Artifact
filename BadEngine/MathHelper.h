@@ -1,12 +1,15 @@
 #pragma once
-#include <glm/glm.hpp>
 
 namespace BadEngine
 {
     class MathHelper
     {
     public:
-        static float clamp(float a_Value, float a_Min, float a_Max);
-    };
+        MathHelper() = delete;
+        ~MathHelper() = delete;
+        MathHelper(const MathHelper& a_MatheHelper) = delete;
 
+        static float clamp(float a_Value, float a_Min, float a_Max);
+        static float pingPong(float a_Value, float a_Min, float a_Max);
+    };
 }

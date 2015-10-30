@@ -1,4 +1,5 @@
 #include "MathHelper.h"
+#include <math.h>
 
 namespace BadEngine
 {
@@ -13,5 +14,16 @@ namespace BadEngine
             return a_Max;
         }
         return a_Value;
+    }
+
+    float MathHelper::pingPong(float a_Value, float a_Min, float a_Max)
+    {
+        auto length = a_Max - a_Min;
+        auto wrappedValue = fmod(a_Value, length * 2);
+        if(wrappedValue > length)
+        {
+            wrappedValue = 2 * length - wrappedValue;
+        }
+        return wrappedValue;
     }
 }

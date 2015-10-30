@@ -6,10 +6,9 @@ in vec2 fragmentUVCoordinate;
 
 out vec4 color;
 
-uniform float angle;
 uniform sampler2D sampler;
 
 void main() 
 {
-	color = texture(sampler, fragmentUVCoordinate);
+	color = texture(sampler, fragmentUVCoordinate) * fragmentColor * 0.8;
 }

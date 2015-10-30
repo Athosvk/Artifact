@@ -1,12 +1,22 @@
 #pragma once
 #include <GL/glew.h>
+#include <vector>
 
 namespace BadEngine
 {
-    struct GLTexture
+    class GLTexture
     {
-        GLuint id;
-        float width;
-        float height;
+    private:
+        GLuint m_ID = 0;
+        float m_Width = 0.0f;
+        float m_Height = 0.0f;
+
+    public:
+        GLTexture(float a_Width, float a_Height);
+        
+        void bind() const;
+        void unbind() const;
+        void uploadData(const std::vector<unsigned char>& a_Data) const;
+        GLuint getID() const;
     };
 }

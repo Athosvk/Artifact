@@ -16,7 +16,7 @@ namespace BadEngine
         auto iterator = m_TextureMap.find(a_FilePath);
         if(iterator == m_TextureMap.end())
         {
-            GLTexture newTexture = ImageLoader::loadPNG(a_FilePath);
+            auto newTexture = ImageLoader::loadPNG(a_FilePath);
             cacheTexture(a_FilePath, newTexture);
             return newTexture;
         }

@@ -1,32 +1,16 @@
+#include <GL/glew.h>
+
 #include "Window.h"
 #include "ErrorHandler.h"
+#include "GL.h"
 
 namespace BadEngine
 {
-    Window* Window::s_Current = nullptr;
-
-    Window::~Window()
-    {
-
-    }
-
-    Window::Window(const Window& a_Other)
-    {
-        s_Current = this;
-        m_Height = a_Other.m_Height;
-        m_Width = a_Other.m_Width;
-        m_Name = a_Other.m_Name;
-        m_CurrentFlags = a_Other.m_CurrentFlags;
-    }
-
-    Window::Window(int a_Width, int a_Height, Uint32 a_Flags, std::string a_Name)
-        : m_Width(a_Width),
+    Window::Window(int a_Width, int a_Height, Uint32 a_Flags, std::string a_Name) :
+        m_Width(a_Width),
         m_Height(a_Height),
-        m_Name(a_Name),
-        m_CurrentFlags(SDL_WINDOW_OPENGL)
+        m_Name(a_Name)
     {
-        s_Current = this;
-
         if((a_Flags & WindowFlag::FullScreen) == WindowFlag::FullScreen)
         {
             m_CurrentFlags |= SDL_WindowFlags::SDL_WINDOW_FULLSCREEN;
@@ -39,18 +23,29 @@ namespace BadEngine
         {
             m_CurrentFlags |= SDL_WindowFlags::SDL_WINDOW_HIDDEN;
         }
+
+        initialiseSDLWindow();
+        initialiseGL();
     }
 
-    void Window::init()
+    Window::~Window()
     {
+        SDL_GL_DeleteContext(m_GLContext);
+        SDL_DestroyWindow(m_SDLWindow);
+    }
+
+    void Window::initialiseSDLWindow()
+    {
+        SDL_Init(SDL_INIT_EVERYTHING);
+
         m_SDLWindow = SDL_CreateWindow(m_Name.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, m_Width, m_Height, m_CurrentFlags);
         if(m_SDLWindow == nullptr)
         {
             throwFatalError("Could not initialize SDL window");
         }
 
-        SDL_GLContext glContext = SDL_GL_CreateContext(m_SDLWindow);
-        if(glContext == nullptr)
+        m_GLContext = SDL_GL_CreateContext(m_SDLWindow);
+        if(m_GLContext == nullptr)
         {
             throwFatalError("SDL_GL context could not be created");
         }
@@ -66,13 +61,28 @@ namespace BadEngine
         return m_Height;
     }
 
-    void Window::update()
+    void Window::clear() const
+    {
+        glClearDepth(1.0f);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    }
+
+    void Window::renderCurrentFrame() const
     {
         SDL_GL_SwapWindow(m_SDLWindow);
     }
 
-    const Window* Window::getCurrent()
+    void Window::initialiseGL() const
     {
-        return s_Current;
+        auto initCode = glewInit();
+        if(initCode != GLEW_OK)
+        {
+            throwFatalError("Could not init glew, error: " + GL::getErrorString(initCode));
+        }
+
+        SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+        SDL_GL_SetSwapInterval(1);
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE);
     }
 }

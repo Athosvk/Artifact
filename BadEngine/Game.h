@@ -1,11 +1,10 @@
 #pragma once
-#include <string>
-
 #include "Window.h"
 #include "GameTime.h"
 #include "Color.h"
 #include "Keyboard.h"
 #include "Camera2D.h"
+#include "ResourceManager.h"
 
 namespace BadEngine
 {
@@ -24,7 +23,8 @@ namespace BadEngine
         GameTime m_GameTime = GameTime();
         Keyboard m_Keyboard = Keyboard();
         Camera2D m_Camera;
-        double m_FixedUpdateInterval = 0.15;
+        ResourceManager m_ResourceManager = ResourceManager();
+        double m_FixedUpdateInterval = 0.030;
         
     private:
         double m_FixedUpdateTimer = 0.0;
@@ -32,7 +32,7 @@ namespace BadEngine
     public:
         virtual ~Game();
         void run();
-        void setBackgroundColor(Color a_Color);
+        void setBackgroundColor(Color a_Color) const;
 
     protected:
         Game(int a_ScreenWidth, int a_ScreenHeight, unsigned int a_WindowFlags, std::string a_WindowName);
@@ -41,8 +41,6 @@ namespace BadEngine
         virtual void fixedUpdate();
 
     private:
-        void initSDL();
-        void initGL();
         void startGameLoop();
         void processFixedUpdates();
         void processEvents();

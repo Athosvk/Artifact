@@ -1,13 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BadEngine", "BadEngine\BadEngine.vcxproj", "{29FAAF6B-4662-4721-922A-6AC1DD8E2908}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GraphicTutorials", "GraphicTutorials\GraphicTutorials.vcxproj", "{60AA1847-6EA4-4E4E-9E01-C7C3A935EF56}"
 	ProjectSection(ProjectDependencies) = postProject
 		{29FAAF6B-4662-4721-922A-6AC1DD8E2908} = {29FAAF6B-4662-4721-922A-6AC1DD8E2908}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0865AF50-83C1-48F2-A92A-653CF0477E3D}"
+	ProjectSection(SolutionItems) = preProject
+		Performance1.psess = Performance1.psess
 	EndProjectSection
 EndProject
 Global
@@ -27,5 +32,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
 	EndGlobalSection
 EndGlobal

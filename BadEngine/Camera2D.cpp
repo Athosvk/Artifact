@@ -1,8 +1,11 @@
 #include "Camera2D.h"
+#include "MathHelper.h"
+#include "Keyboard.h"
 
 namespace BadEngine
 {
-    Camera2D::Camera2D(const Window* a_Window)
+    Camera2D::Camera2D(const Window& a_Window)
+        : m_Window(a_Window)
     {
         constructMatrix();
     }
@@ -54,37 +57,81 @@ namespace BadEngine
         {
             constructMatrix();
         }
+
+        updatePosition();
     }
 
     void Camera2D::constructMatrix()
     {
-        float screenWidth = static_cast<float>(Window::getCurrent()->getWidth());
-        float screenHeight = static_cast<float>(Window::getCurrent()->getHeight());
+        auto screenWidth = static_cast<float>(m_Window.getWidth());
+        auto screenHeight = static_cast<float>(m_Window.getHeight());
         
         m_OrthoMatrix = glm::ortho(0.0f, screenWidth, 0.0f, screenHeight);
         m_Transform = m_OrthoMatrix;
 
-        glm::vec3 screenCentre = glm::vec3(screenWidth / 2, screenHeight / 2, 0);
+        auto screenCentre = glm::vec3(screenWidth / 2, screenHeight / 2, 0);
         m_Transform = glm::translate(m_Transform, screenCentre);
 
-        applyRotation(screenWidth, screenHeight);
-        applyScale(screenWidth, screenHeight);
+        applyRotation();
+        applyScale();
 
-        glm::vec3 translation = glm::vec3(m_Position.x, m_Position.y, 0);
+        auto translation = glm::vec3(-m_Position.x, -m_Position.y, 0);
         m_Transform = glm::translate(m_Transform, translation);
 
         m_MatrixIsDirty = false;
     }
 
-    void Camera2D::applyScale(float a_ScreenWidth, float a_ScreenHeight)
+    void Camera2D::updatePosition()
     {
-        glm::vec3 scale = glm::vec3(m_ZoomFactor, m_ZoomFactor, 1);
+        if(BadEngine::Keyboard::isDown(BadEngine::KeyCode::Down))
+        {
+            m_Position.y = BadEngine::MathHelper::clamp(m_Position.y - 15, -2000, 2000);
+        }
+        if(BadEngine::Keyboard::isDown(BadEngine::KeyCode::Left))
+        {
+            m_Position.x = BadEngine::MathHelper::clamp(m_Position.x - 15, -2000, 2000);
+        }
+        if(BadEngine::Keyboard::isDown(BadEngine::KeyCode::Right))
+        {
+            m_Position.x = BadEngine::MathHelper::clamp(m_Position.x + 15, -2000, 2000);
+        }
+        if(BadEngine::Keyboard::isDown(BadEngine::KeyCode::Up))
+        {
+            m_Position.y = BadEngine::MathHelper::clamp(m_Position.y + 15, -2000, 2000);
+        }
+
+        if(BadEngine::Keyboard::isDown(BadEngine::KeyCode::W))
+        {
+            m_ZoomFactor = BadEngine::MathHelper::clamp(m_ZoomFactor + 0.05f, 0.01f, 4.0f);
+        }
+        if(BadEngine::Keyboard::isDown(BadEngine::KeyCode::S))
+        {
+            m_ZoomFactor = BadEngine::MathHelper::clamp(m_ZoomFactor - 0.05f, 0.01f, 4.0f);
+        }
+        if(BadEngine::Keyboard::isDown(BadEngine::KeyCode::Q))
+        {
+            m_Rotation += 0.05f;
+        }
+        if(BadEngine::Keyboard::isDown(BadEngine::KeyCode::E))
+        {
+            m_Rotation -= 0.05f;
+        }
+        if(BadEngine::Keyboard::isDown(BadEngine::KeyCode::Space))
+        {
+            m_Rotation = 0;
+        }
+        m_MatrixIsDirty = true;
+    }
+
+    void Camera2D::applyScale()
+    {
+        auto scale = glm::vec3(m_ZoomFactor, m_ZoomFactor, 1);
         m_Transform = glm::scale(m_Transform, scale);
     }
 
-    void Camera2D::applyRotation(float a_ScreenWidth, float a_ScreenHeight)
+    void Camera2D::applyRotation()
     {
-        glm::vec3 rotationVector = glm::vec3(0, 0, 1);
+        auto rotationVector = glm::vec3(0, 0, 1);
         m_Transform = glm::rotate(m_Transform, m_Rotation, rotationVector);
     }
 
