@@ -2,6 +2,7 @@
 #include <glm/glm.hpp>
 #include <SDL2.0.3/SDL.h>
 #include <vector>
+#include "Camera2D.h"
 
 enum class MouseButton
 {
@@ -18,12 +19,14 @@ private:
     SDL_MouseMotionEvent m_CurrentMotion;
     std::vector<SDL_MouseButtonEvent> m_ButtonEvents;
     std::vector<SDL_MouseWheelEvent> m_ScrollEvents;
+    const BadEngine::Camera2D& m_Camera;
 
 public:
-    Mouse();
+    Mouse(const BadEngine::Camera2D& a_Camera);
     ~Mouse();
 
-    glm::vec2 getPosition() const;
+    glm::vec2 getScreenPosition() const;
+    glm::vec2 getWorldPosition() const;
     void setPosition(glm::vec2 a_Position);
     void simulatePress();
     void process(SDL_MouseButtonEvent a_ButtonEvent);

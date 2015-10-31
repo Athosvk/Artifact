@@ -1,6 +1,7 @@
 #include "Mouse.h"
 
-Mouse::Mouse()
+Mouse::Mouse(const BadEngine::Camera2D& a_Camera)
+    : m_Camera(a_Camera)
 {
 }
 
@@ -8,9 +9,14 @@ Mouse::~Mouse()
 {
 }
 
-glm::vec2 Mouse::getPosition() const
+glm::vec2 Mouse::getScreenPosition() const
 {
     return m_Position;
+}
+
+glm::vec2 Mouse::getWorldPosition() const
+{
+    return m_Camera.screenToWorld(m_Position);
 }
 
 void Mouse::setPosition(glm::vec2 a_Position)

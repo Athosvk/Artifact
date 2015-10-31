@@ -23,8 +23,8 @@ namespace BadEngine
         GameState m_CurrentGameState = GameState::Play;
         GameTime m_GameTime = GameTime();
         Keyboard m_Keyboard = Keyboard();
-        Mouse m_Mouse = Mouse();
         Camera2D m_Camera;
+        Mouse m_Mouse;
         ResourceManager m_ResourceManager = ResourceManager();
         double m_FixedUpdateInterval = 0.030;
         
