@@ -1,11 +1,11 @@
 #pragma once
-#include "Window.h"
+#include "Rendering/Window.h"
 #include "GameTime.h"
 #include "Color.h"
-#include "Keyboard.h"
-#include "Camera2D.h"
-#include "ResourceManager.h"
-#include "Mouse.h"
+#include "Input/Keyboard.h"
+#include "Rendering/Camera2D.h"
+#include "IO/ResourceManager.h"
+#include "Input/Mouse.h"
 
 namespace BadEngine
 {

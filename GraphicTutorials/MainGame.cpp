@@ -1,11 +1,11 @@
 #include <iostream>
 #include <glm/glm.hpp>
 
-#include <BadEngine/ImageLoader.h>
+#include <BadEngine/IO/ImageLoader.h>
 #include <BadEngine/Color.h>
-#include <BadEngine/GLTexture.h>
-#include <BadEngine/Camera2D.h>
-#include <BadEngine/ResourceManager.h>
+#include <BadEngine/GL/GLTexture.h>
+#include <BadEngine/Rendering/Camera2D.h>
+#include <BadEngine/IO/ResourceManager.h>
 
 #include "MainGame.h"
 
@@ -44,12 +44,11 @@ void MainGame::update()
     {
         std::cout << "FPS: " << 1 / m_GameTime.getAverageDeltaTime() << std::endl;
     }
-    if(!BadEngine::Mouse::isButtonDown(BadEngine::MouseButton::Left))
+    if(BadEngine::Mouse::isButtonPressed(BadEngine::MouseButton::Left))
     {
         std::cout << m_Mouse.getWorldPosition().x << " " << m_Mouse.getWorldPosition().y << std::endl;
     }
 }
-
 
 void MainGame::fixedUpdate()
 {

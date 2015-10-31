@@ -2,8 +2,9 @@
 #include <glm/glm.hpp>
 #include <SDL2.0.3/SDL.h>
 #include <vector>
-#include "Camera2D.h"
 #include <array>
+
+#include "../Rendering/Camera2D.h"
 
 namespace BadEngine
 {
@@ -17,7 +18,7 @@ namespace BadEngine
     class Mouse
     {
     private:
-        const static int NumberOfButtons = 10;
+        const static int NumberOfButtons = 3;
         static std::array<bool, NumberOfButtons> s_CurrentlyPressed;
         static std::array<bool, NumberOfButtons> s_PreviouslyPressed;
 

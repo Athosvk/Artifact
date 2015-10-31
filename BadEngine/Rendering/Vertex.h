@@ -1,7 +1,7 @@
 #pragma once
 #include <glm/glm.hpp>
 
-#include "Color.h" 
+#include "..\Color.h" 
 
 namespace BadEngine
 {

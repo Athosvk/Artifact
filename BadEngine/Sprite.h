@@ -2,10 +2,10 @@
 #include <string>
 #include <glm/glm.hpp>
 
-#include "GLTexture.h"
-#include "GLSLProgram.h"
-#include "Camera2D.h"
-#include "VBO.h"
+#include "GL/GLTexture.h"
+#include "GL/GLSLProgram.h"
+#include "Rendering/Camera2D.h"
+#include "Rendering/VBO.h"
 
 namespace BadEngine
 {

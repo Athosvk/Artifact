@@ -1,6 +1,6 @@
 #include "Camera2D.h"
-#include "MathHelper.h"
-#include "Keyboard.h"
+#include "..\MathHelper.h"
+#include "..\Input/Keyboard.h"
 
 namespace BadEngine
 {

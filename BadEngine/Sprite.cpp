@@ -3,10 +3,10 @@
 #include <glm/glm.hpp>
 
 #include "Sprite.h"
-#include "Vertex.h"
-#include "ResourceManager.h"
-#include "GLSLProgram.h"
-#include "Camera2D.h"
+#include "Rendering/Vertex.h"
+#include "IO/ResourceManager.h"
+#include "GL/GLSLProgram.h"
+#include "Rendering/Camera2D.h"
 
 namespace BadEngine
 {
