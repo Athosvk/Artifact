@@ -12,12 +12,7 @@ namespace BadEngine
 
     Camera2D::~Camera2D()
     {
-    }
-
-    void Camera2D::setPosition(const glm::vec2& a_NewPosition)
-    {
-        m_Position = a_NewPosition;
-        setMatrixDirty();
+        
     }
 
     glm::vec2 Camera2D::getPosition() const
@@ -25,20 +20,9 @@ namespace BadEngine
         return m_Position;
     }
 
-    void Camera2D::setZoomFactor(float a_ZoomFactor)
-    {
-        m_ZoomFactor = a_ZoomFactor;
-        setMatrixDirty();
-    }
-
     float Camera2D::getZoomFactor() const
     {
         return m_ZoomFactor;
-    }
-
-    void Camera2D::setRotation(float a_Rotation)
-    {
-        m_Rotation = a_Rotation;
     }
 
     float Camera2D::getRotation() const
@@ -49,6 +33,40 @@ namespace BadEngine
     glm::mat4 Camera2D::getTransform() const
     {
         return m_Transform;
+    }
+
+    glm::vec2 Camera2D::screenToWorld(glm::vec2 a_ScreenPosition) const
+    {
+        auto screenCenter = glm::vec2(static_cast<float>(m_Window.getWidth() / 2), 
+                                      static_cast<float>(m_Window.getHeight() / 2));
+
+        auto worldPosition = a_ScreenPosition - screenCenter;
+        worldPosition /= m_ZoomFactor;
+
+        auto angleCos = glm::cos(m_Rotation);
+        auto angleSin = glm::sin(m_Rotation);
+        worldPosition.x = angleCos * worldPosition.x - angleSin * worldPosition.y;
+        worldPosition.y = angleSin * worldPosition.x + angleCos * worldPosition.y;
+        worldPosition += m_Position;
+        return worldPosition;
+    }
+
+    void Camera2D::setPosition(const glm::vec2& a_NewPosition)
+    {
+        m_Position = a_NewPosition;
+        setMatrixDirty();
+    }
+
+    void Camera2D::setZoomFactor(float a_ZoomFactor)
+    {
+        //TO-DO: Restrict to positive values
+        m_ZoomFactor = a_ZoomFactor;
+        setMatrixDirty();
+    }
+
+    void Camera2D::setRotation(float a_Rotation)
+    {
+        m_Rotation = a_Rotation;
     }
 
     void Camera2D::update()
@@ -63,20 +81,24 @@ namespace BadEngine
 
     void Camera2D::constructMatrix()
     {
+        //TO-DO: Seperate ortho construction to separate function
         auto screenWidth = static_cast<float>(m_Window.getWidth());
         auto screenHeight = static_cast<float>(m_Window.getHeight());
         
         m_OrthoMatrix = glm::ortho(0.0f, screenWidth, 0.0f, screenHeight);
         m_Transform = m_OrthoMatrix;
-
-        auto screenCentre = glm::vec3(screenWidth / 2, screenHeight / 2, 0);
-        m_Transform = glm::translate(m_Transform, screenCentre);
+        //Translate to screencenter for scaling/rotation
+        auto screenCenter = glm::vec3(screenWidth / 2, screenHeight / 2, 0);
+        m_Transform = glm::translate(m_Transform, screenCenter);
 
         applyRotation();
         applyScale();
 
+        m_Transform = glm::translate(m_Transform, -screenCenter);
+
         auto translation = glm::vec3(-m_Position.x, -m_Position.y, 0);
-        m_Transform = glm::translate(m_Transform, translation);
+        //Set the screencenter as origin
+        m_Transform = glm::translate(m_Transform, translation + screenCenter);
 
         m_MatrixIsDirty = false;
     }
@@ -119,6 +141,8 @@ namespace BadEngine
         if(BadEngine::Keyboard::isDown(BadEngine::KeyCode::Space))
         {
             m_Rotation = 0;
+            m_ZoomFactor = 1;
+            m_Position = glm::vec2(0, 0);
         }
         m_MatrixIsDirty = true;
     }
