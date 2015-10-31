@@ -3,17 +3,22 @@
 #include <SDL2.0.3/SDL.h>
 #include <vector>
 #include "Camera2D.h"
+#include <array>
 
 enum class MouseButton
 {
-    Right,
-    Left,
-    Middle
+    Right = SDL_BUTTON_RIGHT,
+    Left = SDL_BUTTON_LEFT,
+    Middle = SDL_BUTTON_MIDDLE
 };
 
 class Mouse
 {
 private:
+    const static int NumberOfButtons = 10;
+    static std::array<bool, NumberOfButtons> s_CurrentlyPressed;
+    static std::array<bool, NumberOfButtons> s_PreviouslyPressed;
+
     glm::vec2 m_Position;
     glm::vec2 m_PreviousPosition;
     SDL_MouseMotionEvent m_CurrentMotion;
@@ -33,8 +38,11 @@ public:
     void process(SDL_MouseMotionEvent a_MotionEvent);
     void process(SDL_MouseWheelEvent a_ScrollEvent);
     void update();
+    static bool isButtonPressed(MouseButton a_MouseButton);
+    static bool isButtonDown(MouseButton a_MouseButton);
 
 private:
     void updatePosition();
+    void updateButtonStates();
 };
 
