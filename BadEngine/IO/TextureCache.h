@@ -8,7 +8,7 @@ namespace BadEngine
     class TextureCache
     {
     private:
-        std::map<std::string, GLTexture> m_TextureMap = std::map<std::string, GLTexture>();
+        std::map<std::string, GLTexture> m_TextureMap;
     public:
         TextureCache();
         ~TextureCache();

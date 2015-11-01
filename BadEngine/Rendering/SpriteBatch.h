@@ -62,9 +62,9 @@ namespace BadEngine
         static const std::string SpriteBatch::s_DefaultVertexShader;
         static const std::string SpriteBatch::s_DefaultFragmentShader;
 
-        VAO m_VAO = VAO();
-        VBO m_VBO = VBO();
-        std::vector<Glyph*> m_Glyphs = std::vector<Glyph*>();
+        VAO m_VAO;
+        VBO m_VBO;
+        std::vector<Glyph*> m_Glyphs;
         std::vector<RenderBatch> m_RenderBatches;
         ESpriteSortMode m_SortMode = ESpriteSortMode::Texture;
         GLSLProgram m_ShaderProgram;

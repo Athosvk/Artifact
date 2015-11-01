@@ -49,5 +49,4 @@ namespace BadEngine
         m_CurrentTime = SDL_GetTicks() * 0.001;
         m_Samples[++m_CurrentFrame % m_SampleCount] = m_DeltaTime;
     }
-
 }
