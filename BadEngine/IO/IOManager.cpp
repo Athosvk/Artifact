@@ -15,10 +15,10 @@ namespace BadEngine
         }
 
         file.seekg(0, std::ios::end);
-        auto fileSize = static_cast<int>(file.tellg());
+        auto fileSize = file.tellg();
         //Subtract header size
         file.seekg(0, std::ios::beg);
-        fileSize -= static_cast<int>(file.tellg());
+        fileSize -= file.tellg();
 
         a_Buffer.resize(fileSize);
 
@@ -36,10 +36,10 @@ namespace BadEngine
         }
 
         file.seekg(0, std::ios::end);
-        auto fileSize = static_cast<int>(file.tellg());
+        auto fileSize = file.tellg();
         //Subtract header size
         file.seekg(0, std::ios::beg);
-        fileSize -= static_cast<int>(file.tellg());
+        fileSize -= file.tellg();
 
         a_Buffer.resize(fileSize);
 
