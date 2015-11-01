@@ -167,6 +167,6 @@ namespace BadEngine
             vertices[currentVertex++] = m_Glyphs[i]->topLeft;
             currentOffset += VerticesPerSprite;
         }
-        m_VBO.uploadData(vertices.data(), vertices.size());
+        m_VBO.uploadData(vertices);
     }
 }
