@@ -5,7 +5,7 @@
 
 namespace BadEngine
 {
-    void IOManager::readBinary(std::vector<unsigned char>& a_Buffer, const std::string& a_FilePath)
+    void IOManager::readBinary(std::vector<char>& a_Buffer, const std::string& a_FilePath)
     {
         auto file = std::ifstream(a_FilePath, std::ios::binary);
         if(file.fail())
@@ -22,7 +22,7 @@ namespace BadEngine
 
         a_Buffer.resize(fileSize);
 
-        file.read(reinterpret_cast<char*>(a_Buffer.data()), fileSize);
+        file.read(a_Buffer.data(), fileSize);
         file.close();
     }
 
@@ -43,7 +43,7 @@ namespace BadEngine
 
         a_Buffer.resize(fileSize);
 
-        file.read(reinterpret_cast<char*>(a_Buffer.data()), fileSize);
+        file.read(a_Buffer.data(), fileSize);
         file.close();
     }
 }
