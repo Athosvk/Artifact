@@ -47,6 +47,7 @@ namespace BadEngine
             Vertex topRight;
             Vertex bottomRight;
 
+        public:
             Glyph(GLTexture a_Texture, const Rectangle& a_DestinationRectangle, const Rectangle& a_UVRectangle, Color a_Color, float a_Depth) :
                 texture(a_Texture),
                 depth(a_Depth),
