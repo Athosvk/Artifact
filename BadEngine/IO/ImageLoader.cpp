@@ -10,14 +10,14 @@ namespace BadEngine
 {
     GLTexture ImageLoader::loadPNG(const std::string& a_FilePath)
     {
-        std::vector<unsigned char> fileData;
+        std::vector<char> fileData;
         IOManager::readBinary(fileData, a_FilePath);
 
         unsigned long width;
         unsigned long height;
         std::vector<unsigned char> output;
 
-        auto errorCode = decodePNG(output, width, height, fileData.data(), fileData.size());
+        auto errorCode = decodePNG(output, width, height, reinterpret_cast<unsigned char*>(fileData.data()), fileData.size());
 
         if(errorCode != 0)
         {

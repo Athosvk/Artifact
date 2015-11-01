@@ -5,7 +5,7 @@
 
 namespace BadEngine
 {
-    void IOManager::readBinary(std::vector<unsigned char>& a_Buffer, const std::string& a_FilePath)
+    void IOManager::readBinary(std::vector<char>& a_Buffer, const std::string& a_FilePath)
     {
         auto file = std::ifstream(a_FilePath, std::ios::binary);
         if(file.fail())
@@ -15,14 +15,14 @@ namespace BadEngine
         }
 
         file.seekg(0, std::ios::end);
-        auto fileSize = static_cast<int>(file.tellg());
+        auto fileSize = file.tellg();
         //Subtract header size
         file.seekg(0, std::ios::beg);
-        fileSize -= static_cast<int>(file.tellg());
+        fileSize -= file.tellg();
 
         a_Buffer.resize(fileSize);
 
-        file.read(reinterpret_cast<char*>(a_Buffer.data()), fileSize);
+        file.read(a_Buffer.data(), fileSize);
         file.close();
     }
 
@@ -36,14 +36,14 @@ namespace BadEngine
         }
 
         file.seekg(0, std::ios::end);
-        auto fileSize = static_cast<int>(file.tellg());
+        auto fileSize = file.tellg();
         //Subtract header size
         file.seekg(0, std::ios::beg);
-        fileSize -= static_cast<int>(file.tellg());
+        fileSize -= file.tellg();
 
         a_Buffer.resize(fileSize);
 
-        file.read(reinterpret_cast<char*>(a_Buffer.data()), fileSize);
+        file.read(a_Buffer.data(), fileSize);
         file.close();
     }
 }

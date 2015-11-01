@@ -5,20 +5,14 @@
 namespace BadEngine
 {
     GameTime::GameTime()
+        : m_Samples(m_SampleCount)
     {
-        m_Samples = new double[m_SampleCount];
-    }
-
-    GameTime::~GameTime()
-    {
-        delete[] m_Samples;
     }
 
     void GameTime::setFrameSampleCount(int a_FrameSampleCount)
     {
         m_SampleCount = a_FrameSampleCount;
-        delete[] m_Samples;
-        m_Samples = new double[a_FrameSampleCount];
+        m_Samples.resize(a_FrameSampleCount);
     }
 
     double GameTime::getCurrentTime() const

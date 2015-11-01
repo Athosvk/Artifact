@@ -1,5 +1,6 @@
 #pragma once
 #include <GL/glew.h>
+#include <memory>
 
 #include "Vertex.h"
 #include "..\GL/GLTexture.h"
@@ -47,6 +48,7 @@ namespace BadEngine
             Vertex topRight;
             Vertex bottomRight;
 
+        public:
             Glyph(GLTexture a_Texture, const Rectangle& a_DestinationRectangle, const Rectangle& a_UVRectangle, Color a_Color, float a_Depth) :
                 texture(a_Texture),
                 depth(a_Depth),
@@ -64,7 +66,7 @@ namespace BadEngine
 
         VAO m_VAO;
         VBO m_VBO;
-        std::vector<Glyph*> m_Glyphs;
+        std::vector<std::unique_ptr<Glyph>> m_Glyphs;
         std::vector<RenderBatch> m_RenderBatches;
         ESpriteSortMode m_SortMode = ESpriteSortMode::Texture;
         GLSLProgram m_ShaderProgram;
