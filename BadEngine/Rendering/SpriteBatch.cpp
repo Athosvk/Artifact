@@ -23,10 +23,6 @@ namespace BadEngine
 
     void SpriteBatch::clear()
     {
-        for(auto glyph : m_Glyphs)
-        {
-            delete glyph;
-        }
         m_RenderBatches.clear();
         m_Glyphs.clear();
     }
@@ -61,8 +57,7 @@ namespace BadEngine
     void SpriteBatch::draw(GLTexture a_Texture, const Rectangle& a_DestinationRectangle,
                            const Rectangle& a_UVRectangle, Color a_Color, float a_Depth)
     {
-        auto glyph = new Glyph(a_Texture, a_DestinationRectangle, a_UVRectangle, a_Color, a_Depth);
-        m_Glyphs.push_back(glyph);
+        m_Glyphs.push_back(std::make_unique<Glyph>(a_Texture, a_DestinationRectangle, a_UVRectangle, a_Color, a_Depth));
     }
 
     void SpriteBatch::constructVAO() const
@@ -91,23 +86,23 @@ namespace BadEngine
 
     void SpriteBatch::sortGlyphs()
     {
-        std::function<bool(Glyph*, Glyph*)> sortFunction;
+        std::function<bool(std::unique_ptr<Glyph> const&, std::unique_ptr<Glyph> const&)> sortFunction;
         switch(m_SortMode)
         {
         case ESpriteSortMode::BackToFront:
-            sortFunction = { [](Glyph* a_Value1, Glyph* a_Value2)
+            sortFunction = { [](std::unique_ptr<Glyph> const& a_Value1, std::unique_ptr<Glyph> const& a_Value2)
             {
                 return a_Value1->depth < a_Value2->depth;
             } };
             break;
         case ESpriteSortMode::FrontToBack:
-            sortFunction = { [](Glyph* a_Value1, Glyph* a_Value2)
+            sortFunction = { [](std::unique_ptr<Glyph> const&a_Value1, std::unique_ptr<Glyph> const& a_Value2)
             {
                 return a_Value1->depth > a_Value2->depth;
             } };
             break;
         case ESpriteSortMode::Texture:
-            sortFunction = { [](Glyph* a_Value1, Glyph* a_Value2)
+            sortFunction = { [](std::unique_ptr<Glyph> const& a_Value1, std::unique_ptr<Glyph> const& a_Value2)
             {
                 return a_Value1->texture.getID() < a_Value2->texture.getID();
             } };

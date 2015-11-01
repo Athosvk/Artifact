@@ -8,6 +8,7 @@
 #include "..\GL/GLSLProgram.h"
 #include "Camera2D.h"
 #include "VAO.h"
+#include <memory>
 
 namespace BadEngine
 {
@@ -65,7 +66,7 @@ namespace BadEngine
 
         VAO m_VAO;
         VBO m_VBO;
-        std::vector<Glyph*> m_Glyphs;
+        std::vector<std::unique_ptr<Glyph>> m_Glyphs;
         std::vector<RenderBatch> m_RenderBatches;
         ESpriteSortMode m_SortMode = ESpriteSortMode::Texture;
         GLSLProgram m_ShaderProgram;
