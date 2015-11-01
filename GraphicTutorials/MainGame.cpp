@@ -1,11 +1,11 @@
 #include <iostream>
 #include <glm/glm.hpp>
 
-#include <BadEngine/ImageLoader.h>
+#include <BadEngine/IO/ImageLoader.h>
 #include <BadEngine/Color.h>
-#include <BadEngine/GLTexture.h>
-#include <BadEngine/Camera2D.h>
-#include <BadEngine/ResourceManager.h>
+#include <BadEngine/GL/GLTexture.h>
+#include <BadEngine/Rendering/Camera2D.h>
+#include <BadEngine/IO/ResourceManager.h>
 
 #include "MainGame.h"
 
@@ -27,7 +27,7 @@ void MainGame::draw()
     Game::draw();
     m_SpriteBatch.begin();
 
-    BadEngine::Rectangle rectangle(glm::vec2(15, 15), 100, 100);
+    BadEngine::Rectangle rectangle(glm::vec2(0, 0), 100, 100);
     BadEngine::Rectangle uvRectangle(glm::vec2(0, 0), 1, 1);
 
     static auto texture = m_ResourceManager.getTexture("Textures/PNG/CharacterRight_Walk1.png");
@@ -38,14 +38,17 @@ void MainGame::draw()
 void MainGame::update()
 {
     Game::update();
-
+    
     static auto counter = 0;
     if(counter++ % 100 == 0)
     {
         std::cout << "FPS: " << 1 / m_GameTime.getAverageDeltaTime() << std::endl;
     }
+    if(BadEngine::Mouse::isButtonPressed(BadEngine::MouseButton::Left))
+    {
+        std::cout << m_Mouse.getWorldPosition().x << " " << m_Mouse.getWorldPosition().y << std::endl;
+    }
 }
-
 
 void MainGame::fixedUpdate()
 {

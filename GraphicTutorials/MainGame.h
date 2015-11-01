@@ -1,6 +1,6 @@
 #pragma once
 #include <BadEngine/Game.h>
-#include <BadEngine/SpriteBatch.h>
+#include <BadEngine/Rendering/SpriteBatch.h>
 
 class MainGame : public BadEngine::Game
 {

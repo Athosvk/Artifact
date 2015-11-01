@@ -29,5 +29,6 @@ namespace BadEngine
     private:
         static void clearPrevious();
         static void clearCurrent();
+        void updateKeystate();
     };
 }

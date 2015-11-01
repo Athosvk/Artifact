@@ -1,10 +1,11 @@
 #pragma once
-#include "Window.h"
+#include "Rendering/Window.h"
 #include "GameTime.h"
 #include "Color.h"
-#include "Keyboard.h"
-#include "Camera2D.h"
-#include "ResourceManager.h"
+#include "Input/Keyboard.h"
+#include "Rendering/Camera2D.h"
+#include "IO/ResourceManager.h"
+#include "Input/Mouse.h"
 
 namespace BadEngine
 {
@@ -23,6 +24,7 @@ namespace BadEngine
         GameTime m_GameTime = GameTime();
         Keyboard m_Keyboard = Keyboard();
         Camera2D m_Camera;
+        Mouse m_Mouse;
         ResourceManager m_ResourceManager = ResourceManager();
         double m_FixedUpdateInterval = 0.030;
         

@@ -1,5 +1,5 @@
 #pragma once
-#include "GLTexture.h"
+#include "../GL/GLTexture.h"
 
 namespace BadEngine
 {

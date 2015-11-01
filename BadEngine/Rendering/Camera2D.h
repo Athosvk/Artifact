@@ -25,7 +25,7 @@ namespace BadEngine
         float getZoomFactor() const;
         float getRotation() const;
         glm::mat4 getTransform() const;
-
+        glm::vec2 screenToWorld(glm::vec2 a_ScreenPosition) const;
         void setPosition(const glm::vec2& a_NewPosition);
         void setZoomFactor(float a_ZoomFactor);
         void setRotation(float a_Rotation);

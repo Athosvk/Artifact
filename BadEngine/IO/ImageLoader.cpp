@@ -4,7 +4,7 @@
 #include "ImageLoader.h"
 #include "PicoPNG.h"
 #include "IOManager.h"
-#include "ErrorHandler.h"
+#include "../ErrorHandler.h"
 
 namespace BadEngine
 {

@@ -1,5 +1,6 @@
-#include "MathHelper.h"
 #include <math.h>
+
+#include "MathHelper.h"
 
 namespace BadEngine
 {

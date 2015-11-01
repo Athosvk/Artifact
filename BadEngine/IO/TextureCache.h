@@ -1,7 +1,7 @@
 #pragma once
 #include <map>
 
-#include "GLTexture.h"
+#include "..\GL/GLTexture.h"
 
 namespace BadEngine
 {

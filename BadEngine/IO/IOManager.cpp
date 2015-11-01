@@ -1,7 +1,7 @@
 #include <fstream>
 
 #include "IOManager.h"
-#include "ErrorHandler.h"
+#include "..\ErrorHandler.h"
 
 namespace BadEngine
 {

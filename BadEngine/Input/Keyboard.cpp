@@ -56,7 +56,7 @@ namespace BadEngine
         }
     }
 
-    void Keyboard::update()
+    void Keyboard::updateKeystate()
     {
         for(auto i = 0; i < SDL_NUM_SCANCODES; ++i)
         {
@@ -68,5 +68,11 @@ namespace BadEngine
         {
             m_CurrentlyPressed[iterator->keysym.scancode] = iterator->type != SDL_KEYUP;
         }
+        m_KeyboardEvents.clear();
+    }
+
+    void Keyboard::update()
+    {
+        updateKeystate();
     }
 };

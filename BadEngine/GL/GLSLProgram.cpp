@@ -2,9 +2,9 @@
 #include <vector>
 
 #include "GLSLProgram.h"
-#include "ErrorHandler.h"
+#include "..\ErrorHandler.h"
 #include "GL.h"
-#include "IOManager.h"
+#include "..\IO\IOManager.h"
 
 namespace BadEngine
 {

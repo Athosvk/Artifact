@@ -1,8 +1,8 @@
 #include <GL/glew.h>
 
 #include "Window.h"
-#include "ErrorHandler.h"
-#include "GL.h"
+#include "..\ErrorHandler.h"
+#include "..\GL/GL.h"
 
 namespace BadEngine
 {

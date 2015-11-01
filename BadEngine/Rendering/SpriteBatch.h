@@ -2,10 +2,10 @@
 #include <GL/glew.h>
 
 #include "Vertex.h"
-#include "GLTexture.h"
-#include "Rectangle.h"
+#include "..\GL/GLTexture.h"
+#include "..\Rectangle.h"
 #include "VBO.h"
-#include "GLSLProgram.h"
+#include "..\GL/GLSLProgram.h"
 #include "Camera2D.h"
 #include "VAO.h"
 
