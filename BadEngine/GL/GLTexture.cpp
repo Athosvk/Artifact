@@ -9,6 +9,11 @@ namespace BadEngine
         glGenTextures(1, &m_ID);
     }
 
+    GLTexture::~GLTexture()
+    {
+        //TODO: Cleanup VRAM of texture
+    }
+
     void GLTexture::bind() const
     {
         glBindTexture(GL_TEXTURE_2D, m_ID);
