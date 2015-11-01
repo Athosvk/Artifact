@@ -7,43 +7,36 @@ namespace BadEngine
 {
     void IOManager::readBinary(std::vector<char>& a_Buffer, const std::string& a_FilePath)
     {
-        auto file = std::ifstream(a_FilePath, std::ios::binary);
-        if(file.fail())
+        auto fileStream = std::ifstream(a_FilePath, std::ios::binary);
+        if(fileStream.fail())
         {
             perror(a_FilePath.c_str());
-            throwFatalError("Could not open file at " + a_FilePath);
         }
-
-        file.seekg(0, std::ios::end);
-        auto fileSize = file.tellg();
-        //Subtract header size
-        file.seekg(0, std::ios::beg);
-        fileSize -= file.tellg();
-
-        a_Buffer.resize(fileSize);
-
-        file.read(a_Buffer.data(), fileSize);
-        file.close();
+        readFileStream(a_Buffer, fileStream);
+        fileStream.close();
     }
 
     void IOManager::readText(std::vector<char>& a_Buffer, const std::string& a_FilePath)
     {
-        auto file = std::ifstream(a_FilePath);
-        if(file.fail())
+        auto fileStream = std::ifstream(a_FilePath);
+        if(fileStream.fail())
         {
             perror(a_FilePath.c_str());
-            throwFatalError("Could not open file at " + a_FilePath);
         }
+        readFileStream(a_Buffer, fileStream);
+        fileStream.close();
+    }
 
-        file.seekg(0, std::ios::end);
-        auto fileSize = file.tellg();
+    void IOManager::readFileStream(std::vector<char>& a_Buffer, std::ifstream& a_File)
+    {
+        a_File.seekg(0, std::ios::end);
+        auto fileSize = a_File.tellg();
         //Subtract header size
-        file.seekg(0, std::ios::beg);
-        fileSize -= file.tellg();
+        a_File.seekg(0, std::ios::beg);
+        fileSize -= a_File.tellg();
 
-        a_Buffer.resize(fileSize);
+        a_Buffer.resize(static_cast<unsigned int>(fileSize));
 
-        file.read(a_Buffer.data(), fileSize);
-        file.close();
+        a_File.read(a_Buffer.data(), fileSize);
     }
 }
