@@ -1,5 +1,6 @@
 #pragma once
 #include <GL/glew.h>
+#include <memory>
 
 #include "Vertex.h"
 #include "..\GL/GLTexture.h"
@@ -8,7 +9,6 @@
 #include "..\GL/GLSLProgram.h"
 #include "Camera2D.h"
 #include "VAO.h"
-#include <memory>
 
 namespace BadEngine
 {
