@@ -13,7 +13,8 @@ namespace BadEngine
 
     public:
         GLTexture(float a_Width, float a_Height);
-        
+        ~GLTexture();
+
         void bind() const;
         void unbind() const;
         void uploadData(const std::vector<unsigned char>& a_Data) const;
