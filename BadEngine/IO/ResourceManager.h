@@ -11,6 +11,6 @@ namespace BadEngine
         TextureCache m_TextureCache;
 
     public:
-        GLTexture getTexture(const std::string& a_FilePath);
+        std::shared_ptr<GLTexture> getTexture(const std::string& a_FilePath);
     };
 }

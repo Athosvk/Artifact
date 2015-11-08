@@ -5,10 +5,9 @@
 #include "PicoPNG.h"
 #include "IOManager.h"
 #include "../ErrorHandler.h"
-
 namespace BadEngine
 {
-    GLTexture ImageLoader::loadPNG(const std::string& a_FilePath)
+    std::shared_ptr<GLTexture> ImageLoader::loadPNG(const std::string& a_FilePath)
     {
         std::vector<char> fileData;
         IOManager::readBinary(fileData, a_FilePath);
@@ -24,8 +23,8 @@ namespace BadEngine
             throwFatalError("PNG decoding failed with error " + std::to_string(errorCode));
         }
 
-        auto texture = GLTexture(static_cast<float>(width), static_cast<float>(height));
-        texture.uploadData(output);
+        auto texture = std::make_shared<GLTexture>(static_cast<float>(width), static_cast<float>(height));
+        texture->uploadData(output);
         return texture;
     }
 }

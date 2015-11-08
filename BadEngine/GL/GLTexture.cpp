@@ -11,7 +11,7 @@ namespace BadEngine
 
     GLTexture::~GLTexture()
     {
-        //TODO: Cleanup VRAM of texture
+        glDeleteTextures(1, &m_ID);
     }
 
     void GLTexture::bind() const

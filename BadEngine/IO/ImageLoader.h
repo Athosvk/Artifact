@@ -1,4 +1,6 @@
 #pragma once
+#include <memory>
+
 #include "../GL/GLTexture.h"
 
 namespace BadEngine
@@ -9,6 +11,6 @@ namespace BadEngine
         ImageLoader() = delete;
         ~ImageLoader() = delete;
 
-        static GLTexture loadPNG(const std::string& a_FilePath);
+        static std::shared_ptr<GLTexture> loadPNG(const std::string& a_FilePath);
     };
 }

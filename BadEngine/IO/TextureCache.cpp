@@ -11,7 +11,7 @@ namespace BadEngine
     {
     }
 
-    GLTexture TextureCache::getTexture(const std::string& a_FilePath)
+    std::shared_ptr<GLTexture> TextureCache::getTexture(const std::string& a_FilePath)
     {
         auto iterator = m_TextureMap.find(a_FilePath);
         if(iterator == m_TextureMap.end())
@@ -23,7 +23,7 @@ namespace BadEngine
         return iterator->second;
     }
 
-    void TextureCache::cacheTexture(const std::string& a_FilePath, const GLTexture& a_Texture)
+    void TextureCache::cacheTexture(const std::string& a_FilePath, const std::shared_ptr<GLTexture>& a_Texture)
     {
         m_TextureMap.emplace(a_FilePath, a_Texture);
     }
