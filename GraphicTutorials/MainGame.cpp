@@ -31,7 +31,7 @@ void MainGame::draw()
     BadEngine::Rectangle uvRectangle(glm::vec2(0, 0), 1, 1);
 
     static auto texture = m_ResourceManager.getTexture("Textures/PNG/CharacterRight_Walk1.png");
-    m_SpriteBatch.draw(texture, rectangle, uvRectangle, BadEngine::Color::White);
+    m_SpriteBatch.draw(texture.get(), rectangle, uvRectangle, BadEngine::Color::White);
     m_SpriteBatch.end();
 }
 

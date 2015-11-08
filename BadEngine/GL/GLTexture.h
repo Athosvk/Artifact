@@ -15,9 +15,15 @@ namespace BadEngine
         GLTexture(float a_Width, float a_Height);
         ~GLTexture();
 
+        bool operator >(const GLTexture& a_Other) const;
+        bool operator <(const GLTexture& a_Other) const;
+        bool operator >=(const GLTexture& a_Other) const;
+        bool operator <=(const GLTexture& a_Other) const;
+        bool operator ==(const GLTexture& a_Other) const;
+        bool operator !=(const GLTexture& a_Other) const;
+
         void bind() const;
         void unbind() const;
         void uploadData(const std::vector<unsigned char>& a_Data) const;
-        GLuint getID() const;
     };
 }

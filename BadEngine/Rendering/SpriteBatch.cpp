@@ -104,7 +104,7 @@ namespace BadEngine
         case ESpriteSortMode::Texture:
             sortFunction = { [](std::unique_ptr<Glyph> const& a_Value1, std::unique_ptr<Glyph> const& a_Value2)
             {
-                return a_Value1->texture->getID() < a_Value2->texture->getID();
+                return *(a_Value1->texture) < *(a_Value2->texture);
             } };
             break;
         }
@@ -145,7 +145,7 @@ namespace BadEngine
         auto currentOffset = 0;
         for(unsigned int i = 0; i < m_Glyphs.size(); ++i)
         {
-            if(i == 0 || m_Glyphs[i]->texture->getID() != m_Glyphs[i - 1]->texture->getID())
+            if(i == 0 || *(m_Glyphs[i]->texture) != *(m_Glyphs[i - 1]->texture))
             {
                 m_RenderBatches.emplace_back(m_Glyphs[i]->texture, VerticesPerSprite, currentOffset);
             }

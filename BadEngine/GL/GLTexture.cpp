@@ -14,6 +14,36 @@ namespace BadEngine
         glDeleteTextures(1, &m_ID);
     }
 
+    bool GLTexture::operator <(const GLTexture& a_Other) const
+    {
+        return m_ID < a_Other.m_ID;
+    }
+
+    bool GLTexture::operator >(const GLTexture& a_Other) const
+    {
+        return m_ID > a_Other.m_ID;
+    }
+
+    bool GLTexture::operator <=(const GLTexture& a_Other) const
+    {
+        return m_ID <= a_Other.m_ID;
+    }
+
+    bool GLTexture::operator >=(const GLTexture& a_Other) const
+    {
+        return m_ID >= a_Other.m_ID;
+    }
+
+    bool GLTexture::operator ==(const GLTexture& a_Other) const
+    {
+        return m_ID == a_Other.m_ID;
+    }
+
+    bool GLTexture::operator !=(const GLTexture& a_Other) const
+    {
+        return m_ID != a_Other.m_ID;
+    }
+
     void GLTexture::bind() const
     {
         glBindTexture(GL_TEXTURE_2D, m_ID);
@@ -34,10 +64,5 @@ namespace BadEngine
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
         glGenerateMipmap(GL_TEXTURE_2D);
         unbind();
-    }
-
-    GLuint GLTexture::getID() const
-    {
-        return m_ID;
     }
 }
