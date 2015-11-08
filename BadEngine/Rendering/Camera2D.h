@@ -21,6 +21,8 @@ namespace BadEngine
         Camera2D(const Window& a_Window);
         ~Camera2D();
 
+        Camera2D& operator=(const Camera2D& a_Other) = delete;
+
         glm::vec2 getPosition() const;
         float getZoomFactor() const;
         float getRotation() const;

@@ -26,6 +26,8 @@ namespace BadEngine
         Window(int a_ScreenWidth, int a_ScreenHeight, unsigned int a_Flags, std::string a_Name);
         ~Window();
 
+        Window& operator=(const Window& a_Other) = delete;
+
         int getWidth() const;
         int getHeight() const;
         void clear() const;

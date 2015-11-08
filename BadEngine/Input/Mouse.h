@@ -32,6 +32,7 @@ namespace BadEngine
     public:
         Mouse(const BadEngine::Camera2D& a_Camera);
         ~Mouse();
+        Mouse& operator=(const Mouse& a_Other) = delete;
 
         glm::vec2 getScreenPosition() const;
         glm::vec2 getWorldPosition() const;
