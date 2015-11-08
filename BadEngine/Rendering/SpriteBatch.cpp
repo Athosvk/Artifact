@@ -54,7 +54,7 @@ namespace BadEngine
         m_ShaderProgram.linkShaders();
     }
 
-    void SpriteBatch::draw(GLTexture a_Texture, const Rectangle& a_DestinationRectangle,
+    void SpriteBatch::draw(GLTexture* a_Texture, const Rectangle& a_DestinationRectangle,
                            const Rectangle& a_UVRectangle, Color a_Color, float a_Depth)
     {
         m_Glyphs.push_back(std::make_unique<Glyph>(a_Texture, a_DestinationRectangle, a_UVRectangle, a_Color, a_Depth));
@@ -104,7 +104,7 @@ namespace BadEngine
         case ESpriteSortMode::Texture:
             sortFunction = { [](std::unique_ptr<Glyph> const& a_Value1, std::unique_ptr<Glyph> const& a_Value2)
             {
-                return a_Value1->texture.getID() < a_Value2->texture.getID();
+                return a_Value1->texture->getID() < a_Value2->texture->getID();
             } };
             break;
         }
@@ -128,10 +128,9 @@ namespace BadEngine
 
         for(auto renderBatch : m_RenderBatches)
         {
-            renderBatch.texture.bind();
+            renderBatch.texture->bind();
             glDrawArrays(GL_TRIANGLES, renderBatch.offset, renderBatch.vertexCount);
         }
-
         m_ShaderProgram.disable();
         m_VAO.unbind();
     }
@@ -146,7 +145,7 @@ namespace BadEngine
         auto currentOffset = 0;
         for(unsigned int i = 0; i < m_Glyphs.size(); ++i)
         {
-            if(i == 0 || m_Glyphs[i]->texture.getID() != m_Glyphs[i - 1]->texture.getID())
+            if(i == 0 || m_Glyphs[i]->texture->getID() != m_Glyphs[i - 1]->texture->getID())
             {
                 m_RenderBatches.emplace_back(m_Glyphs[i]->texture, VerticesPerSprite, currentOffset);
             }

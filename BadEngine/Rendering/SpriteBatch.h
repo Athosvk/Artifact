@@ -25,12 +25,12 @@ namespace BadEngine
         class RenderBatch
         {
         public:
-            GLTexture texture;
+            GLTexture* texture;
             GLuint vertexCount;
             GLuint offset;
 
         public:
-            RenderBatch(GLTexture a_Texture, GLuint a_VertexCount = 0, GLuint a_Offset = 0) :
+            RenderBatch(GLTexture* a_Texture, GLuint a_VertexCount = 0, GLuint a_Offset = 0) :
                 texture(a_Texture),
                 vertexCount(a_VertexCount),
                 offset(a_Offset)
@@ -41,7 +41,7 @@ namespace BadEngine
         class Glyph
         {
         public:
-            GLTexture texture;
+            GLTexture* texture;
             float depth;
             Vertex topLeft;
             Vertex bottomLeft;
@@ -49,7 +49,7 @@ namespace BadEngine
             Vertex bottomRight;
 
         public:
-            Glyph(GLTexture a_Texture, const Rectangle& a_DestinationRectangle, const Rectangle& a_UVRectangle, Color a_Color, float a_Depth) :
+            Glyph(GLTexture* a_Texture, const Rectangle& a_DestinationRectangle, const Rectangle& a_UVRectangle, Color a_Color, float a_Depth) :
                 texture(a_Texture),
                 depth(a_Depth),
                 //Using inverted y coordinates, thus opposite vertical corners
@@ -77,7 +77,7 @@ namespace BadEngine
         ~SpriteBatch();
 
         void begin(ESpriteSortMode a_SpriteSortMode = ESpriteSortMode::Texture);
-        void draw(GLTexture a_Texture, const Rectangle& a_DestinationRectangle,
+        void draw(GLTexture* a_Texture, const Rectangle& a_DestinationRectangle,
                   const Rectangle& a_UVRectangle, Color a_Color = Color::White, float a_Depth = 0);
         void end();
 
