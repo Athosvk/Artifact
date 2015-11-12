@@ -21,6 +21,7 @@ namespace BadEngine
 
     class SpriteBatch
     {
+        //TO:DO Make textures constant
     private:
         class RenderBatch
         {
@@ -77,8 +78,10 @@ namespace BadEngine
         ~SpriteBatch();
 
         void begin(ESpriteSortMode a_SpriteSortMode = ESpriteSortMode::Texture);
-        void draw(GLTexture* a_Texture, const Rectangle& a_DestinationRectangle,
-                  const Rectangle& a_UVRectangle, Color a_Color = Color::White, float a_Depth = 0);
+        void draw(GLTexture* a_Texture, const Rectangle& a_DestinationRectangle, Color a_Color = Color::White,
+                  const Rectangle& a_UVRectangle = Rectangle(glm::vec2(0, 0), 1, 1), float a_Depth = 0);
+        void draw(GLTexture* a_Texture, glm::vec2 a_Position, Color a_Color = Color::White,
+                  const Rectangle& a_UVRectangle = Rectangle(glm::vec2(0, 0), 1, 1), float a_Depth = 0);
         void end();
 
     private:

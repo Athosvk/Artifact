@@ -55,9 +55,16 @@ namespace BadEngine
     }
 
     void SpriteBatch::draw(GLTexture* a_Texture, const Rectangle& a_DestinationRectangle,
-                           const Rectangle& a_UVRectangle, Color a_Color, float a_Depth)
+                           Color a_Color, const Rectangle& a_UVRectangle, float a_Depth)
     {
         m_Glyphs.push_back(std::make_unique<Glyph>(a_Texture, a_DestinationRectangle, a_UVRectangle, a_Color, a_Depth));
+    }
+
+    void SpriteBatch::draw(GLTexture* a_Texture, glm::vec2 a_Position, Color a_Color,
+                           const Rectangle& a_UVRectangle,  float a_Depth)
+    {
+        Rectangle destinationRectangle(a_Position, a_Texture->getWidth(), a_Texture->getHeight());
+        draw(a_Texture, destinationRectangle, a_Color, a_UVRectangle, a_Depth);
     }
 
     void SpriteBatch::constructVAO() const

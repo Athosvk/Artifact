@@ -65,4 +65,14 @@ namespace BadEngine
         glGenerateMipmap(GL_TEXTURE_2D);
         unbind();
     }
+
+    float GLTexture::getHeight() const
+    {
+        return m_Height;
+    }
+
+    float GLTexture::getWidth() const
+    {
+        return m_Width;
+    }
 }
