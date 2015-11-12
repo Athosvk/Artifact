@@ -85,6 +85,7 @@ namespace BadEngine
         void end();
 
     private:
+        void bindUniforms() const;
         void renderBatches() const;
         void constructVAO() const;
         void sortGlyphs();

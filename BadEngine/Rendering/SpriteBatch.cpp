@@ -119,12 +119,10 @@ namespace BadEngine
         std::stable_sort(m_Glyphs.begin(), m_Glyphs.end(), sortFunction);
     }
 
-    void SpriteBatch::renderBatches() const
+    void SpriteBatch::bindUniforms() const
     {
-        m_VAO.bind();
         glActiveTexture(GL_TEXTURE0);
-        
-        m_ShaderProgram.enable();
+
         auto textureLocation = m_ShaderProgram.getUniformLocation("sampler");
         glUniform1i(textureLocation, 0);
 
@@ -132,6 +130,14 @@ namespace BadEngine
         auto cameraTransform = m_Camera->getTransform();
 
         glUniformMatrix4fv(cameraTransformLocation, 1, GL_FALSE, &cameraTransform[0][0]);
+    }
+
+    void SpriteBatch::renderBatches() const
+    {
+        m_VAO.bind();
+        m_ShaderProgram.enable();
+        
+        bindUniforms();
 
         for(auto renderBatch : m_RenderBatches)
         {
