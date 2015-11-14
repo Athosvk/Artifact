@@ -21,8 +21,6 @@ namespace BadEngine
 
     class SpriteBatch
     {
-        //TO:DO Make textures constant
-        //TO:DO Ajust casing
     private:
         class RenderBatch
         {
