@@ -9,7 +9,7 @@ namespace BadEngine
     const std::string SpriteBatch::s_DefaultVertexShader = "Vertex shaders/colorShading.vert";
     const std::string SpriteBatch::s_DefaultFragmentShader = "Fragment shaders/colorShading.frag";
 
-    SpriteBatch::RenderBatch::RenderBatch(GLTexture* a_Texture, GLuint a_VertexCount, GLuint a_Offset)
+    SpriteBatch::RenderBatch::RenderBatch(const GLTexture* a_Texture, GLuint a_VertexCount, GLuint a_Offset)
         : texture(a_Texture),
         vertexCount(a_VertexCount),
         offset(a_Offset)
@@ -17,7 +17,7 @@ namespace BadEngine
     {
     }
 
-    SpriteBatch::Glyph::Glyph(GLTexture* a_Texture, const Rectangle& a_DestinationRectangle, Color a_Color, 
+    SpriteBatch::Glyph::Glyph(const GLTexture* a_Texture, const Rectangle& a_DestinationRectangle, Color a_Color, 
                               const Rectangle& a_UVRectangle, float a_Depth) :
                               texture(a_Texture),
                               depth(a_Depth),
@@ -29,7 +29,7 @@ namespace BadEngine
     {
     }
 
-    SpriteBatch::Glyph::Glyph(GLTexture* a_Texture, const Rectangle& a_DestinationRectangle, float a_Rotation, 
+    SpriteBatch::Glyph::Glyph(const GLTexture* a_Texture, const Rectangle& a_DestinationRectangle, float a_Rotation, 
                               glm::vec2 a_Origin, Color a_Color, const Rectangle& a_UVRectangle, float a_Depth) :
                               texture(a_Texture),
                               depth(a_Depth),

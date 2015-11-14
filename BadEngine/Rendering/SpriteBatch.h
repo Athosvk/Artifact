@@ -27,18 +27,18 @@ namespace BadEngine
         class RenderBatch
         {
         public:
-            GLTexture* texture;
+            const GLTexture* texture;
             GLuint vertexCount;
             GLuint offset;
 
         public:
-            RenderBatch(GLTexture* a_Texture, GLuint a_VertexCount = 0, GLuint a_Offset = 0);
+            RenderBatch(const GLTexture* a_Texture, GLuint a_VertexCount = 0, GLuint a_Offset = 0);
         };
 
         class Glyph
         {
         public:
-            GLTexture* texture;
+            const GLTexture* texture;
             float depth;
             Vertex topLeft;
             Vertex bottomLeft;
@@ -46,10 +46,10 @@ namespace BadEngine
             Vertex bottomRight;
 
         public:
-            Glyph(GLTexture* a_Texture, const Rectangle& a_DestinationRectangle, Color a_Color, 
+            Glyph(const GLTexture* a_Texture, const Rectangle& a_DestinationRectangle, Color a_Color, 
                   const Rectangle& a_UVRectangle, float a_Depth);
 
-            Glyph(GLTexture* a_Texture, const Rectangle& a_DestinationRectangle, float a_Rotation, 
+            Glyph(const GLTexture* a_Texture, const Rectangle& a_DestinationRectangle, float a_Rotation, 
                   glm::vec2 a_Origin, Color a_Color, const Rectangle& a_UVRectangle, float a_Depth);
         };
 
