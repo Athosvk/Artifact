@@ -21,11 +21,10 @@ namespace BadEngine
                               const Rectangle& a_UVRectangle, float a_Depth) :
                               texture(a_Texture),
                               depth(a_Depth),
-                              //Using inverted y coordinates, thus opposite vertical corners
-                              topLeft(Vertex(a_DestinationRectangle.getBottomLeft(), a_Color, a_UVRectangle.getBottomLeft())),
-                              bottomLeft(Vertex(a_DestinationRectangle.getTopLeft(), a_Color, a_UVRectangle.getTopLeft())),
-                              topRight(Vertex(a_DestinationRectangle.getBottomRight(), a_Color, a_UVRectangle.getBottomRight())),
-                              bottomRight(Vertex(a_DestinationRectangle.getTopRight(), a_Color, a_UVRectangle.getTopRight()))
+                              topLeft(Vertex(a_DestinationRectangle.getTopLeft(), a_Color, a_UVRectangle.getTopLeft())),
+                              topRight(Vertex(a_DestinationRectangle.getTopRight(), a_Color, a_UVRectangle.getTopRight())),
+                              bottomLeft(Vertex(a_DestinationRectangle.getBottomLeft(), a_Color, a_UVRectangle.getBottomLeft())),
+                              bottomRight(Vertex(a_DestinationRectangle.getBottomRight(), a_Color, a_UVRectangle.getBottomRight()))
     {
     }
 
@@ -33,14 +32,14 @@ namespace BadEngine
                               glm::vec2 a_Origin, Color a_Color, const Rectangle& a_UVRectangle, float a_Depth) :
                               texture(a_Texture),
                               depth(a_Depth),
-                              topLeft(MathHelper::rotate(a_DestinationRectangle.getBottomLeft(), a_Rotation, a_Origin),
-                              a_Color, a_UVRectangle.getBottomLeft()),
-                              topRight(MathHelper::rotate(a_DestinationRectangle.getBottomRight(), a_Rotation, a_Origin),
-                              a_Color, a_UVRectangle.getBottomRight()),
-                              bottomLeft(MathHelper::rotate(a_DestinationRectangle.getTopLeft(), a_Rotation, a_Origin),
+                              topLeft(MathHelper::rotate(a_DestinationRectangle.getTopLeft(), a_Rotation, a_Origin),
                               a_Color, a_UVRectangle.getTopLeft()),
-                              bottomRight(MathHelper::rotate(a_DestinationRectangle.getTopRight(), a_Rotation, a_Origin),
-                              a_Color, a_UVRectangle.getTopRight())
+                              topRight(MathHelper::rotate(a_DestinationRectangle.getTopRight(), a_Rotation, a_Origin),
+                              a_Color, a_UVRectangle.getTopRight()),
+                              bottomLeft(MathHelper::rotate(a_DestinationRectangle.getBottomLeft(), a_Rotation, a_Origin),
+                              a_Color, a_UVRectangle.getBottomLeft()),
+                              bottomRight(MathHelper::rotate(a_DestinationRectangle.getBottomRight(), a_Rotation, a_Origin),
+                              a_Color, a_UVRectangle.getBottomRight())
     {
     }
 

@@ -39,8 +39,8 @@ namespace BadEngine
             const GLTexture* texture;
             float depth;
             Vertex topLeft;
-            Vertex bottomLeft;
             Vertex topRight;
+            Vertex bottomLeft;
             Vertex bottomRight;
 
         public:
