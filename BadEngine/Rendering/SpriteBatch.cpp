@@ -2,11 +2,47 @@
 #include <functional>
 
 #include "SpriteBatch.h"
+#include "../MathHelper.h"
 
 namespace BadEngine
 {
     const std::string SpriteBatch::s_DefaultVertexShader = "Vertex shaders/colorShading.vert";
     const std::string SpriteBatch::s_DefaultFragmentShader = "Fragment shaders/colorShading.frag";
+
+    SpriteBatch::RenderBatch::RenderBatch(GLTexture* a_Texture, GLuint a_VertexCount, GLuint a_Offset)
+        : texture(a_Texture),
+        vertexCount(a_VertexCount),
+        offset(a_Offset)
+
+    {
+    }
+
+    SpriteBatch::Glyph::Glyph(GLTexture* a_Texture, const Rectangle& a_DestinationRectangle, Color a_Color, 
+                              const Rectangle& a_UVRectangle, float a_Depth) :
+                              texture(a_Texture),
+                              depth(a_Depth),
+                              //Using inverted y coordinates, thus opposite vertical corners
+                              topLeft(Vertex(a_DestinationRectangle.getBottomLeft(), a_Color, a_UVRectangle.getBottomLeft())),
+                              bottomLeft(Vertex(a_DestinationRectangle.getTopLeft(), a_Color, a_UVRectangle.getTopLeft())),
+                              topRight(Vertex(a_DestinationRectangle.getBottomRight(), a_Color, a_UVRectangle.getBottomRight())),
+                              bottomRight(Vertex(a_DestinationRectangle.getTopRight(), a_Color, a_UVRectangle.getTopRight()))
+    {
+    }
+
+    SpriteBatch::Glyph::Glyph(GLTexture* a_Texture, const Rectangle& a_DestinationRectangle, float a_Rotation, 
+                              glm::vec2 a_Origin, Color a_Color, const Rectangle& a_UVRectangle, float a_Depth) :
+                              texture(a_Texture),
+                              depth(a_Depth),
+                              topLeft(MathHelper::rotate(a_DestinationRectangle.getBottomLeft(), a_Rotation, a_Origin),
+                              a_Color, a_UVRectangle.getBottomLeft()),
+                              topRight(MathHelper::rotate(a_DestinationRectangle.getBottomRight(), a_Rotation, a_Origin),
+                              a_Color, a_UVRectangle.getBottomRight()),
+                              bottomLeft(MathHelper::rotate(a_DestinationRectangle.getTopLeft(), a_Rotation, a_Origin),
+                              a_Color, a_UVRectangle.getTopLeft()),
+                              bottomRight(MathHelper::rotate(a_DestinationRectangle.getTopRight(), a_Rotation, a_Origin),
+                              a_Color, a_UVRectangle.getTopRight())
+    {
+    }
 
     SpriteBatch::SpriteBatch(const Camera2D* a_Camera) :
         m_ShaderProgram(GLSLProgram(s_DefaultVertexShader, s_DefaultFragmentShader)),
@@ -56,15 +92,29 @@ namespace BadEngine
 
     void SpriteBatch::draw(GLTexture* a_Texture, const Rectangle& a_DestinationRectangle,
                            Color a_Color, const Rectangle& a_UVRectangle, float a_Depth)
-    {
-        m_Glyphs.push_back(std::make_unique<Glyph>(a_Texture, a_DestinationRectangle, a_UVRectangle, a_Color, a_Depth));
+    {        
+        m_Glyphs.push_back(std::make_unique<Glyph>(a_Texture, a_DestinationRectangle, a_Color, a_UVRectangle, a_Depth));
     }
 
     void SpriteBatch::draw(GLTexture* a_Texture, glm::vec2 a_Position, Color a_Color,
-                           const Rectangle& a_UVRectangle,  float a_Depth)
+                           const Rectangle& a_UVRectangle, float a_Depth)
     {
         Rectangle destinationRectangle(a_Position, a_Texture->getWidth(), a_Texture->getHeight());
         draw(a_Texture, destinationRectangle, a_Color, a_UVRectangle, a_Depth);
+    }
+
+    void SpriteBatch::draw(GLTexture* a_Texture, const Rectangle& a_DestinationRectangle, float a_Rotation,
+                           glm::vec2 a_Origin, Color a_Color, const Rectangle& a_UVRectangle, float a_Depth)
+    {
+        m_Glyphs.push_back(std::make_unique<Glyph>(a_Texture, a_DestinationRectangle, a_Rotation,
+            a_Origin, a_Color, a_UVRectangle, a_Depth));
+    }
+
+    void SpriteBatch::draw(GLTexture* a_Texture, glm::vec2 a_Position, float a_Rotation,
+                           glm::vec2 a_Origin, Color a_Color, const Rectangle& a_UVRectangle, float a_Depth)
+    {
+        Rectangle destinationRectangle(a_Position, a_Texture->getWidth(), a_Texture->getHeight());
+        draw(a_Texture, destinationRectangle, a_Rotation, a_Origin, a_Color, a_UVRectangle);
     }
 
     void SpriteBatch::constructVAO() const

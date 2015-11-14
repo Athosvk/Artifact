@@ -22,6 +22,7 @@ namespace BadEngine
     class SpriteBatch
     {
         //TO:DO Make textures constant
+        //TO:DO Ajust casing
     private:
         class RenderBatch
         {
@@ -31,12 +32,7 @@ namespace BadEngine
             GLuint offset;
 
         public:
-            RenderBatch(GLTexture* a_Texture, GLuint a_VertexCount = 0, GLuint a_Offset = 0) :
-                texture(a_Texture),
-                vertexCount(a_VertexCount),
-                offset(a_Offset)
-            {
-            }
+            RenderBatch(GLTexture* a_Texture, GLuint a_VertexCount = 0, GLuint a_Offset = 0);
         };
 
         class Glyph
@@ -50,16 +46,11 @@ namespace BadEngine
             Vertex bottomRight;
 
         public:
-            Glyph(GLTexture* a_Texture, const Rectangle& a_DestinationRectangle, const Rectangle& a_UVRectangle, Color a_Color, float a_Depth) :
-                texture(a_Texture),
-                depth(a_Depth),
-                //Using inverted y coordinates, thus opposite vertical corners
-                topLeft(Vertex(a_DestinationRectangle.getBottomLeft(), a_Color, a_UVRectangle.getBottomLeft())),
-                bottomLeft(Vertex(a_DestinationRectangle.getTopLeft(), a_Color, a_UVRectangle.getTopLeft())),
-                topRight(Vertex(a_DestinationRectangle.getBottomRight(), a_Color, a_UVRectangle.getBottomRight())),
-                bottomRight(Vertex(a_DestinationRectangle.getTopRight(), a_Color, a_UVRectangle.getTopRight()))
-            {
-            };
+            Glyph(GLTexture* a_Texture, const Rectangle& a_DestinationRectangle, Color a_Color, 
+                  const Rectangle& a_UVRectangle, float a_Depth);
+
+            Glyph(GLTexture* a_Texture, const Rectangle& a_DestinationRectangle, float a_Rotation, 
+                  glm::vec2 a_Origin, Color a_Color, const Rectangle& a_UVRectangle, float a_Depth);
         };
 
         static const std::string SpriteBatch::s_DefaultVertexShader;
@@ -81,6 +72,12 @@ namespace BadEngine
         void draw(GLTexture* a_Texture, const Rectangle& a_DestinationRectangle, Color a_Color = Color::White,
                   const Rectangle& a_UVRectangle = Rectangle(glm::vec2(0, 0), 1, 1), float a_Depth = 0);
         void draw(GLTexture* a_Texture, glm::vec2 a_Position, Color a_Color = Color::White,
+                  const Rectangle& a_UVRectangle = Rectangle(glm::vec2(0, 0), 1, 1), float a_Depth = 0);
+        void draw(GLTexture* a_Texture, const Rectangle& a_DestinationRectangle, float a_Rotation, 
+                  glm::vec2 a_Origin, Color a_Color = Color::White,
+                  const Rectangle& a_UVRectangle = Rectangle(glm::vec2(0, 0), 1, 1), float a_Depth = 0);
+        void draw(GLTexture* a_Texture, glm::vec2 a_Position, float a_Rotation,
+                  glm::vec2 a_Origin, Color a_Color = Color::White,
                   const Rectangle& a_UVRectangle = Rectangle(glm::vec2(0, 0), 1, 1), float a_Depth = 0);
         void end();
 
