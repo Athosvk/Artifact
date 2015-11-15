@@ -1,4 +1,5 @@
 #include <math.h>
+#include <glm/gtc/constants.hpp>
 
 #include "MathHelper.h"
 
@@ -15,6 +16,19 @@ namespace BadEngine
             return a_Max;
         }
         return a_Value;
+    }
+
+    glm::vec2 MathHelper::rotate(glm::vec2 a_Vector, float a_Degrees, glm::vec2 a_Origin)
+    {
+        glm::vec2 rotatedVector;
+        auto angleRadians = glm::radians<float>(a_Degrees);
+        auto sinAngle = glm::sin(angleRadians);
+        auto cosAngle = glm::cos(angleRadians);
+
+        rotatedVector.x = (a_Vector.x - a_Origin.x) * cosAngle - (a_Vector.y - a_Origin.y) * sinAngle + a_Origin.x;
+        rotatedVector.y = (a_Vector.x - a_Origin.x) * sinAngle + (a_Vector.y - a_Origin.y) * cosAngle + a_Origin.y;
+
+        return rotatedVector;
     }
 
     float MathHelper::pingPong(float a_Value, float a_Min, float a_Max)

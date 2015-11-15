@@ -25,5 +25,7 @@ namespace BadEngine
         void bind() const;
         void unbind() const;
         void uploadData(const std::vector<unsigned char>& a_Data) const;
+        float getHeight() const;
+        float getWidth() const;
     };
 }
