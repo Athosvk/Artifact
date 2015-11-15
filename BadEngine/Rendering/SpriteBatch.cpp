@@ -41,6 +41,7 @@ namespace BadEngine
                               bottomRight(MathHelper::rotate(a_DestinationRectangle.getBottomRight(), a_Rotation, a_Origin),
                               a_Color, a_UVRectangle.getBottomRight())
     {
+        //Use rotation matrix instead
     }
 
     SpriteBatch::SpriteBatch(const Camera2D* a_Camera) :
