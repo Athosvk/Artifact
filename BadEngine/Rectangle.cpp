@@ -20,6 +20,10 @@ namespace BadEngine
     {
     }
 
+    Rectangle::Rectangle()
+    {
+    }
+
     Rectangle::~Rectangle()
     {
     }

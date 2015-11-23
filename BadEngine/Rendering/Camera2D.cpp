@@ -75,8 +75,6 @@ namespace BadEngine
         {
             constructMatrix();
         }
-
-        updatePosition();
     }
 
     void Camera2D::constructMatrix()
@@ -101,50 +99,6 @@ namespace BadEngine
         m_Transform = glm::translate(m_Transform, translation + screenCenter);
 
         m_MatrixIsDirty = false;
-    }
-
-    void Camera2D::updatePosition()
-    {
-        if(BadEngine::Keyboard::isDown(BadEngine::KeyCode::Down))
-        {
-            m_Position.y = BadEngine::MathHelper::clamp(m_Position.y - 15, -2000, 2000);
-        }
-        if(BadEngine::Keyboard::isDown(BadEngine::KeyCode::Left))
-        {
-            m_Position.x = BadEngine::MathHelper::clamp(m_Position.x - 15, -2000, 2000);
-        }
-        if(BadEngine::Keyboard::isDown(BadEngine::KeyCode::Right))
-        {
-            m_Position.x = BadEngine::MathHelper::clamp(m_Position.x + 15, -2000, 2000);
-        }
-        if(BadEngine::Keyboard::isDown(BadEngine::KeyCode::Up))
-        {
-            m_Position.y = BadEngine::MathHelper::clamp(m_Position.y + 15, -2000, 2000);
-        }
-
-        if(BadEngine::Keyboard::isDown(BadEngine::KeyCode::W))
-        {
-            m_ZoomFactor = BadEngine::MathHelper::clamp(m_ZoomFactor + 0.05f, 0.01f, 4.0f);
-        }
-        if(BadEngine::Keyboard::isDown(BadEngine::KeyCode::S))
-        {
-            m_ZoomFactor = BadEngine::MathHelper::clamp(m_ZoomFactor - 0.05f, 0.01f, 4.0f);
-        }
-        if(BadEngine::Keyboard::isDown(BadEngine::KeyCode::Q))
-        {
-            m_Rotation += 0.05f;
-        }
-        if(BadEngine::Keyboard::isDown(BadEngine::KeyCode::E))
-        {
-            m_Rotation -= 0.05f;
-        }
-        if(BadEngine::Keyboard::isDown(BadEngine::KeyCode::Space))
-        {
-            m_Rotation = 0;
-            m_ZoomFactor = 1;
-            m_Position = glm::vec2(0, 0);
-        }
-        m_MatrixIsDirty = true;
     }
 
     void Camera2D::applyScale()

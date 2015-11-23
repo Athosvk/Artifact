@@ -36,7 +36,6 @@ namespace BadEngine
     private:
         void setMatrixDirty();
         void constructMatrix();
-        void updatePosition();
         void applyScale();
         void applyRotation();
     };

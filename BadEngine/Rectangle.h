@@ -12,6 +12,7 @@ namespace BadEngine
     public:
         Rectangle(const glm::vec2& a_MinPosition, const::glm::vec2& a_MaxPosition);
         Rectangle(const glm::vec2& a_MinPosition, float a_Width, float a_Height);
+        Rectangle();
         ~Rectangle();
 
         float getWidth() const;
