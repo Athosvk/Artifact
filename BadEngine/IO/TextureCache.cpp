@@ -13,7 +13,7 @@ namespace BadEngine
 
     std::shared_ptr<GLTexture> TextureCache::getTexture(const std::string& a_FilePath)
     {
-        auto iterator = m_TextureMap.find(a_FilePath);
+        std::map<const std::string, std::shared_ptr<GLTexture>>::const_iterator iterator = m_TextureMap.find(a_FilePath);
         if(iterator == m_TextureMap.end())
         {
             auto newTexture = ImageLoader::loadPNG(a_FilePath);

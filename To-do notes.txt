@@ -1,6 +1,4 @@
 To-Do notes:
 
 - Move loading logic to ImageLoader (rather than texturecache)
-- Rename GLTexture to TextureData
-- Remove getID() from GLTexture
 - Remove game include main.cpp
