@@ -208,20 +208,22 @@ namespace BadEngine
         auto currentOffset = 0;
         for(unsigned int i = 0; i < m_Glyphs.size(); ++i)
         {
-            if(i == 0 || *(m_Glyphs[i]->texture) != *(m_Glyphs[i - 1]->texture))
+            Glyph currentGlyph = *m_Glyphs[i];
+
+            if(i == 0 || *(currentGlyph.texture) != *(m_Glyphs[i - 1]->texture))
             {
-                m_RenderBatches.emplace_back(m_Glyphs[i]->texture, VerticesPerSprite, currentOffset);
+                m_RenderBatches.emplace_back(currentGlyph.texture, VerticesPerSprite, currentOffset);
             }
             else
             {
                 m_RenderBatches.back().vertexCount += VerticesPerSprite;
             }
-            vertices[currentVertex++] = m_Glyphs[i]->topLeft;
-            vertices[currentVertex++] = m_Glyphs[i]->bottomLeft;
-            vertices[currentVertex++] = m_Glyphs[i]->bottomRight;
-            vertices[currentVertex++] = m_Glyphs[i]->bottomRight;
-            vertices[currentVertex++] = m_Glyphs[i]->topRight;
-            vertices[currentVertex++] = m_Glyphs[i]->topLeft;
+            vertices[currentVertex++] = currentGlyph.topLeft;
+            vertices[currentVertex++] = currentGlyph.bottomLeft;
+            vertices[currentVertex++] = currentGlyph.bottomRight;
+            vertices[currentVertex++] = currentGlyph.bottomRight;
+            vertices[currentVertex++] = currentGlyph.topRight;
+            vertices[currentVertex++] = currentGlyph.topLeft;
             currentOffset += VerticesPerSprite;
         }
         m_VBO.uploadData(vertices);
