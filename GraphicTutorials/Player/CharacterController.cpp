@@ -14,6 +14,7 @@ CharacterController::~CharacterController()
 
 void CharacterController::fixedUpdate() const
 {
+    //TO-DO: split input handling from applying movement
     glm::vec2 displacement = glm::vec2(0, 0);
     if(BadEngine::Keyboard::isDown(BadEngine::KeyCode::W))
     {
