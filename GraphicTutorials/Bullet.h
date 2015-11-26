@@ -11,7 +11,7 @@ private:
     Transform m_Transform;
     glm::vec2 m_TargetPosition;
     SpriteRenderer m_SpriteRenderer;
-    float m_Speed = 1.0f;
+    float m_Speed = 5.0f;
 
 public:
     Bullet(BadEngine::ResourceManager& a_ResourceManager, glm::vec2 a_StartPosition);

@@ -40,7 +40,8 @@ namespace BadEngine
         auto screenCenter = glm::vec2(static_cast<float>(m_Window.getWidth() / 2), 
                                       static_cast<float>(m_Window.getHeight() / 2));
 
-        auto worldPosition = a_ScreenPosition - screenCenter;
+        auto worldPosition = glm::vec2(a_ScreenPosition.x, -a_ScreenPosition.y);
+        worldPosition -= glm::vec2(screenCenter.x, -screenCenter.y);
         worldPosition /= m_ZoomFactor;
 
         auto angleCos = glm::cos(m_Rotation);
