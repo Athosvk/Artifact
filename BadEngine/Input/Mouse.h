@@ -18,7 +18,7 @@ namespace BadEngine
     class Mouse
     {
     private:
-        const static int NumberOfButtons = 3;
+        const static int NumberOfButtons = 4;
         static std::array<bool, NumberOfButtons> s_CurrentlyPressed;
         static std::array<bool, NumberOfButtons> s_PreviouslyPressed;
 
