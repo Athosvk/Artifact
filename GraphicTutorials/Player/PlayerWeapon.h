@@ -6,6 +6,7 @@
 #include "../Bullet.h"
 #include "../Transform.h"
 #include "../Pool.h"
+#include "../SpriteRenderer.h"
 
 class PlayerWeapon
 {
@@ -14,10 +15,11 @@ private:
     Transform m_Transform;
     const Transform& m_PlayerTransform;
     Pool<Bullet>& m_BulletPool;
+    SpriteRenderer m_SpriteRenderer;
 
 public:
     PlayerWeapon(const BadEngine::Mouse& a_Mouse, const Transform& a_PlayerTransform, 
-                 Pool<Bullet>& a_BulletPool);
+                 Pool<Bullet>& a_BulletPool, std::shared_ptr<BadEngine::GLTexture> a_Texture);
     ~PlayerWeapon();
 
     void update(const BadEngine::GameTime& a_GameTime);

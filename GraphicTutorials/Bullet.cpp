@@ -1,26 +1,19 @@
 #include "Bullet.h"
 
-Bullet::Bullet(BadEngine::ResourceManager& a_ResourceManager, glm::vec2 a_StartPosition) :
-    m_SpriteRenderer(m_Transform, a_ResourceManager.getTexture("Textures/PNG/Bullet.png")),
+Bullet::Bullet(const std::shared_ptr<BadEngine::GLTexture> a_Texture, glm::vec2 a_StartPosition) :
+    m_SpriteRenderer(m_Transform, a_Texture),
     m_Timer(std::bind(&Bullet::deactivate, this), m_LifeTime),
     m_StartPosition(a_StartPosition)
 {
 }
 
-Bullet::~Bullet()
+std::unique_ptr<Bullet> Bullet::clone()
 {
-}
-
-Bullet::Bullet(const Bullet& a_Bullet) :
-    m_Transform(a_Bullet.m_Transform),
-    m_SpriteRenderer(m_Transform, a_Bullet.m_SpriteRenderer.Texture),
-    m_Velocity(a_Bullet.m_Velocity),
-    m_StartPosition(a_Bullet.m_StartPosition),
-    m_Speed(a_Bullet.m_Speed),
-    m_LifeTime(a_Bullet.m_LifeTime),
-    m_Active(a_Bullet.m_Active),
-    m_Timer(std::bind(&Bullet::deactivate, this), a_Bullet.m_LifeTime)
-{
+    auto bullet = std::make_unique<Bullet>(m_SpriteRenderer.Texture, m_StartPosition);
+    bullet->m_Speed = m_Speed;
+    bullet->m_LifeTime = m_LifeTime;
+    bullet->m_Active = m_Active;
+    return bullet;
 }
 
 void Bullet::draw(BadEngine::SpriteBatch& a_SpriteBatch) const

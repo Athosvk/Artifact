@@ -5,8 +5,8 @@
 MainGame::MainGame() : Game(1024, 768, 0, "GameEngine"),
     m_SpriteBatch(&m_Camera),
     m_Player(m_ResourceManager),
-    m_PlayerWeapon(m_Mouse, m_Player.getTransform(), m_BulletPool),
-    m_BulletPool(Bullet(m_ResourceManager, glm::vec2(0, 0)), 1)
+    m_PlayerWeapon(m_Mouse, m_Player.getTransform(), m_BulletPool, m_ResourceManager.getTexture("Textures/PNG/Pistol.png")),
+    m_BulletPool(Bullet(m_ResourceManager.getTexture("Textures/PNG/Bullet.png"), glm::vec2(0, 0)), 1)
 {
     setBackgroundColor(BadEngine::Color(0, 45, 75, 0));
     printf(" *** OpenGL version: %s *** \n You need at least version %5.2f to run the game. \n", 

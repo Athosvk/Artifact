@@ -19,12 +19,11 @@ private:
     Timer m_Timer;
 
 public:
-    Bullet(BadEngine::ResourceManager& a_ResourceManager, glm::vec2 a_StartPosition);
-    Bullet(const Bullet& a_Bullet);
-    ~Bullet();
+    Bullet(const std::shared_ptr<BadEngine::GLTexture> a_Texture, glm::vec2 a_StartPosition);
 
     void draw(BadEngine::SpriteBatch& a_SpriteBatch) const;
     void update(const BadEngine::GameTime& a_GameTime);
+    std::unique_ptr<Bullet> clone();
     void fixedUpdate();
     void setTarget(glm::vec2 a_Target);
     void activate();

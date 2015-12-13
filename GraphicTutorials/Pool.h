@@ -1,7 +1,6 @@
 #pragma once
 #include <vector>
 #include <memory>
-#include <iostream>
 
 template <typename T>
 class Pool
@@ -20,7 +19,6 @@ public:
         for(size_t i = 0; i < a_InitialSize; ++i)
         {
             auto item = createNew();
-            item->deactivate();
         }
     }
 
@@ -33,6 +31,7 @@ public:
         {
             item = createNew();
         }
+        item->activate();
         return item;
     }
 
@@ -54,7 +53,7 @@ public:
 private:
     T* createNew()
     {
-        m_Items.emplace_back(std::make_unique<T>(m_Original));
+        m_Items.push_back(m_Original.clone());
         return m_Items.back().get();
     }
 
@@ -65,7 +64,6 @@ private:
             if(!item->isActive())
             {
                 a_Item = item.get();
-                a_Item->activate();
                 return true;
             }
         }
