@@ -36,7 +36,7 @@ void PlayerWeapon::fixedUpdate() const
 void PlayerWeapon::fire()
 {
     auto bullet = m_BulletPool.getItem();
-    bullet->fire(m_Transform.getPosition(), m_Mouse.getWorldPosition());
+    bullet->fire(m_Transform.getPosition() + m_FireOffset, m_Mouse.getWorldPosition());
 }
 
 void PlayerWeapon::setParent(const Transform* a_Parent)

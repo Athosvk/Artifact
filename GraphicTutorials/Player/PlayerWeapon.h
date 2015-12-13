@@ -16,6 +16,7 @@ private:
     const Transform& m_PlayerTransform;
     Pool<Bullet>& m_BulletPool;
     SpriteRenderer m_SpriteRenderer;
+    glm::vec2 m_FireOffset = glm::vec2(-3.5f, 12.5f);
 
 public:
     PlayerWeapon(const BadEngine::Mouse& a_Mouse, const Transform& a_PlayerTransform, 
