@@ -5,7 +5,8 @@
 MainGame::MainGame() : Game(1024, 768, 0, "GameEngine"),
     m_SpriteBatch(&m_Camera),
     m_Player(m_ResourceManager),
-    m_PlayerWeapon(m_Mouse, m_ResourceManager, m_Player.getTransform())
+    m_PlayerWeapon(m_Mouse, m_ResourceManager, m_Player.getTransform(), m_BulletPool),
+    m_BulletPool(Bullet(m_ResourceManager, glm::vec2(0, 0)), 20)
 {
     setBackgroundColor(BadEngine::Color(0, 45, 75, 0));
     printf(" *** OpenGL version: %s *** \n You need at least version %5.2f to run the game. \n", 
@@ -30,7 +31,7 @@ void MainGame::update()
     Game::update();
     
     m_Player.update();
-    m_PlayerWeapon.update();
+    m_PlayerWeapon.update(m_GameTime);
 
     static auto counter = 0;
     if(counter++ % 100 == 0)

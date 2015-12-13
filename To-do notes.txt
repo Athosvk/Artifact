@@ -1,4 +1,3 @@
 To-Do notes:
 
-- Move loading logic to ImageLoader (rather than texturecache)
-- Remove game include main.cpp
+- Texturecache constant iterator to cbegin

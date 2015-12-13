@@ -91,6 +91,7 @@
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="Player\PlayerWeapon.cpp" />
     <ClCompile Include="SpriteRenderer.cpp" />
+    <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -99,7 +100,9 @@
     <ClInclude Include="Player\Player.h" />
     <ClInclude Include="Player\CharacterController.h" />
     <ClInclude Include="MainGame.h" />
+    <ClInclude Include="Pool.h" />
     <ClInclude Include="SpriteRenderer.h" />
+    <ClInclude Include="Timer.h" />
     <ClInclude Include="Transform.h" />
   </ItemGroup>
   <ItemGroup>
