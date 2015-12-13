@@ -38,7 +38,8 @@ void Bullet::updatePosition()
 
 void Bullet::fire(glm::vec2 a_StartPosition, glm::vec2 a_Target)
 {
-    m_Velocity = glm::normalize(a_Target - a_StartPosition) * m_Speed;
+    m_Transform.setPosition(a_StartPosition);
+    m_Velocity = glm::normalize(a_Target - m_Transform.getPosition()) * m_Speed;
     m_Transform.lookAt(a_Target);
 }
 
@@ -46,7 +47,6 @@ void Bullet::activate()
 {
     m_Active = true;
     m_Timer.reset();
-    m_Transform.Position = m_StartPosition;
 }
 
 void Bullet::deactivate()

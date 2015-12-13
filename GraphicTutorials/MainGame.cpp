@@ -12,6 +12,7 @@ MainGame::MainGame() : Game(1024, 768, 0, "GameEngine"),
     printf(" *** OpenGL version: %s *** \n You need at least version %5.2f to run the game. \n", 
            reinterpret_cast<const char*>(glGetString(GL_VERSION)), m_OpenGLVersion);
     m_Camera.setZoomFactor(2.0f);
+    m_PlayerWeapon.setParent(&m_Player.getTransform());
 }
 
 MainGame::~MainGame()

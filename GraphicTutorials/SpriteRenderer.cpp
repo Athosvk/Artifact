@@ -14,6 +14,6 @@ SpriteRenderer::~SpriteRenderer()
 
 void SpriteRenderer::draw(BadEngine::SpriteBatch& a_SpriteBatch) const
 {
-    BadEngine::Rectangle destinationRectangle(m_Transform.Position, Width, Height);
+    BadEngine::Rectangle destinationRectangle(m_Transform.getPosition(), Width, Height);
     a_SpriteBatch.draw(Texture.get(), destinationRectangle, Color, UVRectangle, Depth);
 }

@@ -26,4 +26,5 @@ public:
     void draw(BadEngine::SpriteBatch& a_SpriteBatch) const;
     void fixedUpdate() const;
     void fire();
+    void setParent(const Transform* a_Parent);
 };
