@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <memory>
+#include <iostream>
 
 template <typename T>
 class Pool
@@ -13,10 +14,13 @@ public:
     Pool(T a_Original, size_t a_InitialSize = 1)
         : m_Original(a_Original)
     {
+        m_Original.deactivate();
         m_Items.reserve(a_InitialSize);
+
         for(size_t i = 0; i < a_InitialSize; ++i)
         {
-            createNew();
+            auto item = createNew();
+            item->deactivate();
         }
     }
 
@@ -25,7 +29,7 @@ public:
     T* getItem()
     {
         T* item = nullptr;
-        if(tryFindInactive(item))
+        if(!tryFindInactive(item))
         {
             item = createNew();
         }
@@ -37,6 +41,16 @@ public:
         m_Items.resize(a_NewSize);
     }
 
+    auto begin()->decltype(m_Items.begin())
+    {
+        return m_Items.begin();
+    }
+
+    auto end()->decltype(m_Items.end())
+    {
+        return m_Items.end();
+    }
+
 private:
     T* createNew()
     {
@@ -44,14 +58,14 @@ private:
         return m_Items.back().get();
     }
 
-    bool tryFindInactive(T* a_Item)
+    bool tryFindInactive(T*& a_Item)
     {
         for(const auto& item : m_Items)
         {
-            if(!(*iterator->isActive()))
+            if(!item->isActive())
             {
-                a_Item = iterator->get();
-                a_Item->reset();
+                a_Item = item.get();
+                a_Item->activate();
                 return true;
             }
         }

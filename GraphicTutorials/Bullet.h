@@ -12,6 +12,7 @@ private:
     Transform m_Transform;
     SpriteRenderer m_SpriteRenderer;
     glm::vec2 m_Velocity;
+    glm::vec2 m_StartPosition;
     float m_Speed = 5.0f;
     float m_LifeTime = 1.0f;
     bool m_Active = true;
@@ -19,6 +20,7 @@ private:
 
 public:
     Bullet(BadEngine::ResourceManager& a_ResourceManager, glm::vec2 a_StartPosition);
+    Bullet(const Bullet& a_Bullet);
     ~Bullet();
 
     void draw(BadEngine::SpriteBatch& a_SpriteBatch) const;

@@ -13,12 +13,11 @@ private:
     const BadEngine::Mouse& m_Mouse;
     Transform m_Transform;
     const Transform& m_PlayerTransform;
-    const Pool<Bullet>& m_BulletPool;
-    BadEngine::ResourceManager& m_ResourceManager;
+    Pool<Bullet>& m_BulletPool;
 
 public:
-    PlayerWeapon(const BadEngine::Mouse& a_Mouse, BadEngine::ResourceManager& a_ResourceManager, const Transform& a_PlayerTransform, 
-                 const Pool<Bullet>& a_BulletPool);
+    PlayerWeapon(const BadEngine::Mouse& a_Mouse, const Transform& a_PlayerTransform, 
+                 Pool<Bullet>& a_BulletPool);
     ~PlayerWeapon();
 
     void update(const BadEngine::GameTime& a_GameTime);

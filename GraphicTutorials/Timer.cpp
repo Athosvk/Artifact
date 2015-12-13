@@ -24,4 +24,5 @@ void Timer::update(const BadEngine::GameTime& a_GameTime)
 void Timer::reset()
 {
     m_TimePassed = 0.0f;
+    m_Done = false;
 }
