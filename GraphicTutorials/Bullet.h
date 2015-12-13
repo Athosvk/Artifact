@@ -25,7 +25,7 @@ public:
     void update(const BadEngine::GameTime& a_GameTime);
     std::unique_ptr<Bullet> clone();
     void fixedUpdate();
-    void setTarget(glm::vec2 a_Target);
+    void fire(glm::vec2 a_StartPosition, glm::vec2 a_Target);
     void activate();
     void deactivate();
     bool isActive();

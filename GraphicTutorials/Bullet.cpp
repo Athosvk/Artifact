@@ -36,9 +36,9 @@ void Bullet::updatePosition()
     m_Transform.translate(m_Velocity);
 }
 
-void Bullet::setTarget(glm::vec2 a_Target)
+void Bullet::fire(glm::vec2 a_StartPosition, glm::vec2 a_Target)
 {
-    m_Velocity = glm::normalize(a_Target - m_Transform.Position) * m_Speed;
+    m_Velocity = glm::normalize(a_Target - a_StartPosition) * m_Speed;
     m_Transform.lookAt(a_Target);
 }
 

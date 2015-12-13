@@ -34,5 +34,5 @@ void PlayerWeapon::fixedUpdate() const
 void PlayerWeapon::fire()
 {
     auto bullet = m_BulletPool.getItem();
-    bullet->setTarget(m_Mouse.getWorldPosition());        
+    bullet->fire(m_Transform.Position, m_Mouse.getWorldPosition());
 }
