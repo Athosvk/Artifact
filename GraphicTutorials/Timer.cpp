@@ -8,15 +8,23 @@ Timer::Timer(std::function<void()> a_CallBack, float a_Duration)
 {
 }
 
+void Timer::start()
+{
+    m_TimerState = ETimerState::Started;
+}
+
 void Timer::update(const BadEngine::GameTime& a_GameTime)
 {
-    if(!m_Done)
+    if(m_TimerState == ETimerState::Started)
     {
         m_TimePassed += static_cast<float>(a_GameTime.getDeltaTime());
         if(m_TimePassed >= m_Duration)
         {
-            m_CallBack();
-            m_Done = true;
+            if(m_CallBack)
+            {
+                m_CallBack();
+            }
+            m_TimerState = ETimerState::Done;
         }
     }
 }
@@ -24,5 +32,10 @@ void Timer::update(const BadEngine::GameTime& a_GameTime)
 void Timer::reset()
 {
     m_TimePassed = 0.0f;
-    m_Done = false;
+    m_TimerState = ETimerState::Disabled;
+}
+
+bool Timer::isDone()
+{
+    return m_TimerState == ETimerState::Done;
 }

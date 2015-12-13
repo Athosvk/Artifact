@@ -17,6 +17,9 @@ private:
     Pool<Bullet>& m_BulletPool;
     SpriteRenderer m_SpriteRenderer;
     glm::vec2 m_FireOffset = glm::vec2(-3.5f, 12.5f);
+    Timer m_FireTimer;
+    Timer m_CooldownTimer;
+    bool m_CanFire = true;
 
 public:
     PlayerWeapon(const BadEngine::Mouse& a_Mouse, const Transform& a_PlayerTransform, 
@@ -28,4 +31,6 @@ public:
     void fixedUpdate() const;
     void fire();
     void setParent(const Transform* a_Parent);
+    void enableFiring();
+    void disableFiring();
 };

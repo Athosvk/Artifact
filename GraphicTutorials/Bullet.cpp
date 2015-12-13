@@ -5,6 +5,7 @@ Bullet::Bullet(const std::shared_ptr<BadEngine::GLTexture> a_Texture, glm::vec2 
     m_Timer(std::bind(&Bullet::deactivate, this), m_LifeTime),
     m_StartPosition(a_StartPosition)
 {
+    m_Timer.start();
 }
 
 std::unique_ptr<Bullet> Bullet::clone()
