@@ -17,9 +17,9 @@ private:
     Pool<Bullet>& m_BulletPool;
     SpriteRenderer m_SpriteRenderer;
     glm::vec2 m_FireOffset = glm::vec2(-3.5f, 12.5f);
-    Timer m_FireTimer;
-    Timer m_CooldownTimer;
-    bool m_CanFire = true;
+    Timer m_ReloadTimer;
+    int m_ClipSize = 100;
+    int m_BulletsLeft = m_ClipSize;
 
 public:
     PlayerWeapon(const BadEngine::Mouse& a_Mouse, const Transform& a_PlayerTransform, 
@@ -28,9 +28,8 @@ public:
 
     void update(const BadEngine::GameTime& a_GameTime);
     void draw(BadEngine::SpriteBatch& a_SpriteBatch) const;
-    void fixedUpdate() const;
     void fire();
     void setParent(const Transform* a_Parent);
-    void enableFiring();
-    void disableFiring();
+    void startReload();
+    void onReloadDone();
 };

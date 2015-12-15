@@ -5,7 +5,6 @@ Bullet::Bullet(const std::shared_ptr<BadEngine::GLTexture> a_Texture, glm::vec2 
     m_Timer(std::bind(&Bullet::deactivate, this), m_LifeTime),
     m_StartPosition(a_StartPosition)
 {
-    m_Timer.start();
 }
 
 std::unique_ptr<Bullet> Bullet::clone()
@@ -42,6 +41,7 @@ void Bullet::fire(glm::vec2 a_StartPosition, glm::vec2 a_Target)
     m_Transform.setPosition(a_StartPosition);
     m_Velocity = glm::normalize(a_Target - m_Transform.getPosition()) * m_Speed;
     m_Transform.lookAt(a_Target);
+    m_Timer.start();
 }
 
 void Bullet::activate()

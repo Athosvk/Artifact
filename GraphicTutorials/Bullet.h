@@ -14,7 +14,7 @@ private:
     glm::vec2 m_Velocity;
     glm::vec2 m_StartPosition;
     float m_Speed = 5.0f;
-    float m_LifeTime = 1.0f;
+    float m_LifeTime = 2.5f;
     bool m_Active = true;
     Timer m_Timer;
 
