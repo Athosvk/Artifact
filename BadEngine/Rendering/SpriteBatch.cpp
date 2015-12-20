@@ -206,9 +206,9 @@ namespace BadEngine
 
         auto currentVertex = 0;
         auto currentOffset = 0;
-        for(unsigned int i = 0; i < m_Glyphs.size(); ++i)
+        for(decltype(m_Glyphs.size()) i = 0; i < m_Glyphs.size(); ++i)
         {
-            Glyph currentGlyph = *m_Glyphs[i];
+            auto currentGlyph = *m_Glyphs[i];
 
             if(i == 0 || *(currentGlyph.texture) != *(m_Glyphs[i - 1]->texture))
             {
