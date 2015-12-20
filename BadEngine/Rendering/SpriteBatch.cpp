@@ -202,7 +202,8 @@ namespace BadEngine
     {
         const auto VerticesPerSprite = 6;
 
-        std::vector<Vertex> vertices(m_Glyphs.size() * VerticesPerSprite);
+        std::vector<Vertex> vertices;
+        vertices.reserve(m_Glyphs.size() * VerticesPerSprite);
 
         auto currentVertex = 0;
         auto currentOffset = 0;
@@ -218,12 +219,12 @@ namespace BadEngine
             {
                 m_RenderBatches.back().vertexCount += VerticesPerSprite;
             }
-            vertices[currentVertex++] = currentGlyph.topLeft;
-            vertices[currentVertex++] = currentGlyph.bottomLeft;
-            vertices[currentVertex++] = currentGlyph.bottomRight;
-            vertices[currentVertex++] = currentGlyph.bottomRight;
-            vertices[currentVertex++] = currentGlyph.topRight;
-            vertices[currentVertex++] = currentGlyph.topLeft;
+            vertices.push_back(currentGlyph.topLeft);
+            vertices.push_back(currentGlyph.bottomLeft);
+            vertices.push_back(currentGlyph.bottomRight);
+            vertices.push_back(currentGlyph.bottomRight);
+            vertices.push_back(currentGlyph.topLeft);
+            vertices.push_back(currentGlyph.topRight);
             currentOffset += VerticesPerSprite;
         }
         m_VBO.uploadData(vertices);
