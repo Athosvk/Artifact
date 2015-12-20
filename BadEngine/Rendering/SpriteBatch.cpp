@@ -166,7 +166,7 @@ namespace BadEngine
             break;
         }
 
-        std::stable_sort(m_Glyphs.begin(), m_Glyphs.end(), sortFunction);
+        std::sort(m_Glyphs.begin(), m_Glyphs.end(), sortFunction);
     }
 
     void SpriteBatch::bindUniforms() const
