@@ -93,7 +93,7 @@ namespace BadEngine
     void SpriteBatch::draw(GLTexture* a_Texture, const Rectangle& a_DestinationRectangle,
                            Color a_Color, const Rectangle& a_UVRectangle, float a_Depth)
     {        
-        m_Glyphs.push_back(std::make_unique<Glyph>(a_Texture, a_DestinationRectangle, a_Color, a_UVRectangle, a_Depth));
+        m_Glyphs.push_back(Glyph(a_Texture, a_DestinationRectangle, a_Color, a_UVRectangle, a_Depth));
     }
 
     void SpriteBatch::draw(GLTexture* a_Texture, glm::vec2 a_Position, Color a_Color,
@@ -106,7 +106,7 @@ namespace BadEngine
     void SpriteBatch::draw(GLTexture* a_Texture, const Rectangle& a_DestinationRectangle, float a_Rotation,
                            glm::vec2 a_Origin, Color a_Color, const Rectangle& a_UVRectangle, float a_Depth)
     {
-        m_Glyphs.push_back(std::make_unique<Glyph>(a_Texture, a_DestinationRectangle, a_Rotation,
+        m_Glyphs.push_back(Glyph(a_Texture, a_DestinationRectangle, a_Rotation,
             a_Origin, a_Color, a_UVRectangle, a_Depth));
     }
 
@@ -143,25 +143,25 @@ namespace BadEngine
 
     void SpriteBatch::sortGlyphs()
     {
-        std::function<bool(std::unique_ptr<Glyph> const&, std::unique_ptr<Glyph> const&)> sortFunction;
+        std::function<bool(Glyph const&, Glyph const&)> sortFunction;
         switch(m_SortMode)
         {
         case ESpriteSortMode::BackToFront:
-            sortFunction = { [](std::unique_ptr<Glyph> const& a_Value1, std::unique_ptr<Glyph> const& a_Value2)
+            sortFunction = { [](Glyph const& a_Value1, Glyph const& a_Value2)
             {
-                return a_Value1->depth < a_Value2->depth;
+                return a_Value1.depth < a_Value2.depth;
             } };
             break;
         case ESpriteSortMode::FrontToBack:
-            sortFunction = { [](std::unique_ptr<Glyph> const&a_Value1, std::unique_ptr<Glyph> const& a_Value2)
+            sortFunction = { [](Glyph const& a_Value1, Glyph const& a_Value2)
             {
-                return a_Value1->depth > a_Value2->depth;
+                return a_Value1.depth > a_Value2.depth;
             } };
             break;
         case ESpriteSortMode::Texture:
-            sortFunction = { [](std::unique_ptr<Glyph> const& a_Value1, std::unique_ptr<Glyph> const& a_Value2)
+            sortFunction = { [](Glyph const& a_Value1, Glyph const& a_Value2)
             {
-                return *(a_Value1->texture) < *(a_Value2->texture);
+                return *(a_Value1.texture) < *(a_Value2.texture);
             } };
             break;
         }
@@ -208,9 +208,9 @@ namespace BadEngine
         auto currentOffset = 0;
         for(decltype(m_Glyphs.size()) i = 0; i < m_Glyphs.size(); ++i)
         {
-            auto currentGlyph = *m_Glyphs[i];
+            auto currentGlyph = m_Glyphs[i];
 
-            if(i == 0 || *(currentGlyph.texture) != *(m_Glyphs[i - 1]->texture))
+            if(i == 0 || *(currentGlyph.texture) != *(m_Glyphs[i - 1].texture))
             {
                 m_RenderBatches.emplace_back(currentGlyph.texture, VerticesPerSprite, currentOffset);
             }
