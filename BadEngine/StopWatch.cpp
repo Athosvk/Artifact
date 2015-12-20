@@ -2,29 +2,34 @@
 
 namespace BadEngine
 {
+    using namespace std::chrono;
+
     StopWatch::StopWatch()
     {
     }
 
-    StopWatch::~StopWatch()
+    StopWatch StopWatch::startNew()
     {
+        StopWatch stopWatch;
+        stopWatch.start();
+        return stopWatch;
     }
 
     void StopWatch::start()
     {
         m_Finished = false;
-        m_StartTime = std::chrono::high_resolution_clock::now();
+        m_StartTime = high_resolution_clock::now();
     }
 
     void StopWatch::end()
     {
-        m_EndTime = std::chrono::high_resolution_clock::now();
+        m_EndTime = high_resolution_clock::now();
         m_Finished = true;
     }
 
-    double StopWatch::toMilliseconds()
+    long long StopWatch::toNanoseconds()
     {
-        auto timePassed = (m_Finished ? m_EndTime : std::chrono::high_resolution_clock::now()) - m_StartTime;
-        return std::chrono::duration_cast<std::chrono::duration<double>>(timePassed).count();
+        auto timePassed = (m_Finished ? m_EndTime : high_resolution_clock::now()) - m_StartTime;
+        return duration_cast<nanoseconds>(timePassed).count();
     }
 };

@@ -12,10 +12,10 @@ namespace BadEngine
 
     public:
         StopWatch();
-        ~StopWatch();
 
+        static StopWatch startNew();
         void start();
         void end();
-        double toMilliseconds();
+        long long toNanoseconds();
     };
 };
