@@ -160,9 +160,9 @@ namespace BadEngine
             indices.push_back(2 + indexOffset);
             indices.push_back(1 + indexOffset);
             indices.push_back(0 + indexOffset);
+            indices.push_back(0 + indexOffset);
             indices.push_back(2 + indexOffset);
             indices.push_back(3 + indexOffset);
-            indices.push_back(1 + indexOffset);
         }
         m_IBO.setData(indices);
     }
@@ -237,8 +237,8 @@ namespace BadEngine
 
             vertices.push_back(currentGlyph.BottomLeft);
             vertices.push_back(currentGlyph.BottomRight);
-            vertices.push_back(currentGlyph.TopLeft);
             vertices.push_back(currentGlyph.TopRight);
+            vertices.push_back(currentGlyph.TopLeft);
         }
         m_VBO.uploadData(vertices);
     }

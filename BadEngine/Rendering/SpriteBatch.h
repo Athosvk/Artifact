@@ -39,10 +39,10 @@ namespace BadEngine
         public:
             const GLTexture* Texture;
             float Depth;
-            Vertex TopLeft;
-            Vertex TopRight;
             Vertex BottomLeft;
             Vertex BottomRight;
+            Vertex TopRight;
+            Vertex TopLeft;
 
         public:
             Glyph(const GLTexture* a_Texture, const Rectangle& a_DestinationRectangle, Color a_Color, 
