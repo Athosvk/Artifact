@@ -18,6 +18,7 @@
     <ClCompile Include="GL\GL.cpp" />
     <ClCompile Include="GL\GLSLProgram.cpp" />
     <ClCompile Include="GL\GLTexture.cpp" />
+    <ClCompile Include="GL\IBO.cpp" />
     <ClCompile Include="Input\Keyboard.cpp" />
     <ClCompile Include="Input\Mouse.cpp" />
     <ClCompile Include="IO\ImageLoader.cpp" />
@@ -42,6 +43,7 @@
     <ClInclude Include="GL\GL.h" />
     <ClInclude Include="GL\GLSLProgram.h" />
     <ClInclude Include="GL\GLTexture.h" />
+    <ClInclude Include="GL\IBO.h" />
     <ClInclude Include="Input\Keyboard.h" />
     <ClInclude Include="Input\Keycode.h" />
     <ClInclude Include="Input\Mouse.h" />

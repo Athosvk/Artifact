@@ -77,6 +77,9 @@
     <ClCompile Include="StopWatch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GL\IBO.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Color.h">
@@ -149,6 +152,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="StopWatch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GL\IBO.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

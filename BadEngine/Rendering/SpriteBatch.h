@@ -9,6 +9,7 @@
 #include "..\GL/GLSLProgram.h"
 #include "Camera2D.h"
 #include "VAO.h"
+#include "../GL/IBO.h"
 
 namespace BadEngine
 {
@@ -25,23 +26,23 @@ namespace BadEngine
         class RenderBatch
         {
         public:
-            const GLTexture* texture;
-            GLuint vertexCount;
-            GLuint offset;
+            const GLTexture* Texture;
+            GLuint IndexCount;
+            GLuint Offset;
 
         public:
-            RenderBatch(const GLTexture* a_Texture, GLuint a_VertexCount = 0, GLuint a_Offset = 0);
+            RenderBatch(const GLTexture* a_Texture, GLuint a_Offset, GLuint a_IndexCount = 0);
         };
 
         class Glyph
         {
         public:
-            const GLTexture* texture;
-            float depth;
-            Vertex topLeft;
-            Vertex topRight;
-            Vertex bottomLeft;
-            Vertex bottomRight;
+            const GLTexture* Texture;
+            float Depth;
+            Vertex TopLeft;
+            Vertex TopRight;
+            Vertex BottomLeft;
+            Vertex BottomRight;
 
         public:
             Glyph(const GLTexture* a_Texture, const Rectangle& a_DestinationRectangle, Color a_Color, 
@@ -56,6 +57,7 @@ namespace BadEngine
 
         VAO m_VAO;
         VBO m_VBO;
+        IBO m_IBO;
         std::vector<Glyph> m_Glyphs;
         std::vector<RenderBatch> m_RenderBatches;
         ESpriteSortMode m_SortMode = ESpriteSortMode::Texture;
@@ -83,6 +85,8 @@ namespace BadEngine
         void bindUniforms() const;
         void renderBatches() const;
         void constructVAO() const;
+        void constructIBO();
+        void constructVBO() const;
         void sortGlyphs();
         void createRenderBatches();
         void initShaders();

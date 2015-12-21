@@ -9,36 +9,35 @@ namespace BadEngine
     const std::string SpriteBatch::s_DefaultVertexShader = "Vertex shaders/colorShading.vert";
     const std::string SpriteBatch::s_DefaultFragmentShader = "Fragment shaders/colorShading.frag";
 
-    SpriteBatch::RenderBatch::RenderBatch(const GLTexture* a_Texture, GLuint a_VertexCount, GLuint a_Offset)
-        : texture(a_Texture),
-        vertexCount(a_VertexCount),
-        offset(a_Offset)
-
+    SpriteBatch::RenderBatch::RenderBatch(const GLTexture* a_Texture, GLuint a_Offset, GLuint a_IndexCount)
+        : Texture(a_Texture),
+        Offset(a_Offset),
+        IndexCount(a_IndexCount)
     {
     }
 
     SpriteBatch::Glyph::Glyph(const GLTexture* a_Texture, const Rectangle& a_DestinationRectangle, Color a_Color, 
                               const Rectangle& a_UVRectangle, float a_Depth) :
-                              texture(a_Texture),
-                              depth(a_Depth),
-                              topLeft(Vertex(a_DestinationRectangle.getTopLeft(), a_Color, a_UVRectangle.getTopLeft())),
-                              topRight(Vertex(a_DestinationRectangle.getTopRight(), a_Color, a_UVRectangle.getTopRight())),
-                              bottomLeft(Vertex(a_DestinationRectangle.getBottomLeft(), a_Color, a_UVRectangle.getBottomLeft())),
-                              bottomRight(Vertex(a_DestinationRectangle.getBottomRight(), a_Color, a_UVRectangle.getBottomRight()))
+                              Texture(a_Texture),
+                              Depth(a_Depth),
+                              TopLeft(Vertex(a_DestinationRectangle.getTopLeft(), a_Color, a_UVRectangle.getTopLeft())),
+                              TopRight(Vertex(a_DestinationRectangle.getTopRight(), a_Color, a_UVRectangle.getTopRight())),
+                              BottomLeft(Vertex(a_DestinationRectangle.getBottomLeft(), a_Color, a_UVRectangle.getBottomLeft())),
+                              BottomRight(Vertex(a_DestinationRectangle.getBottomRight(), a_Color, a_UVRectangle.getBottomRight()))
     {
     }
 
     SpriteBatch::Glyph::Glyph(const GLTexture* a_Texture, const Rectangle& a_DestinationRectangle, float a_Rotation, 
                               glm::vec2 a_Origin, Color a_Color, const Rectangle& a_UVRectangle, float a_Depth) :
-                              texture(a_Texture),
-                              depth(a_Depth),
-                              topLeft(MathHelper::rotate(a_DestinationRectangle.getTopLeft(), a_Rotation, a_Origin),
+                              Texture(a_Texture),
+                              Depth(a_Depth),
+                              TopLeft(MathHelper::rotate(a_DestinationRectangle.getTopLeft(), a_Rotation, a_Origin),
                               a_Color, a_UVRectangle.getTopLeft()),
-                              topRight(MathHelper::rotate(a_DestinationRectangle.getTopRight(), a_Rotation, a_Origin),
+                              TopRight(MathHelper::rotate(a_DestinationRectangle.getTopRight(), a_Rotation, a_Origin),
                               a_Color, a_UVRectangle.getTopRight()),
-                              bottomLeft(MathHelper::rotate(a_DestinationRectangle.getBottomLeft(), a_Rotation, a_Origin),
+                              BottomLeft(MathHelper::rotate(a_DestinationRectangle.getBottomLeft(), a_Rotation, a_Origin),
                               a_Color, a_UVRectangle.getBottomLeft()),
-                              bottomRight(MathHelper::rotate(a_DestinationRectangle.getBottomRight(), a_Rotation, a_Origin),
+                              BottomRight(MathHelper::rotate(a_DestinationRectangle.getBottomRight(), a_Rotation, a_Origin),
                               a_Color, a_UVRectangle.getBottomRight())
     {
         //Use rotation matrix instead
@@ -46,7 +45,8 @@ namespace BadEngine
 
     SpriteBatch::SpriteBatch(const Camera2D* a_Camera) :
         m_ShaderProgram(GLSLProgram(s_DefaultVertexShader, s_DefaultFragmentShader)),
-        m_Camera(a_Camera)
+        m_Camera(a_Camera),
+        m_IBO(EBufferUsage::Dynamic)
     {
         constructVAO();
         initShaders();
@@ -76,6 +76,8 @@ namespace BadEngine
         if(!m_Glyphs.empty())
         {
             sortGlyphs();
+            constructIBO();
+            constructVBO();
             createRenderBatches();
             renderBatches();
         }
@@ -121,6 +123,7 @@ namespace BadEngine
     {
         m_VAO.bind();
         m_VBO.bind();
+        m_IBO.bind();
 
         const auto AttributeCount = 3u;
         for(auto i = 0; i < AttributeCount; ++i)
@@ -139,6 +142,29 @@ namespace BadEngine
             glDisableVertexAttribArray(i);
         }
         m_VBO.unbind();
+        m_IBO.unbind();
+    }
+
+    void SpriteBatch::constructIBO() 
+    {
+        const auto IndicesPerSprite = 6;
+        const auto VerticesPerSprite = 4;
+
+        std::vector<GLuint> indices;
+        indices.reserve(IndicesPerSprite * m_Glyphs.size());
+
+        for(decltype(m_Glyphs.size()) i = 0; i < m_Glyphs.size(); ++i)
+        {
+            auto indexOffset = i * VerticesPerSprite;
+
+            indices.push_back(2 + indexOffset);
+            indices.push_back(1 + indexOffset);
+            indices.push_back(0 + indexOffset);
+            indices.push_back(2 + indexOffset);
+            indices.push_back(3 + indexOffset);
+            indices.push_back(1 + indexOffset);
+        }
+        m_IBO.setData(indices);
     }
 
     void SpriteBatch::sortGlyphs()
@@ -149,19 +175,19 @@ namespace BadEngine
         case ESpriteSortMode::BackToFront:
             sortFunction = { [](Glyph const& a_Value1, Glyph const& a_Value2)
             {
-                return a_Value1.depth < a_Value2.depth;
+                return a_Value1.Depth < a_Value2.Depth;
             } };
             break;
         case ESpriteSortMode::FrontToBack:
             sortFunction = { [](Glyph const& a_Value1, Glyph const& a_Value2)
             {
-                return a_Value1.depth > a_Value2.depth;
+                return a_Value1.Depth > a_Value2.Depth;
             } };
             break;
         case ESpriteSortMode::Texture:
             sortFunction = { [](Glyph const& a_Value1, Glyph const& a_Value2)
             {
-                return *(a_Value1.texture) < *(a_Value2.texture);
+                return *(a_Value1.Texture) < *(a_Value2.Texture);
             } };
             break;
         }
@@ -191,42 +217,47 @@ namespace BadEngine
 
         for(auto renderBatch : m_RenderBatches)
         {
-            renderBatch.texture->bind();
-            glDrawArrays(GL_TRIANGLES, renderBatch.offset, renderBatch.vertexCount);
+            renderBatch.Texture->bind();
+            m_IBO.draw(renderBatch.IndexCount, renderBatch.Offset);
         }
         m_ShaderProgram.disable();
         m_VAO.unbind();
     }
 
-    void SpriteBatch::createRenderBatches()
+    void SpriteBatch::constructVBO() const
     {
-        const auto VerticesPerSprite = 6;
+        const auto VerticesPerSprite = 4;
 
         std::vector<Vertex> vertices;
         vertices.reserve(m_Glyphs.size() * VerticesPerSprite);
 
-        auto currentVertex = 0;
-        auto currentOffset = 0;
         for(decltype(m_Glyphs.size()) i = 0; i < m_Glyphs.size(); ++i)
         {
             auto currentGlyph = m_Glyphs[i];
 
-            if(i == 0 || *(currentGlyph.texture) != *(m_Glyphs[i - 1].texture))
-            {
-                m_RenderBatches.emplace_back(currentGlyph.texture, VerticesPerSprite, currentOffset);
-            }
-            else
-            {
-                m_RenderBatches.back().vertexCount += VerticesPerSprite;
-            }
-            vertices.push_back(currentGlyph.topLeft);
-            vertices.push_back(currentGlyph.bottomLeft);
-            vertices.push_back(currentGlyph.bottomRight);
-            vertices.push_back(currentGlyph.bottomRight);
-            vertices.push_back(currentGlyph.topLeft);
-            vertices.push_back(currentGlyph.topRight);
-            currentOffset += VerticesPerSprite;
+            vertices.push_back(currentGlyph.BottomLeft);
+            vertices.push_back(currentGlyph.BottomRight);
+            vertices.push_back(currentGlyph.TopLeft);
+            vertices.push_back(currentGlyph.TopRight);
         }
         m_VBO.uploadData(vertices);
+    }
+
+    void SpriteBatch::createRenderBatches()
+    {
+        const auto IndicesPerSprite = 6;
+
+        auto currentOffset = 0;
+
+        for(decltype(m_Glyphs.size()) i = 0; i < m_Glyphs.size(); ++i)
+        {
+            if(i == 0 || *(m_Glyphs[i].Texture) != *(m_Glyphs[i - 1].Texture))
+            {
+                m_RenderBatches.emplace_back(m_Glyphs[i].Texture, currentOffset);
+            }
+            
+            m_RenderBatches.back().IndexCount += IndicesPerSprite;
+            currentOffset += IndicesPerSprite;
+        }
     }
 }
