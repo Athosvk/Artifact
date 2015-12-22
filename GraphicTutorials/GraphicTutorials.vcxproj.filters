@@ -21,7 +21,25 @@
     <ClCompile Include="MainGame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TestSprite.cpp">
+    <ClCompile Include="Bullet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player\CharacterController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player\Player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player\PlayerWeapon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -29,8 +47,240 @@
     <ClInclude Include="MainGame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TestSprite.h">
+    <ClInclude Include="Bullet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Player\CharacterController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player\Player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player\PlayerWeapon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Fragment shaders\colorShading.frag" />
+    <None Include="Fragment shaders\radialShading.frag" />
+    <None Include="Vertex shaders\colorShading.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Textures\PNG\AngryCloud.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\Background.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\BrokenLandPiece_Beige.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\BrokenLandPiece_Blue.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\BrokenLandPiece_Gray.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\BrokenLandPiece_Green.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\BrokenLandPiece_Multicolored.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\BrokenLandPiece_Pink.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\Bubble_Big.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\Bubble_Small.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\Bullet.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\CharacterLeft_Jump.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\CharacterLeft_Standing.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\CharacterLeft_Walk1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\CharacterLeft_Walk2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\CharacterRight_Jump.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\CharacterRight_Standing.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\CharacterRight_Walk1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\CharacterRight_Walk2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\CloudWind.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\Coin.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\HalfLandPiece_Left_Beige.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\HalfLandPiece_Left_Blue.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\HalfLandPiece_Left_Gray.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\HalfLandPiece_Left_Green.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\HalfLandPiece_Left_Multicolored.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\HalfLandPiece_Left_Pink.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\HalfLandPiece_Right_Beige.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\HalfLandPiece_Right_Blue.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\HalfLandPiece_Right_Gray.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\HalfLandPiece_Right_Green.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\HalfLandPiece_Right_Multicolored.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\HalfLandPiece_Right_Pink.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\HappyCloud.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\HearthEnemy1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\HearthEnemy2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\JetFire1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\JetFire2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\Jetpack_Big.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\Jetpack_Small.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\LandPiece_DarkBeige.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\LandPiece_DarkBlue.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\LandPiece_DarkGray.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\LandPiece_DarkGreen.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\LandPiece_DarkMulticolored.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\LandPiece_DarkPing.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\LandPiece_LightBeige.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\LandPiece_LightBlue.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\LandPiece_LightGray.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\LandPiece_LightGreen.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\LandPiece_LightMulticolored.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\LandPiece_LightPing.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\Lightning1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\Lightning2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\Mushroom.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\Number_0.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\Number_1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\Number_2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\Number_3.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\Number_4.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\Number_5.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\Number_6.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\Number_7.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\Number_8.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\Number_9.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\Number_Point.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\Pistol.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\Spring.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

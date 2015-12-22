@@ -6,7 +6,8 @@ namespace BadEngine
 {
     Game::Game(int a_ScreenWidth, int a_ScreenHeight, Uint32 a_WindowFlags, std::string a_WindowName)
         : m_Window(a_ScreenWidth, a_ScreenHeight, a_WindowFlags, a_WindowName),
-        m_Camera(m_Window)
+        m_Camera(m_Window),
+        m_Mouse(m_Camera)
     {
     }
 
@@ -46,6 +47,7 @@ namespace BadEngine
     {
         m_Camera.update();
         m_Keyboard.update();
+        m_Mouse.update();
         m_GameTime.update();
     }
 
@@ -78,6 +80,13 @@ namespace BadEngine
             case SDL_KEYUP:
                 m_Keyboard.process(evnt.key);
                 break;
+            case SDL_MOUSEBUTTONUP:
+            case SDL_MOUSEBUTTONDOWN:
+                m_Mouse.process(evnt.button);
+            case SDL_MOUSEMOTION:
+                m_Mouse.process(evnt.motion);
+            case SDL_MOUSEWHEEL:
+                m_Mouse.process(evnt.wheel);
             }
         }
     }

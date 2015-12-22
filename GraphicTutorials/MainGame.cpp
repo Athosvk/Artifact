@@ -1,22 +1,18 @@
 #include <iostream>
-#include <glm/glm.hpp>
-
-#include <BadEngine/ImageLoader.h>
-#include <BadEngine/Color.h>
-#include <BadEngine/GLTexture.h>
-#include <BadEngine/Camera2D.h>
-#include <BadEngine/ResourceManager.h>
 
 #include "MainGame.h"
-#include <BadEngine/MathHelper.h>
 
-MainGame::MainGame() : Game(1024, 768, 0, "GameEngine"),
-    m_SpriteBatch(&m_Camera)
+MainGame::MainGame() : Game(800, 600, 0, "GameEngine"),
+    m_SpriteBatch(&m_Camera),
+    m_Player(m_ResourceManager),
+    m_PlayerWeapon(m_Mouse, m_Player.getTransform(), m_BulletPool, m_ResourceManager.getTexture("Textures/PNG/Pistol.png")),
+    m_BulletPool(Bullet(m_ResourceManager.getTexture("Textures/PNG/Bullet.png"), glm::vec2(0, 0)), 1)
 {
     setBackgroundColor(BadEngine::Color(0, 45, 75, 0));
     printf(" *** OpenGL version: %s *** \n You need at least version %5.2f to run the game. \n", 
            reinterpret_cast<const char*>(glGetString(GL_VERSION)), m_OpenGLVersion);
-    m_Camera.setZoomFactor(1.0f);
+    m_Camera.setZoomFactor(2.0f);
+    m_PlayerWeapon.setParent(&m_Player.getTransform());
 }
 
 MainGame::~MainGame()
@@ -27,48 +23,47 @@ void MainGame::draw()
 {
     Game::draw();
     m_SpriteBatch.begin();
-
-    BadEngine::Rectangle rectangle(glm::vec2(15, 15), 15, 15);
-    BadEngine::Rectangle uvRectangle(glm::vec2(0, 0), 1, 1);
-
-    rectangle.setWidth(100);
-    rectangle.setHeight(100);
-
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE);
-
-    for(auto i = 0; i < 10; i++)
+    for(auto& bullet : m_BulletPool)
     {
-        rectangle.setPosition(rectangle.getPosition() + glm::vec2(0, BadEngine::MathHelper::pingPong(m_Accumulator, 1.0f, 50.0f)));
-        static auto texture = m_ResourceManager.getTexture("Textures/PNG/CharacterRight_Walk1.png");
-
-        m_SpriteBatch.draw(texture, rectangle, uvRectangle, BadEngine::Color::White);
+        if(bullet->isActive())
+        {
+            bullet->draw(m_SpriteBatch);
+        }
     }
+    m_Player.draw(m_SpriteBatch);
+    m_PlayerWeapon.draw(m_SpriteBatch);
     m_SpriteBatch.end();
-    
 }
 
 void MainGame::update()
 {
     Game::update();
+    
+    m_Player.update();
+    m_PlayerWeapon.update(m_GameTime);
+    for(auto& bullet : m_BulletPool)
+    {
+        if(bullet->isActive())
+        {
+            bullet->update(m_GameTime);
+        }
+    }
 
     static auto counter = 0;
     if(counter++ % 100 == 0)
     {
         std::cout << "FPS: " << 1 / m_GameTime.getAverageDeltaTime() << std::endl;
     }
-
-    auto targetPosition = m_Camera.getPosition();
-    auto zoomFactor = m_Camera.getZoomFactor();
-    auto rotation = m_Camera.getRotation();
-
-    m_Camera.setPosition(targetPosition);
-    m_Camera.setZoomFactor(zoomFactor);
-    m_Camera.setRotation(rotation);
 }
-
 
 void MainGame::fixedUpdate()
 {
-    m_Accumulator += 1.5f;
-
+    m_Player.fixedUpdate();
+    for(auto& bullet : m_BulletPool)
+    {
+        if(bullet->isActive())
+        {
+            bullet->fixedUpdate();
+        }
+    }
 }
