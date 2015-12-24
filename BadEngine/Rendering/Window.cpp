@@ -81,7 +81,7 @@ namespace BadEngine
         }
 
         SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-        SDL_GL_SetSwapInterval(0);
+        SDL_GL_SetSwapInterval(1);
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE);
     }

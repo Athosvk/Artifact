@@ -2,7 +2,7 @@
 #include <GL/glew.h>
 #include <vector>
 
-#include "Vertex.h"
+#include "../Rendering/Vertex.h"
 
 namespace BadEngine
 {

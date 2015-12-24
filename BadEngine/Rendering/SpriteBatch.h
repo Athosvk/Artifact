@@ -3,12 +3,12 @@
 #include <memory>
 
 #include "Vertex.h"
-#include "..\GL/GLTexture.h"
-#include "..\Rectangle.h"
-#include "VBO.h"
-#include "..\GL/GLSLProgram.h"
+#include "../GL/GLTexture.h"
+#include "../Rectangle.h"
+#include "../GL/VBO.h"
+#include "../GL/GLSLProgram.h"
 #include "Camera2D.h"
-#include "VAO.h"
+#include "../GL/VAO.h"
 #include "../GL/IBO.h"
 
 namespace BadEngine
