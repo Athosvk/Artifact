@@ -5,6 +5,7 @@
 #include "PicoPNG.h"
 #include "IOManager.h"
 #include "../ErrorHandler.h"
+
 namespace BadEngine
 {
     std::shared_ptr<GLTexture> ImageLoader::loadPNG(const std::string& a_FilePath)

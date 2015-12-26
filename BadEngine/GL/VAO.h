@@ -1,16 +1,18 @@
 #pragma once
 #include <GL/glew.h>
 
-class VAO
+namespace BadEngine
 {
-private:
-    GLuint m_ID = 0;
+    class VAO
+    {
+    private:
+        GLuint m_ID = 0;
 
-public:
-    VAO();
-    ~VAO();
+    public:
+        VAO();
+        ~VAO();
 
-    void bind() const;
-    void unbind() const;
-};
-
+        void bind() const;
+        void unbind() const;
+    };
+}
