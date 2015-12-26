@@ -13,8 +13,11 @@
   <ItemGroup>
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Core\Component.cpp" />
+    <ClCompile Include="Core\Engine.cpp" />
     <ClCompile Include="Core\EntitySystem.cpp" />
     <ClCompile Include="Core\GameObject.cpp" />
+    <ClCompile Include="Core\Message.cpp" />
+    <ClCompile Include="Core\System.cpp" />
     <ClCompile Include="ErrorHandler.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameTime.cpp" />
@@ -41,8 +44,11 @@
   <ItemGroup>
     <ClInclude Include="Color.h" />
     <ClInclude Include="Core\Component.h" />
+    <ClInclude Include="Core\Engine.h" />
     <ClInclude Include="Core\EntitySystem.h" />
     <ClInclude Include="Core\GameObject.h" />
+    <ClInclude Include="Core\Message.h" />
+    <ClInclude Include="Core\System.h" />
     <ClInclude Include="ErrorHandler.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameTime.h" />
