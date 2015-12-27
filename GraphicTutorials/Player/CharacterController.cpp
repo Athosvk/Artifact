@@ -3,7 +3,7 @@
 
 #include "CharacterController.h"
 
-CharacterController::CharacterController(Transform& a_PlayerTransform)
+CharacterController::CharacterController(BadEngine::Transform& a_PlayerTransform)
     : m_PlayerTransform(a_PlayerTransform)
 {
 }

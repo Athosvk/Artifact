@@ -40,6 +40,7 @@
     <ClCompile Include="Rendering\SpriteBatch.cpp" />
     <ClCompile Include="Rendering\Window.cpp" />
     <ClCompile Include="StopWatch.cpp" />
+    <ClCompile Include="Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Color.h" />
@@ -73,6 +74,7 @@
     <ClInclude Include="Rendering\Vertex.h" />
     <ClInclude Include="Rendering\Window.h" />
     <ClInclude Include="StopWatch.h" />
+    <ClInclude Include="Transform.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Performance reports\Memory - 01-11-2015.diagsession" />

@@ -1,6 +1,6 @@
 #include "SpriteRenderer.h"
 
-SpriteRenderer::SpriteRenderer(const Transform& a_Transform, const std::shared_ptr<BadEngine::GLTexture> a_Texture)
+SpriteRenderer::SpriteRenderer(const BadEngine::Transform& a_Transform, const std::shared_ptr<BadEngine::GLTexture> a_Texture)
     : m_Transform(a_Transform),
     Texture(a_Texture),
     Width(a_Texture->getWidth()),

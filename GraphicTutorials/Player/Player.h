@@ -2,7 +2,6 @@
 #include <BadEngine/IO/ResourceManager.h>
 
 #include "CharacterController.h"
-#include "../Transform.h"
 #include "../SpriteRenderer.h"
 
 class Player
@@ -10,7 +9,7 @@ class Player
 private:
     BadEngine::ResourceManager& m_ResourceManager;
     CharacterController m_CharacterController;
-    Transform m_Transform = Transform(glm::vec2(0, 0));
+    BadEngine::Transform m_Transform = BadEngine::Transform(glm::vec2(0, 0));
     SpriteRenderer m_Renderer;
 
 public:
@@ -20,5 +19,5 @@ public:
     void fixedUpdate();
     void update();
     void draw(BadEngine::SpriteBatch& a_SpriteBatch);
-    Transform& getTransform();
+    BadEngine::Transform& getTransform();
 };

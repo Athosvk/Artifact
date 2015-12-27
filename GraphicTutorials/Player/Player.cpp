@@ -25,7 +25,7 @@ void Player::draw(BadEngine::SpriteBatch& a_SpriteBatch)
     m_Renderer.draw(a_SpriteBatch);
 }
 
-Transform& Player::getTransform()
+BadEngine::Transform& Player::getTransform()
 {
     return m_Transform;
 }

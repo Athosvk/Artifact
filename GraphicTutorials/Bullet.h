@@ -1,15 +1,15 @@
 #pragma once
 #include <BadEngine/IO/ResourceManager.h>
 #include <BadEngine/Rendering/SpriteBatch.h>
+#include <BadEngine/Transform.h>
 
 #include "SpriteRenderer.h"
-#include "Transform.h"
 #include "Timer.h"
 
 class Bullet
 {
 private:
-    Transform m_Transform;
+    BadEngine::Transform m_Transform;
     SpriteRenderer m_SpriteRenderer;
     glm::vec2 m_Velocity;
     glm::vec2 m_StartPosition;

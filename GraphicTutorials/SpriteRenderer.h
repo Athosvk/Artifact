@@ -1,13 +1,12 @@
 #pragma once
 #include <BadEngine/Rendering/SpriteBatch.h>
 #include <BadEngine/GL/GLTexture.h>
-
-#include "Transform.h"
+#include <BadEngine/Transform.h>
 
 class SpriteRenderer
 {
 private:
-    const Transform& m_Transform;
+    const BadEngine::Transform& m_Transform;
 
 public:
     const std::shared_ptr<BadEngine::GLTexture> Texture;
@@ -18,7 +17,7 @@ public:
     float Depth = 0.0f;
 
 public:
-    SpriteRenderer(const Transform& a_Transform, const std::shared_ptr<BadEngine::GLTexture> a_Texture);
+    SpriteRenderer(const BadEngine::Transform& a_Transform, const std::shared_ptr<BadEngine::GLTexture> a_Texture);
     ~SpriteRenderer();
 
     void draw(BadEngine::SpriteBatch& a_SpriteBatch) const;

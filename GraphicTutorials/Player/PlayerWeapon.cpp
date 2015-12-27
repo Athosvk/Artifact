@@ -1,6 +1,6 @@
 #include "PlayerWeapon.h"
 
-PlayerWeapon::PlayerWeapon(const BadEngine::Mouse& a_Mouse, const Transform& a_PlayerTransform,
+PlayerWeapon::PlayerWeapon(const BadEngine::Mouse& a_Mouse, const BadEngine::Transform& a_PlayerTransform,
                            Pool<Bullet>& a_BulletPool, std::shared_ptr<BadEngine::GLTexture> a_Texture) :
     m_Mouse(a_Mouse),
     m_PlayerTransform(a_PlayerTransform),
@@ -39,7 +39,7 @@ void PlayerWeapon::fire()
     --m_BulletsLeft;
 }
 
-void PlayerWeapon::setParent(const Transform* a_Parent)
+void PlayerWeapon::setParent(const BadEngine::Transform* a_Parent)
 {
     m_Transform.Parent = a_Parent;
 }

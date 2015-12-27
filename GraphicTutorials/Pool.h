@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <memory>
+#include <iostream>
 
 template <typename T>
 class Pool
@@ -29,6 +30,7 @@ public:
         T* item = nullptr;
         if(!tryFindInactive(item))
         {
+            std::cout << "Creating!\n";
             item = createNew();
         }
         item->activate();
