@@ -4,14 +4,6 @@
 
 namespace BadEngine
 {
-    EntitySystem::EntitySystem()
-    {
-    }
-
-    EntitySystem::~EntitySystem()
-    {
-    }
-
     unsigned EntitySystem::generateNextID()
     {
         return m_LastID++;

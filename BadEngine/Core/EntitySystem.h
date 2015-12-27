@@ -15,9 +15,6 @@ namespace BadEngine
         unsigned m_LastID = 0;
 
     public:
-        EntitySystem();
-        ~EntitySystem();
-
         template<typename T>
         T* addComponent(GameObject& a_GameObject)
         {

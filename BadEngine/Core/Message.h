@@ -15,7 +15,6 @@ namespace BadEngine
         EMessageType m_Type;
 
     public:
-        Message();
         EMessageType getType() const;
     };
 }
