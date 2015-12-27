@@ -44,6 +44,9 @@ namespace BadEngine
             return components;
         }
 
+        GameObject createEntity();
+
+    private:
         unsigned generateNextID();
     };
 }
