@@ -11,6 +11,7 @@ namespace BadEngine
     class EntitySystem
     {
     private:
+        //Unsigned used for game object id
         std::unordered_map<std::type_index, std::unordered_map<unsigned, std::unique_ptr<Component>>> m_Components;
         unsigned m_LastID = 0;
 
