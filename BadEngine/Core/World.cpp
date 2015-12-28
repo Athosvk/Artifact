@@ -24,8 +24,4 @@ namespace BadEngine
             system->sendMessage(a_MessageType);
         }
     }
-
-    void World::run()
-    {
-    }
 }
