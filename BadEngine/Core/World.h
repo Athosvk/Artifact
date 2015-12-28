@@ -9,15 +9,15 @@ namespace BadEngine
     class System;
     class Message;
 
-    class Engine
+    class World
     {
     private:
         std::vector<std::unique_ptr<System>> m_Systems;
         EntitySystem m_EntitySystem;
 
     public:
-        Engine();
-        ~Engine();
+        World();
+        ~World();
     
         void run();
 

@@ -4,20 +4,20 @@
 
 namespace BadEngine
 {
-    Engine::Engine()
+    World::World()
     {
     }
 
-    Engine::~Engine()
+    World::~World()
     {
     }
 
-    void Engine::update()
+    void World::update()
     {
         
     }
 
-    void Engine::broadCast(Message* a_MessageType)
+    void World::broadCast(Message* a_MessageType)
     {
         for(auto& system : m_Systems)
         {
@@ -25,7 +25,7 @@ namespace BadEngine
         }
     }
 
-    void Engine::run()
+    void World::run()
     {
     }
 }
