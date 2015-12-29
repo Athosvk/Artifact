@@ -11,7 +11,7 @@ namespace BadEngine
     {
     public:
         template<typename TMessageType, typename... TArguments>
-        void broadcast(std::vector<std::unique_ptr<System>>& a_Systems, TArguments&&... a_MessageArguments)
+        void broadcast(std::vector<std::unique_ptr<System>>& a_Systems, TArguments&&... a_MessageArguments) const
         {
             std::unique_ptr<TMessageType> newMessage = std::make_unique<TMessageType>(std::forward<TArguments>(a_MessageArguments)...);
             for(auto& system : a_Systems)
