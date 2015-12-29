@@ -11,6 +11,6 @@ namespace BadEngine
         ImageLoader() = delete;
         ~ImageLoader() = delete;
 
-        static std::shared_ptr<GLTexture> loadPNG(const std::string& a_FilePath);
+        static std::unique_ptr<GLTexture> loadPNG(const std::string& a_FilePath);
     };
 }
