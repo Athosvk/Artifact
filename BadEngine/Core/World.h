@@ -22,6 +22,7 @@ namespace BadEngine
         World();
 
         void update();
+        void fixedUpdate();
 
         template<typename T>
         void addSystem()

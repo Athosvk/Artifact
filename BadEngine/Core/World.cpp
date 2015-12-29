@@ -15,4 +15,9 @@ namespace BadEngine
         broadcast<Message>(EMessageType::Update);
         broadcast<Message>(EMessageType::Render);
     }
+
+    void World::fixedUpdate()
+    {
+        broadcast<Message>(EMessageType::FixedUpdate);
+    }
 }
