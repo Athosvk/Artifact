@@ -3,14 +3,6 @@
 
 namespace BadEngine
 {
-    TextureCache::TextureCache()
-    {
-    }
-
-    TextureCache::~TextureCache()
-    {
-    }
-
     GLTexture* TextureCache::getTexture(const std::string& a_FilePath)
     {
         std::map<const std::string, std::unique_ptr<GLTexture>>::const_iterator iterator = m_TextureMap.find(a_FilePath);

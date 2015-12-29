@@ -10,10 +10,8 @@ namespace BadEngine
     {
     private:
         std::map<const std::string, std::unique_ptr<GLTexture>> m_TextureMap;
-    public:
-        TextureCache();
-        ~TextureCache();
 
+    public:
         GLTexture* getTexture(const std::string& a_FilePath);
         void cacheTexture(const std::string& a_FilePath, std::unique_ptr<GLTexture>&& a_Texture);
     };
