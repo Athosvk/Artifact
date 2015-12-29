@@ -1,4 +1,4 @@
-#include "RenderSystem.h"
+#include "SpriteRenderSystem.h"
 #include "SpriteRenderer.h"
 #include "../Core/EntitySystem.h"
 
