@@ -8,9 +8,13 @@ namespace BadEngine
     class ResourceManager
     {
     private:
-        TextureCache m_TextureCache;
+        static TextureCache m_TextureCache;
 
     public:
-        std::shared_ptr<GLTexture> getTexture(const std::string& a_FilePath);
+        ResourceManager() = delete;
+        ~ResourceManager() = delete;
+        ResourceManager(const ResourceManager& a_ResourceManager) = delete;
+
+        static std::shared_ptr<GLTexture> getTexture(const std::string& a_FilePath);
     };
 }

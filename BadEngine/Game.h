@@ -26,7 +26,6 @@ namespace BadEngine
         Keyboard m_Keyboard;
         Camera2D m_Camera;
         Mouse m_Mouse;
-        ResourceManager m_ResourceManager;
         World m_CurrentWorld;
         double m_FixedUpdateInterval = 0.030;
         
