@@ -110,7 +110,7 @@
     <ClCompile Include="Rendering\SpriteRenderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Rendering\RenderSystem.cpp">
+    <ClCompile Include="Rendering\SpriteRenderSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -220,10 +220,10 @@
     <ClInclude Include="Rendering\SpriteRenderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Rendering\RenderSystem.h">
+    <ClInclude Include="Core\MessagingSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Core\MessagingSystem.h">
+    <ClInclude Include="Rendering\SpriteRenderSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
