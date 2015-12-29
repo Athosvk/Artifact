@@ -92,27 +92,27 @@ namespace BadEngine
         m_ShaderProgram.linkShaders();
     }
 
-    void SpriteBatch::draw(GLTexture* a_Texture, const Rectangle& a_DestinationRectangle,
+    void SpriteBatch::draw(const GLTexture* a_Texture, const Rectangle& a_DestinationRectangle,
                            Color a_Color, const Rectangle& a_UVRectangle, float a_Depth)
     {        
         m_Glyphs.push_back(Glyph(a_Texture, a_DestinationRectangle, a_Color, a_UVRectangle, a_Depth));
     }
 
-    void SpriteBatch::draw(GLTexture* a_Texture, glm::vec2 a_Position, Color a_Color,
+    void SpriteBatch::draw(const GLTexture* a_Texture, glm::vec2 a_Position, Color a_Color,
                            const Rectangle& a_UVRectangle, float a_Depth)
     {
         Rectangle destinationRectangle(a_Position, a_Texture->getWidth(), a_Texture->getHeight());
         draw(a_Texture, destinationRectangle, a_Color, a_UVRectangle, a_Depth);
     }
 
-    void SpriteBatch::draw(GLTexture* a_Texture, const Rectangle& a_DestinationRectangle, float a_Rotation,
+    void SpriteBatch::draw(const GLTexture* a_Texture, const Rectangle& a_DestinationRectangle, float a_Rotation,
                            glm::vec2 a_Origin, Color a_Color, const Rectangle& a_UVRectangle, float a_Depth)
     {
         m_Glyphs.push_back(Glyph(a_Texture, a_DestinationRectangle, a_Rotation,
             a_Origin, a_Color, a_UVRectangle, a_Depth));
     }
 
-    void SpriteBatch::draw(GLTexture* a_Texture, glm::vec2 a_Position, float a_Rotation,
+    void SpriteBatch::draw(const GLTexture* a_Texture, glm::vec2 a_Position, float a_Rotation,
                            glm::vec2 a_Origin, Color a_Color, const Rectangle& a_UVRectangle, float a_Depth)
     {
         Rectangle destinationRectangle(a_Position, a_Texture->getWidth(), a_Texture->getHeight());
