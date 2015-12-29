@@ -3,6 +3,7 @@
 #include <vector>
 
 #include "EntitySystem.h"
+#include "MessagingSystem.h"
 
 namespace BadEngine
 {
@@ -14,20 +15,18 @@ namespace BadEngine
     private:
         std::vector<std::unique_ptr<System>> m_Systems;
         EntitySystem m_EntitySystem;
+        MessagingSystem m_MessagingSystem;
 
     public:
-        World();
-        ~World();
-    
         void update();
+
         template<typename T>
         void addSystem()
         {
             m_Systems.push_back(std::make_unique<T>(m_EntitySystem));
         }
 
-    private:
-        void broadCast(Message* a_Message);
+        void broadCast(const Message* a_Message);
     };
 }
 

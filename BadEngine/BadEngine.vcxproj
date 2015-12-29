@@ -49,6 +49,7 @@
   <ItemGroup>
     <ClInclude Include="Color.h" />
     <ClInclude Include="Core\Component.h" />
+    <ClInclude Include="Core\MessagingSystem.h" />
     <ClInclude Include="Core\World.h" />
     <ClInclude Include="Core\EntitySystem.h" />
     <ClInclude Include="Core\GameObject.h" />
