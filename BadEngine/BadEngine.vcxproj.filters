@@ -223,6 +223,9 @@
     <ClInclude Include="Rendering\RenderSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Core\MessagingSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Performance reports\Memory - 01-11-2015.diagsession" />

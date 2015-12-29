@@ -40,9 +40,8 @@ namespace BadEngine
 
     protected:
         Game(int a_ScreenWidth, int a_ScreenHeight, unsigned int a_WindowFlags, std::string a_WindowName);
-        virtual void draw();
-        virtual void update();
-        virtual void fixedUpdate();
+        void update();
+        void fixedUpdate();
 
     private:
         void startGameLoop();

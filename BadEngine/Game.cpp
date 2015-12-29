@@ -20,11 +20,6 @@ namespace BadEngine
         glClearColor(a_Color.r / 255.0f, a_Color.g / 255.0f, a_Color.b / 255.0f, a_Color.a / 255.0f);
     }
 
-    void Game::draw()
-    {
-
-    }
-
     void Game::run()
     {
         startGameLoop();
@@ -34,10 +29,9 @@ namespace BadEngine
     {
         while(m_CurrentGameState == GameState::Play)
         {
-            update();
             m_Window.clear();
+            update();
             processEvents();
-            draw();
             processFixedUpdates();
             m_Window.renderCurrentFrame();
         }
@@ -45,6 +39,7 @@ namespace BadEngine
 
     void Game::update()
     {
+        m_CurrentWorld.update();
         m_Camera.update();
         m_Keyboard.update();
         m_Mouse.update();
@@ -63,7 +58,7 @@ namespace BadEngine
 
     void Game::fixedUpdate()
     {
-        
+        m_CurrentWorld.fixedUpdate();
     }
 
     void Game::processEvents()
