@@ -10,10 +10,10 @@ namespace BadEngine
     class MessagingSystem
     {
     public:
-        template<typename T>
-        void broadcast(T a_Message, std::vector<std::unique_ptr<System>>& a_Systems)
+        template<typename TMessageType, typename... TArguments>
+        void broadcast(std::vector<std::unique_ptr<System>>& a_Systems, TArguments&&... a_MessageArguments)
         {
-            std::unique_ptr<Message> newMessage = std::make_unique<T>(a_Message);
+            std::unique_ptr<TMessageType> newMessage = std::make_unique<TMessageType>(std::forward<TArguments>(a_MessageArguments)...);
             for(auto& system : a_Systems)
             {
                 system->sendMessage(newMessage.get());

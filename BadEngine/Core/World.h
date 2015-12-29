@@ -1,6 +1,7 @@
 #pragma once
 #include <memory>
 #include <vector>
+#include <utility>
 
 #include "EntitySystem.h"
 #include "MessagingSystem.h"
@@ -18,6 +19,8 @@ namespace BadEngine
         MessagingSystem m_MessagingSystem;
 
     public:
+        World();
+
         void update();
 
         template<typename T>
@@ -26,7 +29,11 @@ namespace BadEngine
             m_Systems.push_back(std::make_unique<T>(m_EntitySystem));
         }
 
-        void broadCast(const Message* a_Message);
+        template<typename TMessageType, typename... TArguments>
+        void broadcast(TArguments&&... a_MessageArguments)
+        {
+            m_MessagingSystem.broadcast<TMessageType, TArguments...>(m_Systems, std::forward<TArguments>(a_MessageArguments)...);
+        }
     };
 }
 

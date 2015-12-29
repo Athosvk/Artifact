@@ -1,14 +1,18 @@
 #include "World.h"
 #include "Message.h"
 #include "System.h"
+#include "../Rendering/RenderSystem.h"
 
 namespace BadEngine
 {
-    void World::broadCast(const Message* a_MessageType)
+    World::World()
     {
-        for(auto& system : m_Systems)
-        {
-            system->sendMessage(a_MessageType);
-        }
+        addSystem<SpriteRenderSystem>();
+    }
+
+    void World::update()
+    {
+        broadcast<Message>(EMessageType::Update);
+        broadcast<Message>(EMessageType::Render);
     }
 }
