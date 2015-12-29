@@ -6,6 +6,7 @@
 #include "Rendering/Camera2D.h"
 #include "IO/ResourceManager.h"
 #include "Input/Mouse.h"
+#include "Core/World.h"
 
 namespace BadEngine
 {
@@ -26,6 +27,7 @@ namespace BadEngine
         Camera2D m_Camera;
         Mouse m_Mouse;
         ResourceManager m_ResourceManager;
+        World m_CurrentWorld;
         double m_FixedUpdateInterval = 0.030;
         
     private:

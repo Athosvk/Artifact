@@ -3,10 +3,11 @@
 #include <typeindex>
 #include <memory>
 
+#include "Component.h"
+
 namespace BadEngine
 {
     class GameObject;
-    class Component;
 
     class EntitySystem
     {
@@ -17,7 +18,7 @@ namespace BadEngine
 
     public:
         template<typename T>
-        T* addComponent(GameObject& a_GameObject)
+        T* addComponent(GameObject a_GameObject)
         {
             std::unique_ptr<Component> newComponent = std::make_unique<T>(a_GameObject);
             T* componentHandle = static_cast<T*>(newComponent.get());

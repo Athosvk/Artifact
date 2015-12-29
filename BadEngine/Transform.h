@@ -5,7 +5,7 @@
 
 namespace BadEngine
 {
-    class Transform
+    class Transform : public Component
     {
     public:
         glm::vec2 LocalPosition = glm::vec2(0.0f, 0.0f);
@@ -13,8 +13,7 @@ namespace BadEngine
         const Transform* Parent = nullptr;
 
     public:
-        Transform(glm::vec2 a_Position = glm::vec2(0.0f, 0.0f), float a_Rotation = 0.0f);
-        ~Transform();
+        Transform(GameObject a_GameObject);
 
         void translate(glm::vec2 a_Translation);
         void rotate(float a_Angles);

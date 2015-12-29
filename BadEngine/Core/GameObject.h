@@ -2,29 +2,32 @@
 namespace BadEngine
 {
     class EntitySystem;
-    class Component;
 
     class GameObject
     {
     private:
         unsigned m_ID;
         EntitySystem& m_EntitySystem;
+        bool m_Active;
 
     public:
         GameObject(unsigned a_ID, EntitySystem& a_EntitySystem);
 
         unsigned getID();
+        bool isActive();
+        void activate();
+        void deactivate();
 
         template<typename T>
-        T getComponent()
+        T* getComponent()
         {
-            m_EntitySystem.getComponent<T>(m_ID);
+            return m_EntitySystem.getComponent<T>(m_ID);
         }
 
         template<typename T>
-        T addComponent()
+        T* addComponent()
         {
-            m_EntitySystem.addComponent<T>(*this);
+            return m_EntitySystem.addComponent<T>(*this);
         }
     };
 }

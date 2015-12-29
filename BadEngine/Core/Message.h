@@ -12,7 +12,7 @@ namespace BadEngine
     class Message
     {
     private:
-        EMessageType m_Type;
+        const EMessageType m_Type;
 
     public:
         EMessageType getType() const;

@@ -34,9 +34,9 @@ namespace BadEngine
     {
         while(m_CurrentGameState == GameState::Play)
         {
+            update();
             m_Window.clear();
             processEvents();
-            update();
             draw();
             processFixedUpdates();
             m_Window.renderCurrentFrame();
@@ -63,7 +63,7 @@ namespace BadEngine
 
     void Game::fixedUpdate()
     {
-
+        
     }
 
     void Game::processEvents()

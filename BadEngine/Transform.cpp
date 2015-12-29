@@ -4,13 +4,8 @@
 
 namespace BadEngine
 {
-    Transform::Transform(glm::vec2 a_Position, float a_Rotation)
-        : LocalPosition(a_Position),
-        LocalRotation(a_Rotation)
-    {
-    }
-
-    Transform::~Transform()
+    Transform::Transform(GameObject a_GameObject)
+        : Component(a_GameObject)
     {
     }
 

@@ -14,6 +14,7 @@
     <ProjectGuid>{60AA1847-6EA4-4E4E-9E01-C7C3A935EF56}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>GraphicTutorials</RootNamespace>
+    <ProjectName>GraphicTutorials</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -84,24 +85,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Bullet.cpp" />
-    <ClCompile Include="Player\Player.cpp" />
+    <ClCompile Include="BulletComponent.cpp" />
+    <ClCompile Include="BulletSystem.cpp" />
     <ClCompile Include="Player\CharacterController.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainGame.cpp" />
-    <ClCompile Include="Player\PlayerWeapon.cpp" />
-    <ClCompile Include="SpriteRenderer.cpp" />
-    <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="Player\WeaponComponent.cpp" />
+    <ClCompile Include="Player\WeaponSystem.cpp" />
+    <ClCompile Include="TimerComponent.cpp" />
+    <ClCompile Include="TimerSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Bullet.h" />
-    <ClInclude Include="Player\PlayerWeapon.h" />
-    <ClInclude Include="Player\Player.h" />
+    <ClInclude Include="BulletComponent.h" />
+    <ClInclude Include="BulletSystem.h" />
     <ClInclude Include="Player\CharacterController.h" />
     <ClInclude Include="MainGame.h" />
+    <ClInclude Include="Player\WeaponComponent.h" />
+    <ClInclude Include="Player\WeaponSystem.h" />
     <ClInclude Include="Pool.h" />
-    <ClInclude Include="SpriteRenderer.h" />
-    <ClInclude Include="Timer.h" />
+    <ClInclude Include="TimerComponent.h" />
+    <ClInclude Include="TimerSystem.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Fragment shaders\colorShading.frag" />

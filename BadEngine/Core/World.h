@@ -19,10 +19,14 @@ namespace BadEngine
         World();
         ~World();
     
-        void run();
+        void update();
+        template<typename T>
+        void addSystem()
+        {
+            m_Systems.push_back(std::make_unique<T>(m_EntitySystem));
+        }
 
     private:
-        void update();
         void broadCast(Message* a_Message);
     };
 }

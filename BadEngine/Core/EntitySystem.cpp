@@ -1,6 +1,5 @@
 #include "EntitySystem.h"
 #include "GameObject.h"
-#include "Component.h"
 
 namespace BadEngine
 {
