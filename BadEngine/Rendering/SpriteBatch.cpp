@@ -43,9 +43,8 @@ namespace BadEngine
         //Use rotation matrix instead
     }
 
-    SpriteBatch::SpriteBatch(const Camera2D* a_Camera) :
+    SpriteBatch::SpriteBatch() :
         m_ShaderProgram(GLSLProgram(s_DefaultVertexShader, s_DefaultFragmentShader)),
-        m_Camera(a_Camera),
         m_IBO(EBufferUsage::Dynamic)
     {
         constructVAO();
@@ -63,8 +62,9 @@ namespace BadEngine
         m_Glyphs.clear();
     }
 
-    void SpriteBatch::begin(ESpriteSortMode a_SpriteSortMode)
+    void SpriteBatch::begin(const glm::mat4* a_ViewMatrix, ESpriteSortMode a_SpriteSortMode)
     {
+        m_ViewMatrix = a_ViewMatrix;
         m_SortMode = a_SpriteSortMode;
         auto previousSize = m_Glyphs.size();
         clear();
@@ -203,9 +203,7 @@ namespace BadEngine
         glUniform1i(textureLocation, 0);
 
         auto cameraTransformLocation = m_ShaderProgram.getUniformLocation("cameraTransform");
-        auto cameraTransform = m_Camera->getTransform();
-
-        glUniformMatrix4fv(cameraTransformLocation, 1, GL_FALSE, &cameraTransform[0][0]);
+        glUniformMatrix4fv(cameraTransformLocation, 1, GL_FALSE, &(*m_ViewMatrix)[0][0]);
     }
 
     void SpriteBatch::renderBatches() const
