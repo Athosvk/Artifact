@@ -1,5 +1,6 @@
 #pragma once
 #include <unordered_map>
+#include <map>
 #include <typeindex>
 #include <memory>
 
@@ -13,7 +14,7 @@ namespace BadEngine
     {
     private:
         //Unsigned used for game object id
-        std::unordered_map<std::type_index, std::unordered_map<unsigned, std::unique_ptr<Component>>> m_Components;
+        std::unordered_map<std::type_index, std::map<unsigned, std::unique_ptr<Component>>> m_Components;
         unsigned m_LastID = 0;
 
     public:
@@ -39,6 +40,7 @@ namespace BadEngine
         {
             auto& componentMap = m_Components[typeid(T)];
             std::vector<T*> components;
+            components.reserve(componentMap.size());
             for(auto& keyValue : componentMap)
             {
                 components.push_back(static_cast<T*>(keyValue.second.get()));
