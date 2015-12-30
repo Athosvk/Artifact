@@ -39,7 +39,8 @@
     <ClCompile Include="Physics\RigidBody.cpp" />
     <ClCompile Include="Rectangle.cpp" />
     <ClCompile Include="Rendering\Camera2D.cpp" />
-    <ClCompile Include="Rendering\RenderSystem.cpp" />
+    <ClCompile Include="Rendering\RenderMessage.cpp" />
+    <ClCompile Include="Rendering\SpriteRenderSystem.cpp" />
     <ClCompile Include="Rendering\SpriteRenderer.cpp" />
     <ClCompile Include="Rendering\SpriteBatch.cpp" />
     <ClCompile Include="Rendering\Window.cpp" />
@@ -77,7 +78,8 @@
     <ClInclude Include="Physics\RigidBody.h" />
     <ClInclude Include="Rectangle.h" />
     <ClInclude Include="Rendering\Camera2D.h" />
-    <ClInclude Include="Rendering\RenderSystem.h" />
+    <ClInclude Include="Rendering\RenderMessage.h" />
+    <ClInclude Include="Rendering\SpriteRenderSystem.h" />
     <ClInclude Include="Rendering\SpriteRenderer.h" />
     <ClInclude Include="Rendering\SpriteBatch.h" />
     <ClInclude Include="Rendering\Vertex.h" />

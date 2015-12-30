@@ -8,8 +8,10 @@ namespace BadEngine
 {
     class SpriteRenderer : public Component
     {
-    public:
+    private:
         GLTexture* Texture;
+
+    public:
         float Width;
         float Height;
         BadEngine::Color Color = BadEngine::Color::White;
@@ -18,5 +20,8 @@ namespace BadEngine
 
     public:
         SpriteRenderer(GameObject a_GameObject);
+
+        GLTexture* getTexture();
+        void setTexture(GLTexture* a_Texture);
     };
 }
