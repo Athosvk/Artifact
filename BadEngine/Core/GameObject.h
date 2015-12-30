@@ -2,6 +2,7 @@
 namespace BadEngine
 {
     class EntitySystem;
+    class Transform;
 
     class GameObject
     {
@@ -9,6 +10,7 @@ namespace BadEngine
         unsigned m_ID;
         EntitySystem& m_EntitySystem;
         bool m_Active;
+        Transform* m_Transform;
 
     public:
         GameObject(unsigned a_ID, EntitySystem& a_EntitySystem);
@@ -22,6 +24,12 @@ namespace BadEngine
         T* getComponent()
         {
             return m_EntitySystem.getComponent<T>(m_ID);
+        }
+
+        template<>
+        Transform* getComponent()
+        {
+            return m_Transform;
         }
 
         template<typename T>

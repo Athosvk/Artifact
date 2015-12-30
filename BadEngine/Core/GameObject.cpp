@@ -10,7 +10,7 @@ namespace BadEngine
         m_EntitySystem(a_EntitySystem)
     {
         activate();
-        //addComponent<Transform>();
+        m_Transform = addComponent<Transform>();
     }
 
     unsigned GameObject::getID()
