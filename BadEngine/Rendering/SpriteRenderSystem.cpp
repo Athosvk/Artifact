@@ -1,6 +1,8 @@
 #include "SpriteRenderSystem.h"
 #include "SpriteRenderer.h"
 #include "../Core/EntitySystem.h"
+#include "../Transform.h"
+#include "RenderMessage.h"
 
 namespace BadEngine
 {
@@ -14,19 +16,22 @@ namespace BadEngine
         switch(a_Message->getType())
         {
         case EMessageType::Render: 
+            renderSprites(static_cast<const RenderMessage*>(a_Message)->getViewMatrix());
             break;
         default:
             break;
         }
     }
 
-    void SpriteRenderSystem::renderSprites(EntitySystem& a_EntitySystem)
+    void SpriteRenderSystem::renderSprites(const glm::mat4* a_ViewMatrix)
     {
-        for(auto sprite : a_EntitySystem.getComponentsOfType<SpriteRenderer>())
+        m_SpriteBatch.begin(a_ViewMatrix);
+        for(auto sprite : m_EntitySystem.getComponentsOfType<SpriteRenderer>())
         {
-            //auto transform = *sprite->getComponent<Transform>();
-            //auto destinationRectangle = Rectangle(transform.getPosition(), sprite->Width, sprite->Height);
-            //m_SpriteBatch.draw(sprite->Texture, destinationRectangle, sprite->Color, sprite->UVRectangle, sprite->Depth);
+            auto transform = *sprite->getComponent<Transform>();
+            auto destinationRectangle = Rectangle(transform.getPosition(), sprite->Width, sprite->Height);
+            m_SpriteBatch.draw(sprite->getTexture(), destinationRectangle, sprite->Color, sprite->UVRectangle, sprite->Depth);
         }
+        m_SpriteBatch.end();
     }
 }
