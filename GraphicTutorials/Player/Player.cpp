@@ -1,5 +1,6 @@
 #include <BadEngine/Core/EntitySystem.h>
 #include <BadEngine/IO/ResourceManager.h>
+#include <BadEngine/Physics/MovementComponent.h>
 
 #include "Player.h"
 #include "PlayerInputComponent.h"
@@ -12,9 +13,12 @@ Player::Player(BadEngine::EntitySystem& a_EntitySystem)
 
     auto inputController = m_PlayerEntity.addComponent<PlayerInputComponent>();
 
-    inputController->MoveForwardKey = BadEngine::KeyCode::W;
-    inputController->MoveBackwardKey = BadEngine::KeyCode::S;
+    inputController->MoveUpKey = BadEngine::KeyCode::W;
+    inputController->MoveDownKey = BadEngine::KeyCode::S;
     inputController->MoveLeftKey = BadEngine::KeyCode::A;
     inputController->MoveRightKey = BadEngine::KeyCode::D;
     inputController->FireKey = BadEngine::KeyCode::Space;
+
+    auto movement = m_PlayerEntity.addComponent<BadEngine::MovementComponent>();
+    movement->Speed = 3.5f;
 }

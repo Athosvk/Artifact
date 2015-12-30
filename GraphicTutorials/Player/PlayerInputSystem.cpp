@@ -2,7 +2,7 @@
 
 #include <BadEngine/Input/Keyboard.h>
 #include <BadEngine/Core/EntitySystem.h>
-#include <BadEngine/Transform.h>
+#include <BadEngine/Physics/MovementComponent.h>
 
 #include "PlayerInputSystem.h"
 #include "PlayerInputComponent.h"
@@ -34,32 +34,21 @@ void PlayerInputSystem::handleInput()
 void PlayerInputSystem::updatePlayerMovement(PlayerInputComponent* a_Player)
 {
     glm::vec2 displacement = glm::vec2(0, 0);
-    if(BadEngine::Keyboard::isDown(a_Player->MoveForwardKey))
+    if(BadEngine::Keyboard::isDown(a_Player->MoveUpKey))
     {
         displacement.y++;
     }
-    if(BadEngine::Keyboard::isDown(a_Player->MoveBackwardKey))
+    if(BadEngine::Keyboard::isDown(a_Player->MoveDownKey))
     {
-        displacement.y++;
+        displacement.y--;
     }
     if(BadEngine::Keyboard::isDown(a_Player->MoveLeftKey))
     {
-        displacement.x++;
+        displacement.x--;
     }
     if(BadEngine::Keyboard::isDown(a_Player->MoveRightKey))
     {
         displacement.x++;
     }
-    if(displacement != glm::vec2(0.0f, 0.0f))
-    {
-        a_Player->getComponent<BadEngine::Transform>()->translate(glm::normalize(displacement) * 1.5f);
-    }
-}
-
-void PlayerInputSystem::updateFireState(PlayerInputComponent* a_Player)
-{
-    if(BadEngine::Keyboard::isDown(a_Player->FireKey))
-    {
-
-    }
+    a_Player->getComponent<BadEngine::MovementComponent>()->Direction = displacement;
 }

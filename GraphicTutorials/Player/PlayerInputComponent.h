@@ -5,11 +5,11 @@
 class PlayerInputComponent : public BadEngine::Component
 {
 public:
-    BadEngine::KeyCode FireKey;
-    BadEngine::KeyCode MoveForwardKey;
-    BadEngine::KeyCode MoveBackwardKey;
+    BadEngine::KeyCode MoveUpKey;
+    BadEngine::KeyCode MoveDownKey;
     BadEngine::KeyCode MoveLeftKey;
     BadEngine::KeyCode MoveRightKey;
+    BadEngine::KeyCode FireKey;
 
 public:
     PlayerInputComponent(BadEngine::GameObject a_GameObject);

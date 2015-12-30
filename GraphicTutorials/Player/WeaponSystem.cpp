@@ -1,5 +1,4 @@
 #include <BadEngine/Core/EntitySystem.h>
-#include <BadEngine/Input/Mouse.h>
 
 #include "WeaponSystem.h"
 #include "../BulletComponent.h"
@@ -13,7 +12,6 @@ void WeaponSystem::sendMessage(const BadEngine::Message* a_Message)
 {
     switch(a_Message->getType())
     {
-    case BadEngine::EMessageType::Update:
     default:
         break;
     }
@@ -21,10 +19,7 @@ void WeaponSystem::sendMessage(const BadEngine::Message* a_Message)
 
 void WeaponSystem::update()
 {
-    if(BadEngine::Mouse::isButtonDown(BadEngine::MouseButton::Left))
-    {
-        fire();
-    }
+
 }
 
 void WeaponSystem::fire()

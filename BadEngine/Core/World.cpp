@@ -2,6 +2,7 @@
 #include "Message.h"
 #include "../Rendering/SpriteRenderSystem.h"
 #include "../Rendering/RenderMessage.h"
+#include "../Physics/MovementSystem.h"
 
 namespace BadEngine
 {
@@ -24,6 +25,7 @@ namespace BadEngine
     void World::addDefaultSystems()
     {
         addSystem<SpriteRenderSystem>();
+        addSystem<MovementSystem>();
     }
 
     void World::update()
