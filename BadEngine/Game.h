@@ -26,21 +26,30 @@ namespace BadEngine
         Keyboard m_Keyboard;
         Camera2D m_Camera;
         Mouse m_Mouse;
-        World m_CurrentWorld;
+        std::unique_ptr<World> m_CurrentWorld;
         double m_FixedUpdateInterval = 0.030;
         
     private:
         double m_FixedUpdateTimer = 0.0;
 
+    protected:
+        Game(int a_ScreenWidth, int a_ScreenHeight, unsigned int a_WindowFlags, std::string a_WindowName);
+
     public:
-        virtual ~Game();
+        virtual ~Game() = default;
+
         void run();
         void setBackgroundColor(Color a_Color) const;
 
     protected:
-        Game(int a_ScreenWidth, int a_ScreenHeight, unsigned int a_WindowFlags, std::string a_WindowName);
         void update();
         void fixedUpdate();
+
+        template<typename T>
+        void loadWorld()
+        {
+            m_CurrentWorld = std::make_unique<T>(m_Window);
+        }
 
     private:
         void startGameLoop();

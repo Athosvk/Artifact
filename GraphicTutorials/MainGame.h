@@ -8,5 +8,5 @@ class MainGame : public BadEngine::Game
 {
 public:
     MainGame();
-    virtual ~MainGame() override;
+    virtual ~MainGame() override = default;
 };

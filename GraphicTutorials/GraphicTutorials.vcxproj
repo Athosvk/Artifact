@@ -87,9 +87,12 @@
   <ItemGroup>
     <ClCompile Include="BulletComponent.cpp" />
     <ClCompile Include="BulletSystem.cpp" />
-    <ClCompile Include="Player\CharacterController.cpp" />
+    <ClCompile Include="MainWorld.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainGame.cpp" />
+    <ClCompile Include="Player\Player.cpp" />
+    <ClCompile Include="Player\PlayerInputComponent.cpp" />
+    <ClCompile Include="Player\PlayerInputSystem.cpp" />
     <ClCompile Include="Player\WeaponComponent.cpp" />
     <ClCompile Include="Player\WeaponSystem.cpp" />
     <ClCompile Include="TimerComponent.cpp" />
@@ -98,8 +101,11 @@
   <ItemGroup>
     <ClInclude Include="BulletComponent.h" />
     <ClInclude Include="BulletSystem.h" />
-    <ClInclude Include="Player\CharacterController.h" />
+    <ClInclude Include="MainWorld.h" />
     <ClInclude Include="MainGame.h" />
+    <ClInclude Include="Player\Player.h" />
+    <ClInclude Include="Player\PlayerInputComponent.h" />
+    <ClInclude Include="Player\PlayerInputSystem.h" />
     <ClInclude Include="Player\WeaponComponent.h" />
     <ClInclude Include="Player\WeaponSystem.h" />
     <ClInclude Include="Pool.h" />

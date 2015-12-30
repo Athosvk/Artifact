@@ -10,14 +10,19 @@ namespace BadEngine
         constructMatrix();
     }
 
-    Camera2D::~Camera2D()
-    {
-        
-    }
-
     glm::vec2 Camera2D::getPosition() const
     {
         return m_Position;
+    }
+
+    void* Camera2D::operator new(std::size_t a_Size)
+    {
+        return _aligned_malloc(a_Size, 16);
+    }
+
+    void Camera2D::operator delete(void* a_Pointer)
+    {
+        _aligned_free(a_Pointer);
     }
 
     float Camera2D::getZoomFactor() const

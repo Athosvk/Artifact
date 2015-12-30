@@ -19,10 +19,11 @@ namespace BadEngine
 
     public:
         Camera2D(const Window& a_Window);
-        ~Camera2D();
 
-        Camera2D& operator=(const Camera2D& a_Other) = delete;
+        void* operator new(std::size_t a_Size);
 
+        void operator delete(void* a_Pointer);
+        
         glm::vec2 getPosition() const;
         float getZoomFactor() const;
         float getRotation() const;

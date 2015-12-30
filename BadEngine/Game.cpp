@@ -7,12 +7,7 @@ namespace BadEngine
     Game::Game(int a_ScreenWidth, int a_ScreenHeight, Uint32 a_WindowFlags, std::string a_WindowName)
         : m_Window(a_ScreenWidth, a_ScreenHeight, a_WindowFlags, a_WindowName),
         m_Camera(m_Window),
-        m_Mouse(m_Camera),
-        m_CurrentWorld(m_Window)
-    {
-    }
-
-    Game::~Game()
+        m_Mouse(m_Camera)
     {
     }
 
@@ -40,7 +35,7 @@ namespace BadEngine
 
     void Game::update()
     {
-        m_CurrentWorld.update();
+        m_CurrentWorld->update();
         m_Camera.update();
         m_Keyboard.update();
         m_Mouse.update();
@@ -59,7 +54,7 @@ namespace BadEngine
 
     void Game::fixedUpdate()
     {
-        m_CurrentWorld.fixedUpdate();
+        m_CurrentWorld->fixedUpdate();
     }
 
     void Game::processEvents()

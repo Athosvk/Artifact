@@ -5,6 +5,7 @@
 
 #include "EntitySystem.h"
 #include "MessagingSystem.h"
+#include "../Rendering/Camera2D.h"
 
 namespace BadEngine
 {
@@ -13,28 +14,39 @@ namespace BadEngine
 
     class World
     {
-    private:
-        std::vector<std::unique_ptr<System>> m_Systems;
+    protected:
         EntitySystem m_EntitySystem;
         MessagingSystem m_MessagingSystem;
 
+    private:
+        std::vector<std::unique_ptr<System>> m_Systems;
+        Camera2D m_Camera;
+
     public:
-        World();
+        World(const Window& a_Window);
+
+        void* operator new(std::size_t a_Size);
+
+        void operator delete(void* a_Pointer);
 
         void update();
         void fixedUpdate();
-
-        template<typename T>
-        void addSystem()
-        {
-            m_Systems.push_back(std::make_unique<T>(m_EntitySystem));
-        }
 
         template<typename TMessageType, typename... TArguments>
         void broadcast(TArguments&&... a_MessageArguments)
         {
             m_MessagingSystem.broadcast<TMessageType, TArguments...>(m_Systems, std::forward<TArguments>(a_MessageArguments)...);
         }
+
+    protected:
+        template<typename T>
+        void addSystem()
+        {
+            m_Systems.push_back(std::make_unique<T>(m_EntitySystem));
+        }
+
+    private:
+        void addDefaultSystems();
     };
 }
 

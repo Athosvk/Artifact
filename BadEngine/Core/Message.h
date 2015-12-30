@@ -6,7 +6,8 @@ namespace BadEngine
         Update,
         Render,
         LateUpdate,
-        FixedUpdate
+        FixedUpdate,
+        HandleInput
     };
 
     class Message
