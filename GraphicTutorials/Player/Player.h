@@ -6,7 +6,6 @@ class Player
 {
 private:
     BadEngine::GameObject m_PlayerEntity;
-    BadEngine::SpriteRenderer* m_Renderer;
 
 public:
     Player(BadEngine::EntitySystem& a_EntitySystem);

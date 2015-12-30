@@ -13,5 +13,6 @@ public:
 private:
     void handleInput();
     void updatePlayerMovement(PlayerInputComponent* a_Player);
+    void updateFireState(PlayerInputComponent* a_Player);
 };
 

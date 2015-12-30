@@ -28,6 +28,7 @@ void PlayerInputSystem::handleInput()
     for(auto player : m_EntitySystem.getComponentsOfType<PlayerInputComponent>())
     {
         updatePlayerMovement(player);
+        updateFireState(player);
     }
 }
 
@@ -51,4 +52,12 @@ void PlayerInputSystem::updatePlayerMovement(PlayerInputComponent* a_Player)
         displacement.x++;
     }
     a_Player->getComponent<BadEngine::MovementComponent>()->Direction = displacement;
+}
+
+void PlayerInputSystem::updateFireState(PlayerInputComponent* a_Player)
+{
+    if(BadEngine::Keyboard::isDown(a_Player->FireKey))
+    {
+        
+    }
 }
