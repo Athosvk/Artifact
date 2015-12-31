@@ -48,7 +48,11 @@ namespace BadEngine
             return components;
         }
 
-        GameObject createEntity();
+        template<typename T = GameObject>
+        T createEntity()
+        {
+            return T(generateNextID(), *(this));
+        }
 
     private:
         unsigned generateNextID();
