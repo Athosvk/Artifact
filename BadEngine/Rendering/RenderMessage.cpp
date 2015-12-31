@@ -2,9 +2,8 @@
 
 namespace BadEngine
 {
-    RenderMessage::RenderMessage(const glm::mat4* a_ViewMatrix)
-        : Message(EMessageType::Render),
-        m_ViewMatrix(a_ViewMatrix)
+    RenderMessage::RenderMessage(const glm::mat4* a_ViewMatrix) 
+        : m_ViewMatrix(a_ViewMatrix)
     {
     }
 

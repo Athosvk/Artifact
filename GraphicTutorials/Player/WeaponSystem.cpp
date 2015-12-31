@@ -3,18 +3,9 @@
 #include "WeaponSystem.h"
 #include "../BulletComponent.h"
 
-WeaponSystem::WeaponSystem(BadEngine::EntitySystem& a_EntitySystem)
-    : System(a_EntitySystem)
+WeaponSystem::WeaponSystem(BadEngine::EntitySystem& a_EntitySystem, BadEngine::MessagingSystem& a_MessagingSystem)
+    : System(a_EntitySystem, a_MessagingSystem)
 {
-}
-
-void WeaponSystem::sendMessage(const BadEngine::Message* a_Message)
-{
-   /* switch(a_Message->getType())
-    {
-    default:
-        break;
-    }*/
 }
 
 void WeaponSystem::update()

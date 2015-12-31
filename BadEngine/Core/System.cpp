@@ -3,8 +3,9 @@
 
 namespace BadEngine
 {
-    System::System(EntitySystem& a_EntitySystem)
-        : m_EntitySystem(a_EntitySystem)
+    System::System(EntitySystem& a_EntitySystem, MessagingSystem& a_MessagingSystem)
+        : m_EntitySystem(a_EntitySystem),
+        m_MessagingSystem(a_MessagingSystem)
     {
     }
 }

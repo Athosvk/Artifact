@@ -6,9 +6,9 @@ class PlayerInputComponent;
 class PlayerInputSystem : public BadEngine::System
 {
 public:
-    PlayerInputSystem(BadEngine::EntitySystem& a_EntitySystem);
+    PlayerInputSystem(BadEngine::EntitySystem& a_EntitySystem, BadEngine::MessagingSystem& a_MessagingSystem);
 
-    virtual void sendMessage(const BadEngine::Message* a_Message) override;
+    virtual void registerListeners() override;
 
 private:
     void handleInput();

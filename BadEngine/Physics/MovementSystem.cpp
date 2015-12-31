@@ -6,20 +6,9 @@
 
 namespace BadEngine
 {
-    MovementSystem::MovementSystem(BadEngine::EntitySystem& a_EntitySystem)
-        : System(a_EntitySystem)
+    MovementSystem::MovementSystem(BadEngine::EntitySystem& a_EntitySystem, BadEngine::MessagingSystem& a_MessagingSystem)
+        : System(a_EntitySystem, a_MessagingSystem)
     {
-    }
-
-    void MovementSystem::sendMessage(const BadEngine::Message* a_Message)
-    {
-        switch(a_Message->getType())
-        {
-        case BadEngine::EMessageType::FixedUpdate:
-            updatePositions();
-        default:
-            break;
-        }
     }
 
     void MovementSystem::updatePositions()

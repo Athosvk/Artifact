@@ -42,7 +42,7 @@ namespace BadEngine
         template<typename T>
         void addSystem()
         {
-            m_Systems.push_back(std::make_unique<T>(m_EntitySystem));
+            m_Systems.push_back(std::make_unique<T>(m_EntitySystem, m_MessagingSystem));
         }
 
     private:

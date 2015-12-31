@@ -6,10 +6,9 @@ class BulletComponent;
 class WeaponSystem : BadEngine::System
 {
 public:
-    WeaponSystem(BadEngine::EntitySystem& a_EntitySystem);
+    WeaponSystem(BadEngine::EntitySystem& a_EntitySystem, BadEngine::MessagingSystem& a_MessagingSystem);
 
-    virtual void sendMessage(const BadEngine::Message* a_Message) override;
-
+    virtual void registerListeners() override;
 private:
     void update();
     void fire();

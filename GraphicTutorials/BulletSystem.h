@@ -8,8 +8,7 @@ class BulletSystem : public BadEngine::System
 public:
     BulletSystem(BadEngine::EntitySystem& a_EntitySystem);
 
-public:
-    virtual void sendMessage(const BadEngine::Message* a_Message) override;
+    virtual void registerListeners() override;
 
 private:
     void update();

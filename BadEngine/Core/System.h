@@ -2,6 +2,7 @@
 #include <vector>
 
 #include "Message.h"
+#include "MessagingSystem.h"
 
 namespace BadEngine
 {
@@ -11,10 +12,11 @@ namespace BadEngine
     {
     protected:
         EntitySystem& m_EntitySystem;
+        MessagingSystem& m_MessagingSystem;
 
     public:
-        System(EntitySystem& a_EntitySystem);
+        System(EntitySystem& a_EntitySystem, MessagingSystem& a_MessagingSystem);
 
-        virtual void sendMessage(const Message* a_Message) = 0;
+        virtual void registerListeners() = 0;
     };
 }

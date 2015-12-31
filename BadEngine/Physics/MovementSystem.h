@@ -7,9 +7,9 @@ namespace BadEngine
     class MovementSystem : public BadEngine::System
     {
     public:
-        MovementSystem(BadEngine::EntitySystem& a_EntitySystem);
+        MovementSystem(BadEngine::EntitySystem& a_EntitySystem, BadEngine::MessagingSystem& a_MessagingSystem);
 
-        virtual void sendMessage(const BadEngine::Message* a_Message) override;
+        virtual void registerListeners() override;
 
     private:
         void updatePositions();

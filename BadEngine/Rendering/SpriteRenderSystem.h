@@ -10,9 +10,9 @@ namespace BadEngine
         SpriteBatch m_SpriteBatch;
 
     public:
-        SpriteRenderSystem(EntitySystem& a_EntitySystem);
+        SpriteRenderSystem(EntitySystem& a_EntitySystem, MessagingSystem& a_MessagingSystem);
 
-        virtual void sendMessage(const Message* a_Message) override;
+        virtual void registerListeners() override;
 
     private:
         void renderSprites(const glm::mat4* a_ViewMatrix);

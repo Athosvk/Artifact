@@ -7,20 +7,9 @@
 #include "PlayerInputSystem.h"
 #include "PlayerInputComponent.h"
 
-PlayerInputSystem::PlayerInputSystem(BadEngine::EntitySystem& a_EntitySystem)
-    : System(a_EntitySystem)
+PlayerInputSystem::PlayerInputSystem(BadEngine::EntitySystem& a_EntitySystem, BadEngine::MessagingSystem& a_MessagingSystem)
+    : System(a_EntitySystem, a_MessagingSystem)
 {
-}
-
-void PlayerInputSystem::sendMessage(const BadEngine::Message* a_Message)
-{
-    switch(a_Message->getType())
-    {
-    case BadEngine::EMessageType::HandleInput:
-        handleInput();
-    default:
-        break;
-    }
 }
 
 void PlayerInputSystem::handleInput()

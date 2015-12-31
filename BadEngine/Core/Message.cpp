@@ -2,13 +2,13 @@
 
 namespace BadEngine
 {
-    Message::Message(EMessageType a_MessageType)
-        : m_Type(a_MessageType)
+    UpdateMessage::UpdateMessage(const GameTime& a_GameTime)
+        : m_GameTime(a_GameTime)
     {
     }
 
-    EMessageType Message::getType() const
+    const GameTime& UpdateMessage::getGameTime()
     {
-        return m_Type;
+        return m_GameTime;
     }
 }

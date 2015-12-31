@@ -6,21 +6,13 @@
 
 namespace BadEngine
 {
-    SpriteRenderSystem::SpriteRenderSystem(EntitySystem& a_EntitySystem)
-        : System(a_EntitySystem)
+    SpriteRenderSystem::SpriteRenderSystem(EntitySystem& a_EntitySystem, MessagingSystem& a_MessagingSystem)
+        : System(a_EntitySystem, a_MessagingSystem)
     {
     }
 
-    void SpriteRenderSystem::sendMessage(const Message* a_Message)
+    void SpriteRenderSystem::registerListeners()
     {
-        switch(a_Message->getType())
-        {
-        case EMessageType::Render: 
-            renderSprites(static_cast<const RenderMessage*>(a_Message)->getViewMatrix());
-            break;
-        default:
-            break;
-        }
     }
 
     void SpriteRenderSystem::renderSprites(const glm::mat4* a_ViewMatrix)
