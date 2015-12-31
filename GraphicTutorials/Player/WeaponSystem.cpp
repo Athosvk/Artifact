@@ -10,11 +10,11 @@ WeaponSystem::WeaponSystem(BadEngine::EntitySystem& a_EntitySystem)
 
 void WeaponSystem::sendMessage(const BadEngine::Message* a_Message)
 {
-    switch(a_Message->getType())
+   /* switch(a_Message->getType())
     {
     default:
         break;
-    }
+    }*/
 }
 
 void WeaponSystem::update()
