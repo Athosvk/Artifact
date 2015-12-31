@@ -51,6 +51,9 @@
     <ClCompile Include="Player\Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Enemy\Enemy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainGame.h">
@@ -87,6 +90,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Player\Player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy\Enemy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -298,6 +304,135 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Textures\PNG\Spring.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-attack_0.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-attack_1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-attack_2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-attack_3.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-attack_4.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-attack_5.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-attack_6.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-attack_7.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-attack_8.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-idle_0.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-idle_1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-idle_2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-idle_3.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-idle_4.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-idle_5.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-idle_6.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-idle_7.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-idle_8.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-idle_9.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-idle_10.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-idle_11.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-idle_12.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-idle_13.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-idle_14.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-idle_15.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-idle_16.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-move_0.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-move_1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-move_2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-move_3.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-move_4.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-move_5.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-move_6.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-move_7.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-move_8.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-move_9.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-move_10.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-move_11.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-move_12.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-move_13.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-move_14.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-move_15.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-move_16.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

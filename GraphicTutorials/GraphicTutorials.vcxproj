@@ -87,6 +87,7 @@
   <ItemGroup>
     <ClCompile Include="BulletComponent.cpp" />
     <ClCompile Include="BulletSystem.cpp" />
+    <ClCompile Include="Enemy\Enemy.cpp" />
     <ClCompile Include="MainWorld.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainGame.cpp" />
@@ -101,6 +102,7 @@
   <ItemGroup>
     <ClInclude Include="BulletComponent.h" />
     <ClInclude Include="BulletSystem.h" />
+    <ClInclude Include="Enemy\Enemy.h" />
     <ClInclude Include="MainWorld.h" />
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="Player\Player.h" />
@@ -186,6 +188,49 @@
     <Image Include="Textures\PNG\Number_Point.png" />
     <Image Include="Textures\PNG\Pistol.png" />
     <Image Include="Textures\PNG\Spring.png" />
+    <Image Include="Textures\Zombie textures\skeleton-attack_0.png" />
+    <Image Include="Textures\Zombie textures\skeleton-attack_1.png" />
+    <Image Include="Textures\Zombie textures\skeleton-attack_2.png" />
+    <Image Include="Textures\Zombie textures\skeleton-attack_3.png" />
+    <Image Include="Textures\Zombie textures\skeleton-attack_4.png" />
+    <Image Include="Textures\Zombie textures\skeleton-attack_5.png" />
+    <Image Include="Textures\Zombie textures\skeleton-attack_6.png" />
+    <Image Include="Textures\Zombie textures\skeleton-attack_7.png" />
+    <Image Include="Textures\Zombie textures\skeleton-attack_8.png" />
+    <Image Include="Textures\Zombie textures\skeleton-idle_0.png" />
+    <Image Include="Textures\Zombie textures\skeleton-idle_1.png" />
+    <Image Include="Textures\Zombie textures\skeleton-idle_10.png" />
+    <Image Include="Textures\Zombie textures\skeleton-idle_11.png" />
+    <Image Include="Textures\Zombie textures\skeleton-idle_12.png" />
+    <Image Include="Textures\Zombie textures\skeleton-idle_13.png" />
+    <Image Include="Textures\Zombie textures\skeleton-idle_14.png" />
+    <Image Include="Textures\Zombie textures\skeleton-idle_15.png" />
+    <Image Include="Textures\Zombie textures\skeleton-idle_16.png" />
+    <Image Include="Textures\Zombie textures\skeleton-idle_2.png" />
+    <Image Include="Textures\Zombie textures\skeleton-idle_3.png" />
+    <Image Include="Textures\Zombie textures\skeleton-idle_4.png" />
+    <Image Include="Textures\Zombie textures\skeleton-idle_5.png" />
+    <Image Include="Textures\Zombie textures\skeleton-idle_6.png" />
+    <Image Include="Textures\Zombie textures\skeleton-idle_7.png" />
+    <Image Include="Textures\Zombie textures\skeleton-idle_8.png" />
+    <Image Include="Textures\Zombie textures\skeleton-idle_9.png" />
+    <Image Include="Textures\Zombie textures\skeleton-move_0.png" />
+    <Image Include="Textures\Zombie textures\skeleton-move_1.png" />
+    <Image Include="Textures\Zombie textures\skeleton-move_10.png" />
+    <Image Include="Textures\Zombie textures\skeleton-move_11.png" />
+    <Image Include="Textures\Zombie textures\skeleton-move_12.png" />
+    <Image Include="Textures\Zombie textures\skeleton-move_13.png" />
+    <Image Include="Textures\Zombie textures\skeleton-move_14.png" />
+    <Image Include="Textures\Zombie textures\skeleton-move_15.png" />
+    <Image Include="Textures\Zombie textures\skeleton-move_16.png" />
+    <Image Include="Textures\Zombie textures\skeleton-move_2.png" />
+    <Image Include="Textures\Zombie textures\skeleton-move_3.png" />
+    <Image Include="Textures\Zombie textures\skeleton-move_4.png" />
+    <Image Include="Textures\Zombie textures\skeleton-move_5.png" />
+    <Image Include="Textures\Zombie textures\skeleton-move_6.png" />
+    <Image Include="Textures\Zombie textures\skeleton-move_7.png" />
+    <Image Include="Textures\Zombie textures\skeleton-move_8.png" />
+    <Image Include="Textures\Zombie textures\skeleton-move_9.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
