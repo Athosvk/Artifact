@@ -1,5 +1,6 @@
 #include "../Core/EntitySystem.h"
 #include "../Transform.h"
+#include "../Core/World.h"
 
 #include "MovementSystem.h"
 #include "MovementComponent.h"
@@ -13,7 +14,10 @@ namespace BadEngine
 
     void MovementSystem::registerListeners()
     {
-        
+        m_MessagingSystem.registerListener<FixedUpdateMessage>([=](const Message* a_Message)
+        {
+            updatePositions();
+        });
     }
 
     void MovementSystem::updatePositions()
