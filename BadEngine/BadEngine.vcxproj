@@ -13,10 +13,10 @@
   <ItemGroup>
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Core\Component.cpp" />
+    <ClCompile Include="Core\Message.cpp" />
     <ClCompile Include="Core\World.cpp" />
     <ClCompile Include="Core\EntitySystem.cpp" />
     <ClCompile Include="Core\GameObject.cpp" />
-    <ClCompile Include="Core\Message.cpp" />
     <ClCompile Include="Core\System.cpp" />
     <ClCompile Include="ErrorHandler.cpp" />
     <ClCompile Include="Game.cpp" />
