@@ -7,6 +7,7 @@
 #include "MessagingSystem.h"
 #include "../Rendering/Camera2D.h"
 #include "System.h"
+#include "../GameTime.h"
 
 namespace BadEngine
 {
@@ -14,20 +15,21 @@ namespace BadEngine
     class Message;
     class GameTime;
     
-    class UpdateMessage : Message
+    class UpdateMessage : public Message
     {
         const GameTime& m_GameTime;
-
+        
+    public:
         UpdateMessage(const GameTime& a_GameTime);
 
         const GameTime& getGameTime();
     };
 
-    class FixedUpdatemessage : Message
+    class FixedUpdateMessage : public Message
     {
     };
 
-    class HandleInputMessage : Message
+    class HandleInputMessage : public Message
     {
     };
 
@@ -40,6 +42,7 @@ namespace BadEngine
     private:
         std::vector<std::unique_ptr<System>> m_Systems;
         Camera2D m_Camera;
+        GameTime m_GameTime;
 
     public:
         World(const Window& a_Window);
