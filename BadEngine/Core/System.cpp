@@ -7,6 +7,5 @@ namespace BadEngine
         : m_EntitySystem(a_EntitySystem),
         m_MessagingSystem(a_MessagingSystem)
     {
-        registerListeners();
     }
 }

@@ -43,7 +43,9 @@ namespace BadEngine
         template<typename T>
         void addSystem()
         {
-            m_Systems.push_back(std::make_unique<T>(m_EntitySystem, m_MessagingSystem));
+            auto newSystem = std::make_unique<T>(m_EntitySystem, m_MessagingSystem);
+            newSystem->registerListeners();
+            m_Systems.emplace_back(std::move(newSystem));
         }
 
     private:

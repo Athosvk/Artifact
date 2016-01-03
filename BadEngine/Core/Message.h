@@ -3,6 +3,10 @@
 
 namespace BadEngine
 {
+    class Message
+    {
+    };
+
     class UpdateMessage : Message
     {
         const GameTime& m_GameTime;
@@ -17,10 +21,6 @@ namespace BadEngine
     };
 
     class HandleInputMessage : Message
-    {
-    };
-
-    class Message
     {
     };
 }
