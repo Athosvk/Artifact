@@ -19,7 +19,7 @@ Player::Player(unsigned a_ID, BadEngine::EntitySystem& a_EntitySystem)
     inputController->MoveLeftKey = BadEngine::KeyCode::A;
     inputController->MoveRightKey = BadEngine::KeyCode::D;
     inputController->FireKey = BadEngine::KeyCode::Space;
-    inputController->Weapon = addComponent<WeaponComponent>();;
+    inputController->Weapon = addComponent<WeaponComponent>();
     
     auto movement = addComponent<BadEngine::MovementComponent>();
     movement->Speed = 3.5f;
