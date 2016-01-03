@@ -4,10 +4,10 @@
 #include "Player/WeaponSystem.h"
 
 MainWorld::MainWorld(const BadEngine::Window& a_Window)
-    : World(a_Window),
-    m_Player(m_EntitySystem)
+    : World(a_Window)
 {
     addSystem<PlayerInputSystem>();
     addSystem<WeaponSystem>();
     m_EntitySystem.createEntity<Enemy>();
+    m_EntitySystem.createEntity<Player>();
 }

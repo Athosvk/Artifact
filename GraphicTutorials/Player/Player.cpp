@@ -6,21 +6,21 @@
 #include "PlayerInputComponent.h"
 #include "WeaponComponent.h"
 
-Player::Player(BadEngine::EntitySystem& a_EntitySystem)
-    : m_PlayerEntity(a_EntitySystem.createEntity())
+Player::Player(unsigned a_ID, BadEngine::EntitySystem& a_EntitySystem)
+    : GameObject(a_ID, a_EntitySystem)
 {
-    auto renderer = m_PlayerEntity.addComponent<BadEngine::SpriteRenderer>();
+    auto renderer = addComponent<BadEngine::SpriteRenderer>();
     renderer->setTexture(BadEngine::ResourceManager::getTexture("Textures/PNG/CharacterLeft_Standing.png"));
 
-    auto inputController = m_PlayerEntity.addComponent<PlayerInputComponent>();
+    auto inputController = addComponent<PlayerInputComponent>();
 
     inputController->MoveUpKey = BadEngine::KeyCode::W;
     inputController->MoveDownKey = BadEngine::KeyCode::S;
     inputController->MoveLeftKey = BadEngine::KeyCode::A;
     inputController->MoveRightKey = BadEngine::KeyCode::D;
     inputController->FireKey = BadEngine::KeyCode::Space;
-    inputController->Weapon = m_PlayerEntity.addComponent<WeaponComponent>();;
+    inputController->Weapon = addComponent<WeaponComponent>();;
     
-    auto movement = m_PlayerEntity.addComponent<BadEngine::MovementComponent>();
+    auto movement = addComponent<BadEngine::MovementComponent>();
     movement->Speed = 3.5f;
 }

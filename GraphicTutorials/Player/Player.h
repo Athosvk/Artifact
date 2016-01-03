@@ -2,12 +2,9 @@
 #include <BadEngine/Core/GameObject.h>
 #include <BadEngine/Rendering/SpriteRenderer.h>
 
-class Player
+class Player : BadEngine::GameObject
 {
-private:
-    BadEngine::GameObject m_PlayerEntity;
-
 public:
-    Player(BadEngine::EntitySystem& a_EntitySystem);
+    Player(unsigned a_ID, BadEngine::EntitySystem& a_EntitySystem);
 };
 

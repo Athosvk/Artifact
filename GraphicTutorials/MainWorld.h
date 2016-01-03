@@ -5,9 +5,6 @@
 
 class MainWorld : public BadEngine::World
 {
-private:
-    Player m_Player;
-
 public:
     MainWorld(const BadEngine::Window& a_Window);
 };
