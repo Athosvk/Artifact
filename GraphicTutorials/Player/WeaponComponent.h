@@ -5,9 +5,9 @@
 class WeaponComponent : public BadEngine::Component
 {
 public:
-    int m_ClipSize;
-    int m_BulletsLeft;
-    BadEngine::Transform* m_MuzzleTransform;
+    int ClipSize;
+    int BulletsLeft;
+    BadEngine::Transform* MuzzleTransform;
 
 public:
     WeaponComponent(BadEngine::GameObject a_GameObject);
