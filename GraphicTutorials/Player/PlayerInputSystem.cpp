@@ -3,6 +3,7 @@
 #include <BadEngine/Input/Keyboard.h>
 #include <BadEngine/Core/EntitySystem.h>
 #include <BadEngine/Physics/MovementComponent.h>
+#include <BadEngine/Core/World.h>
 
 #include "PlayerInputSystem.h"
 #include "PlayerInputComponent.h"
@@ -14,7 +15,10 @@ PlayerInputSystem::PlayerInputSystem(BadEngine::EntitySystem& a_EntitySystem, Ba
 
 void PlayerInputSystem::registerListeners()
 {
-
+    m_MessagingSystem.registerListener<BadEngine::HandleInputMessage>([=](const BadEngine::Message* a_Message)
+    {
+        handleInput();
+    });
 }
 
 void PlayerInputSystem::handleInput()
