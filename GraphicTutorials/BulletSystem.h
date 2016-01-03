@@ -6,7 +6,7 @@
 class BulletSystem : public BadEngine::System
 {
 public:
-    BulletSystem(BadEngine::EntitySystem& a_EntitySystem);
+    BulletSystem(BadEngine::EntitySystem& a_EntitySystem, BadEngine::MessagingSystem a_MessagingSystem);
 
     virtual void registerListeners() override;
 

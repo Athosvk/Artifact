@@ -3,9 +3,14 @@
 #include "TimerSystem.h" 
 #include "TimerComponent.h"
 
-TimerSystem::TimerSystem(BadEngine::EntitySystem& a_EntitySystem)
-    : System(a_EntitySystem)
+TimerSystem::TimerSystem(BadEngine::EntitySystem& a_EntitySystem, BadEngine::MessagingSystem a_MessagingSystem)
+    : System(a_EntitySystem, a_MessagingSystem)
 {
+}
+
+void TimerSystem::registerListeners()
+{
+
 }
 
 void TimerSystem::update()

@@ -6,7 +6,7 @@ class TimerComponent;
 class TimerSystem : public BadEngine::System
 {
 public:
-    TimerSystem(BadEngine::EntitySystem& a_EntitySystem);
+    TimerSystem(BadEngine::EntitySystem& a_EntitySystem, BadEngine::MessagingSystem a_MessagingSystem);
 
     virtual void registerListeners() override;
 private:

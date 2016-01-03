@@ -4,6 +4,8 @@
 
 namespace BadEngine
 {
+    class RenderMessage;
+
     class SpriteRenderSystem : public System
     {
     private:
@@ -15,6 +17,6 @@ namespace BadEngine
         virtual void registerListeners() override;
 
     private:
-        void renderSprites(const glm::mat4* a_ViewMatrix);
+        void renderSprites(const RenderMessage* a_RenderMessage);
     };
 }

@@ -6,6 +6,7 @@
 #include "EntitySystem.h"
 #include "MessagingSystem.h"
 #include "../Rendering/Camera2D.h"
+#include "System.h"
 
 namespace BadEngine
 {
@@ -35,7 +36,7 @@ namespace BadEngine
         template<typename TMessageType, typename... TArguments>
         void broadcast(TArguments&&... a_MessageArguments)
         {
-            m_MessagingSystem.broadcast<TMessageType, TArguments...>(m_Systems, std::forward<TArguments>(a_MessageArguments)...);
+            m_MessagingSystem.broadcast<TMessageType, TArguments...>(std::forward<TArguments>(a_MessageArguments)...);
         }
 
     protected:

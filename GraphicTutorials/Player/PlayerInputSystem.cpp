@@ -12,6 +12,11 @@ PlayerInputSystem::PlayerInputSystem(BadEngine::EntitySystem& a_EntitySystem, Ba
 {
 }
 
+void PlayerInputSystem::registerListeners()
+{
+
+}
+
 void PlayerInputSystem::handleInput()
 {
     for(auto player : m_EntitySystem.getComponentsOfType<PlayerInputComponent>())

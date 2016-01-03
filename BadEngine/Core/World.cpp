@@ -30,13 +30,10 @@ namespace BadEngine
 
     void World::update()
     {
-        broadcast<Message>();
-        broadcast<Message>();
         broadcast<RenderMessage>(&m_Camera.getTransform());
     }
 
     void World::fixedUpdate()
     {
-        broadcast<Message>();
     }
 }

@@ -13,11 +13,15 @@ namespace BadEngine
 
     void SpriteRenderSystem::registerListeners()
     {
+        m_MessagingSystem.registerListener<RenderMessage>([=](const Message* a_RenderMessage)
+        {
+            renderSprites(static_cast<const RenderMessage*>(a_RenderMessage));
+        });
     }
 
-    void SpriteRenderSystem::renderSprites(const glm::mat4* a_ViewMatrix)
+    void SpriteRenderSystem::renderSprites(const RenderMessage* a_Message)
     {
-        m_SpriteBatch.begin(a_ViewMatrix);
+        m_SpriteBatch.begin(a_Message->getViewMatrix());
         for(auto sprite : m_EntitySystem.getComponentsOfType<SpriteRenderer>())
         {
             auto transform = *sprite->getComponent<Transform>();

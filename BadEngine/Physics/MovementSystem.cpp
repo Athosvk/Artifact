@@ -11,6 +11,11 @@ namespace BadEngine
     {
     }
 
+    void MovementSystem::registerListeners()
+    {
+        
+    }
+
     void MovementSystem::updatePositions()
     {
         for(auto movement : m_EntitySystem.getComponentsOfType<MovementComponent>())

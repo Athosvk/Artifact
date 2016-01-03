@@ -8,6 +8,11 @@ WeaponSystem::WeaponSystem(BadEngine::EntitySystem& a_EntitySystem, BadEngine::M
 {
 }
 
+void WeaponSystem::registerListeners()
+{
+
+}
+
 void WeaponSystem::update()
 {
 
