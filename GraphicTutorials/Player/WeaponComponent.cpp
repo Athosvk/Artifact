@@ -7,5 +7,5 @@ WeaponComponent::WeaponComponent(BadEngine::GameObject a_GameObject)
 
 void WeaponComponent::reload()
 {
-    m_BulletsLeft = m_ClipSize;
+    BulletsLeft = ClipSize;
 }
