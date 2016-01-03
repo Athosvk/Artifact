@@ -4,10 +4,12 @@
 #include <functional>
 #include <typeindex>
 
-#include "Message.h"
-
 namespace BadEngine
 {
+    class Message
+    {
+    };
+
     class MessagingSystem
     {
     private:

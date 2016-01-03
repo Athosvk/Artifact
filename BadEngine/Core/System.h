@@ -1,7 +1,6 @@
 #pragma once
 #include <vector>
 
-#include "Message.h"
 #include "MessagingSystem.h"
 
 namespace BadEngine

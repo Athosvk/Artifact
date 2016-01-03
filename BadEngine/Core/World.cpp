@@ -1,11 +1,21 @@
 #include "World.h"
-#include "Message.h"
 #include "../Rendering/SpriteRenderSystem.h"
 #include "../Rendering/RenderMessage.h"
 #include "../Physics/MovementSystem.h"
+#include "../GameTime.h"
 
 namespace BadEngine
 {
+    UpdateMessage::UpdateMessage(const GameTime& a_GameTime)
+        : m_GameTime(a_GameTime)
+    {
+    }
+
+    const GameTime& UpdateMessage::getGameTime()
+    {
+        return m_GameTime;
+    }
+
     World::World(const Window& a_Window)
         : m_Camera(a_Window)
     {
