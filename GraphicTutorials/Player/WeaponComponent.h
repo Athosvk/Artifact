@@ -2,7 +2,7 @@
 #include <BadEngine/Core/Component.h>
 #include <BadEngine/Transform.h>
 
-class WeaponComponent : BadEngine::Component
+class WeaponComponent : public BadEngine::Component
 {
 public:
     int m_ClipSize;

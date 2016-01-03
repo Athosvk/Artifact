@@ -7,6 +7,7 @@
 
 #include "PlayerInputSystem.h"
 #include "PlayerInputComponent.h"
+#include "WeaponSystem.h"
 
 PlayerInputSystem::PlayerInputSystem(BadEngine::EntitySystem& a_EntitySystem, BadEngine::MessagingSystem& a_MessagingSystem)
     : System(a_EntitySystem, a_MessagingSystem)
@@ -56,6 +57,6 @@ void PlayerInputSystem::updateFireState(PlayerInputComponent* a_Player)
 {
     if(BadEngine::Keyboard::isDown(a_Player->FireKey))
     {
-        
+        m_MessagingSystem.broadcast<FireWeaponMessage>(a_Player->Weapon);
     }
 }

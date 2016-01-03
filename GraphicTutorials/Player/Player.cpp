@@ -4,6 +4,7 @@
 
 #include "Player.h"
 #include "PlayerInputComponent.h"
+#include "WeaponComponent.h"
 
 Player::Player(BadEngine::EntitySystem& a_EntitySystem)
     : m_PlayerEntity(a_EntitySystem.createEntity())
@@ -18,7 +19,8 @@ Player::Player(BadEngine::EntitySystem& a_EntitySystem)
     inputController->MoveLeftKey = BadEngine::KeyCode::A;
     inputController->MoveRightKey = BadEngine::KeyCode::D;
     inputController->FireKey = BadEngine::KeyCode::Space;
-
+    inputController->Weapon = m_PlayerEntity.addComponent<WeaponComponent>();;
+    
     auto movement = m_PlayerEntity.addComponent<BadEngine::MovementComponent>();
     movement->Speed = 3.5f;
 }
