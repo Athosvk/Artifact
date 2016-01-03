@@ -41,6 +41,7 @@ namespace BadEngine
 
     void World::update()
     {
+        broadcast<HandleInputMessage>();
         broadcast<RenderMessage>(&m_Camera.getTransform());
         broadcast<UpdateMessage>(m_GameTime);
         m_GameTime.update();
