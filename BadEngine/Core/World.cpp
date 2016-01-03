@@ -48,5 +48,6 @@ namespace BadEngine
 
     void World::fixedUpdate()
     {
+        broadcast<FixedUpdateMessage>();
     }
 }
