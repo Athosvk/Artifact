@@ -41,4 +41,14 @@ namespace BadEngine
         }
         return wrappedValue;
     }
+
+    glm::vec2 MathHelper::directionFromAngle(float a_Degrees)
+    {
+        return glm::vec2(glm::cos(glm::radians(a_Degrees)), glm::sin(glm::radians(a_Degrees)));
+    }
+
+    float MathHelper::directionToAngle(glm::vec2 a_NormalizedDirection)
+    {
+        return glm::degrees(glm::atan(a_NormalizedDirection.y, a_NormalizedDirection.x));
+    }
 }
