@@ -1,9 +1,11 @@
+#include <glm/gtx/vector_angle.hpp>
+
 #include "../Core/EntitySystem.h"
 #include "../Transform.h"
 #include "../Core/World.h"
-
 #include "MovementSystem.h"
 #include "MovementComponent.h"
+#include "../MathHelper.h"
 
 namespace BadEngine
 {
@@ -27,7 +29,8 @@ namespace BadEngine
             auto transform = movement->getComponent<Transform>();
             if(movement->Direction != glm::vec2(0, 0))
             {
-                transform->translate(glm::normalize(movement->Speed * movement->Direction));
+                transform->translate(glm::normalize(movement->Direction) * movement->Speed);
+                transform->LocalRotation = MathHelper::directionToAngle(movement->Direction);
             }
         }
     }

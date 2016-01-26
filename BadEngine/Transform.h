@@ -21,5 +21,6 @@ namespace BadEngine
         void setPosition(glm::vec2 a_Position);
         glm::vec2 getPosition() const;
         glm::vec2 getForward() const;
+        float getRotation() const;
     };
 }

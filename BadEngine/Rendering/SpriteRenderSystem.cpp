@@ -24,9 +24,10 @@ namespace BadEngine
         m_SpriteBatch.begin(a_Message->getViewMatrix());
         for(auto sprite : m_EntitySystem.getComponentsOfType<SpriteRenderer>())
         {
-            auto transform = *sprite->getComponent<Transform>();
-            auto destinationRectangle = Rectangle(transform.getPosition(), sprite->Width, sprite->Height);
-            m_SpriteBatch.draw(sprite->getTexture(), destinationRectangle, sprite->Color, sprite->UVRectangle, sprite->Depth);
+            auto transform = sprite->getComponent<Transform>();
+            auto destinationRectangle = Rectangle(transform->getPosition(), sprite->Width, sprite->Height);
+            m_SpriteBatch.draw(sprite->getTexture(), destinationRectangle, transform->getRotation(), destinationRectangle.getPosition(), 
+                               sprite->Color, sprite->UVRectangle, sprite->Depth);
         }
         m_SpriteBatch.end();
     }

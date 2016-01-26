@@ -22,8 +22,7 @@ public:
 
     virtual void registerListeners() override;
 private:
-    void update();
-    void fire(const FireWeaponMessage* a_Weapon);
-    void startReload(BulletComponent* a_BulletComponent);
+    void tryFire(const FireWeaponMessage* a_FireMessage);
+    void fire(WeaponComponent* a_Weapon);
 };
 

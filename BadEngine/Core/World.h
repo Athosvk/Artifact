@@ -22,7 +22,7 @@ namespace BadEngine
     public:
         UpdateMessage(const GameTime& a_GameTime);
 
-        const GameTime& getGameTime();
+        const GameTime& getGameTime() const;
     };
 
     class FixedUpdateMessage : public Message

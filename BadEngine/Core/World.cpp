@@ -1,9 +1,8 @@
-#include <iostream>
-
 #include "World.h"
 #include "../Rendering/SpriteRenderSystem.h"
 #include "../Rendering/RenderMessage.h"
 #include "../Physics/MovementSystem.h"
+#include "../StopWatch.h"
 
 namespace BadEngine
 {
@@ -12,7 +11,7 @@ namespace BadEngine
     {
     }
 
-    const GameTime& UpdateMessage::getGameTime()
+    const GameTime& UpdateMessage::getGameTime() const
     {
         return m_GameTime;
     }
@@ -42,8 +41,8 @@ namespace BadEngine
     void World::update()
     {
         broadcast<HandleInputMessage>();
-        broadcast<RenderMessage>(&m_Camera.getTransform());
         broadcast<UpdateMessage>(m_GameTime);
+        broadcast<RenderMessage>(&m_Camera.getTransform());
         m_GameTime.update();
     }
 

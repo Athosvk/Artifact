@@ -1,4 +1,5 @@
 #include "SpriteRenderer.h"
+#include "../Transform.h"
 
 namespace BadEngine
 {
@@ -7,7 +8,7 @@ namespace BadEngine
     {
     }
 
-    GLTexture* SpriteRenderer::getTexture()
+    GLTexture* SpriteRenderer::getTexture() const
     {
         return Texture;
     }

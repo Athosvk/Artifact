@@ -21,7 +21,7 @@ namespace BadEngine
     public:
         SpriteRenderer(GameObject a_GameObject);
 
-        GLTexture* getTexture();
+        GLTexture* getTexture() const;
         void setTexture(GLTexture* a_Texture);
     };
 }

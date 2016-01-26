@@ -2,16 +2,15 @@
 #include <BadEngine/Core/Component.h>
 #include <BadEngine/Transform.h>
 
+#include "../TimerComponent.h"
+
 class WeaponComponent : public BadEngine::Component
 {
 public:
-    int ClipSize;
-    int BulletsLeft;
     BadEngine::Transform* MuzzleTransform;
+    TimerComponent* FireDelayTimer;
 
 public:
     WeaponComponent(BadEngine::GameObject a_GameObject);
-
-    void reload();
 };
 

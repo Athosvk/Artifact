@@ -47,4 +47,14 @@ namespace BadEngine
         }
         return position;
     }
+
+    float Transform::getRotation() const
+    {
+        float rotation = LocalRotation;
+        if(Parent)
+        {
+            rotation += Parent->getRotation();
+        }
+        return rotation;
+    }
 }
