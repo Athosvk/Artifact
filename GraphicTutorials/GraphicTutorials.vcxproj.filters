@@ -21,16 +21,10 @@
     <ClCompile Include="MainGame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BulletComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="TimerComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TimerSystem.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BulletSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Player\WeaponComponent.cpp">
@@ -54,6 +48,9 @@
     <ClCompile Include="Enemy\Enemy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainGame.h">
@@ -62,16 +59,10 @@
     <ClInclude Include="Pool.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BulletComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="TimerComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TimerSystem.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BulletSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Player\WeaponSystem.h">
@@ -93,6 +84,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Enemy\Enemy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -433,6 +427,66 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Textures\Zombie textures\skeleton-move_16.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_0.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_3.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_4.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_5.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_6.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_7.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_8.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_9.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_10.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_11.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_12.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_13.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_14.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_15.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_16.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_17.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_18.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_19.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

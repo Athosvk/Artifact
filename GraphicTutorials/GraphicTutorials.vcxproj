@@ -85,8 +85,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BulletComponent.cpp" />
-    <ClCompile Include="BulletSystem.cpp" />
+    <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Enemy\Enemy.cpp" />
     <ClCompile Include="MainWorld.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -100,8 +99,7 @@
     <ClCompile Include="TimerSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BulletComponent.h" />
-    <ClInclude Include="BulletSystem.h" />
+    <ClInclude Include="Bullet.h" />
     <ClInclude Include="Enemy\Enemy.h" />
     <ClInclude Include="MainWorld.h" />
     <ClInclude Include="MainGame.h" />
@@ -188,6 +186,26 @@
     <Image Include="Textures\PNG\Number_Point.png" />
     <Image Include="Textures\PNG\Pistol.png" />
     <Image Include="Textures\PNG\Spring.png" />
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_0.png" />
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_1.png" />
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_10.png" />
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_11.png" />
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_12.png" />
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_13.png" />
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_14.png" />
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_15.png" />
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_16.png" />
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_17.png" />
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_18.png" />
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_19.png" />
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_2.png" />
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_3.png" />
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_4.png" />
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_5.png" />
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_6.png" />
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_7.png" />
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_8.png" />
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_9.png" />
     <Image Include="Textures\Zombie textures\skeleton-attack_0.png" />
     <Image Include="Textures\Zombie textures\skeleton-attack_1.png" />
     <Image Include="Textures\Zombie textures\skeleton-attack_2.png" />
