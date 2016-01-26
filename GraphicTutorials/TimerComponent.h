@@ -5,17 +5,19 @@
 
 enum class ETimerState
 {
-    Disabled, Started, Done
+    Disabled, Running, Done
 };
 
-class TimerComponent : BadEngine::Component
+class TimerComponent : public BadEngine::Component
 {
 public:
     ETimerState TimerState = ETimerState::Done;
-    float TimePassed = 0.0f;
-    float Duration = 0.0f;
+    double TimePassed = 0.0;
+    double Duration = 0.0;
 
 public:
     TimerComponent(BadEngine::GameObject a_GameObject);
+
+    void start();
 };
 
