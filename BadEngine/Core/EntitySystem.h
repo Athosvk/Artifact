@@ -22,7 +22,7 @@ namespace BadEngine
         {
         }
 
-        T* getAddedComponent()
+        T* getAddedComponent() const
         {
             return m_AddedComponent;
         }
