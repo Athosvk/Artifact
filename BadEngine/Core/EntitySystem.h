@@ -5,25 +5,47 @@
 #include <memory>
 
 #include "Component.h"
+#include "MessagingSystem.h"
 
 namespace BadEngine
 {
     class GameObject;
+
+    template<typename T>
+    class ComponentAddedMessage : public Message
+    {
+        T* m_AddedComponent;
+
+    public:
+        ComponentAddedMessage(T* a_AddedComponent)
+            : m_AddedComponent(a_AddedComponent)
+        {
+        }
+
+        T* getAddedComponent()
+        {
+            return m_AddedComponent;
+        }
+    };
 
     class EntitySystem
     {
     private:
         //Unsigned used for game object id
         std::unordered_map<std::type_index, std::map<unsigned, std::unique_ptr<Component>>> m_Components;
+        MessagingSystem& m_MessagingSystem;
         unsigned m_LastID = 0;
 
     public:
+        EntitySystem(MessagingSystem& a_MessagingSystem);
+
         template<typename T>
         T* addComponent(GameObject a_GameObject)
         {
             std::unique_ptr<Component> newComponent = std::make_unique<T>(a_GameObject);
             T* componentHandle = static_cast<T*>(newComponent.get());
             m_Components[std::type_index(typeid(T))].emplace(a_GameObject.getID(), std::move(newComponent));
+            m_MessagingSystem.broadcast<ComponentAddedMessage<T>>(componentHandle);
             return componentHandle;
         }
 

@@ -17,7 +17,8 @@ namespace BadEngine
     }
 
     World::World(const Window& a_Window)
-        : m_Camera(a_Window)
+        : m_Camera(a_Window),
+        m_EntitySystem(m_MessagingSystem)
     {
         addDefaultSystems();
     }
