@@ -6,4 +6,9 @@ namespace BadEngine
         : m_GameObject(a_GameObject)
     {
     }
+
+    GameObject Component::getGameObject()
+    {
+        return m_GameObject;
+    }
 }

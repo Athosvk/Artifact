@@ -23,5 +23,7 @@ namespace BadEngine
         {
             return m_GameObject.addComponent<T>();
         }
+
+        GameObject getGameObject();
     };
 }
