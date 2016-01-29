@@ -24,7 +24,7 @@ namespace BadEngine
         ~BoxCollider2D();
 
         glm::vec2 getDimensions() const;
-        void setDimensions(glm::vec2 a_Dimensinos);
+        void setDimensions(glm::vec2 a_Dimensions);
 
     private:
         void createFixture();
