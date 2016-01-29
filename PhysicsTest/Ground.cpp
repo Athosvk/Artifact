@@ -2,7 +2,6 @@
 #include <BadEngine/Rendering/SpriteRenderer.h>
 #include <BadEngine/IO/ResourceManager.h>
 #include <BadEngine/Core/EntitySystem.h>
-#include <BadEngine/Transform.h>
 
 #include "Ground.h"
 
@@ -10,10 +9,10 @@ Ground::Ground(unsigned a_ID, BadEngine::EntitySystem& a_EntitySystem)
     : GameObject(a_ID, a_EntitySystem)
 {
     auto renderer = addComponent<BadEngine::SpriteRenderer>();
-    renderer->Width = 100;
-    renderer->Height = 20;
-    renderer->setTexture(BadEngine::ResourceManager::getTexture("Textures/AngryCloud.png"));
+    renderer->Width = 2.0f;
+    renderer->Height = 0.5f;
+    renderer->setTexture(BadEngine::ResourceManager::getTexture("Textures/Box.png"));
 
     auto collider = addComponent<BadEngine::BoxCollider2D>();
-    collider->setDimensions(glm::vec2(100, 20));
+    collider->setDimensions(glm::vec2(2.0f, 0.5f));
 }

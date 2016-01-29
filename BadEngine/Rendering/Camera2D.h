@@ -8,6 +8,8 @@ namespace BadEngine
     class Camera2D
     {
     private:
+        static const int PixelsPerMeter;
+
         glm::vec2 m_Position = glm::vec2(0.0f, 0.0f);
         float m_ZoomFactor = 1.0f;
         float m_Rotation = 0.0f;

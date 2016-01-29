@@ -53,6 +53,6 @@ void PlayerInputSystem::updatePlayerMovement(PlayerInputComponent* a_Player)
     auto rigidBody = a_Player->getComponent<BadEngine::RigidBody>();
     if(displacement != glm::vec2(0, 0))
     {
-        rigidBody->setVelocity(glm::vec2((glm::normalize(displacement) * 25.0f).x, rigidBody->getVelocity().y));
+        rigidBody->setVelocity(glm::vec2((glm::normalize(displacement) * 0.75f).x, rigidBody->getVelocity().y));
     }
 }

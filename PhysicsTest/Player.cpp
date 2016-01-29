@@ -12,7 +12,7 @@ Player::Player(unsigned a_ID, BadEngine::EntitySystem& a_EntitySystem)
     : GameObject(a_ID, a_EntitySystem)
 {
     auto renderer = addComponent<BadEngine::SpriteRenderer>();
-    renderer->setTexture(BadEngine::ResourceManager::getTexture("Textures/AngryCloud.png"));
+    renderer->setTexture(BadEngine::ResourceManager::getTexture("Textures/Box.png"));
 
     auto inputController = addComponent<PlayerInputComponent>();
 
@@ -21,16 +21,13 @@ Player::Player(unsigned a_ID, BadEngine::EntitySystem& a_EntitySystem)
     inputController->MoveLeftKey = BadEngine::KeyCode::A;
     inputController->MoveRightKey = BadEngine::KeyCode::D;
 
-    renderer->Width = 100;
-    renderer->Height = 100;
-    
-    auto movement = addComponent<BadEngine::MovementComponent>();
-    movement->Speed = 3.5f;
+    renderer->Width = 1;
+    renderer->Height = 1;
 
     auto transform = getComponent<BadEngine::Transform>();
-    transform->setPosition(glm::vec2(transform->getPosition().x, transform->getPosition().y + 75));
+    transform->setPosition(glm::vec2(transform->getPosition().x, transform->getPosition().y + 0.75));
 
     auto collider = addComponent<BadEngine::BoxCollider2D>();
-    collider->setDimensions(glm::vec2(95, 95));
+    collider->setDimensions(glm::vec2(1, 1));
     auto rigidbody = addComponent<BadEngine::RigidBody>();
 }

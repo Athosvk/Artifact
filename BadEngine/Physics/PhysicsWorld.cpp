@@ -6,7 +6,7 @@
 
 namespace BadEngine
 {
-    const b2Vec2 PhysicsWorld::Gravity = b2Vec2(0, -90.81f);
+    const b2Vec2 PhysicsWorld::Gravity = b2Vec2(0, -9.81f);
     const int PhysicsWorld::VelocityIterations = 6;
     const int PhysicsWorld::PositionIterations = 2;
 

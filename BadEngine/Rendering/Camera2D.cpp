@@ -4,6 +4,8 @@
 
 namespace BadEngine
 {
+    const int Camera2D::PixelsPerMeter = 100;
+
     Camera2D::Camera2D(const Window& a_Window)
         : m_Window(a_Window)
     {
@@ -109,7 +111,7 @@ namespace BadEngine
 
     void Camera2D::applyScale()
     {
-        auto scale = glm::vec3(m_ZoomFactor, m_ZoomFactor, 1);
+        auto scale = glm::vec3(m_ZoomFactor, m_ZoomFactor, 1) * static_cast<float>(PixelsPerMeter);
         m_Transform = glm::scale(m_Transform, scale);
     }
 

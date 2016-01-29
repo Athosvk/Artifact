@@ -22,8 +22,8 @@ Player::Player(unsigned a_ID, BadEngine::EntitySystem& a_EntitySystem)
     inputController->FireKey = BadEngine::KeyCode::Space;
     inputController->Weapon = weapon;
 
-    renderer->Width = 100;
-    renderer->Height = 100;
+    renderer->Width = 1;
+    renderer->Height = 1;
 
     weapon->FireDelayTimer->Duration = 0.5f;
     weapon->MuzzleTransform = getComponent<BadEngine::Transform>();
