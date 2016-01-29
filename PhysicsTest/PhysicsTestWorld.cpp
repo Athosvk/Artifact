@@ -13,9 +13,9 @@ PhysicsTestWorld::PhysicsTestWorld(BadEngine::Window& a_Window, BadEngine::GameT
     addSystem<PlayerInputSystem>();
     m_EntitySystem.createEntity<Player>();
     m_EntitySystem.createEntity<Ground>();
-    for(int i = 0; i < 10; i++)
+    for(int i = 0; i < 1; i++)
     {
         Box box = m_EntitySystem.createEntity<Box>();
-        box.getComponent<BadEngine::Transform>()->setPosition(glm::vec2(i * 100 - 500, -100));
+        box.getComponent<BadEngine::Transform>()->setPosition(glm::vec2(i * 100 - 150, -100));
     }
 }

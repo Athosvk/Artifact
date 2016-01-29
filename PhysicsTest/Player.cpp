@@ -31,8 +31,6 @@ Player::Player(unsigned a_ID, BadEngine::EntitySystem& a_EntitySystem)
     transform->setPosition(glm::vec2(transform->getPosition().x, transform->getPosition().y + 75));
 
     auto collider = addComponent<BadEngine::BoxCollider2D>();
-    collider->setWidth(95);
-    collider->setHeight(95);
-
+    collider->setDimensions(glm::vec2(95, 95));
     auto rigidbody = addComponent<BadEngine::RigidBody>();
 }

@@ -14,32 +14,40 @@ namespace BadEngine
 
     BoxCollider2D::~BoxCollider2D()
     {
+        m_Body->DestroyFixture(m_Fixture);
     }
 
-    float BoxCollider2D::getWidth() const
+    glm::vec2 BoxCollider2D::getDimensions() const
     {
-        return m_Width;
+        return m_Dimensions;
     }
 
-    float BoxCollider2D::getHeight() const
+    void BoxCollider2D::setDimensions(glm::vec2 a_Dimensions)
     {
-        return m_Height;
+        m_ShapeDirty = true;
+        m_Dimensions = a_Dimensions;
     }
 
-    void BoxCollider2D::setWidth(float a_Width)
+    void BoxCollider2D::createFixture()
     {
-        m_Width = a_Width;
-        m_Shape.SetAsBox(m_Width / 2, m_Height / 2);
+        m_Shape.SetAsBox(m_Dimensions.x / 2, m_Dimensions.y / 2);
+        if(m_Fixture != nullptr)
+        {
+            m_Body->DestroyFixture(m_Fixture);
+        }
+        //Density is only for standard functionality
+        const float density = 1.0f;
+        m_Fixture = m_Body->CreateFixture(&m_Shape, density);
+        m_ShapeDirty = false;
     }
 
-    void BoxCollider2D::setHeight(float a_Height)
+    void BoxCollider2D::onPrePhysicsUpdate()
     {
-        m_Height = a_Height;
-        m_Shape.SetAsBox(m_Width / 2, m_Height / 2);
-    }
-
-    const b2PolygonShape* BoxCollider2D::getShape() const
-    {
-        return &m_Shape;
+        if(m_ShapeDirty)
+        {
+            createFixture();
+        }
+        auto transform = getComponent<Transform>();
+        m_Body->SetTransform(b2Vec2(transform->getPosition().x, transform->getPosition().y), transform->getRotation());
     }
 }

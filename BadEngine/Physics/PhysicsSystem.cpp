@@ -6,13 +6,8 @@
 #include "../Transform.h"
 #include "../Game.h"
 
-
 namespace BadEngine
 {
-    const b2Vec2 PhysicsSystem::Gravity = b2Vec2(0, -90.81f);
-    const int PhysicsSystem::VelocityIterations = 6;
-    const int PhysicsSystem::PositionIterations = 2;
-
     PhysicsSystem::PhysicsSystem(EntitySystem& a_EntitySystem, MessagingSystem& a_MessagingSystem)
         : System(a_EntitySystem, a_MessagingSystem)
     {
@@ -22,13 +17,11 @@ namespace BadEngine
     {
         m_MessagingSystem.registerListener<ComponentAddedMessage<BoxCollider2D>>([this](const Message* a_Message)
         {
-            auto collider = static_cast<const ComponentAddedMessage<BoxCollider2D>*>(a_Message)->getAddedComponent();
-            m_UninitialisedColliders[collider->getGameObject().getID()].first = collider;
+            onColliderAdd(static_cast<const ComponentAddedMessage<BoxCollider2D>*>(a_Message)->getAddedComponent());
         });
         m_MessagingSystem.registerListener<ComponentAddedMessage<RigidBody>>([this](const Message* a_Message)
         {
-            auto rigidBody = static_cast<const ComponentAddedMessage<RigidBody>*>(a_Message)->getAddedComponent();
-            m_UninitialisedColliders[rigidBody->getGameObject().getID()].second = rigidBody;
+            onRigidBodyAdd(static_cast<const ComponentAddedMessage<RigidBody>*>(a_Message)->getAddedComponent());
         });
         m_MessagingSystem.registerListener<FixedUpdateMessage>([this](const Message* a_Message)
         {
@@ -38,55 +31,42 @@ namespace BadEngine
 
     void PhysicsSystem::fixedUpdate()
     {
-        initialiseColliders();
-        m_PhysicsWorld->Step(static_cast<float>(Game::FixedUpdateInterval), VelocityIterations, PositionIterations);
+        for(auto collider : m_EntitySystem.getComponentsOfType<BoxCollider2D>())
+        {
+            collider->onPrePhysicsUpdate();
+        }
+        m_PhysicsWorld.fixedUpdate();
+        updateTransforms();
+    }
+
+    void PhysicsSystem::updateTransforms()
+    {
         for(auto rigidBody : m_EntitySystem.getComponentsOfType<RigidBody>())
         {
             rigidBody->updateState();
         }
     }
 
-    void PhysicsSystem::initialiseColliders()
+    void PhysicsSystem::onColliderAdd(BoxCollider2D* a_Collider)
     {
-        for(auto& colliderPair : m_UninitialisedColliders)
+        auto rigidBody = m_Uninitialised[a_Collider->getGameObject().getID()];
+        m_PhysicsWorld.emplace(a_Collider, rigidBody);
+        if(rigidBody != nullptr)
         {
-            createBody(colliderPair.second.first, colliderPair.second.second);
-            createFixture(colliderPair.second.first, colliderPair.second.second);
-        }
-        m_UninitialisedColliders.clear();
-    }
-
-    void PhysicsSystem::createBody(BoxCollider2D* a_Collider, RigidBody* a_RigidBody)
-    {
-        b2BodyDef bodyDefinition;
-        auto transform = a_Collider->getComponent<Transform>();
-        bodyDefinition.position.Set(transform->getPosition().x, transform->getPosition().y);
-        bodyDefinition.angle = transform->getRotation();
-
-        bodyDefinition.type = a_RigidBody != nullptr ? b2BodyType::b2_dynamicBody : b2_staticBody;
-
-        auto body = m_PhysicsWorld->CreateBody(&bodyDefinition);
-        
-        a_Collider->m_Body = body;
-        if(a_RigidBody != nullptr)
-        {
-            a_RigidBody->m_Body = body;
+            m_Uninitialised.erase(a_Collider->getGameObject().getID());
         }
     }
 
-    void PhysicsSystem::createFixture(BoxCollider2D* a_Collider, RigidBody* a_RigidBody)
+    void PhysicsSystem::onRigidBodyAdd(RigidBody* a_RigidBody)
     {
-        b2FixtureDef fixtureDefinition;
-
-        fixtureDefinition.shape = a_Collider->getShape();
-        //Temporary constant for consistency. No mass setting.
-        fixtureDefinition.density = 1.0f;
-
-        auto fixture = a_Collider->m_Body->CreateFixture(&fixtureDefinition);
-        a_Collider->m_Fixture = fixture;
-        if(a_RigidBody != nullptr)
+        auto collider = a_RigidBody->getComponent<BoxCollider2D>();
+        if(collider != nullptr)
         {
-            a_RigidBody->m_Fixture = fixture;
+            m_PhysicsWorld.emplace(collider, a_RigidBody);
+        }
+        else
+        {
+            m_Uninitialised[a_RigidBody->getGameObject().getID()] = a_RigidBody;
         }
     }
 }

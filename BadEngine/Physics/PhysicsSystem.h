@@ -4,6 +4,7 @@
 #include <map>
 
 #include "../Core/System.h"
+#include "PhysicsWorld.h"
 
 namespace BadEngine
 {
@@ -13,22 +14,17 @@ namespace BadEngine
     class PhysicsSystem : public System
     {
     private:
-        static const b2Vec2 Gravity;
-        static const int VelocityIterations;
-        static const int PositionIterations;
-
-        std::unique_ptr<b2World> m_PhysicsWorld = std::make_unique<b2World>(Gravity);
-        std::map<unsigned, std::pair<BoxCollider2D*, RigidBody*>> m_UninitialisedColliders;
+        PhysicsWorld m_PhysicsWorld;
+        std::map<unsigned, RigidBody*> m_Uninitialised;
 
     public:
         PhysicsSystem(EntitySystem& a_EntitySystem, MessagingSystem& a_MessagingSystem);
 
         void registerListeners();
     private:
+        void onRigidBodyAdd(RigidBody* a_RigidBody);
+        void onColliderAdd(BoxCollider2D* a_Collider);
         void fixedUpdate();
-        void initialiseColliders();
         void updateTransforms();
-        void createBody(BoxCollider2D* a_Collider, RigidBody* a_RigidBody);
-        void createFixture(BoxCollider2D* a_Collider, RigidBody* a_RigidBody);
     };
 }

@@ -10,10 +10,10 @@ namespace BadEngine
 
     class RigidBody : public Component
     {
+        friend class PhysicsWorld;
         friend class PhysicsSystem;
     private:
         b2Body* m_Body = nullptr;
-        b2Fixture* m_Fixture = nullptr;
 
     public:
         RigidBody(GameObject a_GameObject);

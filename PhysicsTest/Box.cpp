@@ -20,6 +20,5 @@ void Box::setDimensions(float a_Width, float a_Height)
     m_Renderer->Width = a_Width;
     m_Renderer->Height = a_Height;
 
-    m_Collider->setWidth(a_Width);
-    m_Collider->setHeight(a_Height);
+    m_Collider->setDimensions(glm::vec2(a_Width, a_Height));
 }

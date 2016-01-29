@@ -2,6 +2,7 @@
 #include <BadEngine/Rendering/SpriteRenderer.h>
 #include <BadEngine/IO/ResourceManager.h>
 #include <BadEngine/Core/EntitySystem.h>
+#include <BadEngine/Transform.h>
 
 #include "Ground.h"
 
@@ -14,6 +15,5 @@ Ground::Ground(unsigned a_ID, BadEngine::EntitySystem& a_EntitySystem)
     renderer->setTexture(BadEngine::ResourceManager::getTexture("Textures/AngryCloud.png"));
 
     auto collider = addComponent<BadEngine::BoxCollider2D>();
-    collider->setWidth(100);
-    collider->setHeight(20);
+    collider->setDimensions(glm::vec2(100, 20));
 }
