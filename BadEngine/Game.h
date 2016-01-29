@@ -17,6 +17,9 @@ namespace BadEngine
 
     class Game
     {
+    public:
+        static const double FixedUpdateInterval;
+
     protected:
         const float m_OpenGLVersion = 3.00f;
 
@@ -27,7 +30,6 @@ namespace BadEngine
         Camera2D m_Camera;
         Mouse m_Mouse;
         std::unique_ptr<World> m_CurrentWorld;
-        double m_FixedUpdateInterval = 0.015;
         
     private:
         double m_FixedUpdateTimer = 0.0;

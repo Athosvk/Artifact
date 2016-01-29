@@ -4,6 +4,8 @@
 
 namespace BadEngine
 {
+    const double Game::FixedUpdateInterval = 0.008;
+
     Game::Game(int a_ScreenWidth, int a_ScreenHeight, Uint32 a_WindowFlags, std::string a_WindowName)
         : m_Window(a_ScreenWidth, a_ScreenHeight, a_WindowFlags, a_WindowName),
         m_Camera(m_Window),
@@ -45,9 +47,9 @@ namespace BadEngine
     void Game::processFixedUpdates()
     {
         m_FixedUpdateTimer += m_GameTime.getDeltaTime();
-        while(m_FixedUpdateTimer >= m_FixedUpdateInterval)
+        while(m_FixedUpdateTimer >= FixedUpdateInterval)
         {
-            m_FixedUpdateTimer -= m_FixedUpdateInterval;
+            m_FixedUpdateTimer -= FixedUpdateInterval;
             fixedUpdate();
         }
     }

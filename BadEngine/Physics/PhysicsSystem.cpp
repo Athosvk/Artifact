@@ -4,7 +4,7 @@
 #include "../Core/EntitySystem.h"
 #include "../Core/World.h"
 #include "../Transform.h"
-#include <iostream>
+#include "../Game.h"
 
 
 namespace BadEngine
@@ -39,7 +39,7 @@ namespace BadEngine
     void PhysicsSystem::fixedUpdate()
     {
         initialiseColliders();
-        m_PhysicsWorld->Step(1/60.0f, VelocityIterations, PositionIterations);
+        m_PhysicsWorld->Step(static_cast<float>(Game::FixedUpdateInterval), VelocityIterations, PositionIterations);
         for(auto rigidBody : m_EntitySystem.getComponentsOfType<RigidBody>())
         {
             rigidBody->updateState();
