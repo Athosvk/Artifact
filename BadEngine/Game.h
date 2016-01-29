@@ -22,6 +22,7 @@ namespace BadEngine
 
     protected:
         const float m_OpenGLVersion = 3.00f;
+        static const double SpiralOfDeathThreshold;
 
         Window m_Window;
         GameState m_CurrentGameState = GameState::Play;

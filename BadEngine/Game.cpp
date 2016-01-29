@@ -1,10 +1,12 @@
 #include <GL/glew.h>
+#include "MathHelper.h"
 
 #include "Game.h"
 
 namespace BadEngine
 {
     const double Game::FixedUpdateInterval = 0.008;
+    const double Game::SpiralOfDeathThreshold = 0.075;
 
     Game::Game(int a_ScreenWidth, int a_ScreenHeight, Uint32 a_WindowFlags, std::string a_WindowName)
         : m_Window(a_ScreenWidth, a_ScreenHeight, a_WindowFlags, a_WindowName),
@@ -47,6 +49,8 @@ namespace BadEngine
     void Game::processFixedUpdates()
     {
         m_FixedUpdateTimer += m_GameTime.getDeltaTime();
+
+        m_FixedUpdateTimer = MathHelper::min(SpiralOfDeathThreshold, m_FixedUpdateTimer);
         while(m_FixedUpdateTimer >= FixedUpdateInterval)
         {
             m_FixedUpdateTimer -= FixedUpdateInterval;
