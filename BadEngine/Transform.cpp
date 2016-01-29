@@ -38,6 +38,15 @@ namespace BadEngine
         }
     }
 
+    void Transform::setRotation(float a_Angles)
+    {
+        LocalRotation = a_Angles;
+        if(Parent != nullptr)
+        {
+            LocalRotation -= Parent->getRotation();
+        }
+    }
+
     glm::vec2 Transform::getPosition() const
     {
         glm::vec2 position = LocalPosition;

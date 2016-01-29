@@ -18,6 +18,7 @@ namespace BadEngine
         void translate(glm::vec2 a_Translation);
         void rotate(float a_Angles);
         void lookAt(glm::vec2 a_Position);
+        void setRotation(float a_Angles);
         void setPosition(glm::vec2 a_Position);
         glm::vec2 getPosition() const;
         glm::vec2 getForward() const;
