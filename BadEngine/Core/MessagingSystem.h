@@ -22,7 +22,7 @@ namespace BadEngine
             std::unique_ptr<Message> newMessage = std::make_unique<TMessageType>(std::forward<TArguments>(a_MessageArguments)...);
             for(auto& listener : m_MessageListeners[typeid(TMessageType)])
             {
-                listener(static_cast<TMessageType*>(newMessage.get()));
+                listener(newMessage.get());
             }
         }
 
