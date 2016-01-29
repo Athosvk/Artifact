@@ -12,6 +12,7 @@ namespace BadEngine
         //PhysicsSystem is friended to simplify the interface for regular users. Some functions are not necessary for 
         //anything else than the PhysicsSystem
         friend class PhysicsWorld;
+        friend class PhysicsSystem;
     private:
         b2Body* m_Body = nullptr;
         b2Fixture* m_Fixture = nullptr;
