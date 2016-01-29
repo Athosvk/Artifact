@@ -25,7 +25,8 @@ namespace BadEngine
         for(auto sprite : m_EntitySystem.getComponentsOfType<SpriteRenderer>())
         {
             auto transform = sprite->getComponent<Transform>();
-            auto destinationRectangle = Rectangle(transform->getPosition(), sprite->Width, sprite->Height);
+            auto dimensions = glm::vec2(sprite->Width, sprite->Height);
+            auto destinationRectangle = Rectangle(transform->getPosition() - dimensions * 0.5f, dimensions.x, dimensions.y);
             m_SpriteBatch.draw(sprite->getTexture(), destinationRectangle, transform->getRotation(), destinationRectangle.getPosition(), 
                                sprite->Color, sprite->UVRectangle, sprite->Depth);
         }
