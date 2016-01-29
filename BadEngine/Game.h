@@ -27,7 +27,7 @@ namespace BadEngine
         Camera2D m_Camera;
         Mouse m_Mouse;
         std::unique_ptr<World> m_CurrentWorld;
-        double m_FixedUpdateInterval = 0.030;
+        double m_FixedUpdateInterval = 0.015;
         
     private:
         double m_FixedUpdateTimer = 0.0;
@@ -48,7 +48,7 @@ namespace BadEngine
         template<typename T>
         void loadWorld()
         {
-            m_CurrentWorld = std::make_unique<T>(m_Window);
+            m_CurrentWorld = std::make_unique<T>(m_Window, m_GameTime);
         }
 
     private:

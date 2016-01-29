@@ -4,8 +4,8 @@
 #include "Player/WeaponSystem.h"
 #include "TimerSystem.h"
 
-MainWorld::MainWorld(const BadEngine::Window& a_Window)
-    : World(a_Window)
+MainWorld::MainWorld(const BadEngine::Window& a_Window, BadEngine::GameTime& a_GameTime)
+    : World(a_Window, a_GameTime)
 {
     addSystem<PlayerInputSystem>();
     addSystem<WeaponSystem>();

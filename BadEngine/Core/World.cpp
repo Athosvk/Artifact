@@ -2,6 +2,7 @@
 #include "../Rendering/SpriteRenderSystem.h"
 #include "../Rendering/RenderMessage.h"
 #include "../Physics/MovementSystem.h"
+#include "../Physics/PhysicsSystem.h"
 #include "../StopWatch.h"
 
 namespace BadEngine
@@ -11,14 +12,10 @@ namespace BadEngine
     {
     }
 
-    const GameTime& UpdateMessage::getGameTime() const
-    {
-        return m_GameTime;
-    }
-
-    World::World(const Window& a_Window)
+    World::World(const Window& a_Window, GameTime& a_GameTime)
         : m_Camera(a_Window),
-        m_EntitySystem(m_MessagingSystem)
+        m_EntitySystem(m_MessagingSystem),
+        m_GameTime(a_GameTime)
     {
         addDefaultSystems();
     }
@@ -37,6 +34,7 @@ namespace BadEngine
     {
         addSystem<SpriteRenderSystem>();
         addSystem<MovementSystem>();
+        addSystem<PhysicsSystem>();
     }
 
     void World::update()

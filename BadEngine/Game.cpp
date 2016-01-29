@@ -54,6 +54,14 @@ namespace BadEngine
 
     void Game::fixedUpdate()
     {
+        static GameTime fixedUpdateTime;
+        fixedUpdateTime.update();
+        static int counter = 0;
+        counter++;
+        if(counter > 10000)
+        {
+            __debugbreak();
+        }
         m_CurrentWorld->fixedUpdate();
     }
 

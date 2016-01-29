@@ -42,10 +42,10 @@ namespace BadEngine
     private:
         std::vector<std::unique_ptr<System>> m_Systems;
         Camera2D m_Camera;
-        GameTime m_GameTime;
+        GameTime& m_GameTime;
 
     public:
-        World(const Window& a_Window);
+        World(const Window& a_Window, GameTime& a_GameTime);
 
         void* operator new(std::size_t a_Size);
 
