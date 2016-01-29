@@ -1,3 +1,4 @@
+#pragma once
 namespace BadEngine
 {
     enum class KeyCode

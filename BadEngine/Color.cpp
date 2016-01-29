@@ -34,5 +34,4 @@ namespace BadEngine
 
         return newColor;
     }
-
 }

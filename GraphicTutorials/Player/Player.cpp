@@ -1,31 +1,33 @@
+#include <BadEngine/Core/EntitySystem.h>
+#include <BadEngine/IO/ResourceManager.h>
+#include <BadEngine/Physics/MovementComponent.h>
+
 #include "Player.h"
+#include "PlayerInputComponent.h"
+#include "WeaponComponent.h"
 
-Player::Player(BadEngine::ResourceManager& a_ResourceManager)
-    : m_ResourceManager(a_ResourceManager),
-    m_CharacterController(m_Transform),
-    m_Renderer(m_Transform, a_ResourceManager.getTexture("Textures/PNG/CharacterLeft_Standing.png"))
+Player::Player(unsigned a_ID, BadEngine::EntitySystem& a_EntitySystem)
+    : GameObject(a_ID, a_EntitySystem)
 {
-}
+    auto renderer = addComponent<BadEngine::SpriteRenderer>();
+    renderer->setTexture(BadEngine::ResourceManager::getTexture("Textures/Top_Down_Survivor/handgun/idle/survivor-idle_handgun_0.png"));
 
-Player::~Player()
-{
-}
+    auto inputController = addComponent<PlayerInputComponent>();
+    auto weapon = addComponent<WeaponComponent>();
 
-void Player::update()
-{
-}
+    inputController->MoveUpKey = BadEngine::KeyCode::W;
+    inputController->MoveDownKey = BadEngine::KeyCode::S;
+    inputController->MoveLeftKey = BadEngine::KeyCode::A;
+    inputController->MoveRightKey = BadEngine::KeyCode::D;
+    inputController->FireKey = BadEngine::KeyCode::Space;
+    inputController->Weapon = weapon;
 
-void Player::fixedUpdate()
-{
-    m_CharacterController.fixedUpdate();
-}
+    renderer->Width = 1;
+    renderer->Height = 1;
 
-void Player::draw(BadEngine::SpriteBatch& a_SpriteBatch)
-{
-    m_Renderer.draw(a_SpriteBatch);
-}
-
-Transform& Player::getTransform()
-{
-    return m_Transform;
+    weapon->FireDelayTimer->Duration = 0.5f;
+    weapon->MuzzleTransform = getComponent<BadEngine::Transform>();
+    
+    auto movement = addComponent<BadEngine::MovementComponent>();
+    movement->Speed = 3.5f;
 }

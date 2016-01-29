@@ -1,0 +1,69 @@
+#include <glm/gtx/vector_angle.hpp>
+
+#include "Transform.h"
+
+namespace BadEngine
+{
+    Transform::Transform(GameObject a_GameObject)
+        : Component(a_GameObject)
+    {
+    }
+
+    void Transform::translate(glm::vec2 a_Translation)
+    {
+        LocalPosition += a_Translation;
+    }
+
+    void Transform::rotate(float a_Angles)
+    {
+        LocalRotation += a_Angles;
+    }
+
+    glm::vec2 Transform::getForward() const
+    {
+        return glm::vec2(glm::cos(LocalRotation), glm::sin(LocalRotation));
+    }
+
+    void Transform::lookAt(glm::vec2 a_Position)
+    {
+        LocalRotation = glm::angle(glm::normalize(a_Position - LocalPosition), glm::vec2(1, 0));
+    }
+
+    void Transform::setPosition(glm::vec2 a_Position)
+    {
+        LocalPosition = a_Position;
+        if(Parent)
+        {
+            LocalPosition -= Parent->getPosition();
+        }
+    }
+
+    void Transform::setRotation(float a_Angles)
+    {
+        LocalRotation = a_Angles;
+        if(Parent != nullptr)
+        {
+            LocalRotation -= Parent->getRotation();
+        }
+    }
+
+    glm::vec2 Transform::getPosition() const
+    {
+        glm::vec2 position = LocalPosition;
+        if(Parent)
+        {
+            position += Parent->getPosition();
+        }
+        return position;
+    }
+
+    float Transform::getRotation() const
+    {
+        float rotation = LocalRotation;
+        if(Parent)
+        {
+            rotation += Parent->getRotation();
+        }
+        return rotation;
+    }
+}

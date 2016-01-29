@@ -1,12 +1,15 @@
 #pragma once
 #include <string>
 
-class GL
+namespace BadEngine
 {
-public:
-    GL() = delete;
-    ~GL() = delete;
+    class GL
+    {
+    public:
+        GL() = delete;
+        ~GL() = delete;
 
-    static std::string getErrorString();
-    static std::string getErrorString(GLenum a_ErrorCode);
-};
+        static std::string getErrorString();
+        static std::string getErrorString(GLenum a_ErrorCode);
+    };
+}

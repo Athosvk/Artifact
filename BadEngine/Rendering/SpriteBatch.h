@@ -3,12 +3,12 @@
 #include <memory>
 
 #include "Vertex.h"
-#include "..\GL/GLTexture.h"
-#include "..\Rectangle.h"
-#include "VBO.h"
-#include "..\GL/GLSLProgram.h"
+#include "../GL/GLTexture.h"
+#include "../Rectangle.h"
+#include "../GL/VBO.h"
+#include "../GL/GLSLProgram.h"
 #include "Camera2D.h"
-#include "VAO.h"
+#include "../GL/VAO.h"
 #include "../GL/IBO.h"
 
 namespace BadEngine
@@ -62,21 +62,21 @@ namespace BadEngine
         std::vector<RenderBatch> m_RenderBatches;
         ESpriteSortMode m_SortMode = ESpriteSortMode::Texture;
         GLSLProgram m_ShaderProgram;
-        const Camera2D* m_Camera;
+        const glm::mat4* m_ViewMatrix;
 
     public:
-        SpriteBatch(const Camera2D* a_Camera);
+        SpriteBatch();
         ~SpriteBatch();
 
-        void begin(ESpriteSortMode a_SpriteSortMode = ESpriteSortMode::Texture);
-        void draw(GLTexture* a_Texture, const Rectangle& a_DestinationRectangle, Color a_Color = Color::White,
+        void begin(const glm::mat4* a_ViewMatrix, ESpriteSortMode a_SpriteSortMode = ESpriteSortMode::Texture);
+        void draw(const GLTexture* a_Texture, const Rectangle& a_DestinationRectangle, Color a_Color = Color::White,
                   const Rectangle& a_UVRectangle = Rectangle(glm::vec2(0, 0), 1, 1), float a_Depth = 0);
-        void draw(GLTexture* a_Texture, glm::vec2 a_Position, Color a_Color = Color::White,
+        void draw(const GLTexture* a_Texture, glm::vec2 a_Position, Color a_Color = Color::White,
                   const Rectangle& a_UVRectangle = Rectangle(glm::vec2(0, 0), 1, 1), float a_Depth = 0);
-        void draw(GLTexture* a_Texture, const Rectangle& a_DestinationRectangle, float a_Rotation, 
+        void draw(const GLTexture* a_Texture, const Rectangle& a_DestinationRectangle, float a_Rotation, 
                   glm::vec2 a_Origin, Color a_Color = Color::White,
                   const Rectangle& a_UVRectangle = Rectangle(glm::vec2(0, 0), 1, 1), float a_Depth = 0);
-        void draw(GLTexture* a_Texture, glm::vec2 a_Position, float a_Rotation,
+        void draw(const GLTexture* a_Texture, glm::vec2 a_Position, float a_Rotation,
                   glm::vec2 a_Origin, Color a_Color = Color::White,
                   const Rectangle& a_UVRectangle = Rectangle(glm::vec2(0, 0), 1, 1), float a_Depth = 0);
         void end();

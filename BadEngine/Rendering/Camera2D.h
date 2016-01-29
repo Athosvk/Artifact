@@ -8,6 +8,8 @@ namespace BadEngine
     class Camera2D
     {
     private:
+        static const int PixelsPerMeter;
+
         glm::vec2 m_Position = glm::vec2(0.0f, 0.0f);
         float m_ZoomFactor = 1.0f;
         float m_Rotation = 0.0f;
@@ -19,10 +21,11 @@ namespace BadEngine
 
     public:
         Camera2D(const Window& a_Window);
-        ~Camera2D();
 
-        Camera2D& operator=(const Camera2D& a_Other) = delete;
+        void* operator new(std::size_t a_Size);
 
+        void operator delete(void* a_Pointer);
+        
         glm::vec2 getPosition() const;
         float getZoomFactor() const;
         float getRotation() const;

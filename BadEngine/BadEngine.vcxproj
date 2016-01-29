@@ -12,6 +12,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Color.cpp" />
+    <ClCompile Include="Core\Component.cpp" />
+    <ClCompile Include="Core\World.cpp" />
+    <ClCompile Include="Core\EntitySystem.cpp" />
+    <ClCompile Include="Core\GameObject.cpp" />
+    <ClCompile Include="Core\System.cpp" />
     <ClCompile Include="ErrorHandler.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameTime.cpp" />
@@ -19,6 +24,8 @@
     <ClCompile Include="GL\GLSLProgram.cpp" />
     <ClCompile Include="GL\GLTexture.cpp" />
     <ClCompile Include="GL\IBO.cpp" />
+    <ClCompile Include="GL\VAO.cpp" />
+    <ClCompile Include="GL\VBO.cpp" />
     <ClCompile Include="Input\Keyboard.cpp" />
     <ClCompile Include="Input\Mouse.cpp" />
     <ClCompile Include="IO\ImageLoader.cpp" />
@@ -27,16 +34,30 @@
     <ClCompile Include="IO\ResourceManager.cpp" />
     <ClCompile Include="IO\TextureCache.cpp" />
     <ClCompile Include="MathHelper.cpp" />
+    <ClCompile Include="Physics\BoxCollider2D.cpp" />
+    <ClCompile Include="Physics\MovementComponent.cpp" />
+    <ClCompile Include="Physics\MovementSystem.cpp" />
+    <ClCompile Include="Physics\PhysicsSystem.cpp" />
+    <ClCompile Include="Physics\PhysicsWorld.cpp" />
+    <ClCompile Include="Physics\RigidBody.cpp" />
     <ClCompile Include="Rectangle.cpp" />
     <ClCompile Include="Rendering\Camera2D.cpp" />
+    <ClCompile Include="Rendering\RenderMessage.cpp" />
+    <ClCompile Include="Rendering\SpriteRenderSystem.cpp" />
+    <ClCompile Include="Rendering\SpriteRenderer.cpp" />
     <ClCompile Include="Rendering\SpriteBatch.cpp" />
-    <ClCompile Include="Rendering\VAO.cpp" />
-    <ClCompile Include="Rendering\VBO.cpp" />
     <ClCompile Include="Rendering\Window.cpp" />
     <ClCompile Include="StopWatch.cpp" />
+    <ClCompile Include="Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Color.h" />
+    <ClInclude Include="Core\Component.h" />
+    <ClInclude Include="Core\MessagingSystem.h" />
+    <ClInclude Include="Core\World.h" />
+    <ClInclude Include="Core\EntitySystem.h" />
+    <ClInclude Include="Core\GameObject.h" />
+    <ClInclude Include="Core\System.h" />
     <ClInclude Include="ErrorHandler.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameTime.h" />
@@ -44,6 +65,8 @@
     <ClInclude Include="GL\GLSLProgram.h" />
     <ClInclude Include="GL\GLTexture.h" />
     <ClInclude Include="GL\IBO.h" />
+    <ClInclude Include="GL\VAO.h" />
+    <ClInclude Include="GL\VBO.h" />
     <ClInclude Include="Input\Keyboard.h" />
     <ClInclude Include="Input\Keycode.h" />
     <ClInclude Include="Input\Mouse.h" />
@@ -53,14 +76,22 @@
     <ClInclude Include="IO\ResourceManager.h" />
     <ClInclude Include="IO\TextureCache.h" />
     <ClInclude Include="MathHelper.h" />
+    <ClInclude Include="Physics\BoxCollider2D.h" />
+    <ClInclude Include="Physics\MovementComponent.h" />
+    <ClInclude Include="Physics\MovementSystem.h" />
+    <ClInclude Include="Physics\PhysicsSystem.h" />
+    <ClInclude Include="Physics\PhysicsWorld.h" />
+    <ClInclude Include="Physics\RigidBody.h" />
     <ClInclude Include="Rectangle.h" />
     <ClInclude Include="Rendering\Camera2D.h" />
+    <ClInclude Include="Rendering\RenderMessage.h" />
+    <ClInclude Include="Rendering\SpriteRenderSystem.h" />
+    <ClInclude Include="Rendering\SpriteRenderer.h" />
     <ClInclude Include="Rendering\SpriteBatch.h" />
-    <ClInclude Include="Rendering\VAO.h" />
-    <ClInclude Include="Rendering\VBO.h" />
     <ClInclude Include="Rendering\Vertex.h" />
     <ClInclude Include="Rendering\Window.h" />
     <ClInclude Include="StopWatch.h" />
+    <ClInclude Include="Transform.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Performance reports\Memory - 01-11-2015.diagsession" />
@@ -104,6 +135,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>$(SolutionDir)dependencies/include/;$(IncludePath)</IncludePath>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -134,6 +166,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <TreatWarningAsError>true</TreatWarningAsError>
+      <EnablePREfast>true</EnablePREfast>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

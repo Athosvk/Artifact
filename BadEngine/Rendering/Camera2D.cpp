@@ -4,20 +4,27 @@
 
 namespace BadEngine
 {
+    const int Camera2D::PixelsPerMeter = 100;
+
     Camera2D::Camera2D(const Window& a_Window)
         : m_Window(a_Window)
     {
         constructMatrix();
     }
 
-    Camera2D::~Camera2D()
-    {
-        
-    }
-
     glm::vec2 Camera2D::getPosition() const
     {
         return m_Position;
+    }
+
+    void* Camera2D::operator new(std::size_t a_Size)
+    {
+        return _aligned_malloc(a_Size, 16);
+    }
+
+    void Camera2D::operator delete(void* a_Pointer)
+    {
+        _aligned_free(a_Pointer);
     }
 
     float Camera2D::getZoomFactor() const
@@ -104,7 +111,7 @@ namespace BadEngine
 
     void Camera2D::applyScale()
     {
-        auto scale = glm::vec3(m_ZoomFactor, m_ZoomFactor, 1);
+        auto scale = glm::vec3(m_ZoomFactor, m_ZoomFactor, 1) * static_cast<float>(PixelsPerMeter);
         m_Transform = glm::scale(m_Transform, scale);
     }
 
