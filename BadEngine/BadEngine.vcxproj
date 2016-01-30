@@ -13,7 +13,6 @@
   <ItemGroup>
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Core\Component.cpp" />
-    <ClCompile Include="Core\MessageQueue.cpp" />
     <ClCompile Include="Core\World.cpp" />
     <ClCompile Include="Core\EntitySystem.cpp" />
     <ClCompile Include="Core\GameObject.cpp" />
@@ -56,7 +55,6 @@
   <ItemGroup>
     <ClInclude Include="Color.h" />
     <ClInclude Include="Core\Component.h" />
-    <ClInclude Include="Core\MessageQueue.h" />
     <ClInclude Include="Core\MessagingSystem.h" />
     <ClInclude Include="Core\World.h" />
     <ClInclude Include="Core\EntitySystem.h" />
