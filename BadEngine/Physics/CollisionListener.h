@@ -16,5 +16,7 @@ namespace BadEngine
 
         virtual void BeginContact(b2Contact* a_Contact) override;
         virtual void EndContact(b2Contact* a_Contact) override;
+    private:
+        void sendCollisionMessage(BoxCollider2D* a_Collider, BoxCollider2D* a_Other);
     };
 }

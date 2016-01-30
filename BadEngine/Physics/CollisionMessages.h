@@ -25,7 +25,7 @@ namespace BadEngine
         BoxCollider2D* m_Other;
 
     public:
-        TriggerEnter2DMessage(BoxCollider2D a_Collider, BoxCollider2D* a_Other);
+        TriggerEnter2DMessage(BoxCollider2D* a_Collider, BoxCollider2D* a_Other);
 
         BoxCollider2D* getCollider() const;
         BoxCollider2D* getOther() const;

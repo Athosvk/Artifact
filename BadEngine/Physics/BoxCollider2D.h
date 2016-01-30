@@ -19,6 +19,7 @@ namespace BadEngine
         b2PolygonShape m_Shape;
         bool m_ShapeDirty = true;
         glm::vec2 m_Dimensions = glm::vec2(0, 0);
+        b2FixtureDef m_FixtureDefinition;
 
     public:
         BoxCollider2D(GameObject a_GameObject);
@@ -26,9 +27,13 @@ namespace BadEngine
 
         glm::vec2 getDimensions() const;
         void setDimensions(glm::vec2 a_Dimensions);
+        bool isTrigger() const;
+        void enableTriggerState();
+        void disableTriggerState();
 
     private:
-        void createFixture();
+        void attachFixture();
+        void refreshFixtureData();
         void onPrePhysicsUpdate();
     };
 }
