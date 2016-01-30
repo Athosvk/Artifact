@@ -19,14 +19,14 @@ namespace BadEngine
         template<typename TMessageType, typename... TArguments>
         void broadcast(TArguments&&... a_MessageArguments)
         {
-            std::unique_ptr<Message> newMessage = std::make_unique<TMessageType>(std::forward<TArguments>(a_MessageArguments)...);
+            auto newMessage = TMessageType(std::forward<TArguments>(a_MessageArguments)...);
 
             auto iterator = m_MessageListeners.find(typeid(TMessageType));
             if(iterator != m_MessageListeners.end())
             {
                 for(auto& listener : iterator->second)
                 {
-                    listener(newMessage.get());
+                    listener(&newMessage);
                 }
             }
         }
