@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Core\Component.cpp" />
+    <ClCompile Include="Core\MessageQueue.cpp" />
     <ClCompile Include="Core\World.cpp" />
     <ClCompile Include="Core\EntitySystem.cpp" />
     <ClCompile Include="Core\GameObject.cpp" />
@@ -35,6 +36,8 @@
     <ClCompile Include="IO\TextureCache.cpp" />
     <ClCompile Include="MathHelper.cpp" />
     <ClCompile Include="Physics\BoxCollider2D.cpp" />
+    <ClCompile Include="Physics\CollisionListener.cpp" />
+    <ClCompile Include="Physics\CollisionMessages.cpp" />
     <ClCompile Include="Physics\MovementComponent.cpp" />
     <ClCompile Include="Physics\MovementSystem.cpp" />
     <ClCompile Include="Physics\PhysicsSystem.cpp" />
@@ -53,6 +56,7 @@
   <ItemGroup>
     <ClInclude Include="Color.h" />
     <ClInclude Include="Core\Component.h" />
+    <ClInclude Include="Core\MessageQueue.h" />
     <ClInclude Include="Core\MessagingSystem.h" />
     <ClInclude Include="Core\World.h" />
     <ClInclude Include="Core\EntitySystem.h" />
@@ -77,6 +81,8 @@
     <ClInclude Include="IO\TextureCache.h" />
     <ClInclude Include="MathHelper.h" />
     <ClInclude Include="Physics\BoxCollider2D.h" />
+    <ClInclude Include="Physics\CollisionListener.h" />
+    <ClInclude Include="Physics\CollisionMessages.h" />
     <ClInclude Include="Physics\MovementComponent.h" />
     <ClInclude Include="Physics\MovementSystem.h" />
     <ClInclude Include="Physics\PhysicsSystem.h" />

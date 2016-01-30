@@ -9,7 +9,8 @@
 namespace BadEngine
 {
     PhysicsSystem::PhysicsSystem(EntitySystem& a_EntitySystem, MessagingSystem& a_MessagingSystem)
-        : System(a_EntitySystem, a_MessagingSystem)
+        : System(a_EntitySystem, a_MessagingSystem),
+        m_PhysicsWorld(a_MessagingSystem)
     {
     }
 

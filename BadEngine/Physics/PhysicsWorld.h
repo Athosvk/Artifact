@@ -1,6 +1,8 @@
 #pragma once
 #include <Box2D\Box2D.h>
 
+#include "CollisionListener.h"
+
 namespace BadEngine
 {
     class RigidBody;
@@ -14,9 +16,10 @@ namespace BadEngine
         static const int PositionIterations;
 
         b2World m_World = b2World(Gravity);
+        CollisionListener m_CollisionListener;
 
     public:
-        PhysicsWorld();
+        PhysicsWorld(CollisionListener a_CollisionListener);
 
         void emplace(BoxCollider2D* a_Collider, RigidBody* a_RigidBody);
         void fixedUpdate();
