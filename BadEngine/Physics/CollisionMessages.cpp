@@ -2,33 +2,38 @@
 
 namespace BadEngine
 {
-    CollisionEnter2DMessage::CollisionEnter2DMessage(BoxCollider2D* a_Collider, BoxCollider2D* a_Other)
+    Collision2DMessage::Collision2DMessage(BoxCollider2D* a_Collider, BoxCollider2D* a_Other)
         : m_Collider(a_Collider), m_Other(a_Other)
     {
     }
 
-    BoxCollider2D* CollisionEnter2DMessage::getCollider() const
+    BoxCollider2D* Collision2DMessage::getCollider() const
     {
         return m_Collider;
     }
 
-    BoxCollider2D* CollisionEnter2DMessage::getOther() const
+    BoxCollider2D* Collision2DMessage::getOther() const
     {
         return m_Other;
+    }
+
+    CollisionEnter2DMessage::CollisionEnter2DMessage(BoxCollider2D* a_Collider, BoxCollider2D* a_Other)
+        : Collision2DMessage(a_Collider, a_Other)
+    {
     }
 
     TriggerEnter2DMessage::TriggerEnter2DMessage(BoxCollider2D* a_Collider, BoxCollider2D* a_Other)
-        : m_Collider(a_Collider), m_Other(a_Other)
+        : Collision2DMessage(a_Collider, a_Other)
     {
     }
 
-    BoxCollider2D* TriggerEnter2DMessage::getCollider() const
+    CollisionExit2DMessage::CollisionExit2DMessage(BoxCollider2D* a_Collider, BoxCollider2D* a_Other)
+        : Collision2DMessage(a_Collider, a_Other)
     {
-        return m_Collider;
     }
 
-    BoxCollider2D* TriggerEnter2DMessage::getOther() const
+    TriggerExit2DMessage::TriggerExit2DMessage(BoxCollider2D* a_Collider, BoxCollider2D* a_Other)
+        : Collision2DMessage(a_Collider, a_Other)
     {
-        return m_Other;
     }
 }
