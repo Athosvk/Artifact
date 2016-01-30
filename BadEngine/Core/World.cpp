@@ -12,6 +12,11 @@ namespace BadEngine
     {
     }
 
+    const GameTime& UpdateMessage::getGameTime() const
+    {
+        return m_GameTime;
+    }
+
     World::World(const Window& a_Window, GameTime& a_GameTime)
         : m_Camera(a_Window),
         m_EntitySystem(m_MessagingSystem),
