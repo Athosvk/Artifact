@@ -30,14 +30,18 @@ namespace BadEngine
 
     void BoxCollider2D::createFixture()
     {
-        m_Shape.SetAsBox(m_Dimensions.x / 2, m_Dimensions.y / 2);
         if(m_Fixture != nullptr)
         {
             m_Body->DestroyFixture(m_Fixture);
         }
+        m_Shape.SetAsBox(m_Dimensions.x / 2, m_Dimensions.y / 2);
+
+        b2FixtureDef fixtureDefinition;
+        fixtureDefinition.userData = this;
         //Density is only for standard functionality
-        const float density = 1.0f;
-        m_Fixture = m_Body->CreateFixture(&m_Shape, density);
+        fixtureDefinition.density = 1.0f;
+        fixtureDefinition.shape = &m_Shape;
+        m_Fixture = m_Body->CreateFixture(&fixtureDefinition);
         m_ShapeDirty = false;
     }
 
