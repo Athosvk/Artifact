@@ -13,7 +13,7 @@ namespace BadEngine
 
     public:
         template<typename T>
-        T* getComponent()
+        T* getComponent() const
         {
             return m_GameObject.getComponent<T>();
         }

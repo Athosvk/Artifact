@@ -22,13 +22,13 @@ namespace BadEngine
         void deactivate();
 
         template<typename T>
-        T* getComponent()
+        T* getComponent() const
         {
             return m_EntitySystem.getComponent<T>(m_ID);
         }
 
         template<>
-        Transform* getComponent()
+        Transform* getComponent() const
         {
             return m_Transform;
         }
