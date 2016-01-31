@@ -8,7 +8,7 @@
 
 namespace BadEngine
 {
-    enum class MouseButton
+    enum class EMouseButton
     {
         Right = SDL_BUTTON_RIGHT,
         Left = SDL_BUTTON_LEFT,
@@ -21,26 +21,25 @@ namespace BadEngine
         const static int ButtonCount = 4;
         static std::array<bool, ButtonCount> s_CurrentlyPressed;
         static std::array<bool, ButtonCount> s_PreviouslyPressed;
+        static glm::vec2 s_Position;
+        static Camera2D* s_CurrentCamera;
 
-        glm::vec2 m_Position;
         SDL_MouseMotionEvent m_CurrentMotion;
         std::vector<SDL_MouseButtonEvent> m_ButtonEvents;
         std::vector<SDL_MouseWheelEvent> m_ScrollEvents;
-        const BadEngine::Camera2D& m_Camera;
 
     public:
-        Mouse(const BadEngine::Camera2D& a_Camera);
         Mouse& operator=(const Mouse& a_Other) = delete;
 
-        glm::vec2 getScreenPosition() const;
-        glm::vec2 getWorldPosition() const;
-        void simulatePress();
         void process(SDL_MouseButtonEvent a_ButtonEvent);
         void process(SDL_MouseMotionEvent a_MotionEvent);
         void process(SDL_MouseWheelEvent a_ScrollEvent);
         void update();
-        static bool isButtonPressed(MouseButton a_MouseButton);
-        static bool isButtonDown(MouseButton a_MouseButton);
+        void onCameraChange(Camera2D* a_NewCamera);
+        static bool isButtonPressed(EMouseButton a_MouseButton);
+        static bool isButtonDown(EMouseButton a_MouseButton);
+        static glm::vec2 getScreenPosition();
+        static glm::vec2 getWorldPosition();
 
     private:
         void updatePosition();

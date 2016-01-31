@@ -6,6 +6,9 @@
 
 namespace BadEngine
 {
+    int Window::s_Width;
+    int Window::s_Height;
+
     Window::Window(int a_Width, int a_Height, Uint32 a_Flags, std::string a_Name) :
         m_Name(a_Name)
     {

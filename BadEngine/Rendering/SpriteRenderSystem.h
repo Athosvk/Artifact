@@ -10,6 +10,7 @@ namespace BadEngine
     {
     private:
         SpriteBatch m_SpriteBatch;
+        Camera2D* m_CurrentCamera;
 
     public:
         SpriteRenderSystem(EntitySystem& a_EntitySystem, MessagingSystem& a_MessagingSystem);

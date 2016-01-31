@@ -17,6 +17,9 @@ namespace BadEngine
     public:
         Transform(GameObject a_GameObject);
 
+        void* operator new(std::size_t a_Size);
+        void operator delete(void* a_Pointer);
+
         void translate(glm::vec2 a_Translation);
         void rotate(float a_Angles);
         void lookAt(glm::vec2 a_Position);
@@ -30,6 +33,7 @@ namespace BadEngine
         glm::vec2 getForward() const;
         float getRotation() const;
         glm::mat4 getMatrix();
+        bool isDirty() const;
     private:
         void refreshMatrix();
     };

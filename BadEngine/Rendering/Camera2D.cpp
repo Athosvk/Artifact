@@ -1,20 +1,28 @@
 #include "Camera2D.h"
 #include "..\MathHelper.h"
-#include "..\Input/Keyboard.h"
+#include "Window.h"
+#include "../Transform.h"
 
 namespace BadEngine
 {
-    const int Camera2D::PixelsPerMeter = 100;
-
-    Camera2D::Camera2D(const Window& a_Window)
-        : m_Window(a_Window)
+    OnCameraChangedMessage::OnCameraChangedMessage(Camera2D* a_NewCamera)
+        : m_NewCamera(a_NewCamera)
     {
-        constructMatrix();
     }
 
-    glm::vec2 Camera2D::getPosition() const
+    Camera2D* OnCameraChangedMessage::getNewCamera() const
     {
-        return m_Position;
+        return m_NewCamera;
+    }
+
+    const int Camera2D::PixelsPerMeter = 100;
+
+    Camera2D::Camera2D(GameObject a_GameObject)
+        : Component(a_GameObject)
+    {
+        m_Transform = getComponent<Transform>();
+        constructProjectionMatrix();
+        constructMatrix();
     }
 
     void* Camera2D::operator new(std::size_t a_Size)
@@ -27,102 +35,43 @@ namespace BadEngine
         _aligned_free(a_Pointer);
     }
 
-    float Camera2D::getZoomFactor() const
+    glm::mat4& Camera2D::getViewProjection() const
     {
-        return m_ZoomFactor;
+        if(m_Dirty || m_Transform->isDirty())
+        {
+            constructMatrix();
+        }
+        return m_ViewProjection;
     }
 
-    float Camera2D::getRotation() const
+    glm::mat4& Camera2D::getInverseViewProjection() const
     {
-        return m_Rotation;
+        if(m_Dirty || m_Transform->isDirty())
+        {
+            constructMatrix();
+        }
+        return m_InversViewProjection;
     }
 
-    glm::mat4 Camera2D::getTransform() const
+    void Camera2D::constructProjectionMatrix()
     {
-        return m_Transform;
+        auto effectiveScreenWidth = static_cast<float>(Window::getWidth()) / PixelsPerMeter;
+        auto effictiveScreenHeight = static_cast<float>(Window::getHeight()) / PixelsPerMeter;
+        m_ProjectionMatrix = glm::ortho(-effectiveScreenWidth / 2, effectiveScreenWidth / 2,
+                                        -effictiveScreenHeight / 2, effictiveScreenHeight / 2);
     }
 
     glm::vec2 Camera2D::screenToWorld(glm::vec2 a_ScreenPosition) const
     {
-        auto screenCenter = glm::vec2(static_cast<float>(m_Window.getWidth() / 2), 
-                                      static_cast<float>(m_Window.getHeight() / 2));
-
-        auto worldPosition = glm::vec2(a_ScreenPosition.x, -a_ScreenPosition.y);
-        worldPosition -= glm::vec2(screenCenter.x, -screenCenter.y);
-        worldPosition /= m_ZoomFactor;
-
-        auto angleCos = glm::cos(m_Rotation);
-        auto angleSin = glm::sin(m_Rotation);
-        worldPosition.x = angleCos * worldPosition.x - angleSin * worldPosition.y;
-        worldPosition.y = angleSin * worldPosition.x + angleCos * worldPosition.y;
-        worldPosition += m_Position;
-        return worldPosition;
+        auto normalizedScreenPosition = (a_ScreenPosition / glm::vec2(Window::getWidth(), Window::getHeight())) * 2.0f - glm::vec2(1.0f, 1.0f);
+        auto worldPosition = getInverseViewProjection() * glm::vec4(normalizedScreenPosition, 0, 1);
+        return glm::vec2(worldPosition.x, worldPosition.y);
     }
 
-    void Camera2D::setPosition(const glm::vec2& a_NewPosition)
+    void Camera2D::constructMatrix() const
     {
-        m_Position = a_NewPosition;
-        setMatrixDirty();
-    }
-
-    void Camera2D::setZoomFactor(float a_ZoomFactor)
-    {
-        //TO-DO: Restrict to positive values
-        m_ZoomFactor = a_ZoomFactor;
-        setMatrixDirty();
-    }
-
-    void Camera2D::setRotation(float a_Rotation)
-    {
-        m_Rotation = a_Rotation;
-    }
-
-    void Camera2D::update()
-    {
-        if(m_MatrixIsDirty)
-        {
-            constructMatrix();
-        }
-    }
-
-    void Camera2D::constructMatrix()
-    {
-        //TO-DO: Seperate ortho construction to separate function
-        auto screenWidth = static_cast<float>(m_Window.getWidth());
-        auto screenHeight = static_cast<float>(m_Window.getHeight());
-        
-        m_OrthoMatrix = glm::ortho(0.0f, screenWidth, 0.0f, screenHeight);
-        m_Transform = m_OrthoMatrix;
-        //Translate to screencenter for scaling/rotation
-        auto screenCenter = glm::vec3(screenWidth / 2, screenHeight / 2, 0);
-        m_Transform = glm::translate(m_Transform, screenCenter);
-
-        applyRotation();
-        applyScale();
-
-        m_Transform = glm::translate(m_Transform, -screenCenter);
-
-        auto translation = glm::vec3(-m_Position.x, -m_Position.y, 0);
-        //Set the screencenter as origin
-        m_Transform = glm::translate(m_Transform, translation + screenCenter);
-
-        m_MatrixIsDirty = false;
-    }
-
-    void Camera2D::applyScale()
-    {
-        auto scale = glm::vec3(m_ZoomFactor, m_ZoomFactor, 1) * static_cast<float>(PixelsPerMeter);
-        m_Transform = glm::scale(m_Transform, scale);
-    }
-
-    void Camera2D::applyRotation()
-    {
-        auto rotationVector = glm::vec3(0, 0, 1);
-        m_Transform = glm::rotate(m_Transform, m_Rotation, rotationVector);
-    }
-
-    void Camera2D::setMatrixDirty()
-    {
-        m_MatrixIsDirty = true;
+        m_ViewProjection = m_Transform->getMatrix() * m_ProjectionMatrix;
+        m_InversViewProjection = glm::inverse(m_ViewProjection);
+        m_Dirty = false;
     }
 }

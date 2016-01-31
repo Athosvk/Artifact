@@ -9,6 +9,17 @@ namespace BadEngine
     {
     }
 
+    void* Transform::operator new(std::size_t a_Size)
+    {
+        return _aligned_malloc(a_Size, 16);
+    }
+
+    void Transform::operator delete(void* a_Pointer)
+    {
+        _aligned_free(a_Pointer);
+    }
+
+
     void Transform::translate(glm::vec2 a_Translation)
     {
         LocalPosition += a_Translation;
@@ -101,6 +112,11 @@ namespace BadEngine
             refreshMatrix();
         }
         return m_Matrix;
+    }
+
+    bool Transform::isDirty() const
+    {
+        return m_Dirty;
     }
 
     void Transform::refreshMatrix()

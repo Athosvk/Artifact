@@ -2,10 +2,7 @@
 #include "Rendering/Window.h"
 #include "GameTime.h"
 #include "Color.h"
-#include "Input/Keyboard.h"
-#include "Rendering/Camera2D.h"
 #include "IO/ResourceManager.h"
-#include "Input/Mouse.h"
 #include "Core/World.h"
 
 namespace BadEngine
@@ -27,9 +24,6 @@ namespace BadEngine
         Window m_Window;
         GameState m_CurrentGameState = GameState::Play;
         GameTime m_GameTime;
-        Keyboard m_Keyboard;
-        Camera2D m_Camera;
-        Mouse m_Mouse;
         std::unique_ptr<World> m_CurrentWorld;
         
     private:
@@ -37,7 +31,6 @@ namespace BadEngine
 
     protected:
         Game(int a_ScreenWidth, int a_ScreenHeight, unsigned int a_WindowFlags, std::string a_WindowName);
-
     public:
         virtual ~Game() = default;
 
@@ -51,7 +44,7 @@ namespace BadEngine
         template<typename T>
         void loadWorld()
         {
-            m_CurrentWorld = std::make_unique<T>(m_Window, m_GameTime);
+            m_CurrentWorld = std::make_unique<T>(m_GameTime);
         }
 
     private:

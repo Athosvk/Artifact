@@ -30,7 +30,7 @@ namespace BadEngine
             if(movement->Direction != glm::vec2(0, 0))
             {
                 transform->translate(glm::normalize(movement->Direction) * movement->Speed);
-                transform->LocalRotation = MathHelper::directionToAngle(movement->Direction);
+                transform->setRotation(MathHelper::directionToAngle(movement->Direction));
             }
         }
     }

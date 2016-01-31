@@ -4,20 +4,17 @@ namespace BadEngine
 {
     std::array<bool, Mouse::ButtonCount> Mouse::s_CurrentlyPressed;
     std::array<bool, Mouse::ButtonCount> Mouse::s_PreviouslyPressed;
+    glm::vec2 Mouse::s_Position;
+    Camera2D* Mouse::s_CurrentCamera;
 
-    Mouse::Mouse(const BadEngine::Camera2D& a_Camera)
-        : m_Camera(a_Camera)
+    glm::vec2 Mouse::getScreenPosition()
     {
+        return s_Position / static_cast<float>(Camera2D::PixelsPerMeter);
     }
 
-    glm::vec2 Mouse::getScreenPosition() const
+    glm::vec2 Mouse::getWorldPosition()
     {
-        return m_Position;
-    }
-
-    glm::vec2 Mouse::getWorldPosition() const
-    {
-        return m_Camera.screenToWorld(m_Position);
+        return s_CurrentCamera->screenToWorld(s_Position);
     }
 
     void Mouse::process(SDL_MouseButtonEvent a_ButtonEvent)
@@ -41,20 +38,25 @@ namespace BadEngine
         updateButtonStates();
     }
 
-    bool Mouse::isButtonPressed(MouseButton a_MouseButton)
+    void Mouse::onCameraChange(Camera2D* a_NewCamera)
+    {
+        s_CurrentCamera = a_NewCamera;
+    }
+
+    bool Mouse::isButtonPressed(EMouseButton a_MouseButton)
     {
         return isButtonDown(a_MouseButton) && !s_PreviouslyPressed[static_cast<int>(a_MouseButton)];
     }
 
-    bool Mouse::isButtonDown(MouseButton a_MouseButton)
+    bool Mouse::isButtonDown(EMouseButton a_MouseButton)
     {
         return s_CurrentlyPressed[static_cast<int>(a_MouseButton)];
     }
 
     void Mouse::updatePosition()
     {
-        m_Position.x = static_cast<float>(m_CurrentMotion.x);
-        m_Position.y = static_cast<float>(m_CurrentMotion.y);
+        s_Position.x = static_cast<float>(m_CurrentMotion.x);
+        s_Position.y = static_cast<float>(m_CurrentMotion.y);
     }
 
     void Mouse::updateButtonStates()

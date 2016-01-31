@@ -11,6 +11,7 @@ namespace BadEngine
         : Component(a_GameObject)
     {
         m_FixtureDefinition.userData = this;
+        m_FixtureDefinition.density = 1.0f;
     }
 
     BoxCollider2D::~BoxCollider2D()
