@@ -27,8 +27,16 @@ namespace BadEngine
             auto transform = sprite->getComponent<Transform>();
             auto dimensions = glm::vec2(sprite->Width, sprite->Height);
             auto destinationRectangle = Rectangle(transform->getPosition() - dimensions * 0.5f, dimensions.x, dimensions.y);
-            m_SpriteBatch.draw(sprite->getTexture(), destinationRectangle, transform->getRotation(), destinationRectangle.getPosition(), 
-                               sprite->Color, sprite->UVRectangle, sprite->Depth);
+
+            if(transform->getRotation() > 0.0f || transform->getRotation() < 0.0f)
+            {
+                m_SpriteBatch.draw(sprite->getTexture(), destinationRectangle, transform->getRotation(), destinationRectangle.getPosition(),
+                                   sprite->Color, sprite->UVRectangle, sprite->Depth);
+            }
+            else
+            {
+                m_SpriteBatch.draw(sprite->getTexture(), destinationRectangle, sprite->Color, sprite->UVRectangle, sprite->Depth);
+            }
         }
         m_SpriteBatch.end();
     }
