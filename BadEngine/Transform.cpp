@@ -12,11 +12,13 @@ namespace BadEngine
     void Transform::translate(glm::vec2 a_Translation)
     {
         LocalPosition += a_Translation;
+        m_Dirty = true;
     }
 
     void Transform::rotate(float a_Angles)
     {
         LocalRotation += a_Angles;
+        m_Dirty = true;
     }
 
     glm::vec2 Transform::getForward() const
@@ -27,6 +29,7 @@ namespace BadEngine
     void Transform::lookAt(glm::vec2 a_Position)
     {
         LocalRotation = glm::angle(glm::normalize(a_Position - LocalPosition), glm::vec2(1, 0));
+        m_Dirty = true;
     }
 
     void Transform::setPosition(glm::vec2 a_Position)
@@ -36,6 +39,7 @@ namespace BadEngine
         {
             LocalPosition -= Parent->getPosition();
         }
+        m_Dirty = true;
     }
 
     void Transform::setRotation(float a_Angles)
@@ -45,6 +49,29 @@ namespace BadEngine
         {
             LocalRotation -= Parent->getRotation();
         }
+        m_Dirty = true;
+    }
+
+    void Transform::setLocalPosition(glm::vec2 a_LocalPosition)
+    {
+        LocalPosition = a_LocalPosition;
+        m_Dirty = true;
+    }
+
+    void Transform::setLocalRotation(float a_Angle)
+    {
+        LocalRotation = a_Angle;
+        m_Dirty = true;
+    }
+
+    glm::vec2 Transform::getLocalPosition() const
+    {
+        return LocalPosition;
+    }
+
+    float Transform::getLocalRotation() const
+    {
+        return LocalRotation;
     }
 
     glm::vec2 Transform::getPosition() const
@@ -82,5 +109,6 @@ namespace BadEngine
         m_Matrix = glm::translate(m_Matrix, glm::vec3(getPosition(), 0));
         glm::vec3 rotationNormal = glm::vec3(0, 0, 1);
         m_Matrix = glm::rotate(m_Matrix, getRotation(), rotationNormal);
+        m_Dirty = false;
     }
 }

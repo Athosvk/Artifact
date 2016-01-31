@@ -7,13 +7,12 @@ namespace BadEngine
 {
     class Transform : public Component
     {
-    public:
+    private:
         glm::vec2 LocalPosition = glm::vec2(0.0f, 0.0f);
         float LocalRotation = 0.0f;
         const Transform* Parent = nullptr;
-    private:
         glm::mat4 m_Matrix;
-        bool m_Dirty;
+        bool m_Dirty = true;
 
     public:
         Transform(GameObject a_GameObject);
@@ -23,6 +22,10 @@ namespace BadEngine
         void lookAt(glm::vec2 a_Position);
         void setRotation(float a_Angles);
         void setPosition(glm::vec2 a_Position);
+        void setLocalPosition(glm::vec2 a_LocalPosition);
+        void setLocalRotation(float a_Angle);
+        glm::vec2 getLocalPosition() const;
+        float getLocalRotation() const;
         glm::vec2 getPosition() const;
         glm::vec2 getForward() const;
         float getRotation() const;
