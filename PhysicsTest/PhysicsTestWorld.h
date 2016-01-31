@@ -4,6 +4,6 @@
 class PhysicsTestWorld : public BadEngine::World
 {
 public:
-    PhysicsTestWorld(BadEngine::Window& a_Window, BadEngine::GameTime& a_GameTime);
+    PhysicsTestWorld(BadEngine::GameTime& a_GameTime);
 };
 

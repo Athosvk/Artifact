@@ -14,6 +14,5 @@ public:
 private:
     void handleInput();
     void updatePlayerMovement(PlayerInputComponent* a_Player);
-    void onCollisionEnter(BadEngine::BoxCollider2D* a_Collider, BadEngine::BoxCollider2D* a_Other);
 };
 
