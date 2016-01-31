@@ -18,9 +18,9 @@ namespace BadEngine
     class Mouse
     {
     private:
-        const static int NumberOfButtons = 4;
-        static std::array<bool, NumberOfButtons> s_CurrentlyPressed;
-        static std::array<bool, NumberOfButtons> s_PreviouslyPressed;
+        const static int ButtonCount = 4;
+        static std::array<bool, ButtonCount> s_CurrentlyPressed;
+        static std::array<bool, ButtonCount> s_PreviouslyPressed;
 
         glm::vec2 m_Position;
         glm::vec2 m_PreviousPosition;

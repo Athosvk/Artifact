@@ -2,8 +2,8 @@
 
 namespace BadEngine
 {
-    std::array<bool, Mouse::NumberOfButtons> Mouse::s_CurrentlyPressed;
-    std::array<bool, Mouse::NumberOfButtons> Mouse::s_PreviouslyPressed;
+    std::array<bool, Mouse::ButtonCount> Mouse::s_CurrentlyPressed;
+    std::array<bool, Mouse::ButtonCount> Mouse::s_PreviouslyPressed;
 
     Mouse::Mouse(const BadEngine::Camera2D& a_Camera)
         : m_Camera(a_Camera)
