@@ -11,7 +11,11 @@ namespace BadEngine
 
     GLTexture::~GLTexture()
     {
-        glDeleteTextures(1, &m_ID);
+        //IMPORTANT: Currenty commented out because cleaning up textures in a borderless window mode
+        //will crash hard (i.e. the system loses control of the process and sign out or shut down is necessary)
+        //Textures need no cleaning up at the moment, as they are not unused until the end of the program
+        //Only uncomment this if you are aware of the possible consequences
+        //glDeleteTextures(1, &m_ID);
     }
 
     bool GLTexture::operator <(const GLTexture& a_Other) const
