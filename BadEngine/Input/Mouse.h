@@ -36,7 +36,6 @@ namespace BadEngine
 
         glm::vec2 getScreenPosition() const;
         glm::vec2 getWorldPosition() const;
-        void setPosition(glm::vec2 a_Position);
         void simulatePress();
         void process(SDL_MouseButtonEvent a_ButtonEvent);
         void process(SDL_MouseMotionEvent a_MotionEvent);

@@ -24,11 +24,6 @@ namespace BadEngine
         return m_Camera.screenToWorld(m_Position);
     }
 
-    void Mouse::setPosition(glm::vec2 a_Position)
-    {
-
-    }
-
     void Mouse::process(SDL_MouseButtonEvent a_ButtonEvent)
     {
         m_ButtonEvents.push_back(a_ButtonEvent);
