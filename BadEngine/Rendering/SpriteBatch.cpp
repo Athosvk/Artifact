@@ -147,8 +147,8 @@ namespace BadEngine
 
     void SpriteBatch::constructIBO() 
     {
-        const auto IndicesPerSprite = 6;
-        const auto VerticesPerSprite = 4;
+        const auto IndicesPerSprite = 6u;
+        const auto VerticesPerSprite = 4u;
 
         std::vector<GLuint> indices;
         indices.reserve(IndicesPerSprite * m_Glyphs.size());
