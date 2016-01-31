@@ -23,7 +23,6 @@ namespace BadEngine
         static std::array<bool, ButtonCount> s_PreviouslyPressed;
 
         glm::vec2 m_Position;
-        glm::vec2 m_PreviousPosition;
         SDL_MouseMotionEvent m_CurrentMotion;
         std::vector<SDL_MouseButtonEvent> m_ButtonEvents;
         std::vector<SDL_MouseWheelEvent> m_ScrollEvents;
