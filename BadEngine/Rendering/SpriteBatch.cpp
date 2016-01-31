@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <functional>
+#include <Windows.h>
 
 #include "SpriteBatch.h"
 #include "../MathHelper.h"
@@ -8,7 +9,9 @@ namespace BadEngine
 {
     const std::string SpriteBatch::s_DefaultVertexShader = "Vertex shaders/colorShading.vert";
     const std::string SpriteBatch::s_DefaultFragmentShader = "Fragment shaders/colorShading.frag";
-
+    //extern "C" {
+    //    _declspec(dllexport) DWORD NvOptimusEnablement = 0x00000001;
+    //}
     SpriteBatch::RenderBatch::RenderBatch(const GLTexture* a_Texture, GLuint a_Offset, GLuint a_IndexCount)
         : Texture(a_Texture),
         Offset(a_Offset),
@@ -231,12 +234,10 @@ namespace BadEngine
 
         for(decltype(m_Glyphs.size()) i = 0; i < m_Glyphs.size(); ++i)
         {
-            auto currentGlyph = m_Glyphs[i];
-
-            vertices.push_back(currentGlyph.BottomLeft);
-            vertices.push_back(currentGlyph.BottomRight);
-            vertices.push_back(currentGlyph.TopRight);
-            vertices.push_back(currentGlyph.TopLeft);
+            vertices.push_back(m_Glyphs[i].BottomLeft);
+            vertices.push_back(m_Glyphs[i].BottomRight);
+            vertices.push_back(m_Glyphs[i].TopRight);
+            vertices.push_back(m_Glyphs[i].TopLeft);
         }
         m_VBO.uploadData(vertices);
     }
