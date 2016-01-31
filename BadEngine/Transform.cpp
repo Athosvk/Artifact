@@ -66,4 +66,21 @@ namespace BadEngine
         }
         return rotation;
     }
+
+    glm::mat4 Transform::getMatrix()
+    {
+        if(m_Dirty)
+        {
+            refreshMatrix();
+        }
+        return m_Matrix;
+    }
+
+    void Transform::refreshMatrix()
+    {
+        m_Matrix = glm::mat4(1);
+        m_Matrix = glm::translate(m_Matrix, glm::vec3(getPosition(), 0));
+        glm::vec3 rotationNormal = glm::vec3(0, 0, 1);
+        m_Matrix = glm::rotate(m_Matrix, getRotation(), rotationNormal);
+    }
 }

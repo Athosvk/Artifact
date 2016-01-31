@@ -11,6 +11,9 @@ namespace BadEngine
         glm::vec2 LocalPosition = glm::vec2(0.0f, 0.0f);
         float LocalRotation = 0.0f;
         const Transform* Parent = nullptr;
+    private:
+        glm::mat4 m_Matrix;
+        bool m_Dirty;
 
     public:
         Transform(GameObject a_GameObject);
@@ -23,5 +26,8 @@ namespace BadEngine
         glm::vec2 getPosition() const;
         glm::vec2 getForward() const;
         float getRotation() const;
+        glm::mat4 getMatrix();
+    private:
+        void refreshMatrix();
     };
 }
