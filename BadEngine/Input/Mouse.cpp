@@ -59,7 +59,7 @@ namespace BadEngine
 
     void Mouse::updateButtonStates()
     {
-        for(auto i = 0; i < NumberOfButtons; ++i)
+        for(auto i = 0; i < ButtonCount; ++i)
         {
             s_PreviouslyPressed[i] = s_CurrentlyPressed[i];
         }
