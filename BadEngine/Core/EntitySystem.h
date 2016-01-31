@@ -50,22 +50,29 @@ namespace BadEngine
         }
 
         template<typename T>
-        T* getComponent(unsigned a_GameObjectID)
+        T* getComponent(unsigned a_GameObjectID) const
         {
-            auto& componentMap = m_Components[typeid(T)];
-            auto iterator = componentMap.find(a_GameObjectID);
-            return iterator != componentMap.end() ? static_cast<T*>(iterator->second.get()) : nullptr;
+            auto iterator = m_Components.find(typeid(T));
+            if(iterator != m_Components.end())
+            {
+                auto componentIterator = iterator->second.find(a_GameObjectID);
+                return componentIterator != iterator->second.end() ? static_cast<T*>(componentIterator->second.get()) : nullptr;
+            }
+            return nullptr;
         }
 
         template<typename T>
-        std::vector<T*> getComponentsOfType()
-        {
-            auto& componentMap = m_Components[typeid(T)];
+        std::vector<T*> getComponentsOfType() const
+        {            
             std::vector<T*> components;
-            components.reserve(componentMap.size());
-            for(auto& keyValue : componentMap)
+            auto iterator = m_Components.find(typeid(T));
+            if(iterator != m_Components.end())
             {
-                components.push_back(static_cast<T*>(keyValue.second.get()));
+                components.reserve(iterator->second.size());
+                for(auto& keyValue : iterator->second)
+                {
+                    components.push_back(static_cast<T*>(keyValue.second.get()));
+                }
             }
             return components;
         }
