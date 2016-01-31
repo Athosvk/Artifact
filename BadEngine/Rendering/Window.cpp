@@ -7,8 +7,6 @@
 namespace BadEngine
 {
     Window::Window(int a_Width, int a_Height, Uint32 a_Flags, std::string a_Name) :
-        m_Width(a_Width),
-        m_Height(a_Height),
         m_Name(a_Name)
     {
         if((a_Flags & WindowFlag::FullScreen) == WindowFlag::FullScreen)
@@ -23,6 +21,8 @@ namespace BadEngine
         {
             m_CurrentFlags |= SDL_WindowFlags::SDL_WINDOW_HIDDEN;
         }
+        s_Width = a_Width;
+        s_Height = a_Height;
 
         initialiseSDLWindow();
         initialiseGL();
@@ -38,7 +38,7 @@ namespace BadEngine
     {
         SDL_Init(SDL_INIT_EVERYTHING);
 
-        m_SDLWindow = SDL_CreateWindow(m_Name.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, m_Width, m_Height, m_CurrentFlags);
+        m_SDLWindow = SDL_CreateWindow(m_Name.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, s_Width, s_Height, m_CurrentFlags);
         if(m_SDLWindow == nullptr)
         {
             throwFatalError("Could not initialize SDL window");
@@ -51,14 +51,14 @@ namespace BadEngine
         }
     }
 
-    int Window::getWidth() const
+    int Window::getWidth()
     {
-        return m_Width;
+        return s_Width;
     }
 
-    int Window::getHeight() const
+    int Window::getHeight()
     {
-        return m_Height;
+        return s_Height;
     }
 
     void Window::clear() const
