@@ -5,7 +5,7 @@
 
 namespace BadEngine
 {
-    class RigidBody;
+    class RigidBody2D;
     class BoxCollider2D;
 
     class PhysicsWorld
@@ -21,10 +21,10 @@ namespace BadEngine
     public:
         PhysicsWorld(CollisionListener a_CollisionListener);
 
-        void emplace(BoxCollider2D* a_Collider, RigidBody* a_RigidBody);
+        void emplace(BoxCollider2D* a_Collider, RigidBody2D* a_RigidBody);
         void fixedUpdate();
     private:
-        void createBody(BoxCollider2D* a_Collider, RigidBody* a_RigidBody);
+        void createBody(BoxCollider2D* a_Collider, RigidBody2D* a_RigidBody);
     };
 }
 

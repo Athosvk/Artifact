@@ -12,10 +12,15 @@ PhysicsTestWorld::PhysicsTestWorld(BadEngine::Window& a_Window, BadEngine::GameT
 {
     addSystem<PlayerInputSystem>();
     m_EntitySystem.createEntity<Player>();
-    m_EntitySystem.createEntity<Ground>();
-    for(int i = 0; i < 5; i++)
+    auto ground = m_EntitySystem.createEntity<Ground>();
+    ground.getComponent<BadEngine::Transform>()->setPosition(glm::vec2(0.0f, -2.0f));
+    for(int j = 0; j < 27; j++)
     {
-        Box box = m_EntitySystem.createEntity<Box>();
-        box.getComponent<BadEngine::Transform>()->setPosition(glm::vec2(i * 1- 1.5f, -1));
+        for(int i = 0; i < 50; i++)
+        {
+            Box box = m_EntitySystem.createEntity<Box>();
+            auto transform = box.getComponent<BadEngine::Transform>();
+            transform->setPosition(glm::vec2(i * 0.3f - 1.5f, 0.3f * j));
+        }
     }
 }

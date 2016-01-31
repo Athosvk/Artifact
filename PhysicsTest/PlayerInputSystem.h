@@ -1,5 +1,6 @@
 #pragma once
 #include <BadEngine/Core/System.h>
+#include <BadEngine/Physics/BoxCollider2D.h>
 
 class PlayerInputComponent;
 
@@ -13,5 +14,6 @@ public:
 private:
     void handleInput();
     void updatePlayerMovement(PlayerInputComponent* a_Player);
+    void onCollisionEnter(BadEngine::BoxCollider2D* a_Collider, BadEngine::BoxCollider2D* a_Other);
 };
 

@@ -1,6 +1,6 @@
 #include "PhysicsWorld.h"
 #include "BoxCollider2D.h"
-#include "RigidBody.h"
+#include "RigidBody2D.h"
 #include "../Game.h"
 #include "../Transform.h"
 
@@ -21,12 +21,12 @@ namespace BadEngine
         m_World.Step(static_cast<float>(Game::FixedUpdateInterval), VelocityIterations, PositionIterations);
     }
 
-    void PhysicsWorld::emplace(BoxCollider2D* a_Collider, RigidBody* a_RigidBody)
+    void PhysicsWorld::emplace(BoxCollider2D* a_Collider, RigidBody2D* a_RigidBody)
     {
         createBody(a_Collider, a_RigidBody);
     }
 
-    void PhysicsWorld::createBody(BoxCollider2D* a_Collider, RigidBody* a_RigidBody)
+    void PhysicsWorld::createBody(BoxCollider2D* a_Collider, RigidBody2D* a_RigidBody)
     {
         b2BodyDef bodyDefinition;
         auto transform = a_Collider->getComponent<Transform>();

@@ -1,6 +1,6 @@
 #include "PhysicsSystem.h"
 #include "BoxCollider2D.h"
-#include "RigidBody.h"
+#include "RigidBody2D.h"
 #include "../Core/EntitySystem.h"
 #include "../Core/World.h"
 #include "../Transform.h"
@@ -20,9 +20,9 @@ namespace BadEngine
         {
             onColliderAdd(static_cast<const ComponentAddedMessage<BoxCollider2D>*>(a_Message)->getAddedComponent());
         });
-        m_MessagingSystem.registerListener<ComponentAddedMessage<RigidBody>>([this](const Message* a_Message)
+        m_MessagingSystem.registerListener<ComponentAddedMessage<RigidBody2D>>([this](const Message* a_Message)
         {
-            onRigidBodyAdd(static_cast<const ComponentAddedMessage<RigidBody>*>(a_Message)->getAddedComponent());
+            onRigidBodyAdd(static_cast<const ComponentAddedMessage<RigidBody2D>*>(a_Message)->getAddedComponent());
         });
         m_MessagingSystem.registerListener<FixedUpdateMessage>([this](const Message* a_Message)
         {
@@ -42,7 +42,7 @@ namespace BadEngine
 
     void PhysicsSystem::updateTransforms()
     {
-        for(auto rigidBody : m_EntitySystem.getComponentsOfType<RigidBody>())
+        for(auto rigidBody : m_EntitySystem.getComponentsOfType<RigidBody2D>())
         {
             rigidBody->updateState();
         }
@@ -58,7 +58,7 @@ namespace BadEngine
         }
     }
 
-    void PhysicsSystem::onRigidBodyAdd(RigidBody* a_RigidBody)
+    void PhysicsSystem::onRigidBodyAdd(RigidBody2D* a_RigidBody)
     {
         auto collider = a_RigidBody->getComponent<BoxCollider2D>();
         if(collider != nullptr)

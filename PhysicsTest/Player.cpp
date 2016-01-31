@@ -1,6 +1,6 @@
 #include <BadEngine/Core/EntitySystem.h>
 #include <BadEngine/IO/ResourceManager.h>
-#include <BadEngine/Physics/RigidBody.h>
+#include <BadEngine/Physics/RigidBody2D.h>
 #include <BadEngine/Physics/MovementComponent.h>
 #include <BadEngine/Physics/BoxCollider2D.h>
 #include <BadEngine/Transform.h>
@@ -21,13 +21,13 @@ Player::Player(unsigned a_ID, BadEngine::EntitySystem& a_EntitySystem)
     inputController->MoveLeftKey = BadEngine::KeyCode::A;
     inputController->MoveRightKey = BadEngine::KeyCode::D;
 
-    renderer->Width = 1;
-    renderer->Height = 1;
+    renderer->Width = 0.5f;
+    renderer->Height = 0.5f;
 
     auto transform = getComponent<BadEngine::Transform>();
     transform->setPosition(glm::vec2(transform->getPosition().x, transform->getPosition().y + 0.75));
 
     auto collider = addComponent<BadEngine::BoxCollider2D>();
-    collider->setDimensions(glm::vec2(1, 1));
-    auto rigidbody = addComponent<BadEngine::RigidBody>();
+    collider->setDimensions(glm::vec2(0.5f, 0.5f));
+    auto rigidbody = addComponent<BadEngine::RigidBody2D>();
 }
