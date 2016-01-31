@@ -10,10 +10,6 @@ namespace BadEngine
     {
     }
 
-    Mouse::~Mouse()
-    {
-    }
-
     glm::vec2 Mouse::getScreenPosition() const
     {
         return m_Position;
