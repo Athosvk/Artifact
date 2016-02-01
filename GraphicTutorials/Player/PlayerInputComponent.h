@@ -7,6 +7,7 @@
 class PlayerInputComponent : public BadEngine::Component
 {
 public:
+    float MovementSpeed = 0.9f;
     BadEngine::KeyCode MoveUpKey;
     BadEngine::KeyCode MoveDownKey;
     BadEngine::KeyCode MoveLeftKey;
