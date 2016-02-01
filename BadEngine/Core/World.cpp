@@ -1,7 +1,6 @@
 #include "World.h"
 #include "../Rendering/SpriteRenderSystem.h"
 #include "../Rendering/RenderMessage.h"
-#include "../Physics/MovementSystem.h"
 #include "../Physics/PhysicsSystem.h"
 #include "../Input/InputSystem.h"
 
@@ -41,7 +40,6 @@ namespace BadEngine
 
         addSystem<InputSystem>();
         addSystem<SpriteRenderSystem>();
-        addSystem<MovementSystem>();
         addSystem<PhysicsSystem>();
     }
 
