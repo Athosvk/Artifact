@@ -21,24 +21,23 @@ namespace BadEngine
         m_World.Step(static_cast<float>(Game::FixedUpdateInterval), VelocityIterations, PositionIterations);
     }
 
-    void PhysicsWorld::emplace(BoxCollider2D* a_Collider, RigidBody2D* a_RigidBody)
+    void PhysicsWorld::emplace(BoxCollider2D* a_Collider)
     {
-        createBody(a_Collider, a_RigidBody);
+        a_Collider->m_Body = createBody(a_Collider->getComponent<Transform>(), b2BodyType::b2_staticBody);
     }
 
-    void PhysicsWorld::createBody(BoxCollider2D* a_Collider, RigidBody2D* a_RigidBody)
+    void PhysicsWorld::emplace(RigidBody2D* a_RigidBody)
+    {
+        a_RigidBody->m_Body = createBody(a_RigidBody->getComponent<Transform>(), b2BodyType::b2_dynamicBody);
+    }
+
+    b2Body* PhysicsWorld::createBody(Transform* a_Transform, b2BodyType a_BodyType)
     {
         b2BodyDef bodyDefinition;
-        auto transform = a_Collider->getComponent<Transform>();
-        bodyDefinition.position.Set(transform->getPosition().x, transform->getPosition().y);
-        bodyDefinition.angle = transform->getRotation();
-        bodyDefinition.type = a_RigidBody != nullptr ? b2BodyType::b2_dynamicBody : b2BodyType::b2_staticBody;
+        bodyDefinition.position.Set(a_Transform->getPosition().x, a_Transform->getPosition().y);
+        bodyDefinition.angle = a_Transform->getRotation();
+        bodyDefinition.type = a_BodyType;
 
-        auto body = m_World.CreateBody(&bodyDefinition);
-        a_Collider->m_Body = body;
-        if(a_RigidBody != nullptr)
-        {
-            a_RigidBody->m_Body = body;
-        }
+        return m_World.CreateBody(&bodyDefinition);
     }
 }

@@ -15,7 +15,6 @@ namespace BadEngine
     {
     private:
         PhysicsWorld m_PhysicsWorld;
-        std::map<unsigned, RigidBody2D*> m_Uninitialised;
 
     public:
         PhysicsSystem(EntitySystem& a_EntitySystem, MessagingSystem& a_MessagingSystem);
