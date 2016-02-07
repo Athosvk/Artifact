@@ -38,8 +38,6 @@
     <ClCompile Include="Physics\BoxCollider2D.cpp" />
     <ClCompile Include="Physics\CollisionListener.cpp" />
     <ClCompile Include="Physics\CollisionMessages.cpp" />
-    <ClCompile Include="Physics\MovementComponent.cpp" />
-    <ClCompile Include="Physics\MovementSystem.cpp" />
     <ClCompile Include="Physics\PhysicsSystem.cpp" />
     <ClCompile Include="Physics\PhysicsWorld.cpp" />
     <ClCompile Include="Physics\RigidBody2D.cpp" />
@@ -82,8 +80,6 @@
     <ClInclude Include="Physics\BoxCollider2D.h" />
     <ClInclude Include="Physics\CollisionListener.h" />
     <ClInclude Include="Physics\CollisionMessages.h" />
-    <ClInclude Include="Physics\MovementComponent.h" />
-    <ClInclude Include="Physics\MovementSystem.h" />
     <ClInclude Include="Physics\PhysicsSystem.h" />
     <ClInclude Include="Physics\PhysicsWorld.h" />
     <ClInclude Include="Physics\RigidBody2D.h" />

@@ -21,10 +21,11 @@ namespace BadEngine
     public:
         PhysicsWorld(CollisionListener a_CollisionListener);
 
-        void emplace(BoxCollider2D* a_Collider, RigidBody2D* a_RigidBody);
+        void emplace(BoxCollider2D* a_Collider);
+        void emplace(RigidBody2D* a_RigidBody);
         void fixedUpdate();
     private:
-        void createBody(BoxCollider2D* a_Collider, RigidBody2D* a_RigidBody);
+        b2Body* createBody(Transform* a_Transform, b2BodyType a_BodyType);
     };
 }
 

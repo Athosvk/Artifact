@@ -11,14 +11,11 @@ namespace BadEngine
         glm::vec2 LocalPosition = glm::vec2(0.0f, 0.0f);
         float LocalRotation = 0.0f;
         const Transform* Parent = nullptr;
-        glm::mat4 m_Matrix;
+        glm::mat4 m_Matrix = glm::mat4(1.0f);
         bool m_Dirty = true;
 
     public:
         Transform(GameObject a_GameObject);
-
-        void* operator new(std::size_t a_Size);
-        void operator delete(void* a_Pointer);
 
         void translate(glm::vec2 a_Translation);
         void rotate(float a_Angles);
@@ -32,7 +29,7 @@ namespace BadEngine
         glm::vec2 getPosition() const;
         glm::vec2 getForward() const;
         float getRotation() const;
-        glm::mat4 getMatrix();
+        glm::mat4& getMatrix();
         bool isDirty() const;
     private:
         void refreshMatrix();

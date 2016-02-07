@@ -50,11 +50,14 @@ namespace BadEngine
 
     void PhysicsSystem::onColliderAdd(BoxCollider2D* a_Collider)
     {
-        auto rigidBody = m_Uninitialised[a_Collider->getGameObject().getID()];
-        m_PhysicsWorld.emplace(a_Collider, rigidBody);
+        auto rigidBody = a_Collider->getComponent<RigidBody2D>();
         if(rigidBody != nullptr)
         {
-            m_Uninitialised.erase(a_Collider->getGameObject().getID());
+            a_Collider->m_Body = rigidBody->m_Body;
+        }
+        else
+        {
+            m_PhysicsWorld.emplace(a_Collider);
         }
     }
 
@@ -63,11 +66,12 @@ namespace BadEngine
         auto collider = a_RigidBody->getComponent<BoxCollider2D>();
         if(collider != nullptr)
         {
-            m_PhysicsWorld.emplace(collider, a_RigidBody);
+             collider->m_Body->SetType(b2BodyType::b2_dynamicBody);
+             a_RigidBody->m_Body = collider->m_Body;
         }
         else
         {
-            m_Uninitialised[a_RigidBody->getGameObject().getID()] = a_RigidBody;
+            m_PhysicsWorld.emplace(a_RigidBody);
         }
     }
 }
