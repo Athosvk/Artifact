@@ -18,6 +18,11 @@ namespace BadEngine
     {
         return glm::vec2(m_Body->GetLinearVelocity().x, m_Body->GetLinearVelocity().y);
     }
+
+    void RigidBody2D::setGravityScale(float a_Scale)
+    {
+        m_Body->SetGravityScale(a_Scale);
+    }
      
     void RigidBody2D::updateState()
     {

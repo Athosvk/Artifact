@@ -32,9 +32,6 @@ namespace BadEngine
         
     public:
         Camera2D(GameObject a_GameObject);
-
-        void* operator new(std::size_t a_Size);
-        void operator delete(void* a_Pointer);
         
         float getZoomFactor() const;
         glm::mat4& getViewProjection() const;

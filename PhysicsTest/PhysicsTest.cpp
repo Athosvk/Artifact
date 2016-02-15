@@ -2,7 +2,7 @@
 #include "PhysicsTestWorld.h"
 
 PhysicsTest::PhysicsTest()
-    : Game(1024, 768, BadEngine::WindowFlag::Borderless, "Physics Test")
+    : Game(1024, 768, 0, "Physics Test")
 {
     loadWorld<PhysicsTestWorld>();
 }

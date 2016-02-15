@@ -1,9 +1,10 @@
 #include <glm/glm.hpp>
 
-#include <BadEngine/Input/Keyboard.h>
+#include <BadEngine/Input/InputSystem.h>
 #include <BadEngine/Core/EntitySystem.h>
-#include <BadEngine/Physics/MovementComponent.h>
+#include <BadEngine/Physics/RigidBody2D.h>
 #include <BadEngine/Core/World.h>
+#include <BadEngine/MathHelper.h>
 
 #include "PlayerInputSystem.h"
 #include "PlayerInputComponent.h"
@@ -50,7 +51,12 @@ void PlayerInputSystem::updatePlayerMovement(PlayerInputComponent* a_Player)
     {
         displacement.x++;
     }
-    a_Player->getComponent<BadEngine::MovementComponent>()->Direction = displacement;
+    if(displacement != glm::vec2(0.0f, 0.0f))
+    {
+        glm::normalize(displacement);
+        a_Player->getComponent<BadEngine::Transform>()->setRotation(BadEngine::MathHelper::directionToAngle(displacement));
+    }
+    a_Player->getComponent<BadEngine::RigidBody2D>()->setVelocity(displacement * a_Player->MovementSpeed);
 }
 
 void PlayerInputSystem::updateFireState(PlayerInputComponent* a_Player)

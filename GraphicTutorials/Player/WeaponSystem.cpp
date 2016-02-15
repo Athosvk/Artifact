@@ -1,5 +1,5 @@
 #include <BadEngine/Core/EntitySystem.h>
-#include <BadEngine/Physics/MovementComponent.h>
+#include <BadEngine/Physics/RigidBody2D.h>
 #include <BadEngine/MathHelper.h>
 
 #include "WeaponSystem.h"
@@ -41,7 +41,8 @@ void WeaponSystem::fire(WeaponComponent* a_Weapon)
 {
     auto bullet = m_EntitySystem.createEntity<Bullet>();
     bullet.getComponent<BadEngine::Transform>()->setPosition(a_Weapon->MuzzleTransform->getPosition());
-    auto targetDirection = BadEngine::MathHelper::directionFromAngle(a_Weapon->getComponent<BadEngine::Transform>()->LocalRotation);
-    bullet.getComponent<BadEngine::MovementComponent>()->Direction = targetDirection;
+    auto targetDirection = BadEngine::MathHelper::directionFromAngle(a_Weapon->getComponent<BadEngine::Transform>()->getRotation());
+    const auto bulletSpeed = 2.0f;
+    bullet.getComponent<BadEngine::RigidBody2D>()->setVelocity(targetDirection * bulletSpeed);
     a_Weapon->FireDelayTimer->start();
 }
