@@ -1,16 +1,23 @@
-#include <BadEngine/Physics/MovementComponent.h>
+#include <BadEngine/Physics/RigidBody2D.h>
 #include <BadEngine/Rendering/SpriteRenderer.h>
 #include <BadEngine/IO/ResourceManager.h>
 #include <BadEngine/Core/EntitySystem.h>
+#include <BadEngine/Physics/BoxCollider2D.h>
 
 #include "Bullet.h"
+#include "TimerComponent.h"
 
 Bullet::Bullet(unsigned a_ID, BadEngine::EntitySystem& a_EntitySystem)
     : GameObject(a_ID, a_EntitySystem)
 {
-    addComponent<BadEngine::MovementComponent>()->Speed = 0.25f;
+    auto rigidBody = addComponent<BadEngine::RigidBody2D>();
+    rigidBody->setGravityScale(0.0f);
+
+    auto collider = addComponent<BadEngine::BoxCollider2D>();
+    collider->setDimensions(glm::vec2(0.1f, 0.1f));
+
     auto renderer = addComponent<BadEngine::SpriteRenderer>();
-    renderer->setTexture(BadEngine::ResourceManager::getTexture("Textures/PNG/Bullet.png"));
     renderer->Width = 0.1f;
     renderer->Height = 0.1f;
+    renderer->setTexture(BadEngine::ResourceManager::getTexture("Textures/PNG/Bullet.png"));
 }

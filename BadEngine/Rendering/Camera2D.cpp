@@ -25,16 +25,6 @@ namespace BadEngine
         constructMatrix();
     }
 
-    void* Camera2D::operator new(std::size_t a_Size)
-    {
-        return _aligned_malloc(a_Size, 16);
-    }
-
-    void Camera2D::operator delete(void* a_Pointer)
-    {
-        _aligned_free(a_Pointer);
-    }
-
     glm::mat4& Camera2D::getViewProjection() const
     {
         if(m_Dirty || m_Transform->isDirty())

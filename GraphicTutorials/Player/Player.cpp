@@ -1,6 +1,7 @@
 #include <BadEngine/Core/EntitySystem.h>
 #include <BadEngine/IO/ResourceManager.h>
-#include <BadEngine/Physics/MovementComponent.h>
+#include <BadEngine/Physics/BoxCollider2D.h>
+#include <BadEngine/Physics/RigidBody2D.h>
 
 #include "Player.h"
 #include "PlayerInputComponent.h"
@@ -28,6 +29,6 @@ Player::Player(unsigned a_ID, BadEngine::EntitySystem& a_EntitySystem)
     weapon->FireDelayTimer->Duration = 0.5f;
     weapon->MuzzleTransform = getComponent<BadEngine::Transform>();
     
-    auto movement = addComponent<BadEngine::MovementComponent>();
-    movement->Speed = 3.5f;
+    auto rigidBody = addComponent<BadEngine::RigidBody2D>();
+    rigidBody->setGravityScale(0.0f);
 }

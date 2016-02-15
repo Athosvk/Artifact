@@ -3,6 +3,7 @@
 
 *notes.txt
 */Performance reports/
+*.opendb
 
 # User-specific files
 *.suo
