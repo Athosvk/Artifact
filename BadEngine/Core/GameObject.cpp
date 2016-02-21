@@ -9,7 +9,6 @@ namespace BadEngine
         : m_ID(a_ID),
         m_EntitySystem(a_EntitySystem)
     {
-        activate();
         m_Transform = addComponent<Transform>();
     }
 
@@ -20,16 +19,16 @@ namespace BadEngine
 
     bool GameObject::isActive()
     {
-        return m_Active;
+        return m_EntitySystem.isActive(m_ID);
     }
 
     void GameObject::activate()
     {
-        m_Active = true;
+        m_EntitySystem.activate(m_ID);
     }
 
     void GameObject::deactivate()
     {
-        m_Active = false;
+        m_EntitySystem.deactivate(m_ID);
     }
 }
