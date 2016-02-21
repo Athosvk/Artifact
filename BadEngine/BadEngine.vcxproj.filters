@@ -253,6 +253,9 @@
     <ClInclude Include="Input\InputSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Delegate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Performance reports\Memory - 01-11-2015.diagsession" />
