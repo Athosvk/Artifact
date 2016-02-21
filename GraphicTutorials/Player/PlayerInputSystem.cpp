@@ -17,7 +17,7 @@ PlayerInputSystem::PlayerInputSystem(BadEngine::EntitySystem& a_EntitySystem, Ba
 
 void PlayerInputSystem::registerListeners()
 {
-    m_MessagingSystem.registerListener<BadEngine::HandleInputMessage>([=](const BadEngine::Message* a_Message)
+    m_MessagingSystem.registerListener<BadEngine::HandleInputMessage>([=](const BadEngine::Message*)
     {
         handleInput();
     });

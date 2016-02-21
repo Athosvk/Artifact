@@ -1,6 +1,6 @@
 #include "MainGame.h"
 
-int main(int argumentCount, char* arguments[]) 
+int main(int, char**) 
 {
     MainGame mainGame;
 
