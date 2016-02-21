@@ -31,8 +31,15 @@ namespace BadEngine
     class EntitySystem
     {
     private:
+        struct EntityState
+        {
+        public:
+            bool Active = true;
+        };
+
         //Unsigned used for game object id
         std::unordered_map<std::type_index, std::map<unsigned, std::unique_ptr<Component>>> m_Components;
+        std::map<unsigned, EntityState> m_EntityStates;
         MessagingSystem& m_MessagingSystem;
         unsigned m_LastID = 0;
 
@@ -80,8 +87,14 @@ namespace BadEngine
         template<typename T = GameObject>
         T createEntity()
         {
-            return T(generateNextID(), *(this));
+            auto id = generateNextID();
+            m_EntityStates.emplace(id, EntityState());
+            return T(id, *(this));
         }
+
+        bool isActive(unsigned a_EntityID);
+        void activate(unsigned a_EntityID);
+        void deactivate(unsigned a_EnittyID);
 
     private:
         unsigned generateNextID();
