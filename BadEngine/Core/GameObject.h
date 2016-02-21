@@ -9,7 +9,6 @@ namespace BadEngine
     private:
         unsigned m_ID;
         EntitySystem& m_EntitySystem;
-        bool m_Active;
     protected:
         Transform* m_Transform;
 
