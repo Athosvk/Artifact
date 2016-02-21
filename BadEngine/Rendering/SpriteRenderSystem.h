@@ -18,6 +18,6 @@ namespace BadEngine
         virtual void registerListeners() override;
 
     private:
-        void renderSprites(const RenderMessage* a_RenderMessage);
+        void renderSprites();
     };
 }

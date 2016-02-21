@@ -27,7 +27,7 @@ namespace BadEngine
         m_CurrentMotion = a_MotionEvent;
     }
 
-    void Mouse::process(SDL_MouseWheelEvent a_ScrollEvent)
+    void Mouse::process(SDL_MouseWheelEvent)
     {
 
     }

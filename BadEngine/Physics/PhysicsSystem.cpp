@@ -24,7 +24,7 @@ namespace BadEngine
         {
             onRigidBodyAdd(static_cast<const ComponentAddedMessage<RigidBody2D>*>(a_Message)->getAddedComponent());
         });
-        m_MessagingSystem.registerListener<FixedUpdateMessage>([this](const Message* a_Message)
+        m_MessagingSystem.registerListener<FixedUpdateMessage>([this](const Message*)
         {
             fixedUpdate();
         });

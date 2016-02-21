@@ -18,9 +18,9 @@ namespace BadEngine
 
     void SpriteRenderSystem::registerListeners()
     {
-        m_MessagingSystem.registerListener<RenderMessage>([this](const Message* a_RenderMessage)
+        m_MessagingSystem.registerListener<RenderMessage>([this](const Message*)
         {
-            renderSprites(static_cast<const RenderMessage*>(a_RenderMessage));
+            renderSprites();
         });
         m_MessagingSystem.registerListener<OnCameraChangedMessage>([this](const Message* a_Message)
         {
@@ -28,7 +28,7 @@ namespace BadEngine
         });
     }
 
-    void SpriteRenderSystem::renderSprites(const RenderMessage* a_Message)
+    void SpriteRenderSystem::renderSprites()
     {
         m_SpriteBatch.begin(&m_CurrentCamera->getViewProjection());
         for(auto sprite : m_EntitySystem.getComponentsOfType<SpriteRenderer>())

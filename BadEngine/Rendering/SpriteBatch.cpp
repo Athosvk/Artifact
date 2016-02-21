@@ -116,7 +116,7 @@ namespace BadEngine
                            glm::vec2 a_Origin, Color a_Color, const Rectangle& a_UVRectangle, float a_Depth)
     {
         Rectangle destinationRectangle(a_Position, a_Texture->getWidth(), a_Texture->getHeight());
-        draw(a_Texture, destinationRectangle, a_Rotation, a_Origin, a_Color, a_UVRectangle);
+        draw(a_Texture, destinationRectangle, a_Rotation, a_Origin, a_Color, a_UVRectangle, a_Depth);
     }
 
     void SpriteBatch::constructVAO() const
