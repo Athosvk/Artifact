@@ -42,11 +42,6 @@ namespace BadEngine
     {
         m_CurrentWorld->update();
         m_GameTime.update();
-        static int counter = 0;
-        if(counter++ % 15 == 0)
-        {
-            std::cout << "FPS: " << 1 / m_GameTime.getAverageDeltaTime() << "\n";
-        }
     }
 
     void Game::processFixedUpdates()
