@@ -78,7 +78,10 @@ namespace BadEngine
                 components.reserve(iterator->second.size());
                 for(auto& keyValue : iterator->second)
                 {
-                    components.push_back(static_cast<T*>(keyValue.second.get()));
+                    if(keyValue.second->getGameObject().isActive())
+                    {
+                        components.push_back(static_cast<T*>(keyValue.second.get()));
+                    }
                 }
             }
             return components;
