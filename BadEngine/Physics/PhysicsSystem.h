@@ -23,6 +23,7 @@ namespace BadEngine
     private:
         void onRigidBodyAdd(RigidBody2D* a_RigidBody);
         void onColliderAdd(BoxCollider2D* a_Collider);
+        void registerActiveMessages(GameObject a_Entity);
         void fixedUpdate();
         void updateTransforms();
     };

@@ -13,11 +13,20 @@ HealthSystem::HealthSystem(BadEngine::EntitySystem& a_EntitySystem, BadEngine::M
 
 void HealthSystem::registerListeners()
 {
+    m_MessagingSystem.registerListener<BadEngine::ComponentAddedMessage<HealthComponent>>([this](const BadEngine::Message* a_Message)
+    {
+        registerTriggerListener(static_cast<const BadEngine::ComponentAddedMessage<HealthComponent>*>(a_Message)
+            ->getAddedComponent()->getGameObject());
+    });
+}
+
+void HealthSystem::registerTriggerListener(BadEngine::GameObject a_GameObject)
+{
     m_MessagingSystem.registerListener<BadEngine::TriggerEnter2DMessage>([this](const BadEngine::Message* a_Message)
     {
         auto collisionMessage = static_cast<const BadEngine::TriggerEnter2DMessage*>(a_Message);
         onTriggerEnter(collisionMessage->getCollider());
-    });
+    }, a_GameObject);
 }
 
 void HealthSystem::onTriggerEnter(BadEngine::BoxCollider2D* a_Object)
@@ -35,4 +44,5 @@ void HealthSystem::onTriggerEnter(BadEngine::BoxCollider2D* a_Object)
 
 void HealthSystem::onDeath(HealthComponent* a_Health)
 {
+    a_Health->getGameObject().deactivate();
 }

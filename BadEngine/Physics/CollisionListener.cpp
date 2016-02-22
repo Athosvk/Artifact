@@ -1,5 +1,4 @@
 #include "CollisionListener.h"
-#include "CollisionMessages.h"
 
 namespace BadEngine
 {
@@ -10,11 +9,12 @@ namespace BadEngine
 
     void CollisionListener::BeginContact(b2Contact* a_Contact)
     {
-        sendCollisionMessage<TriggerEnter2DMessage, CollisionEnter2DMessage>(a_Contact);
+        storeCollisionMessage<TriggerEnter2DMessage, CollisionEnter2DMessage>(a_Contact);
+
     }
 
     void CollisionListener::EndContact(b2Contact* a_Contact)
     {
-        sendCollisionMessage<TriggerExit2DMessage, CollisionExit2DMessage>(a_Contact);
+        storeCollisionMessage<TriggerExit2DMessage, CollisionExit2DMessage>(a_Contact);
     }
 }
