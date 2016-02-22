@@ -11,7 +11,6 @@ namespace BadEngine
     {
     private:
         MessagingSystem& m_MessagingSystem;
-        std::vector<std::unique_ptr<Collision2DMessage>> m_QueuedMessages;
 
     public:
         CollisionListener(MessagingSystem& a_MessagingSystem);
@@ -43,7 +42,7 @@ namespace BadEngine
         template<typename T>
         void storeExitMessage(BoxCollider2D* a_Collider1, BoxCollider2D* a_Collider2)
         {
-            m_MessagingSystem.broadcast<T>(a_Collider1->getGameObject(), a_Collider1, a_Collider2);
+            m_MessagingSystem.sendMessage<T>(a_Collider1->getGameObject(), a_Collider1, a_Collider2);
         }
     };
 }
