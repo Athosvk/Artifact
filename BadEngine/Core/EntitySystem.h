@@ -9,8 +9,6 @@
 
 namespace BadEngine
 {
-    class GameObject;
-
     template<typename T>
     class ComponentAddedMessage : public Message
     {
@@ -26,6 +24,26 @@ namespace BadEngine
         {
             return m_AddedComponent;
         }
+    };
+
+    class EntityActivatedMessage : public Message
+    {
+        GameObject m_ActivatedEntity;
+
+    public:
+        EntityActivatedMessage(GameObject a_Entity);
+
+        GameObject getActivatedEntity() const;
+    };
+
+    class EntityDeactivatedMessage : public Message
+    {
+        GameObject m_DeactivatedEntity;
+        
+    public:
+        EntityDeactivatedMessage(GameObject a_Entity);
+
+        GameObject getDeactivatedEntity() const;
     };
 
     class EntitySystem
@@ -95,9 +113,9 @@ namespace BadEngine
             return T(id, *(this));
         }
 
-        bool isActive(unsigned a_EntityID);
-        void activate(unsigned a_EntityID);
-        void deactivate(unsigned a_EnittyID);
+        bool isActive(GameObject a_EntityID);
+        void activate(GameObject a_EntityID);
+        void deactivate(GameObject a_EnittyID);
 
     private:
         unsigned generateNextID();

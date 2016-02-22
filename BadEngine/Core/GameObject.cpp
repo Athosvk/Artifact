@@ -19,16 +19,16 @@ namespace BadEngine
 
     bool GameObject::isActive()
     {
-        return m_EntitySystem.isActive(m_ID);
+        return m_EntitySystem.isActive(*this);
     }
 
     void GameObject::activate()
     {
-        m_EntitySystem.activate(m_ID);
+        m_EntitySystem.activate(*this);
     }
 
     void GameObject::deactivate()
     {
-        m_EntitySystem.deactivate(m_ID);
+        m_EntitySystem.deactivate(*this);
     }
 }
