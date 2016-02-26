@@ -30,6 +30,7 @@ namespace BadEngine
     public:
         auto begin()->decltype(m_Messages.begin());
         auto end()->decltype(m_Messages.end());
+        void clear();
 
         template<typename TMessageType, typename ...TArguments>
         void enqueue(GameObject a_Target, TArguments&&... a_MessageArguments)
