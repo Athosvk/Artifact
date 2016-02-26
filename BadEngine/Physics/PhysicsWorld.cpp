@@ -21,6 +21,11 @@ namespace BadEngine
         m_World.Step(static_cast<float>(Game::FixedUpdateInterval), VelocityIterations, PositionIterations);
     }
 
+    void PhysicsWorld::postPhysicsUpdate()
+    {
+        m_CollisionListener.postStep();
+    }
+
     void PhysicsWorld::emplace(BoxCollider2D* a_Collider)
     {
         a_Collider->m_Body = createBody(a_Collider->getComponent<Transform>(), b2BodyType::b2_staticBody);

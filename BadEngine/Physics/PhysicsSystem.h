@@ -25,6 +25,7 @@ namespace BadEngine
         void onColliderAdd(BoxCollider2D* a_Collider);
         void registerActiveMessages(GameObject a_Entity);
         void fixedUpdate();
+        void postPhysicsUpdate();
         void updateTransforms();
     };
 }
