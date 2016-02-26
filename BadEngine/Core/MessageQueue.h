@@ -29,8 +29,6 @@ namespace BadEngine
         std::vector<int> m_Stuff;
 
     public:
-        MessageQueue();
-
         auto begin()->decltype(m_Messages.begin());
         auto end()->decltype(m_Messages.end());
 
