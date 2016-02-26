@@ -34,4 +34,9 @@ namespace BadEngine
     {
         return m_Messages.end();
     }
+
+    void MessageQueue::clear()
+    {
+        m_Messages.clear();
+    }
 }

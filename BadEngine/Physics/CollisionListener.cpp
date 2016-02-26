@@ -20,5 +20,6 @@ namespace BadEngine
     void CollisionListener::postStep()
     {
         m_MessagingSystem.dispatchQueue(m_CollisionQueue);
+        m_CollisionQueue.clear();
     }
 }
