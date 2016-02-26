@@ -10,6 +10,8 @@
 
 namespace BadEngine
 {
+    class MessageQueue;
+
     class Message
     {
     };
@@ -37,17 +39,10 @@ namespace BadEngine
         void sendMessage(GameObject a_GameObject, TArguments&&... a_MessageArguments)
         {
             auto newMessage = TMessageType(std::forward<TArguments>(a_MessageArguments)...);
-
-            auto typeIterator = m_ObjectMessageListeners.find(typeid(TMessageType));
-            if(typeIterator != m_ObjectMessageListeners.end())
-            {  
-                auto listenerIterator = typeIterator->second.find(a_GameObject.getID());
-                if(listenerIterator != typeIterator->second.end())
-                {
-                    listenerIterator->second(&newMessage);
-                }
-            }
+            sendMessage(a_GameObject, &newMessage, typeid(TMessageType));
         }
+
+        void dispatchQueue(MessageQueue& a_MessageQueue);
 
         template<typename TMessageType>
         void registerListener(std::function<void(const Message* a_Message)> a_Callback)
@@ -60,5 +55,8 @@ namespace BadEngine
         {
             m_ObjectMessageListeners[typeid(TMessageType)][a_GameObject.getID()] += a_Callback;
         }
+
+    private:
+        void sendMessage(GameObject a_Target, const Message* a_Message, std::type_index a_Type);
     };
 }
