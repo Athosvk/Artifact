@@ -53,6 +53,7 @@ namespace BadEngine
     void World::fixedUpdate()
     {
         broadcast<FixedUpdateMessage>();
+        broadcast<PhysicsUpdateMessage>();
     }
 
     void World::processEvents(std::vector<SDL_Event>& a_Events)

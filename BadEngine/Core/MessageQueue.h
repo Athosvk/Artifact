@@ -26,7 +26,6 @@ namespace BadEngine
         };
 
         std::vector<QueuedMessage> m_Messages;
-        std::vector<int> m_Stuff;
 
     public:
         auto begin()->decltype(m_Messages.begin());
@@ -35,8 +34,8 @@ namespace BadEngine
         template<typename TMessageType, typename ...TArguments>
         void enqueue(GameObject a_Target, TArguments&&... a_MessageArguments)
         {
-            m_Messages.emplace(std::make_unique(std::forward<TArguments>(a_MessageArguments)...),
-                typeid(TMessageType), a_Target);
+            auto message = std::make_unique<TMessageType>(std::forward<TArguments>(a_MessageArguments)...);
+            m_Messages.emplace_back(std::move(message), typeid(TMessageType), a_Target);
         }
     };
 }

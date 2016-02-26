@@ -10,8 +10,8 @@ namespace BadEngine
     const int PhysicsWorld::VelocityIterations = 6;
     const int PhysicsWorld::PositionIterations = 2;
 
-    PhysicsWorld::PhysicsWorld(CollisionListener a_CollisionListener)
-        : m_CollisionListener(a_CollisionListener)
+    PhysicsWorld::PhysicsWorld(MessagingSystem& a_MessagingSystem)
+        : m_CollisionListener(a_MessagingSystem)
     {
         m_World.SetContactListener(&m_CollisionListener);
     }
@@ -19,6 +19,11 @@ namespace BadEngine
     void PhysicsWorld::fixedUpdate()
     {
         m_World.Step(static_cast<float>(Game::FixedUpdateInterval), VelocityIterations, PositionIterations);
+    }
+
+    void PhysicsWorld::postPhysicsUpdate()
+    {
+        m_CollisionListener.postStep();
     }
 
     void PhysicsWorld::emplace(BoxCollider2D* a_Collider)

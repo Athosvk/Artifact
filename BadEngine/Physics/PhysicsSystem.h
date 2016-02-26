@@ -1,7 +1,5 @@
 #pragma once
 #include <Box2D/Box2D.h>
-#include <memory>
-#include <map>
 
 #include "../Core/System.h"
 #include "PhysicsWorld.h"
@@ -25,6 +23,7 @@ namespace BadEngine
         void onColliderAdd(BoxCollider2D* a_Collider);
         void registerActiveMessages(GameObject a_Entity);
         void fixedUpdate();
+        void postPhysicsUpdate();
         void updateTransforms();
     };
 }

@@ -38,6 +38,12 @@ namespace BadEngine
         }
         m_PhysicsWorld.fixedUpdate();
         updateTransforms();
+        postPhysicsUpdate();
+    }
+
+    void PhysicsSystem::postPhysicsUpdate()
+    {
+        m_PhysicsWorld.postPhysicsUpdate();
     }
 
     void PhysicsSystem::updateTransforms()

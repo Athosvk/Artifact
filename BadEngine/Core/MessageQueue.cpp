@@ -25,10 +25,6 @@ namespace BadEngine
         return m_Target;
     }
 
-    MessageQueue::MessageQueue()
-    {
-    }
-
     auto MessageQueue::begin()->decltype(m_Messages.begin())
     {
         return m_Messages.begin();

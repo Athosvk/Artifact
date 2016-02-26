@@ -19,11 +19,12 @@ namespace BadEngine
         CollisionListener m_CollisionListener;
 
     public:
-        PhysicsWorld(CollisionListener a_CollisionListener);
+        PhysicsWorld(MessagingSystem& a_MessagingSystem);
 
         void emplace(BoxCollider2D* a_Collider);
         void emplace(RigidBody2D* a_RigidBody);
         void fixedUpdate();
+        void postPhysicsUpdate();
     private:
         b2Body* createBody(Transform* a_Transform, b2BodyType a_BodyType);
     };
