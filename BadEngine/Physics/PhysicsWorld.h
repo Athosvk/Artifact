@@ -19,7 +19,7 @@ namespace BadEngine
         CollisionListener m_CollisionListener;
 
     public:
-        PhysicsWorld(CollisionListener a_CollisionListener);
+        PhysicsWorld(MessagingSystem& a_MessagingSystem);
 
         void emplace(BoxCollider2D* a_Collider);
         void emplace(RigidBody2D* a_RigidBody);

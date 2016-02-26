@@ -10,8 +10,8 @@ namespace BadEngine
     const int PhysicsWorld::VelocityIterations = 6;
     const int PhysicsWorld::PositionIterations = 2;
 
-    PhysicsWorld::PhysicsWorld(CollisionListener a_CollisionListener)
-        : m_CollisionListener(a_CollisionListener)
+    PhysicsWorld::PhysicsWorld(MessagingSystem& a_MessagingSystem)
+        : m_CollisionListener(a_MessagingSystem)
     {
         m_World.SetContactListener(&m_CollisionListener);
     }
