@@ -2,6 +2,7 @@
 #include <Box2D/Box2D.h>
 
 #include "../Core/MessagingSystem.h"
+#include "../Core/MessageQueue.h"
 #include "CollisionMessages.h"
 #include "BoxCollider2D.h"
 
@@ -11,12 +12,14 @@ namespace BadEngine
     {
     private:
         MessagingSystem& m_MessagingSystem;
+        MessageQueue m_CollisionQueue;
 
     public:
         CollisionListener(MessagingSystem& a_MessagingSystem);
 
         virtual void BeginContact(b2Contact* a_Contact) override;
         virtual void EndContact(b2Contact* a_Contact) override;
+        void postStep();
     private:
         template<typename TTriggerMessageType, typename TCollisionMessageType>
         void storeCollisionMessage(b2Contact* a_Contact)
@@ -36,13 +39,13 @@ namespace BadEngine
         template<typename T>
         void storeEnterMessage(BoxCollider2D* a_Collider1, BoxCollider2D* a_Collider2)
         {
-            m_MessagingSystem.sendMessage<T>(a_Collider1->getGameObject(), a_Collider1, a_Collider2);
+            m_CollisionQueue.enqueue<T>(a_Collider1->getGameObject(), a_Collider1, a_Collider2);
         }
 
         template<typename T>
         void storeExitMessage(BoxCollider2D* a_Collider1, BoxCollider2D* a_Collider2)
         {
-            m_MessagingSystem.sendMessage<T>(a_Collider1->getGameObject(), a_Collider1, a_Collider2);
+            m_CollisionQueue.enqueue<T>(a_Collider1->getGameObject(), a_Collider1, a_Collider2);
         }
     };
 }
