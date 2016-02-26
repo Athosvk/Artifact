@@ -14,6 +14,7 @@
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Core\Component.cpp" />
     <ClCompile Include="Core\MessageQueue.cpp" />
+    <ClCompile Include="Core\MessagingSystem.cpp" />
     <ClCompile Include="Core\World.cpp" />
     <ClCompile Include="Core\EntitySystem.cpp" />
     <ClCompile Include="Core\GameObject.cpp" />
