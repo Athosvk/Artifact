@@ -13,8 +13,8 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{60AA1847-6EA4-4E4E-9E01-C7C3A935EF56}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>GraphicTutorials</RootNamespace>
-    <ProjectName>GraphicTutorials</ProjectName>
+    <RootNamespace>Zombie</RootNamespace>
+    <ProjectName>Zombie</ProjectName>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
