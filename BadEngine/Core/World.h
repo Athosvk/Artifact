@@ -39,6 +39,10 @@ namespace BadEngine
         const std::vector<SDL_Event>& getEvents() const;
     };
 
+    class PhysicsUpdateMessage : public Message
+    {
+    };
+
     class World
     {
     protected:
