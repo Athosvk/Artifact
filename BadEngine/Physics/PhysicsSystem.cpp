@@ -59,6 +59,7 @@ namespace BadEngine
         {
             m_PhysicsWorld.emplace(a_Collider);
         }
+        registerActiveMessages(a_Collider->getGameObject());
     }
 
     void PhysicsSystem::onRigidBodyAdd(RigidBody2D* a_RigidBody)
@@ -66,12 +67,29 @@ namespace BadEngine
         auto collider = a_RigidBody->getComponent<BoxCollider2D>();
         if(collider != nullptr)
         {
-             collider->m_Body->SetType(b2BodyType::b2_dynamicBody);
-             a_RigidBody->m_Body = collider->m_Body;
+            collider->m_Body->SetType(b2BodyType::b2_dynamicBody);
+            a_RigidBody->m_Body = collider->m_Body;
         }
         else
         {
             m_PhysicsWorld.emplace(a_RigidBody);
         }
+    }
+
+    void PhysicsSystem::registerActiveMessages(GameObject a_Entity)
+    {
+        m_MessagingSystem.registerListener<EntityActivatedMessage>([](const Message* a_Message)
+        {
+            auto collider = static_cast<const EntityActivatedMessage*>(a_Message)->
+                getActivatedEntity().getComponent<BoxCollider2D>();
+            collider->m_Body->SetActive(true);
+        }, a_Entity);
+
+        m_MessagingSystem.registerListener<EntityDeactivatedMessage>([](const Message* a_Message)
+        {
+            auto collider = static_cast<const EntityDeactivatedMessage*>(a_Message)->
+                getDeactivatedEntity().getComponent<BoxCollider2D>();
+            collider->m_Body->SetActive(false);
+        }, a_Entity);
     }
 }

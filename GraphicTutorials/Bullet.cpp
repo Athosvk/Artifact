@@ -15,6 +15,7 @@ Bullet::Bullet(unsigned a_ID, BadEngine::EntitySystem& a_EntitySystem)
 
     auto collider = addComponent<BadEngine::BoxCollider2D>();
     collider->setDimensions(glm::vec2(0.1f, 0.1f));
+    collider->enableTriggerState();
 
     auto renderer = addComponent<BadEngine::SpriteRenderer>();
     renderer->Width = 0.1f;

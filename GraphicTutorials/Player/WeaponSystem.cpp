@@ -39,10 +39,13 @@ void WeaponSystem::tryFire(const FireWeaponMessage* a_FireMessage)
 
 void WeaponSystem::fire(WeaponComponent* a_Weapon)
 {
-    auto bullet = m_EntitySystem.createEntity<Bullet>();
-    bullet.getComponent<BadEngine::Transform>()->setPosition(a_Weapon->MuzzleTransform->getPosition());
-    auto targetDirection = BadEngine::MathHelper::directionFromAngle(a_Weapon->getComponent<BadEngine::Transform>()->getRotation());
-    const auto bulletSpeed = 2.0f;
-    bullet.getComponent<BadEngine::RigidBody2D>()->setVelocity(targetDirection * bulletSpeed);
+    for(int i = 0; i < 1; i++)
+    {
+        auto bullet = m_EntitySystem.createEntity<Bullet>();
+        bullet.getComponent<BadEngine::Transform>()->setPosition(a_Weapon->MuzzleTransform->getPosition());
+        auto targetDirection = BadEngine::MathHelper::directionFromAngle(a_Weapon->getComponent<BadEngine::Transform>()->getRotation());
+        const auto bulletSpeed = 10.0f;
+        bullet.getComponent<BadEngine::RigidBody2D>()->setVelocity(targetDirection * bulletSpeed);
+    }
     a_Weapon->FireDelayTimer->start();
 }

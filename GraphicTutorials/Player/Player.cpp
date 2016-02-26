@@ -26,7 +26,7 @@ Player::Player(unsigned a_ID, BadEngine::EntitySystem& a_EntitySystem)
     renderer->Width = 1;
     renderer->Height = 1;
 
-    weapon->FireDelayTimer->Duration = 0.5f;
+    weapon->FireDelayTimer->Duration = 0.1f;
     weapon->MuzzleTransform = getComponent<BadEngine::Transform>();
     
     auto rigidBody = addComponent<BadEngine::RigidBody2D>();
