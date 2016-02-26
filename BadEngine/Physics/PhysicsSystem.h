@@ -1,7 +1,5 @@
 #pragma once
 #include <Box2D/Box2D.h>
-#include <memory>
-#include <map>
 
 #include "../Core/System.h"
 #include "PhysicsWorld.h"
