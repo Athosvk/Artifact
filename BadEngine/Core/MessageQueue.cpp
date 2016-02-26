@@ -29,14 +29,12 @@ namespace BadEngine
     {
     }
 
-    //No trailing return type; the compiler will spit out errors if done so
-    std::vector<MessageQueue::QueuedMessage>::iterator MessageQueue::begin()
+    auto MessageQueue::begin()->decltype(m_Messages.begin())
     {
         return m_Messages.begin();
     }
 
-    //No trailing return type; the compile will spit out errors if done so
-    std::vector<MessageQueue::QueuedMessage>::iterator MessageQueue::end()
+    auto MessageQueue::end()->decltype(m_Messages.end())
     {
         return m_Messages.end();
     }
