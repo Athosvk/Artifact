@@ -4,6 +4,7 @@
 #include "Player/WeaponSystem.h"
 #include "TimerSystem.h"
 #include "HealthSystem.h"
+#include "Enemy/FollowSystem.h"
 
 MainWorld::MainWorld(BadEngine::GameTime& a_GameTime)
     : World(a_GameTime)
@@ -12,6 +13,7 @@ MainWorld::MainWorld(BadEngine::GameTime& a_GameTime)
     addSystem<WeaponSystem>();
     addSystem<TimerSystem>();
     addSystem<HealthSystem>();
+    addSystem<FollowSystem>();
     m_EntitySystem.createEntity<Enemy>();
     m_EntitySystem.createEntity<Player>();
 }
