@@ -39,4 +39,9 @@ namespace BadEngine
     {
         m_Messages.clear();
     }
+
+    bool MessageQueue::isEmpty() const
+    {
+        return m_Messages.empty();
+    }
 }

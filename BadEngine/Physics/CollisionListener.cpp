@@ -25,8 +25,11 @@ namespace BadEngine
 
     void CollisionListener::postStep()
     {
-        m_MessagingSystem.dispatchQueue(m_CollisionQueue);
-        m_CollisionQueue.clear();
+        if(!m_CollisionQueue.isEmpty())
+        {
+            m_MessagingSystem.dispatchQueue(m_CollisionQueue);
+            m_CollisionQueue.clear();
+        }
     }
 
     bool CollisionListener::canStore(b2Contact* a_Contact) const
