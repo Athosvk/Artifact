@@ -87,6 +87,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="DamageComponent.cpp" />
     <ClCompile Include="Enemy\Enemy.cpp" />
     <ClCompile Include="Enemy\FollowComponent.cpp" />
     <ClCompile Include="Enemy\FollowSystem.cpp" />
@@ -106,6 +107,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="DamageComponent.h" />
     <ClInclude Include="Enemy\Enemy.h" />
     <ClInclude Include="Enemy\FollowComponent.h" />
     <ClInclude Include="Enemy\FollowSystem.h" />

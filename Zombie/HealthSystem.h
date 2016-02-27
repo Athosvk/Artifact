@@ -13,6 +13,7 @@ public:
     virtual void registerListeners() override;
 private:
     void registerTriggerListener(BadEngine::GameObject a_GameObject);
-    void onTriggerEnter(BadEngine::BoxCollider2D* a_Object);
+    void onTriggerEnter(BadEngine::BoxCollider2D* a_Object, BadEngine::BoxCollider2D* a_Other);
+    void dealDamage(HealthComponent* a_Health, int a_Damage);
     void onDeath(HealthComponent* a_Health);
 };
