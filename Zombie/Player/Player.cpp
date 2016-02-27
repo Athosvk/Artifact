@@ -6,6 +6,7 @@
 #include "Player.h"
 #include "PlayerInputComponent.h"
 #include "WeaponComponent.h"
+#include "PlayerComponent.h"
 
 Player::Player(unsigned a_ID, BadEngine::EntitySystem& a_EntitySystem)
     : GameObject(a_ID, a_EntitySystem)
@@ -30,5 +31,9 @@ Player::Player(unsigned a_ID, BadEngine::EntitySystem& a_EntitySystem)
     weapon->MuzzleTransform = getComponent<BadEngine::Transform>();
     
     auto rigidBody = addComponent<BadEngine::RigidBody2D>();
+    auto collider = addComponent<BadEngine::BoxCollider2D>();
+    collider->setDimensions(glm::vec2(0.5f, 0.5f));
     rigidBody->setGravityScale(0.0f);
+
+    addComponent<PlayerComponent>();
 }
