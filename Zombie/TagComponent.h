@@ -1,4 +1,6 @@
 #pragma once
+#include <string>
+
 #include <BadEngine/EnumUtility.h>
 #include <BadEngine/Core/Component.h>
 
@@ -6,16 +8,17 @@ enum class EType
 {
     Player = 1,
     Enemy = 2,
-    All = 4
+    All = Enemy | Player
 };
 EnumFlagOperators(EType)
 
-class DamageComponent : public BadEngine::Component
+class TagComponent : public BadEngine::Component
 {
 public:
-    int Damage = 1;
-    EType TargetType = EType::All;
+    EType Type;
+    std::string Name;
 
 public:
-    DamageComponent(BadEngine::GameObject a_GameObject);
+    TagComponent(BadEngine::GameObject a_GameObject);
 };
+

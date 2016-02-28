@@ -7,6 +7,8 @@
 #include "PlayerInputComponent.h"
 #include "WeaponComponent.h"
 #include "PlayerComponent.h"
+#include "../HealthComponent.h"
+#include "../TagComponent.h"
 
 Player::Player(unsigned a_ID, BadEngine::EntitySystem& a_EntitySystem)
     : GameObject(a_ID, a_EntitySystem)
@@ -33,7 +35,15 @@ Player::Player(unsigned a_ID, BadEngine::EntitySystem& a_EntitySystem)
     auto rigidBody = addComponent<BadEngine::RigidBody2D>();
     auto collider = addComponent<BadEngine::BoxCollider2D>();
     collider->setDimensions(glm::vec2(0.5f, 0.5f));
+    collider->enableTriggerState();
     rigidBody->setGravityScale(0.0f);
 
     addComponent<PlayerComponent>();
+    auto health = addComponent<HealthComponent>();
+
+    const auto MaxHealth = 25u;
+    health->initialise(MaxHealth);
+
+    auto tag = addComponent<TagComponent>();
+    tag->Type = EType::Player;
 }

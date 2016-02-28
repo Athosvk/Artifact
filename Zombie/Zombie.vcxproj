@@ -87,12 +87,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Bullet.cpp" />
-    <ClCompile Include="DamageComponent.cpp" />
+    <ClCompile Include="BulletComponent.cpp" />
+    <ClCompile Include="BulletSystem.cpp" />
+    <ClCompile Include="Enemy\AttackComponent.cpp" />
+    <ClCompile Include="Enemy\AttackSystem.cpp" />
     <ClCompile Include="Enemy\Enemy.cpp" />
     <ClCompile Include="Enemy\FollowComponent.cpp" />
     <ClCompile Include="Enemy\FollowSystem.cpp" />
     <ClCompile Include="HealthComponent.cpp" />
-    <ClCompile Include="HealthSystem.cpp" />
     <ClCompile Include="MainWorld.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainGame.cpp" />
@@ -102,17 +104,20 @@
     <ClCompile Include="Player\PlayerInputSystem.cpp" />
     <ClCompile Include="Player\WeaponComponent.cpp" />
     <ClCompile Include="Player\WeaponSystem.cpp" />
+    <ClCompile Include="TagComponent.cpp" />
     <ClCompile Include="TimerComponent.cpp" />
     <ClCompile Include="TimerSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bullet.h" />
-    <ClInclude Include="DamageComponent.h" />
+    <ClInclude Include="BulletComponent.h" />
+    <ClInclude Include="BulletSystem.h" />
+    <ClInclude Include="Enemy\AttackComponent.h" />
+    <ClInclude Include="Enemy\AttackSystem.h" />
     <ClInclude Include="Enemy\Enemy.h" />
     <ClInclude Include="Enemy\FollowComponent.h" />
     <ClInclude Include="Enemy\FollowSystem.h" />
     <ClInclude Include="HealthComponent.h" />
-    <ClInclude Include="HealthSystem.h" />
     <ClInclude Include="MainWorld.h" />
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="Player\Player.h" />
@@ -122,6 +127,7 @@
     <ClInclude Include="Player\WeaponComponent.h" />
     <ClInclude Include="Player\WeaponSystem.h" />
     <ClInclude Include="Pool.h" />
+    <ClInclude Include="TagComponent.h" />
     <ClInclude Include="TimerComponent.h" />
     <ClInclude Include="TimerSystem.h" />
   </ItemGroup>

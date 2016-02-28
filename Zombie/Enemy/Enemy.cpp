@@ -8,6 +8,7 @@
 #include "Enemy.h"
 #include "../HealthComponent.h"
 #include "FollowComponent.h"
+#include "../TagComponent.h"
 
 Enemy::Enemy(unsigned a_ID, BadEngine::EntitySystem& a_EntitySystem)
     : GameObject(a_ID, a_EntitySystem)
@@ -17,12 +18,16 @@ Enemy::Enemy(unsigned a_ID, BadEngine::EntitySystem& a_EntitySystem)
     renderer->Width = 1.0f;
     renderer->Height = 1.0f;
 
+    const auto MaxHealth = 5u;
     auto health = addComponent<HealthComponent>();
-    health->CurrentHealth = health->MaxHealth = 5;
+    health->initialise(MaxHealth);
+
+    auto tag = addComponent<TagComponent>();
+    tag->Type = EType::Enemy;
 
     auto collider = addComponent<BadEngine::BoxCollider2D>();
     collider->enableTriggerState();
-    collider->setDimensions(glm::vec2(1.0f, 1.0f));
+    collider->setDimensions(glm::vec2(0.8f, 0.8f));
 
     auto followComponent = addComponent<FollowComponent>();
     followComponent->FollowSpeed = 0.5f;
