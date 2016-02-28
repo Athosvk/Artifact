@@ -40,4 +40,10 @@ public:
         return static_cast<TEnumType>(static_cast<std::underlying_type<TEnumType>::type>(a_Value1) ^
             static_cast<std::underlying_type<TEnumType>::type>(a_Value2));
     }
+
+    template<typename TEnumType>
+    static bool hasFlag(TEnumType a_Value, TEnumType a_Flag)
+    {
+        return a_Value & a_Flag != 0;
+    }
 };
