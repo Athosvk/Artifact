@@ -44,6 +44,8 @@ public:
     template<typename TEnumType>
     static bool hasFlag(TEnumType a_Value, TEnumType a_Flag)
     {
-        return a_Value & a_Flag != 0;
+        auto returnValue = static_cast<std::underlying_type<TEnumType>::type>(a_Value & a_Flag) 
+            != static_cast<std::underlying_type<TEnumType>::type>(0);
+        return returnValue;
     }
 };
