@@ -265,6 +265,9 @@
     <ClInclude Include="Core\MessageQueue.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="EnumUtility.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Performance reports\Memory - 01-11-2015.diagsession" />
