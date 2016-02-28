@@ -29,10 +29,12 @@ namespace BadEngine
             if(collider1->isTrigger() || collider2->isTrigger())
             {
                 m_CollisionQueue.enqueue<TTriggerMessageType>(collider1->getGameObject(), collider1, collider2);
+                m_CollisionQueue.enqueue<TTriggerMessageType>(collider2->getGameObject(), collider2, collider1);
             }
             else
             {
                 m_CollisionQueue.enqueue<TCollisionMessageType>(collider1->getGameObject(), collider1, collider2);
+                m_CollisionQueue.enqueue<TCollisionMessageType>(collider2->getGameObject(), collider2, collider1);
             }
         }
 
