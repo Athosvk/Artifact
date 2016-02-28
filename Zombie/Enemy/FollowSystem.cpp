@@ -36,7 +36,7 @@ void FollowSystem::updateVelocities()
     }
 }
 
-PlayerComponent * FollowSystem::getCurrentPlayer()
+PlayerComponent* FollowSystem::getCurrentPlayer()
 {
     return m_EntitySystem.getComponentsOfType<PlayerComponent>()[0];
 }
