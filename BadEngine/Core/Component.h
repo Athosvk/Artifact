@@ -6,6 +6,7 @@ namespace BadEngine
     class Component
     {
         GameObject m_GameObject;
+        bool m_Enabled = true;
 
     protected:
         Component(GameObject a_GameObject);
@@ -24,6 +25,9 @@ namespace BadEngine
             return m_GameObject.addComponent<T>();
         }
 
-        GameObject getGameObject();
+        GameObject getGameObject() const;
+        bool isEnabled() const;
+        void enable();
+        void disable();
     };
 }
