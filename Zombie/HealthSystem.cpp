@@ -1,5 +1,6 @@
 #include <BadEngine/Core/EntitySystem.h>
 #include <BadEngine/Physics/CollisionMessages.h>
+#include <BadEngine/MathHelper.h>
 
 #include "HealthSystem.h"
 #include "HealthComponent.h"
@@ -30,17 +31,18 @@ void HealthSystem::registerTriggerListener(BadEngine::GameObject a_GameObject)
 
 void HealthSystem::onTriggerEnter(BadEngine::BoxCollider2D* a_Object, BadEngine::BoxCollider2D* a_Other)
 {
+    auto healthComponent = a_Object->getComponent<HealthComponent>();
     auto damageComponent = a_Other->getComponent<DamageComponent>();
-    if(damageComponent != nullptr)
+    if(damageComponent != nullptr && EnumUtility::hasFlag(damageComponent->TargetType, healthComponent->ObjectType))
     {
-        dealDamage(a_Object->getComponent<HealthComponent>(), damageComponent->Damage);
+        dealDamage(healthComponent, damageComponent->Damage);
     }
 }
 
 void HealthSystem::dealDamage(HealthComponent* a_Health, int a_Damage)
 {
-    a_Health->CurrentHealth -= 1;
-    if(a_Health->CurrentHealth <= 0)
+    a_Health->CurrentHealth = BadEngine::MathHelper::max(a_Health->CurrentHealth - a_Damage, 0u);
+    if(a_Health->CurrentHealth == 0)
     {
         onDeath(a_Health);
     }
