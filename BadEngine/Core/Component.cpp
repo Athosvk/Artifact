@@ -7,8 +7,23 @@ namespace BadEngine
     {
     }
 
-    GameObject Component::getGameObject()
+    GameObject Component::getGameObject() const
     {
         return m_GameObject;
+    }
+
+    bool Component::isEnabled() const
+    {
+        return m_Enabled;
+    }
+
+    void Component::enable()
+    {
+        m_Enabled = true;
+    }
+
+    void Component::disable()
+    {
+        m_Enabled = false;
     }
 }

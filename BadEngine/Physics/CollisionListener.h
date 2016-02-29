@@ -28,24 +28,16 @@ namespace BadEngine
             auto collider2 = static_cast<BoxCollider2D*>(a_Contact->GetFixtureB()->GetUserData());
             if(collider1->isTrigger() || collider2->isTrigger())
             {
-                storeEnterMessage<TTriggerMessageType>(collider1, collider2);
+                m_CollisionQueue.enqueue<TTriggerMessageType>(collider1->getGameObject(), collider1, collider2);
+                m_CollisionQueue.enqueue<TTriggerMessageType>(collider2->getGameObject(), collider2, collider1);
             }
             else
             {
-                storeExitMessage<TCollisionMessageType>(collider1, collider2);
+                m_CollisionQueue.enqueue<TCollisionMessageType>(collider1->getGameObject(), collider1, collider2);
+                m_CollisionQueue.enqueue<TCollisionMessageType>(collider2->getGameObject(), collider2, collider1);
             }
         }
 
-        template<typename T>
-        void storeEnterMessage(BoxCollider2D* a_Collider1, BoxCollider2D* a_Collider2)
-        {
-            m_CollisionQueue.enqueue<T>(a_Collider1->getGameObject(), a_Collider1, a_Collider2);
-        }
-
-        template<typename T>
-        void storeExitMessage(BoxCollider2D* a_Collider1, BoxCollider2D* a_Collider2)
-        {
-            m_CollisionQueue.enqueue<T>(a_Collider1->getGameObject(), a_Collider1, a_Collider2);
-        }
+        bool canStore(b2Contact* a_Contact) const;
     };
 }

@@ -10,4 +10,5 @@ TimerComponent::TimerComponent(BadEngine::GameObject a_GameObject)
 void TimerComponent::start()
 {
     TimerState = ETimerState::Running;
+    TimePassed = 0.0;
 }

@@ -24,5 +24,6 @@ public:
 private:
     void tryFire(const FireWeaponMessage* a_FireMessage);
     void fire(WeaponComponent* a_Weapon);
+    void createBullet(const BadEngine::Transform* a_MuzzleTransform);
 };
 

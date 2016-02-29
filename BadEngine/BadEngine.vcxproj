@@ -62,6 +62,7 @@
     <ClInclude Include="Core\GameObject.h" />
     <ClInclude Include="Core\System.h" />
     <ClInclude Include="Delegate.h" />
+    <ClInclude Include="EnumUtility.h" />
     <ClInclude Include="ErrorHandler.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameTime.h" />

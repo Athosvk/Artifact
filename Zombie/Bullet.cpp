@@ -6,6 +6,8 @@
 
 #include "Bullet.h"
 #include "TimerComponent.h"
+#include "HealthComponent.h"
+#include "BulletComponent.h"
 
 Bullet::Bullet(unsigned a_ID, BadEngine::EntitySystem& a_EntitySystem)
     : GameObject(a_ID, a_EntitySystem)
@@ -21,4 +23,6 @@ Bullet::Bullet(unsigned a_ID, BadEngine::EntitySystem& a_EntitySystem)
     renderer->Width = 0.1f;
     renderer->Height = 0.1f;
     renderer->setTexture(BadEngine::ResourceManager::getTexture("Textures/PNG/Bullet.png"));
+
+    addComponent<BulletComponent>();
 }
