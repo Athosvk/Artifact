@@ -23,6 +23,7 @@ HealthBar::HealthBar(BadEngine::EntitySystem& a_EntitySystem)
     backgroundRenderer->Width = MaxWidth;
     backgroundRenderer->Height = Height;
     backgroundRenderer->Depth = -1;
+    backgroundRenderer->Pivot = glm::vec2(0.0f, 0.0f);
 }
 
 void HealthBar::render(HealthComponent* a_Health)
@@ -37,4 +38,5 @@ void HealthBar::initialiseHealthbar()
     m_HealthRenderer->setTexture(BadEngine::ResourceManager::getTexture("Textures/Healthbar.png"));
     m_HealthRenderer->Width = MaxWidth;
     m_HealthRenderer->Height = Height;
+    m_HealthRenderer->Pivot = glm::vec2(0.0f, 0.0f);
 }
