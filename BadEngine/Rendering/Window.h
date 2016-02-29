@@ -2,6 +2,8 @@
 #include <SDL2.0.3/SDL.h>
 #include <string>
 
+#include "../Color.h"
+
 namespace BadEngine
 {
     enum WindowFlag
@@ -33,6 +35,8 @@ namespace BadEngine
         static int getHeight();
         void clear() const;
         void renderCurrentFrame() const;
+        void setBackgroundColor(Color a_Color);
+    private:
         void initialiseSDLWindow();
         void initialiseGL() const;
     };

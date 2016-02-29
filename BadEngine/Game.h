@@ -36,7 +36,6 @@ namespace BadEngine
         virtual ~Game() = default;
 
         void run();
-        void setBackgroundColor(Color a_Color) const;
 
         template<typename T>
         void loadWorld()

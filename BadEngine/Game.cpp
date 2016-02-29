@@ -15,12 +15,6 @@ namespace BadEngine
     {
     }
 
-    void Game::setBackgroundColor(Color a_Color) const
-    {
-        //Move to window
-        glClearColor(a_Color.r / 255.0f, a_Color.g / 255.0f, a_Color.b / 255.0f, a_Color.a / 255.0f);
-    }
-
     void Game::run()
     {
         startGameLoop();

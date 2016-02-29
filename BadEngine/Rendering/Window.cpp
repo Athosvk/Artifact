@@ -75,6 +75,11 @@ namespace BadEngine
         SDL_GL_SwapWindow(m_SDLWindow);
     }
 
+    void Window::setBackgroundColor(Color a_Color)
+    {
+        glClearColor(a_Color.r / 255.0f, a_Color.g / 255.0f, a_Color.b / 255.0f, a_Color.a / 255.0f);
+    }
+
     void Window::initialiseGL() const
     {
         auto initCode = glewInit();
