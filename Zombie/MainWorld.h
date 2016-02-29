@@ -6,6 +6,8 @@
 class MainWorld : public BadEngine::World
 {
 public:
-    MainWorld(BadEngine::GameTime& a_GameTime);
+    MainWorld(BadEngine::GameTime& a_GameTime, BadEngine::Game* a_CurrentGame);
+
+    void loadGameoverScreen() const;
 };
 

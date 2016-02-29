@@ -35,6 +35,10 @@ namespace BadEngine
             update();
             processFixedUpdates();
             m_Window.renderCurrentFrame();
+            if(m_StagingWorld != nullptr)
+            {
+                switchWorld();
+            }
         }
     }
 
@@ -78,5 +82,10 @@ namespace BadEngine
         }
         m_CurrentWorld->processEvents(unhandledEvents);
     }
-}
 
+    void Game::switchWorld()
+    {
+        m_CurrentWorld = std::move(m_StagingWorld);
+        m_StagingWorld = nullptr;
+    }
+}

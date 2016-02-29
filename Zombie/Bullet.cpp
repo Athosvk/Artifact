@@ -24,5 +24,6 @@ Bullet::Bullet(unsigned a_ID, BadEngine::EntitySystem& a_EntitySystem)
     renderer->Height = 0.1f;
     renderer->setTexture(BadEngine::ResourceManager::getTexture("Textures/PNG/Bullet.png"));
 
-    addComponent<BulletComponent>();
+    auto bulletComponent = addComponent<BulletComponent>();
+    bulletComponent->Speed = 10.0f;
 }

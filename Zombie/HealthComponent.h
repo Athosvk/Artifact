@@ -8,7 +8,7 @@ private:
     unsigned m_CurrentHealth;
 public:
     unsigned MaxHealth;
-    Delegate<void()> OnDeath;
+    Delegate<void(HealthComponent* a_HealthComponent)> OnDeath;
 
 public:
     HealthComponent(BadEngine::GameObject a_GameObject);

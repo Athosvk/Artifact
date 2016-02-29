@@ -24,6 +24,7 @@ Enemy::Enemy(unsigned a_ID, BadEngine::EntitySystem& a_EntitySystem)
     const auto MaxHealth = 5u;
     auto health = addComponent<HealthComponent>();
     health->initialise(MaxHealth);
+    health->OnDeath += [](HealthComponent* a_Health) {a_Health->getGameObject().deactivate(); };
 
     auto tag = addComponent<TagComponent>();
     tag->Type = EType::Enemy;

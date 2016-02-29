@@ -96,6 +96,7 @@
     <ClCompile Include="Enemy\FollowSystem.cpp" />
     <ClCompile Include="Enemy\ZombieBehaviour.cpp" />
     <ClCompile Include="Enemy\ZombieBehaviourSystem.cpp" />
+    <ClCompile Include="GameOverScreen.cpp" />
     <ClCompile Include="HealthComponent.cpp" />
     <ClCompile Include="MainWorld.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -121,6 +122,7 @@
     <ClInclude Include="Enemy\FollowSystem.h" />
     <ClInclude Include="Enemy\ZombieBehaviour.h" />
     <ClInclude Include="Enemy\ZombieBehaviourSystem.h" />
+    <ClInclude Include="GameOverScreen.h" />
     <ClInclude Include="HealthComponent.h" />
     <ClInclude Include="MainWorld.h" />
     <ClInclude Include="MainGame.h" />

@@ -18,8 +18,7 @@ void HealthComponent::dealDamage(unsigned a_Amount)
     m_CurrentHealth = BadEngine::MathHelper::max(m_CurrentHealth - a_Amount, 0u);
     if(m_CurrentHealth == 0)
     {
-        OnDeath(); 
-        getGameObject().deactivate();
+        OnDeath(this);
     }
 }
 

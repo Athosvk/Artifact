@@ -14,6 +14,7 @@ namespace BadEngine
     class System;
     class Message;
     class GameTime;
+    class Game;
     
     class UpdateMessage : public Message
     {
@@ -48,13 +49,14 @@ namespace BadEngine
     protected:
         EntitySystem m_EntitySystem;
         MessagingSystem m_MessagingSystem;
+        Game* m_CurrentGame;
 
     private:
         std::vector<std::unique_ptr<System>> m_Systems;
         GameTime& m_GameTime;
 
     public:
-        World(GameTime& a_GameTime);
+        World(GameTime& a_GameTime, Game* a_CurrentGame);
 
         void update();
         void fixedUpdate();

@@ -25,6 +25,7 @@ namespace BadEngine
         GameState m_CurrentGameState = GameState::Play;
         GameTime m_GameTime;
         std::unique_ptr<World> m_CurrentWorld;
+        std::unique_ptr<World> m_StagingWorld;
         
     private:
         double m_FixedUpdateTimer = 0.0;
@@ -37,19 +38,27 @@ namespace BadEngine
         void run();
         void setBackgroundColor(Color a_Color) const;
 
-    protected:
-        void update();
-        void fixedUpdate();
-
         template<typename T>
         void loadWorld()
         {
-            m_CurrentWorld = std::make_unique<T>(m_GameTime);
+            if(m_CurrentWorld == nullptr)
+            {
+                m_CurrentWorld = std::make_unique<T>(m_GameTime, this);
+            }
+            else
+            {
+                m_StagingWorld = std::make_unique<T>(m_GameTime, this);
+            }
         }
+
+    protected:
+        void update();
+        void fixedUpdate();
 
     private:
         void startGameLoop();
         void processFixedUpdates();
         void processEvents();
+        void switchWorld();
     };
 }
