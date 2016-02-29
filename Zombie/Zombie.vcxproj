@@ -101,6 +101,8 @@
     <ClCompile Include="MainWorld.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainGame.cpp" />
+    <ClCompile Include="Player\HealthBar.cpp" />
+    <ClCompile Include="Player\HUDSystem.cpp" />
     <ClCompile Include="Player\Player.cpp" />
     <ClCompile Include="Player\PlayerComponent.cpp" />
     <ClCompile Include="Player\PlayerInputComponent.cpp" />
@@ -123,9 +125,11 @@
     <ClInclude Include="Enemy\ZombieBehaviour.h" />
     <ClInclude Include="Enemy\ZombieBehaviourSystem.h" />
     <ClInclude Include="GameOverScreen.h" />
+    <ClInclude Include="Player\HealthBar.h" />
     <ClInclude Include="HealthComponent.h" />
     <ClInclude Include="MainWorld.h" />
     <ClInclude Include="MainGame.h" />
+    <ClInclude Include="Player\HUDSystem.h" />
     <ClInclude Include="Player\Player.h" />
     <ClInclude Include="Player\PlayerComponent.h" />
     <ClInclude Include="Player\PlayerInputComponent.h" />

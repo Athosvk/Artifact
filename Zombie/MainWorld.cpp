@@ -11,6 +11,7 @@
 #include "Enemy/ZombieBehaviourSystem.h"
 #include "HealthComponent.h"
 #include "GameOverScreen.h"
+#include "Player/HUDSystem.h"
 
 MainWorld::MainWorld(BadEngine::GameTime& a_GameTime, BadEngine::Game* a_CurrentGame)
     : World(a_GameTime, a_CurrentGame)
@@ -21,6 +22,7 @@ MainWorld::MainWorld(BadEngine::GameTime& a_GameTime, BadEngine::Game* a_Current
     addSystem<FollowSystem>();
     addSystem<BulletSystem>();
     addSystem<AttackSystem>();
+    addSystem<HUDSystem>();
     addSystem<ZombieBehaviourSystem>();
     m_EntitySystem.createEntity<Enemy>();
     auto enemy2 = m_EntitySystem.createEntity<Enemy>();
