@@ -35,19 +35,22 @@ void BulletSystem::registerCollisionListener(const BadEngine::GameObject a_Targe
 
 void BulletSystem::onTriggerEnter(BadEngine::BoxCollider2D* a_Collider, BadEngine::BoxCollider2D* a_Other)
 {
-    auto collidingTag = a_Other->getComponent<TagComponent>()->Type;
-    auto bullet = a_Collider->getComponent<BulletComponent>();
-    if(BadEngine::EnumUtility::hasFlag(bullet->TargetTag, collidingTag))
+    auto collidingTag = a_Other->getComponent<TagComponent>();
+    if(collidingTag != nullptr)
     {
-        HealthComponent* targetHealth = a_Other->getComponent<HealthComponent>();
-        if(targetHealth != nullptr)
+        auto bullet = a_Collider->getComponent<BulletComponent>();
+        if(BadEngine::EnumUtility::hasFlag(bullet->TargetTag, collidingTag->Type))
         {
-            targetHealth->dealDamage(bullet->Damage);
+            HealthComponent* targetHealth = a_Other->getComponent<HealthComponent>();
+            if(targetHealth != nullptr)
+            {
+                targetHealth->dealDamage(bullet->Damage);
+                bullet->getGameObject().deactivate();
+            }
+        }
+        else if(BadEngine::EnumUtility::hasFlag(bullet->BlockingTag, collidingTag->Type))
+        {
             bullet->getGameObject().deactivate();
         }
-    }
-    else if(BadEngine::EnumUtility::hasFlag(bullet->BlockingTag, collidingTag))
-    {
-        bullet->getGameObject().deactivate();
     }
 }
