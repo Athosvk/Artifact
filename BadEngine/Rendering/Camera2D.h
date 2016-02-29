@@ -28,12 +28,11 @@ namespace BadEngine
         Transform* m_Transform;
         mutable bool m_Dirty = true;
         mutable glm::mat4 m_ViewProjection = glm::mat4(1.0f);
-        mutable glm::mat4 m_InversViewProjection = glm::mat4(1.0f);
+        mutable glm::mat4 m_InverseViewProjection = glm::mat4(1.0f);
         
     public:
         Camera2D(GameObject a_GameObject);
         
-        float getZoomFactor() const;
         glm::mat4& getViewProjection() const;
         glm::mat4& getInverseViewProjection() const;
         glm::vec2 screenToWorld(glm::vec2 a_ScreenPosition) const;

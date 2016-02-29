@@ -40,7 +40,7 @@ namespace BadEngine
         {
             constructMatrix();
         }
-        return m_InversViewProjection;
+        return m_InverseViewProjection;
     }
 
     void Camera2D::constructProjectionMatrix()
@@ -53,7 +53,8 @@ namespace BadEngine
 
     glm::vec2 Camera2D::screenToWorld(glm::vec2 a_ScreenPosition) const
     {
-        auto normalizedScreenPosition = (a_ScreenPosition / glm::vec2(Window::getWidth(), Window::getHeight())) * 2.0f - glm::vec2(1.0f, 1.0f);
+        auto normalizedScreenPosition = (a_ScreenPosition / glm::vec2(Window::getWidth(), 
+            Window::getHeight())) * 2.0f - glm::vec2(1.0f, 1.0f);
         auto worldPosition = getInverseViewProjection() * glm::vec4(normalizedScreenPosition, 0, 1);
         return glm::vec2(worldPosition.x, worldPosition.y);
     }
@@ -61,7 +62,7 @@ namespace BadEngine
     void Camera2D::constructMatrix() const
     {
         m_ViewProjection = m_Transform->getMatrix() * m_ProjectionMatrix;
-        m_InversViewProjection = glm::inverse(m_ViewProjection);
+        m_InverseViewProjection = glm::inverse(m_ViewProjection);
         m_Dirty = false;
     }
 }
