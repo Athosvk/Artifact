@@ -4,6 +4,7 @@
 
 #include "WeaponSystem.h"
 #include "../Bullet.h"
+#include "../BulletComponent.h"
 
 FireWeaponMessage::FireWeaponMessage(WeaponComponent* a_WeaponComponent)
     : m_WeaponComponent(a_WeaponComponent)
@@ -39,13 +40,15 @@ void WeaponSystem::tryFire(const FireWeaponMessage* a_FireMessage)
 
 void WeaponSystem::fire(WeaponComponent* a_Weapon)
 {
-    for(int i = 0; i < 1; i++)
-    {
-        auto bullet = m_EntitySystem.createEntity<Bullet>();
-        bullet.getComponent<BadEngine::Transform>()->setPosition(a_Weapon->MuzzleTransform->getPosition());
-        auto targetDirection = BadEngine::MathHelper::directionFromAngle(a_Weapon->getComponent<BadEngine::Transform>()->getRotation());
-        const auto bulletSpeed = 10.0f;
-        bullet.getComponent<BadEngine::RigidBody2D>()->setVelocity(targetDirection * bulletSpeed);
-    }
+    createBullet(a_Weapon->getComponent<BadEngine::Transform>());
     a_Weapon->FireDelayTimer->start();
+}
+
+void WeaponSystem::createBullet(const BadEngine::Transform* a_MuzzleTransform)
+{
+    auto bullet = m_EntitySystem.createEntity<Bullet>();
+    bullet.getComponent<BadEngine::Transform>()->setPosition(a_MuzzleTransform->getPosition());
+    auto targetDirection = BadEngine::MathHelper::directionFromAngle(a_MuzzleTransform->getRotation());
+    auto bulletSpeed = bullet.getComponent<BulletComponent>()->Speed;
+    bullet.getComponent<BadEngine::RigidBody2D>()->setVelocity(targetDirection * bulletSpeed);
 }
