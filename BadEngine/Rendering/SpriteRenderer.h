@@ -17,6 +17,7 @@ namespace BadEngine
         BadEngine::Color Color = BadEngine::Color::White;
         BadEngine::Rectangle UVRectangle = BadEngine::Rectangle(glm::vec2(0.0f, 0.0f), 1.0f, 1.0f);
         float Depth = 0.0f;
+        glm::vec2 Pivot = glm::vec2(0.5f, 0.5f);
 
     public:
         SpriteRenderer(GameObject a_GameObject);
