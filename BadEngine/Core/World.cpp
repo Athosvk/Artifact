@@ -26,9 +26,10 @@ namespace BadEngine
         return m_Events;
     }
 
-    World::World(GameTime& a_GameTime)
+    World::World(GameTime& a_GameTime, Game* a_CurrentGame)
         : m_EntitySystem(m_MessagingSystem),
-        m_GameTime(a_GameTime)
+        m_GameTime(a_GameTime),
+        m_CurrentGame(a_CurrentGame)
     {
         addDefaultSystems();
     }
