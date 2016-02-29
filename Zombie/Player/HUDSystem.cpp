@@ -6,7 +6,7 @@
 
 #include "HUDSystem.h"
 
-HUDSystem::HUDSystem(BadEngine::EntitySystem & a_EntitySystem, BadEngine::MessagingSystem & a_MessagingSystem)
+HUDSystem::HUDSystem(BadEngine::EntitySystem& a_EntitySystem, BadEngine::MessagingSystem& a_MessagingSystem)
     : System(a_EntitySystem, a_MessagingSystem),
     m_HealthBar(m_EntitySystem)
 {

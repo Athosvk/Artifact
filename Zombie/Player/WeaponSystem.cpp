@@ -47,7 +47,9 @@ void WeaponSystem::fire(WeaponComponent* a_Weapon)
 void WeaponSystem::createBullet(const BadEngine::Transform* a_MuzzleTransform)
 {
     auto bullet = m_EntitySystem.createEntity<Bullet>();
-    bullet.getComponent<BadEngine::Transform>()->setPosition(a_MuzzleTransform->getPosition());
+    auto bulletTransform = bullet.getComponent<BadEngine::Transform>();
+    bulletTransform->setPosition(a_MuzzleTransform->getPosition());
+    bulletTransform->setRotation(a_MuzzleTransform->getRotation());
     auto targetDirection = BadEngine::MathHelper::directionFromAngle(a_MuzzleTransform->getRotation());
     auto bulletSpeed = bullet.getComponent<BulletComponent>()->Speed;
     bullet.getComponent<BadEngine::RigidBody2D>()->setVelocity(targetDirection * bulletSpeed);

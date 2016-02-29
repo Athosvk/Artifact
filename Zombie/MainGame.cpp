@@ -4,7 +4,7 @@
 #include "MainGame.h"
 #include "MainWorld.h"
 
-MainGame::MainGame() : Game(800, 600, 0, "GameEngine")
+MainGame::MainGame() : Game(1024, 768, 0, "GameEngine")
 {
     m_Window.setBackgroundColor(BadEngine::Color(30, 30, 30, 255));
     printf(" *** OpenGL version: %s *** \n You need at least version %5.2f to run the game. \n", 

@@ -17,7 +17,7 @@ private:
 public:
     FollowComponent* FollowComponent;
     AttackComponent* AttackComponent;
-    float AttackRadius = 1.0f;
+    float AttackRadius = 0.7f;
 
 public:
     ZombieBehaviour(BadEngine::GameObject a_GameObject);
