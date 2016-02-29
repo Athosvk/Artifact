@@ -19,7 +19,7 @@ void AttackSystem::registerListeners()
 
 void AttackSystem::update()
 {
-    for(auto& attackComponent : m_EntitySystem.getComponentsOfType<AttackComponent>())
+    for(auto attackComponent : m_EntitySystem.getComponentsOfType<AttackComponent>())
     {
         if(attackComponent->canAttack())
         {
