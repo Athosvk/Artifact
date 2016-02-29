@@ -5,12 +5,16 @@
 
 class AttackComponent : public BadEngine::Component
 {
+private:
+    TimerComponent* m_DelayTimer;
 public:
-    float AttackInterval = 1.0f;
-    TimerComponent* DelayTimer;
     int Damage = 1;
 
 public:
     AttackComponent(BadEngine::GameObject a_GameObject);
+
+    void setAttackInterval(float a_Interval);
+    void startTimer();
+    bool canAttack() const;
 };
 

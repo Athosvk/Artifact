@@ -21,11 +21,11 @@ void AttackSystem::update()
 {
     for(auto& attackComponent : m_EntitySystem.getComponentsOfType<AttackComponent>())
     {
-        if(attackComponent->DelayTimer->TimerState == ETimerState::Done)
+        if(attackComponent->canAttack())
         {
             auto playerHealth = getCurrentPlayer()->getComponent<HealthComponent>();
             playerHealth->dealDamage(attackComponent->Damage);
-            attackComponent->DelayTimer->start();
+            attackComponent->startTimer();
         }
     }
 }

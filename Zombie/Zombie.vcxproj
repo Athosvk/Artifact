@@ -94,6 +94,8 @@
     <ClCompile Include="Enemy\Enemy.cpp" />
     <ClCompile Include="Enemy\FollowComponent.cpp" />
     <ClCompile Include="Enemy\FollowSystem.cpp" />
+    <ClCompile Include="Enemy\ZombieBehaviour.cpp" />
+    <ClCompile Include="Enemy\ZombieBehaviourSystem.cpp" />
     <ClCompile Include="HealthComponent.cpp" />
     <ClCompile Include="MainWorld.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -117,6 +119,8 @@
     <ClInclude Include="Enemy\Enemy.h" />
     <ClInclude Include="Enemy\FollowComponent.h" />
     <ClInclude Include="Enemy\FollowSystem.h" />
+    <ClInclude Include="Enemy\ZombieBehaviour.h" />
+    <ClInclude Include="Enemy\ZombieBehaviourSystem.h" />
     <ClInclude Include="HealthComponent.h" />
     <ClInclude Include="MainWorld.h" />
     <ClInclude Include="MainGame.h" />

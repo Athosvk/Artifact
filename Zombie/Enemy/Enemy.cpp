@@ -9,6 +9,9 @@
 #include "../HealthComponent.h"
 #include "FollowComponent.h"
 #include "../TagComponent.h"
+#include "AttackComponent.h"
+#include "../TimerComponent.h"
+#include "ZombieBehaviour.h"
 
 Enemy::Enemy(unsigned a_ID, BadEngine::EntitySystem& a_EntitySystem)
     : GameObject(a_ID, a_EntitySystem)
@@ -31,6 +34,13 @@ Enemy::Enemy(unsigned a_ID, BadEngine::EntitySystem& a_EntitySystem)
 
     auto followComponent = addComponent<FollowComponent>();
     followComponent->FollowSpeed = 0.5f;
+
+    auto attackComponent = addComponent<AttackComponent>();
+    attackComponent->setAttackInterval(1.0f);
+
+    auto behaviour = addComponent<ZombieBehaviour>();
+    behaviour->AttackComponent = attackComponent;
+    behaviour->FollowComponent = followComponent;
 
     auto rigidBody = addComponent<BadEngine::RigidBody2D>();
     rigidBody->setGravityScale(0.0f);
