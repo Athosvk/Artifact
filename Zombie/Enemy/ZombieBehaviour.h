@@ -1,9 +1,6 @@
 #pragma once
 #include <BadEngine/Core/Component.h>
 
-#include "FollowComponent.h"
-#include "AttackComponent.h"
-
 class FollowComponent;
 class AttackComponent;
 

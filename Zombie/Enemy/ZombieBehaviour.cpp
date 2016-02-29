@@ -1,6 +1,8 @@
 #include <BadEngine/Physics/RigidBody2D.h>
 #include <BadEngine/Core/EntitySystem.h>
 
+#include "FollowComponent.h"
+#include "AttackComponent.h"
 #include "ZombieBehaviour.h"
 
 ZombieBehaviour::ZombieBehaviour(BadEngine::GameObject a_GameObject)
@@ -10,15 +12,18 @@ ZombieBehaviour::ZombieBehaviour(BadEngine::GameObject a_GameObject)
 
 void ZombieBehaviour::setState(EBehaviourstate a_NewState)
 {
-    m_State = a_NewState;
-    switch(a_NewState)
+    if(a_NewState != m_State)
     {
-    case EBehaviourstate::Follow:
-        startFollowing();
-        break;
-    case EBehaviourstate::Attack:
-        startAttacking();
-        break;
+        m_State = a_NewState;
+        switch(a_NewState)
+        {
+        case EBehaviourstate::Follow:
+            startFollowing();
+            break;
+        case EBehaviourstate::Attack:
+            startAttacking();
+            break;
+        }
     }
 }
 
@@ -32,5 +37,6 @@ void ZombieBehaviour::startAttacking()
 {
     FollowComponent->disable();
     AttackComponent->enable();
+    AttackComponent->startTimer();
     getComponent<BadEngine::RigidBody2D>()->setVelocity(glm::vec2(0.0f, 0.0f));
 }
