@@ -1,6 +1,5 @@
 #include <BadEngine/IO/ResourceManager.h>
 #include <BadEngine/Rendering/SpriteRenderer.h>
-#include <BadEngine/Transform.h>
 #include <BadEngine/Core/EntitySystem.h>
 #include <BadEngine/Physics/BoxCollider2D.h>
 #include <BadEngine/Physics/RigidBody2D.h>
@@ -12,6 +11,7 @@
 #include "AttackComponent.h"
 #include "../TimerComponent.h"
 #include "ZombieBehaviour.h"
+#include "../ScoreComponent.h"
 
 Enemy::Enemy(unsigned a_ID, BadEngine::EntitySystem& a_EntitySystem)
     : GameObject(a_ID, a_EntitySystem)
@@ -42,6 +42,9 @@ Enemy::Enemy(unsigned a_ID, BadEngine::EntitySystem& a_EntitySystem)
     auto behaviour = addComponent<ZombieBehaviour>();
     behaviour->AttackComponent = attackComponent;
     behaviour->FollowComponent = followComponent;
+
+    auto score = addComponent<ScoreComponent>();
+    score->Amount = 10;
 
     auto rigidBody = addComponent<BadEngine::RigidBody2D>();
     rigidBody->setGravityScale(0.0f);

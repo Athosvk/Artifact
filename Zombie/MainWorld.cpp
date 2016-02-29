@@ -12,6 +12,7 @@
 #include "HealthComponent.h"
 #include "GameOverScreen.h"
 #include "Player/HUDSystem.h"
+#include "ScoreSystem.h"
 
 MainWorld::MainWorld(BadEngine::GameTime& a_GameTime, BadEngine::Game* a_CurrentGame)
     : World(a_GameTime, a_CurrentGame)
@@ -24,12 +25,13 @@ MainWorld::MainWorld(BadEngine::GameTime& a_GameTime, BadEngine::Game* a_Current
     addSystem<AttackSystem>();
     addSystem<HUDSystem>();
     addSystem<ZombieBehaviourSystem>();
+    addSystem<ScoreSystem>();
     m_EntitySystem.createEntity<Enemy>();
     auto enemy2 = m_EntitySystem.createEntity<Enemy>();
     enemy2.getComponent<BadEngine::Transform>()->setPosition(glm::vec2(0.5f, 1.0f));
 
     auto player = m_EntitySystem.createEntity<Player>();
-    player.getComponent<HealthComponent>()->OnDeath += [this](const HealthComponent* a_Health) 
+    player.getComponent<HealthComponent>()->OnDeath += [this](const HealthComponent*) 
     { 
         loadGameoverScreen(); 
     };

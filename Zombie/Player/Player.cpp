@@ -9,6 +9,7 @@
 #include "PlayerComponent.h"
 #include "../HealthComponent.h"
 #include "../TagComponent.h"
+#include "PlayerScoreComponent.h"
 
 Player::Player(unsigned a_ID, BadEngine::EntitySystem& a_EntitySystem)
     : GameObject(a_ID, a_EntitySystem)
@@ -46,4 +47,6 @@ Player::Player(unsigned a_ID, BadEngine::EntitySystem& a_EntitySystem)
 
     auto tag = addComponent<TagComponent>();
     tag->Type = EType::Player;
+
+    addComponent<PlayerScoreComponent>();
 }

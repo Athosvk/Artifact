@@ -107,8 +107,11 @@
     <ClCompile Include="Player\PlayerComponent.cpp" />
     <ClCompile Include="Player\PlayerInputComponent.cpp" />
     <ClCompile Include="Player\PlayerInputSystem.cpp" />
+    <ClCompile Include="Player\PlayerScoreComponent.cpp" />
     <ClCompile Include="Player\WeaponComponent.cpp" />
     <ClCompile Include="Player\WeaponSystem.cpp" />
+    <ClCompile Include="ScoreComponent.cpp" />
+    <ClCompile Include="ScoreSystem.cpp" />
     <ClCompile Include="TagComponent.cpp" />
     <ClCompile Include="TimerComponent.cpp" />
     <ClCompile Include="TimerSystem.cpp" />
@@ -134,9 +137,12 @@
     <ClInclude Include="Player\PlayerComponent.h" />
     <ClInclude Include="Player\PlayerInputComponent.h" />
     <ClInclude Include="Player\PlayerInputSystem.h" />
+    <ClInclude Include="Player\PlayerScoreComponent.h" />
     <ClInclude Include="Player\WeaponComponent.h" />
     <ClInclude Include="Player\WeaponSystem.h" />
     <ClInclude Include="Pool.h" />
+    <ClInclude Include="ScoreComponent.h" />
+    <ClInclude Include="ScoreSystem.h" />
     <ClInclude Include="TagComponent.h" />
     <ClInclude Include="TimerComponent.h" />
     <ClInclude Include="TimerSystem.h" />
