@@ -1,18 +1,18 @@
 #pragma once
-#include <BadEngine/Core/System.h>
+#include <Artifact/Core/System.h>
 
-namespace BadEngine
+namespace Artifact
 {
     class BoxCollider2D;
 }
 
-class BulletSystem : public BadEngine::System
+class BulletSystem : public Artifact::System
 {
 public:
-    BulletSystem(BadEngine::EntitySystem& a_EntitySystem, BadEngine::MessagingSystem& a_MesssagingSystem);
+    BulletSystem(Artifact::EntitySystem& a_EntitySystem, Artifact::MessagingSystem& a_MesssagingSystem);
 
     virtual void registerListeners() override;
 private:
-    void registerCollisionListener(const BadEngine::GameObject a_Target);
-    void onTriggerEnter(BadEngine::BoxCollider2D* a_Collider, BadEngine::BoxCollider2D* a_Other);
+    void registerCollisionListener(const Artifact::GameObject a_Target);
+    void onTriggerEnter(Artifact::BoxCollider2D* a_Collider, Artifact::BoxCollider2D* a_Other);
 };

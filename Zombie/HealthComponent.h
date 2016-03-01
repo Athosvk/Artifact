@@ -1,8 +1,8 @@
 #pragma once
-#include <BadEngine/Core/Component.h>
-#include <BadEngine/Delegate.h>
+#include <Artifact/Core/Component.h>
+#include <Artifact/Delegate.h>
 
-class HealthComponent : public BadEngine::Component
+class HealthComponent : public Artifact::Component
 {
 private:
     unsigned m_CurrentHealth;
@@ -11,7 +11,7 @@ public:
     Delegate<void(HealthComponent* a_HealthComponent)> OnDeath;
 
 public:
-    HealthComponent(BadEngine::GameObject a_GameObject);
+    HealthComponent(Artifact::GameObject a_GameObject);
 
     void initialise(unsigned a_MaxHealth);
     void dealDamage(unsigned a_Amount);

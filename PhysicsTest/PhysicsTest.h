@@ -1,7 +1,7 @@
 #pragma once
-#include <BadEngine/Game.h>
+#include <Artifact/Game.h>
 
-class PhysicsTest : public BadEngine::Game
+class PhysicsTest : public Artifact::Game
 {
 public:
     PhysicsTest();

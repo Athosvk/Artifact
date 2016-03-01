@@ -1,9 +1,9 @@
 #pragma once
-#include <BadEngine/Core/World.h>
+#include <Artifact/Core/World.h>
 
-class GameOverScreen : public BadEngine::World
+class GameOverScreen : public Artifact::World
 {
 public:
-    GameOverScreen(BadEngine::GameTime& a_GameTime, BadEngine::Game* a_CurrentGame);
+    GameOverScreen(Artifact::GameTime& a_GameTime, Artifact::Game* a_CurrentGame);
 };
 

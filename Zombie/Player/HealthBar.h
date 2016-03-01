@@ -1,9 +1,9 @@
 #pragma once
-#include <BadEngine/Core/GameObject.h>
+#include <Artifact/Core/GameObject.h>
 
 class PlayerComponent;
 class HealthComponent;
-namespace BadEngine
+namespace Artifact
 {
     class SpriteRenderer;
     class EntitysSystem;
@@ -14,13 +14,15 @@ class HealthBar
 private:
     static const float MaxWidth;
     static const float Height;
+    static const glm::vec2 BackgroundOffset;
 
-    BadEngine::SpriteRenderer* m_HealthRenderer;
+    glm::vec2 m_Position;
+    Artifact::SpriteRenderer* m_HealthRenderer;
 
 public:
-    HealthBar(BadEngine::EntitySystem& a_EntitySystem);
+    HealthBar(Artifact::EntitySystem& a_EntitySystem, glm::vec2 a_Position);
 
-    void render(HealthComponent* a_Health);
+    void update(HealthComponent* a_Health);
 private:
     void initialiseHealthbar();
 };

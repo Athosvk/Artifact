@@ -1,12 +1,12 @@
 #pragma once
-#include <BadEngine/Core/World.h>
+#include <Artifact/Core/World.h>
 
 #include "Player/Player.h"
 
-class MainWorld : public BadEngine::World
+class MainWorld : public Artifact::World
 {
 public:
-    MainWorld(BadEngine::GameTime& a_GameTime, BadEngine::Game* a_CurrentGame);
+    MainWorld(Artifact::GameTime& a_GameTime, Artifact::Game* a_CurrentGame);
 
     void loadGameoverScreen() const;
 };

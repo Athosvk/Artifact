@@ -1,6 +1,6 @@
-#include <BadEngine/Core/EntitySystem.h>
-#include <BadEngine/Physics/RigidBody2D.h>
-#include <BadEngine/MathHelper.h>
+#include <Artifact/Core/EntitySystem.h>
+#include <Artifact/Physics/RigidBody2D.h>
+#include <Artifact/MathHelper.h>
 
 #include "WeaponSystem.h"
 #include "../Bullet.h"
@@ -16,14 +16,14 @@ WeaponComponent* FireWeaponMessage::getWeapon() const
     return m_WeaponComponent;
 }
 
-WeaponSystem::WeaponSystem(BadEngine::EntitySystem& a_EntitySystem, BadEngine::MessagingSystem& a_MessagingSystem)
+WeaponSystem::WeaponSystem(Artifact::EntitySystem& a_EntitySystem, Artifact::MessagingSystem& a_MessagingSystem)
     : System(a_EntitySystem, a_MessagingSystem)
 {
 }
 
 void WeaponSystem::registerListeners()
 {
-    m_MessagingSystem.registerListener<FireWeaponMessage>([=](const BadEngine::Message* a_Message)
+    m_MessagingSystem.registerListener<FireWeaponMessage>([=](const Artifact::Message* a_Message)
     {
         tryFire(static_cast<const FireWeaponMessage*>(a_Message));
     });
@@ -40,15 +40,17 @@ void WeaponSystem::tryFire(const FireWeaponMessage* a_FireMessage)
 
 void WeaponSystem::fire(WeaponComponent* a_Weapon)
 {
-    createBullet(a_Weapon->getComponent<BadEngine::Transform>());
+    createBullet(a_Weapon->getComponent<Artifact::Transform>());
     a_Weapon->FireDelayTimer->start();
 }
 
-void WeaponSystem::createBullet(const BadEngine::Transform* a_MuzzleTransform)
+void WeaponSystem::createBullet(const Artifact::Transform* a_MuzzleTransform)
 {
     auto bullet = m_EntitySystem.createEntity<Bullet>();
-    bullet.getComponent<BadEngine::Transform>()->setPosition(a_MuzzleTransform->getPosition());
-    auto targetDirection = BadEngine::MathHelper::directionFromAngle(a_MuzzleTransform->getRotation());
+    auto bulletTransform = bullet.getComponent<Artifact::Transform>();
+    bulletTransform->setPosition(a_MuzzleTransform->getPosition());
+    bulletTransform->setRotation(a_MuzzleTransform->getRotation());
+    auto targetDirection = Artifact::MathHelper::directionFromAngle(a_MuzzleTransform->getRotation());
     auto bulletSpeed = bullet.getComponent<BulletComponent>()->Speed;
-    bullet.getComponent<BadEngine::RigidBody2D>()->setVelocity(targetDirection * bulletSpeed);
+    bullet.getComponent<Artifact::RigidBody2D>()->setVelocity(targetDirection * bulletSpeed);
 }

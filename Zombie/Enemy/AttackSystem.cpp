@@ -1,17 +1,17 @@
-#include <BadEngine/Core/World.h>
+#include <Artifact/Core/World.h>
 
 #include "AttackSystem.h"
 #include "AttackComponent.h"
 #include "../HealthComponent.h"
 
-AttackSystem::AttackSystem(BadEngine::EntitySystem& a_EntitySystem, BadEngine::MessagingSystem& a_MessagingSystem)
+AttackSystem::AttackSystem(Artifact::EntitySystem& a_EntitySystem, Artifact::MessagingSystem& a_MessagingSystem)
     : System(a_EntitySystem, a_MessagingSystem)
 {
 }
 
 void AttackSystem::registerListeners()
 {
-    m_MessagingSystem.registerListener<BadEngine::UpdateMessage>([this](const BadEngine::Message*)
+    m_MessagingSystem.registerListener<Artifact::UpdateMessage>([this](const Artifact::Message*)
     {
         update();
     });

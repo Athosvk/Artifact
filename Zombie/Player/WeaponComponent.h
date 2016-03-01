@@ -1,16 +1,16 @@
 #pragma once
-#include <BadEngine/Core/Component.h>
-#include <BadEngine/Transform.h>
+#include <Artifact/Core/Component.h>
+#include <Artifact/Transform.h>
 
 #include "../TimerComponent.h"
 
-class WeaponComponent : public BadEngine::Component
+class WeaponComponent : public Artifact::Component
 {
 public:
-    BadEngine::Transform* MuzzleTransform;
+    Artifact::Transform* MuzzleTransform;
     TimerComponent* FireDelayTimer;
 
 public:
-    WeaponComponent(BadEngine::GameObject a_GameObject);
+    WeaponComponent(Artifact::GameObject a_GameObject);
 };
 

@@ -1,5 +1,5 @@
-#include <BadEngine/Transform.h>
-#include <BadEngine/GameTime.h>
+#include <Artifact/Transform.h>
+#include <Artifact/GameTime.h>
 
 #include "PhysicsTestWorld.h"
 #include "Player.h"
@@ -7,20 +7,20 @@
 #include "Ground.h"
 #include "Box.h"
 
-PhysicsTestWorld::PhysicsTestWorld(BadEngine::GameTime& a_GameTime)
-    : World(a_GameTime)
+PhysicsTestWorld::PhysicsTestWorld(Artifact::GameTime& a_GameTime)
+    : World(a_GameTime, nullptr)
 {
     addSystem<PlayerInputSystem>();
     m_EntitySystem.createEntity<Player>();
     auto ground = m_EntitySystem.createEntity<Ground>();
-    ground.getComponent<BadEngine::Transform>()->setPosition(glm::vec2(0.0f, -2.0f));
+    ground.getComponent<Artifact::Transform>()->setPosition(glm::vec2(0.0f, -2.0f));
 
     //for(int j = 0; j < 27; j++)
     //{
     //    for(int i = 0; i < 50; i++)
     //    {
     //        Box box = m_EntitySystem.createEntity<Box>();
-    //        auto transform = box.getComponent<BadEngine::Transform>();
+    //        auto transform = box.getComponent<Artifact::Transform>();
     //        transform->setPosition(glm::vec2(i * 0.3f - 1.5f, 0.3f * j));
     //    }
     //}

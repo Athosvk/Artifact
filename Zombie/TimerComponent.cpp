@@ -1,8 +1,8 @@
-#include <BadEngine/Core/GameObject.h>
+#include <Artifact/Core/GameObject.h>
 
 #include "TimerComponent.h"
 
-TimerComponent::TimerComponent(BadEngine::GameObject a_GameObject)
+TimerComponent::TimerComponent(Artifact::GameObject a_GameObject)
     : Component(a_GameObject)
 {
 }

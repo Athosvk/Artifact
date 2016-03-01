@@ -1,6 +1,6 @@
 #include "BulletComponent.h"
 
-BulletComponent::BulletComponent(BadEngine::GameObject a_GameObject)
+BulletComponent::BulletComponent(Artifact::GameObject a_GameObject)
     : Component(a_GameObject)
 {
 }

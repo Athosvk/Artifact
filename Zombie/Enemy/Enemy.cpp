@@ -1,9 +1,8 @@
-#include <BadEngine/IO/ResourceManager.h>
-#include <BadEngine/Rendering/SpriteRenderer.h>
-#include <BadEngine/Transform.h>
-#include <BadEngine/Core/EntitySystem.h>
-#include <BadEngine/Physics/BoxCollider2D.h>
-#include <BadEngine/Physics/RigidBody2D.h>
+#include <Artifact/IO/ResourceManager.h>
+#include <Artifact/Rendering/SpriteRenderer.h>
+#include <Artifact/Core/EntitySystem.h>
+#include <Artifact/Physics/BoxCollider2D.h>
+#include <Artifact/Physics/RigidBody2D.h>
 
 #include "Enemy.h"
 #include "../HealthComponent.h"
@@ -12,12 +11,13 @@
 #include "AttackComponent.h"
 #include "../TimerComponent.h"
 #include "ZombieBehaviour.h"
+#include "../ScoreComponent.h"
 
-Enemy::Enemy(unsigned a_ID, BadEngine::EntitySystem& a_EntitySystem)
+Enemy::Enemy(unsigned a_ID, Artifact::EntitySystem& a_EntitySystem)
     : GameObject(a_ID, a_EntitySystem)
 {
-    auto renderer = addComponent<BadEngine::SpriteRenderer>();
-    renderer->setTexture(BadEngine::ResourceManager::getTexture("Textures/Zombie textures/skeleton-move_0.png"));
+    auto renderer = addComponent<Artifact::SpriteRenderer>();
+    renderer->setTexture(Artifact::ResourceManager::getTexture("Textures/Zombie textures/skeleton-move_0.png"));
     renderer->Width = 1.0f;
     renderer->Height = 1.0f;
 
@@ -29,7 +29,7 @@ Enemy::Enemy(unsigned a_ID, BadEngine::EntitySystem& a_EntitySystem)
     auto tag = addComponent<TagComponent>();
     tag->Type = EType::Enemy;
 
-    auto collider = addComponent<BadEngine::BoxCollider2D>();
+    auto collider = addComponent<Artifact::BoxCollider2D>();
     collider->enableTriggerState();
     collider->setDimensions(glm::vec2(0.8f, 0.8f));
 
@@ -43,6 +43,9 @@ Enemy::Enemy(unsigned a_ID, BadEngine::EntitySystem& a_EntitySystem)
     behaviour->AttackComponent = attackComponent;
     behaviour->FollowComponent = followComponent;
 
-    auto rigidBody = addComponent<BadEngine::RigidBody2D>();
+    auto score = addComponent<ScoreComponent>();
+    score->Amount = 10;
+
+    auto rigidBody = addComponent<Artifact::RigidBody2D>();
     rigidBody->setGravityScale(0.0f);
 }

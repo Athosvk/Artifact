@@ -1,20 +1,25 @@
 #pragma once
-#include <BadEngine/Core/System.h>
+#include <Artifact/Core/System.h>
 
 #include "HealthBar.h"
 
 class PlayerComponent;
+namespace Artifact
+{
+    class TextComponent;
+}
 
-class HUDSystem : public BadEngine::System
+class HUDSystem : public Artifact::System
 {
 private:
     HealthBar m_HealthBar;
+    Artifact::TextComponent* m_ScoreDisplay;
 
 public:
-    HUDSystem(BadEngine::EntitySystem& a_EntitySystem, BadEngine::MessagingSystem& a_MessagingSystem);
+    HUDSystem(Artifact::EntitySystem& a_EntitySystem, Artifact::MessagingSystem& a_MessagingSystem);
 
     virtual void registerListeners() override;
 private:
-    void renderHUDComponents();
+    void updateHUDComponents();
     PlayerComponent* getCurrentPlayer() const;
 };
