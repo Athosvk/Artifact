@@ -4,7 +4,7 @@
 PhysicsTest::PhysicsTest()
     : Game(1024, 768, 0, "Physics Test")
 {
-    loadWorld<PhysicsTestWorld>();
+    //loadWorld<PhysicsTestWorld>();
 }
 
 PhysicsTest::~PhysicsTest()
