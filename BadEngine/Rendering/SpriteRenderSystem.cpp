@@ -50,5 +50,6 @@ namespace BadEngine
             }
         }
         m_SpriteBatch.end();
+        m_SpriteBatch.end();
     }
 }

@@ -9,6 +9,7 @@ class HUDSystem : public BadEngine::System
 {
 private:
     HealthBar m_HealthBar;
+    BadEngine::GameObject m_Text;
 
 public:
     HUDSystem(BadEngine::EntitySystem& a_EntitySystem, BadEngine::MessagingSystem& a_MessagingSystem);

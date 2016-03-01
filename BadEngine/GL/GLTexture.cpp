@@ -9,6 +9,11 @@ namespace BadEngine
         glGenTextures(1, &m_ID);
     }
 
+    GLTexture::GLTexture(GLuint a_ID)
+        : m_ID(a_ID)
+    {
+    }
+
     GLTexture::~GLTexture()
     {
         //IMPORTANT: Currenty commented out because cleaning up textures in a borderless window mode

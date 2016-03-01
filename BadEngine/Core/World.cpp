@@ -3,6 +3,7 @@
 #include "../Rendering/RenderMessage.h"
 #include "../Physics/PhysicsSystem.h"
 #include "../Input/InputSystem.h"
+#include "../Rendering/UIRenderingSystem.h"
 
 namespace BadEngine
 {
@@ -42,6 +43,7 @@ namespace BadEngine
         addSystem<InputSystem>();
         addSystem<SpriteRenderSystem>();
         addSystem<PhysicsSystem>();
+        addSystem<UIRenderingSystem>();
     }
 
     void World::update()

@@ -60,7 +60,7 @@ namespace BadEngine
         IBO m_IBO;
         std::vector<Glyph> m_Glyphs;
         std::vector<RenderBatch> m_RenderBatches;
-        ESpriteSortMode m_SortMode = ESpriteSortMode::Texture;
+        ESpriteSortMode m_SortMode = ESpriteSortMode::BackToFront;
         GLSLProgram m_ShaderProgram;
         const glm::mat4* m_ViewMatrix;
 
@@ -68,7 +68,7 @@ namespace BadEngine
         SpriteBatch();
         ~SpriteBatch();
 
-        void begin(const glm::mat4* a_ViewMatrix, ESpriteSortMode a_SpriteSortMode = ESpriteSortMode::Texture);
+        void begin(const glm::mat4* a_ViewMatrix, ESpriteSortMode a_SpriteSortMode = ESpriteSortMode::BackToFront);
         void draw(const GLTexture* a_Texture, const Rectangle& a_DestinationRectangle, Color a_Color = Color::White,
                   const Rectangle& a_UVRectangle = Rectangle(glm::vec2(0, 0), 1, 1), float a_Depth = 0);
         void draw(const GLTexture* a_Texture, glm::vec2 a_Position, Color a_Color = Color::White,

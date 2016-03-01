@@ -45,9 +45,12 @@
     <ClCompile Include="Physics\RigidBody2D.cpp" />
     <ClCompile Include="Rectangle.cpp" />
     <ClCompile Include="Rendering\Camera2D.cpp" />
+    <ClCompile Include="Rendering\SpriteFont.cpp" />
     <ClCompile Include="Rendering\SpriteRenderSystem.cpp" />
     <ClCompile Include="Rendering\SpriteRenderer.cpp" />
     <ClCompile Include="Rendering\SpriteBatch.cpp" />
+    <ClCompile Include="Rendering\TextComponent.cpp" />
+    <ClCompile Include="Rendering\UIRenderingSystem.cpp" />
     <ClCompile Include="Rendering\Window.cpp" />
     <ClCompile Include="StopWatch.cpp" />
     <ClCompile Include="Transform.cpp" />
@@ -79,6 +82,7 @@
     <ClInclude Include="IO\ImageLoader.h" />
     <ClInclude Include="IO\IOManager.h" />
     <ClInclude Include="IO\PicoPNG.h" />
+    <ClInclude Include="IO\ResourceCache.h" />
     <ClInclude Include="IO\ResourceManager.h" />
     <ClInclude Include="IO\TextureCache.h" />
     <ClInclude Include="MathHelper.h" />
@@ -91,9 +95,12 @@
     <ClInclude Include="Rectangle.h" />
     <ClInclude Include="Rendering\Camera2D.h" />
     <ClInclude Include="Rendering\RenderMessage.h" />
+    <ClInclude Include="Rendering\SpriteFont.h" />
     <ClInclude Include="Rendering\SpriteRenderSystem.h" />
     <ClInclude Include="Rendering\SpriteRenderer.h" />
     <ClInclude Include="Rendering\SpriteBatch.h" />
+    <ClInclude Include="Rendering\TextComponent.h" />
+    <ClInclude Include="Rendering\UIRenderingSystem.h" />
     <ClInclude Include="Rendering\Vertex.h" />
     <ClInclude Include="Rendering\Window.h" />
     <ClInclude Include="StopWatch.h" />
