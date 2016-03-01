@@ -10,8 +10,10 @@
 
 const float HealthBar::MaxWidth = 2.0f;
 const float HealthBar::Height = 0.3f;
+const glm::vec2 HealthBar::BackgroundOffset = glm::vec2(-0.05f, -0.05f);
 
-HealthBar::HealthBar(Artifact::EntitySystem& a_EntitySystem)
+HealthBar::HealthBar(Artifact::EntitySystem& a_EntitySystem, glm::vec2 a_Position)
+    : m_Position(a_Position)
 {
     m_HealthRenderer = a_EntitySystem.createEntity().addComponent<Artifact::SpriteRenderer>();
     initialiseHealthbar();
@@ -19,7 +21,7 @@ HealthBar::HealthBar(Artifact::EntitySystem& a_EntitySystem)
     auto backgroundRenderer = a_EntitySystem.createEntity().addComponent<Artifact::SpriteRenderer>();
 
     backgroundRenderer->setTexture(Artifact::ResourceManager::getTexture("Textures/Healthbar_background.png"));
-    backgroundRenderer->getComponent<Artifact::Transform>()->setPosition(glm::vec2(1.45f, 2.45f));
+    backgroundRenderer->getComponent<Artifact::Transform>()->setPosition(a_Position + BackgroundOffset);
     backgroundRenderer->Width = MaxWidth + 0.1f;
     backgroundRenderer->Height = Height + 0.1f;
     backgroundRenderer->Depth = 10;
@@ -34,7 +36,7 @@ void HealthBar::update(HealthComponent* a_Health)
 
 void HealthBar::initialiseHealthbar()
 {
-    m_HealthRenderer->getComponent<Artifact::Transform>()->setPosition(glm::vec2(1.5f, 2.5f));
+    m_HealthRenderer->getComponent<Artifact::Transform>()->setPosition(m_Position);
     m_HealthRenderer->setTexture(Artifact::ResourceManager::getTexture("Textures/Healthbar.png"));
     m_HealthRenderer->Width = MaxWidth;
     m_HealthRenderer->Height = Height;

@@ -12,12 +12,12 @@
 
 HUDSystem::HUDSystem(Artifact::EntitySystem& a_EntitySystem, Artifact::MessagingSystem& a_MessagingSystem)
     : System(a_EntitySystem, a_MessagingSystem),
-    m_HealthBar(m_EntitySystem)
+    m_HealthBar(m_EntitySystem, glm::vec2(3.0f, 3.4f))
 {
     m_ScoreDisplay = m_EntitySystem.createEntity().addComponent<Artifact::TextComponent>();
     m_ScoreDisplay->Text = "Score: ";
     m_ScoreDisplay->Font = Artifact::ResourceManager::getFont("Fonts/BasicFont.ttf");
-    m_ScoreDisplay->getComponent<Artifact::Transform>()->setPosition(glm::vec2(0.5f, 0.5f));
+    m_ScoreDisplay->getComponent<Artifact::Transform>()->setPosition(glm::vec2(-4.9f, 3.4f));
     m_ScoreDisplay->Justification = Artifact::EJustification::Left;
 }
 

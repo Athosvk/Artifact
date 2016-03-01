@@ -11,7 +11,7 @@ namespace Artifact
     public:
         SpriteFont* Font;
         std::string Text;
-        float Scaling = 0.5f;
+        float Scaling = 0.4f;
         float Depth = 0.0f;
         Color Color = Color::White;
         EJustification Justification = EJustification::Middle;
