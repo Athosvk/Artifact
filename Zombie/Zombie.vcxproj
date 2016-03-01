@@ -94,6 +94,9 @@
     <ClCompile Include="Enemy\Enemy.cpp" />
     <ClCompile Include="Enemy\FollowComponent.cpp" />
     <ClCompile Include="Enemy\FollowSystem.cpp" />
+    <ClCompile Include="Enemy\Spawner.cpp" />
+    <ClCompile Include="Enemy\SpawnerComponent.cpp" />
+    <ClCompile Include="Enemy\SpawnerSystem.cpp" />
     <ClCompile Include="Enemy\ZombieBehaviour.cpp" />
     <ClCompile Include="Enemy\ZombieBehaviourSystem.cpp" />
     <ClCompile Include="GameOverScreen.cpp" />
@@ -125,6 +128,9 @@
     <ClInclude Include="Enemy\Enemy.h" />
     <ClInclude Include="Enemy\FollowComponent.h" />
     <ClInclude Include="Enemy\FollowSystem.h" />
+    <ClInclude Include="Enemy\Spawner.h" />
+    <ClInclude Include="Enemy\SpawnerComponent.h" />
+    <ClInclude Include="Enemy\SpawnerSystem.h" />
     <ClInclude Include="Enemy\ZombieBehaviour.h" />
     <ClInclude Include="Enemy\ZombieBehaviourSystem.h" />
     <ClInclude Include="GameOverScreen.h" />

@@ -19,6 +19,7 @@ HUDSystem::HUDSystem(Artifact::EntitySystem& a_EntitySystem, Artifact::Messaging
     m_ScoreDisplay->Font = Artifact::ResourceManager::getFont("Fonts/BasicFont.ttf");
     m_ScoreDisplay->getComponent<Artifact::Transform>()->setPosition(glm::vec2(-4.9f, 3.4f));
     m_ScoreDisplay->Justification = Artifact::EJustification::Left;
+    m_ScoreDisplay->Scaling = 0.4f;
 }
 
 void HUDSystem::registerListeners()

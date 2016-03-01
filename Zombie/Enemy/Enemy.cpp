@@ -40,8 +40,6 @@ Enemy::Enemy(unsigned a_ID, Artifact::EntitySystem& a_EntitySystem)
     attackComponent->setAttackInterval(1.0f);
 
     auto behaviour = addComponent<ZombieBehaviour>();
-    behaviour->AttackComponent = attackComponent;
-    behaviour->FollowComponent = followComponent;
 
     auto score = addComponent<ScoreComponent>();
     score->Amount = 10;

@@ -43,6 +43,7 @@
     <ClCompile Include="Physics\PhysicsSystem.cpp" />
     <ClCompile Include="Physics\PhysicsWorld.cpp" />
     <ClCompile Include="Physics\RigidBody2D.cpp" />
+    <ClCompile Include="Random.cpp" />
     <ClCompile Include="Rectangle.cpp" />
     <ClCompile Include="Rendering\Camera2D.cpp" />
     <ClCompile Include="Rendering\SpriteFont.cpp" />
@@ -92,6 +93,7 @@
     <ClInclude Include="Physics\PhysicsSystem.h" />
     <ClInclude Include="Physics\PhysicsWorld.h" />
     <ClInclude Include="Physics\RigidBody2D.h" />
+    <ClInclude Include="Random.h" />
     <ClInclude Include="Rectangle.h" />
     <ClInclude Include="Rendering\Camera2D.h" />
     <ClInclude Include="Rendering\RenderMessage.h" />

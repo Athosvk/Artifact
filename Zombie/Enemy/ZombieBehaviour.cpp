@@ -6,15 +6,17 @@
 #include "ZombieBehaviour.h"
 
 ZombieBehaviour::ZombieBehaviour(Artifact::GameObject a_GameObject)
-    : Component(a_GameObject)
+    : Component(a_GameObject),
+    m_AttackComponent(getComponent<AttackComponent>()),
+    m_FollowComponent(getComponent<FollowComponent>())
 {
+    startFollowing();
 }
 
 void ZombieBehaviour::setState(EBehaviourstate a_NewState)
 {
     if(a_NewState != m_State)
     {
-        m_State = a_NewState;
         switch(a_NewState)
         {
         case EBehaviourstate::Follow:
@@ -29,14 +31,16 @@ void ZombieBehaviour::setState(EBehaviourstate a_NewState)
 
 void ZombieBehaviour::startFollowing()
 {
-    FollowComponent->enable();
-    AttackComponent->disable();
+    m_State = EBehaviourstate::Follow;
+    m_FollowComponent->enable();
+    m_AttackComponent->disable();
 }
 
 void ZombieBehaviour::startAttacking()
 {
-    FollowComponent->disable();
-    AttackComponent->enable();
-    AttackComponent->startTimer();
+    m_State = EBehaviourstate::Attack;
+    m_FollowComponent->disable();
+    m_AttackComponent->enable();
+    m_AttackComponent->startTimer();
     getComponent<Artifact::RigidBody2D>()->setVelocity(glm::vec2(0.0f, 0.0f));
 }

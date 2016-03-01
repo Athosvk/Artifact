@@ -14,9 +14,9 @@ class ZombieBehaviour : public Artifact::Component
 {
 private:
     EBehaviourstate m_State;
+    FollowComponent* m_FollowComponent;
+    AttackComponent* m_AttackComponent;
 public:
-    FollowComponent* FollowComponent;
-    AttackComponent* AttackComponent;
     float AttackRadius = 0.7f;
 
 public:
