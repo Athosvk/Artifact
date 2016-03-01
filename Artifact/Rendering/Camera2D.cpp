@@ -25,7 +25,7 @@ namespace Artifact
         constructMatrix();
     }
 
-    glm::mat4& Camera2D::getViewProjection() const
+    const glm::mat4& Camera2D::getViewProjection() const
     {
         if(m_Dirty || m_Transform->isDirty())
         {
@@ -34,13 +34,18 @@ namespace Artifact
         return m_ViewProjection;
     }
 
-    glm::mat4& Camera2D::getInverseViewProjection() const
+    const glm::mat4& Camera2D::getInverseViewProjection() const
     {
         if(m_Dirty || m_Transform->isDirty())
         {
             constructMatrix();
         }
         return m_InverseViewProjection;
+    }
+
+    const glm::mat4& Camera2D::getProjectionMatrix() const
+    {
+        return m_ProjectionMatrix;
     }
 
     void Camera2D::constructProjectionMatrix()

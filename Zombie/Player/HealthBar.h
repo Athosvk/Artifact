@@ -20,7 +20,7 @@ private:
 public:
     HealthBar(Artifact::EntitySystem& a_EntitySystem);
 
-    void render(HealthComponent* a_Health);
+    void update(HealthComponent* a_Health);
 private:
     void initialiseHealthbar();
 };

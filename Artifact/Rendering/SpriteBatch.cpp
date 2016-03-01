@@ -51,20 +51,15 @@ namespace Artifact
         initShaders();
     }
 
-    SpriteBatch::~SpriteBatch()
-    {
-        clear();
-    }
-
     void SpriteBatch::clear()
     {
         m_RenderBatches.clear();
         m_Glyphs.clear();
     }
 
-    void SpriteBatch::begin(const glm::mat4* a_ViewMatrix, ESpriteSortMode a_SpriteSortMode)
+    void SpriteBatch::begin(glm::mat4 a_ViewProjectionMatrix, ESpriteSortMode a_SpriteSortMode)
     {
-        m_ViewMatrix = a_ViewMatrix;
+        m_ViewProjectionMatrix = a_ViewProjectionMatrix;
         m_SortMode = a_SpriteSortMode;
         auto previousSize = m_Glyphs.size();
         clear();
@@ -203,7 +198,7 @@ namespace Artifact
         glUniform1i(textureLocation, 0);
 
         auto cameraTransformLocation = m_ShaderProgram.getUniformLocation("cameraTransform");
-        glUniformMatrix4fv(cameraTransformLocation, 1, GL_FALSE, &(*m_ViewMatrix)[0][0]);
+        glUniformMatrix4fv(cameraTransformLocation, 1, GL_FALSE, &(m_ViewProjectionMatrix)[0][0]);
     }
 
     void SpriteBatch::renderBatches() const

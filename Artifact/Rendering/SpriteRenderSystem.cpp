@@ -30,7 +30,7 @@ namespace Artifact
 
     void SpriteRenderSystem::renderSprites()
     {
-        m_SpriteBatch.begin(&m_CurrentCamera->getViewProjection(), ESpriteSortMode::BackToFront);
+        m_SpriteBatch.begin(m_CurrentCamera->getViewProjection(), ESpriteSortMode::BackToFront);
         for(auto sprite : m_EntitySystem.getComponentsOfType<SpriteRenderer>())
         {
             auto transform = sprite->getComponent<Transform>();
@@ -49,7 +49,6 @@ namespace Artifact
                     sprite->Depth);
             }
         }
-        m_SpriteBatch.end();
         m_SpriteBatch.end();
     }
 }

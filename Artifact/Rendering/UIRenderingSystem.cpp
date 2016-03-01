@@ -3,6 +3,7 @@
 #include "../Core/EntitySystem.h"
 #include "TextComponent.h"
 #include "../Transform.h"
+#include "SpriteRenderer.h"
 
 namespace Artifact
 {
@@ -21,14 +22,19 @@ namespace Artifact
 
     void UIRenderingSystem::renderUI()
     {
-        const auto ViewMatrix = glm::mat4(1.0f);
-        m_SpriteBatch.begin(&ViewMatrix);
+        m_SpriteBatch.begin(getCurrentCamera()->getProjectionMatrix());
         for(auto text : m_EntitySystem.getComponentsOfType<TextComponent>())
         {
             auto position = text->getComponent<Transform>()->getPosition();
-            text->Font->draw(m_SpriteBatch, text->Text.c_str(), position, glm::vec2(text->Scaling), 
+            text->Font->draw(m_SpriteBatch, text->Text.c_str(), position, 
+                glm::vec2(text->Scaling * static_cast<float>(1.0f / Camera2D::PixelsPerMeter)),
                 text->Depth, text->Color, text->Justification);
         }
         m_SpriteBatch.end();
+    }
+
+    Camera2D* UIRenderingSystem::getCurrentCamera() const
+    {
+        return m_EntitySystem.getComponentsOfType<Camera2D>()[0];
     }
 }

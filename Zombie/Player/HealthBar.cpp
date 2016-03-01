@@ -26,7 +26,7 @@ HealthBar::HealthBar(Artifact::EntitySystem& a_EntitySystem)
     backgroundRenderer->Pivot = glm::vec2(0.0f, 0.0f);
 }
 
-void HealthBar::render(HealthComponent* a_Health)
+void HealthBar::update(HealthComponent* a_Health)
 {
     m_HealthRenderer->Width = (a_Health->getCurrentHealth() /
         static_cast<float>(a_Health->MaxHealth)) * MaxWidth;

@@ -270,10 +270,10 @@ namespace Artifact
                 {
                     gi = _regLength;
                 }
-                auto size = (_glyphs[gi].size * scaling) * static_cast<float>(1.0f / Camera2D::PixelsPerMeter);
+                auto size = _glyphs[gi].size * scaling;
                 Rectangle destinationRectangle(tp, size.x, size.y);
                 batch.draw(m_Texture.get(), destinationRectangle, tint, _glyphs[gi].uvRect, depth);
-                tp.x += _glyphs[gi].size.x * scaling.x * static_cast<float>(1.0f / Camera2D::PixelsPerMeter);
+                tp.x += _glyphs[gi].size.x * scaling.x;
             }
         }
     }

@@ -33,8 +33,9 @@ namespace Artifact
     public:
         Camera2D(GameObject a_GameObject);
         
-        glm::mat4& getViewProjection() const;
-        glm::mat4& getInverseViewProjection() const;
+        const glm::mat4& getViewProjection() const;
+        const glm::mat4& getInverseViewProjection() const;
+        const glm::mat4& getProjectionMatrix() const;
         glm::vec2 screenToWorld(glm::vec2 a_ScreenPosition) const;
 
     private:
