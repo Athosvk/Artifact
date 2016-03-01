@@ -1,9 +1,9 @@
 #pragma once
-#include <BadEngine/Core/GameObject.h>
+#include <Artifact/Core/GameObject.h>
 
-class Bullet : public BadEngine::GameObject
+class Bullet : public Artifact::GameObject
 {
 public:
-    Bullet(unsigned a_ID, BadEngine::EntitySystem& a_EntitySystem);
+    Bullet(unsigned a_ID, Artifact::EntitySystem& a_EntitySystem);
 };
 

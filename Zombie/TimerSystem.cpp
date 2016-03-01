@@ -1,23 +1,23 @@
-#include <BadEngine/Core/EntitySystem.h>
-#include <BadEngine/Core/World.h>
+#include <Artifact/Core/EntitySystem.h>
+#include <Artifact/Core/World.h>
 
 #include "TimerSystem.h" 
 #include "TimerComponent.h"
 
-TimerSystem::TimerSystem(BadEngine::EntitySystem& a_EntitySystem, BadEngine::MessagingSystem& a_MessagingSystem)
+TimerSystem::TimerSystem(Artifact::EntitySystem& a_EntitySystem, Artifact::MessagingSystem& a_MessagingSystem)
     : System(a_EntitySystem, a_MessagingSystem)
 {
 }
 
 void TimerSystem::registerListeners()
 {
-    m_MessagingSystem.registerListener<BadEngine::UpdateMessage>([this](const BadEngine::Message* a_Message)
+    m_MessagingSystem.registerListener<Artifact::UpdateMessage>([this](const Artifact::Message* a_Message)
     {
-        update(static_cast<const BadEngine::UpdateMessage*>(a_Message));
+        update(static_cast<const Artifact::UpdateMessage*>(a_Message));
     });
 }
 
-void TimerSystem::update(const BadEngine::UpdateMessage* a_UpdateMessage)
+void TimerSystem::update(const Artifact::UpdateMessage* a_UpdateMessage)
 {
     for(auto timer : m_EntitySystem.getComponentsOfType<TimerComponent>())
     {
@@ -28,7 +28,7 @@ void TimerSystem::update(const BadEngine::UpdateMessage* a_UpdateMessage)
     }
 }
 
-void TimerSystem::updateTimePassed(const BadEngine::UpdateMessage* a_UpdateMessage, TimerComponent* a_TimerComponent)
+void TimerSystem::updateTimePassed(const Artifact::UpdateMessage* a_UpdateMessage, TimerComponent* a_TimerComponent)
 {
     a_TimerComponent->TimePassed += a_UpdateMessage->getGameTime().getDeltaTime();
     if(a_TimerComponent->TimePassed >= a_TimerComponent->Duration)

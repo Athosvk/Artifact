@@ -1,6 +1,6 @@
 #include "PlayerComponent.h"
 
-PlayerComponent::PlayerComponent(BadEngine::GameObject a_GameObject)
+PlayerComponent::PlayerComponent(Artifact::GameObject a_GameObject)
     : Component(a_GameObject)
 {
 }

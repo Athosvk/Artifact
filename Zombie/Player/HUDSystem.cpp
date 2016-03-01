@@ -1,27 +1,27 @@
-#include <BadEngine/Rendering/RenderMessage.h>
-#include <BadEngine/Core/EntitySystem.h>
-#include <BadEngine/Rendering/TextComponent.h>
-#include <BadEngine/IO/ResourceManager.h>
+#include <Artifact/Rendering/RenderMessage.h>
+#include <Artifact/Core/EntitySystem.h>
+#include <Artifact/Rendering/TextComponent.h>
+#include <Artifact/IO/ResourceManager.h>
 
 #include "PlayerComponent.h"
 #include "../HealthComponent.h"
 
 #include "HUDSystem.h"
 
-HUDSystem::HUDSystem(BadEngine::EntitySystem& a_EntitySystem, BadEngine::MessagingSystem& a_MessagingSystem)
+HUDSystem::HUDSystem(Artifact::EntitySystem& a_EntitySystem, Artifact::MessagingSystem& a_MessagingSystem)
     : System(a_EntitySystem, a_MessagingSystem),
     m_HealthBar(m_EntitySystem),
     m_Text(m_EntitySystem.createEntity())
 {
-    auto text = m_Text.addComponent<BadEngine::TextComponent>();
+    auto text = m_Text.addComponent<Artifact::TextComponent>();
     text->Text = "AAAA";
     text->Depth = 10.0f;
-    text->Font = BadEngine::ResourceManager::getFont("Fonts/BasicFont.ttf");
+    text->Font = Artifact::ResourceManager::getFont("Fonts/BasicFont.ttf");
 }
 
 void HUDSystem::registerListeners()
 {
-    m_MessagingSystem.registerListener<BadEngine::RenderMessage>([this](const BadEngine::Message*)
+    m_MessagingSystem.registerListener<Artifact::RenderMessage>([this](const Artifact::Message*)
     {
         renderHUDComponents();
     });

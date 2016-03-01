@@ -1,4 +1,4 @@
-#include <BadEngine/Core/EntitySystem.h>
+#include <Artifact/Core/EntitySystem.h>
 
 #include "ScoreSystem.h"
 #include "ScoreComponent.h"
@@ -6,14 +6,14 @@
 #include "Player/PlayerComponent.h"
 #include "Player/PlayerScoreComponent.h"
 
-ScoreSystem::ScoreSystem(BadEngine::EntitySystem & a_EntitySystem, BadEngine::MessagingSystem & a_MessagingSystem)
+ScoreSystem::ScoreSystem(Artifact::EntitySystem & a_EntitySystem, Artifact::MessagingSystem & a_MessagingSystem)
     : System(a_EntitySystem, a_MessagingSystem)
 {
 }
 
 void ScoreSystem::registerListeners()
 {
-    using namespace BadEngine;
+    using namespace Artifact;
     m_MessagingSystem.registerListener<ComponentAddedMessage<ScoreComponent>>([this](const Message* a_Message)
     {
         onScoreComponentAdd(static_cast<const ComponentAddedMessage<ScoreComponent>*>(a_Message)->getAddedComponent());

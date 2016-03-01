@@ -1,10 +1,10 @@
 #pragma once
-#include <BadEngine/Core/Component.h>
+#include <Artifact/Core/Component.h>
 
-class FollowComponent : public BadEngine::Component
+class FollowComponent : public Artifact::Component
 {
 public:
     float FollowSpeed = 1.0f;
 public:
-    FollowComponent(BadEngine::GameObject a_GameObject);
+    FollowComponent(Artifact::GameObject a_GameObject);
 };

@@ -1,10 +1,10 @@
 #pragma once
-#include <BadEngine/Game.h>
-#include <BadEngine/Rendering/SpriteBatch.h>
+#include <Artifact/Game.h>
+#include <Artifact/Rendering/SpriteBatch.h>
 
 #include "Pool.h"
 
-class MainGame : public BadEngine::Game
+class MainGame : public Artifact::Game
 {
 public:
     MainGame();

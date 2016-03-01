@@ -1,8 +1,8 @@
 #pragma once
 #include <string>
 
-#include <BadEngine/EnumUtility.h>
-#include <BadEngine/Core/Component.h>
+#include <Artifact/EnumUtility.h>
+#include <Artifact/Core/Component.h>
 
 enum class EType
 {
@@ -12,13 +12,13 @@ enum class EType
 };
 EnumFlagOperators(EType)
 
-class TagComponent : public BadEngine::Component
+class TagComponent : public Artifact::Component
 {
 public:
     EType Type;
     std::string Name;
 
 public:
-    TagComponent(BadEngine::GameObject a_GameObject);
+    TagComponent(Artifact::GameObject a_GameObject);
 };
 

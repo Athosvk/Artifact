@@ -1,20 +1,20 @@
-#include <BadEngine/Core/World.h>
-#include <BadEngine/Physics/RigidBody2D.h>
-#include <BadEngine/Transform.h>
-#include <BadEngine/MathHelper.h>
+#include <Artifact/Core/World.h>
+#include <Artifact/Physics/RigidBody2D.h>
+#include <Artifact/Transform.h>
+#include <Artifact/MathHelper.h>
 
 #include "FollowSystem.h"
 #include "FollowComponent.h"
 #include "../Player/PlayerComponent.h"
 
-FollowSystem::FollowSystem(BadEngine::EntitySystem& a_EntitySystem, BadEngine::MessagingSystem& a_MessagingSystem)
+FollowSystem::FollowSystem(Artifact::EntitySystem& a_EntitySystem, Artifact::MessagingSystem& a_MessagingSystem)
     : System(a_EntitySystem, a_MessagingSystem)
 {
 }
 
 void FollowSystem::registerListeners()
 {
-    m_MessagingSystem.registerListener<BadEngine::UpdateMessage>([this](const BadEngine::Message*)
+    m_MessagingSystem.registerListener<Artifact::UpdateMessage>([this](const Artifact::Message*)
     {
         updateVelocities();
     });
@@ -22,16 +22,16 @@ void FollowSystem::registerListeners()
 
 void FollowSystem::updateVelocities()
 {
-    auto playerPosition = getCurrentPlayer()->getComponent<BadEngine::Transform>()->getPosition();
+    auto playerPosition = getCurrentPlayer()->getComponent<Artifact::Transform>()->getPosition();
 
     for(auto follower : m_EntitySystem.getComponentsOfType<FollowComponent>())
     {
-        auto followerTransform = follower->getComponent<BadEngine::Transform>();
+        auto followerTransform = follower->getComponent<Artifact::Transform>();
         if (followerTransform->getPosition() != playerPosition)
         {
             auto newDirection = glm::normalize(playerPosition - followerTransform->getPosition());
-            follower->getComponent<BadEngine::RigidBody2D>()->setVelocity(newDirection * follower->FollowSpeed);
-            followerTransform->setRotation(BadEngine::MathHelper::directionToAngle(newDirection));
+            follower->getComponent<Artifact::RigidBody2D>()->setVelocity(newDirection * follower->FollowSpeed);
+            followerTransform->setRotation(Artifact::MathHelper::directionToAngle(newDirection));
         }
     }
 }

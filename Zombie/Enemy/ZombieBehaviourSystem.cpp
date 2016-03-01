@@ -1,19 +1,19 @@
-#include <BadEngine/Core/World.h>
-#include <BadEngine/Transform.h>
+#include <Artifact/Core/World.h>
+#include <Artifact/Transform.h>
 
 #include "ZombieBehaviourSystem.h"
 #include "ZombieBehaviour.h"
 #include "../Player/PlayerComponent.h"
 
-ZombieBehaviourSystem::ZombieBehaviourSystem(BadEngine::EntitySystem& a_EntitySystem, 
-    BadEngine::MessagingSystem& a_MessagingSystem)
+ZombieBehaviourSystem::ZombieBehaviourSystem(Artifact::EntitySystem& a_EntitySystem, 
+    Artifact::MessagingSystem& a_MessagingSystem)
     : System(a_EntitySystem, a_MessagingSystem)
 {
 }
 
 void ZombieBehaviourSystem::registerListeners()
 {
-    m_MessagingSystem.registerListener<BadEngine::UpdateMessage>([this](const BadEngine::Message*)
+    m_MessagingSystem.registerListener<Artifact::UpdateMessage>([this](const Artifact::Message*)
     {
         update();
     });
@@ -23,7 +23,7 @@ void ZombieBehaviourSystem::update()
 {
     for(auto behaviour : m_EntitySystem.getComponentsOfType<ZombieBehaviour>())
     {
-        auto distance = glm::length(behaviour->getComponent<BadEngine::Transform>()->getPosition()
+        auto distance = glm::length(behaviour->getComponent<Artifact::Transform>()->getPosition()
             - getPlayerPosition());
         if(distance <= behaviour->AttackRadius)
         {
@@ -39,5 +39,5 @@ void ZombieBehaviourSystem::update()
 glm::vec2 ZombieBehaviourSystem::getPlayerPosition() const
 {
     return m_EntitySystem.getComponentsOfType<PlayerComponent>()[0]->
-        getComponent<BadEngine::Transform>()->getPosition();
+        getComponent<Artifact::Transform>()->getPosition();
 }

@@ -1,11 +1,11 @@
 #pragma once
-#include <BadEngine/Core/System.h>
+#include <Artifact/Core/System.h>
 
 #include "WeaponComponent.h" 
 
 class BulletComponent;
 
-class FireWeaponMessage : public BadEngine::Message
+class FireWeaponMessage : public Artifact::Message
 {
     WeaponComponent* m_WeaponComponent;
 
@@ -15,15 +15,15 @@ public:
     WeaponComponent* getWeapon() const;
 };
 
-class WeaponSystem : public BadEngine::System
+class WeaponSystem : public Artifact::System
 {
 public:
-    WeaponSystem(BadEngine::EntitySystem& a_EntitySystem, BadEngine::MessagingSystem& a_MessagingSystem);
+    WeaponSystem(Artifact::EntitySystem& a_EntitySystem, Artifact::MessagingSystem& a_MessagingSystem);
 
     virtual void registerListeners() override;
 private:
     void tryFire(const FireWeaponMessage* a_FireMessage);
     void fire(WeaponComponent* a_Weapon);
-    void createBullet(const BadEngine::Transform* a_MuzzleTransform);
+    void createBullet(const Artifact::Transform* a_MuzzleTransform);
 };
 

@@ -1,9 +1,9 @@
 #pragma once
-#include <BadEngine/Core/GameObject.h>
+#include <Artifact/Core/GameObject.h>
 
 class PlayerComponent;
 class HealthComponent;
-namespace BadEngine
+namespace Artifact
 {
     class SpriteRenderer;
     class EntitysSystem;
@@ -15,10 +15,10 @@ private:
     static const float MaxWidth;
     static const float Height;
 
-    BadEngine::SpriteRenderer* m_HealthRenderer;
+    Artifact::SpriteRenderer* m_HealthRenderer;
 
 public:
-    HealthBar(BadEngine::EntitySystem& a_EntitySystem);
+    HealthBar(Artifact::EntitySystem& a_EntitySystem);
 
     void render(HealthComponent* a_Health);
 private:

@@ -1,16 +1,16 @@
 #pragma once
-#include <BadEngine/Core/System.h>
+#include <Artifact/Core/System.h>
 
 class TimerComponent;
 
-class TimerSystem : public BadEngine::System
+class TimerSystem : public Artifact::System
 {
 public:
-    TimerSystem(BadEngine::EntitySystem& a_EntitySystem, BadEngine::MessagingSystem& a_MessagingSystem);
+    TimerSystem(Artifact::EntitySystem& a_EntitySystem, Artifact::MessagingSystem& a_MessagingSystem);
 
     virtual void registerListeners() override;
 private:
-    void update(const BadEngine::UpdateMessage* a_UpdateMessage);
-    void updateTimePassed(const BadEngine::UpdateMessage* a_UpdateMessage, TimerComponent* a_Timer);
+    void update(const Artifact::UpdateMessage* a_UpdateMessage);
+    void updateTimePassed(const Artifact::UpdateMessage* a_UpdateMessage, TimerComponent* a_Timer);
 };
 

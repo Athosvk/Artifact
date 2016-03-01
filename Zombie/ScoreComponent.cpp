@@ -1,6 +1,6 @@
 #include "ScoreComponent.h"
 
-ScoreComponent::ScoreComponent(BadEngine::GameObject a_Entity)
+ScoreComponent::ScoreComponent(Artifact::GameObject a_Entity)
     : Component(a_Entity)
 {
 }

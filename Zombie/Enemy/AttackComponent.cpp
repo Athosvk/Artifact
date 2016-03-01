@@ -1,8 +1,8 @@
-#include <BadEngine/Core/EntitySystem.h>
+#include <Artifact/Core/EntitySystem.h>
 
 #include "AttackComponent.h"
 
-AttackComponent::AttackComponent(BadEngine::GameObject a_GameObject)
+AttackComponent::AttackComponent(Artifact::GameObject a_GameObject)
     : Component(a_GameObject)
 {
     m_DelayTimer = addComponent<TimerComponent>();

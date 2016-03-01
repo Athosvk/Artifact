@@ -1,9 +1,9 @@
 #pragma once
-#include <BadEngine/Core/Component.h>
+#include <Artifact/Core/Component.h>
 
 #include "TagComponent.h"
 
-class BulletComponent : public BadEngine::Component
+class BulletComponent : public Artifact::Component
 {
 public:
     float Speed = 1.0f;
@@ -12,6 +12,6 @@ public:
     EType TargetTag = EType::Enemy;
 
 public:
-    BulletComponent(BadEngine::GameObject a_GameObject);
+    BulletComponent(Artifact::GameObject a_GameObject);
 };
 

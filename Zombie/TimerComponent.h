@@ -1,14 +1,14 @@
 #pragma once
 #include <functional>
 
-#include <BadEngine/Core/Component.h>
+#include <Artifact/Core/Component.h>
 
 enum class ETimerState
 {
     Disabled, Running, Done
 };
 
-class TimerComponent : public BadEngine::Component
+class TimerComponent : public Artifact::Component
 {
 public:
     ETimerState TimerState = ETimerState::Done;
@@ -16,7 +16,7 @@ public:
     double Duration = 0.0;
 
 public:
-    TimerComponent(BadEngine::GameObject a_GameObject);
+    TimerComponent(Artifact::GameObject a_GameObject);
 
     void start();
 };

@@ -1,12 +1,12 @@
 #pragma once
-#include <BadEngine/Core/System.h>
+#include <Artifact/Core/System.h>
 #include <glm/glm.hpp>
 
-class ZombieBehaviourSystem : public BadEngine::System
+class ZombieBehaviourSystem : public Artifact::System
 {
 public:
-    ZombieBehaviourSystem(BadEngine::EntitySystem& a_EntitySystem, 
-        BadEngine::MessagingSystem& a_MessagingSystem);
+    ZombieBehaviourSystem(Artifact::EntitySystem& a_EntitySystem, 
+        Artifact::MessagingSystem& a_MessagingSystem);
 
     virtual void registerListeners() override;
 private:

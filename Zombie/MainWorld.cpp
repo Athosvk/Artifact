@@ -1,4 +1,4 @@
-#include <BadEngine/Game.h>
+#include <Artifact/Game.h>
 
 #include "MainWorld.h"
 #include "Player/PlayerInputSystem.h"
@@ -14,7 +14,7 @@
 #include "Player/HUDSystem.h"
 #include "ScoreSystem.h"
 
-MainWorld::MainWorld(BadEngine::GameTime& a_GameTime, BadEngine::Game* a_CurrentGame)
+MainWorld::MainWorld(Artifact::GameTime& a_GameTime, Artifact::Game* a_CurrentGame)
     : World(a_GameTime, a_CurrentGame)
 {
     addSystem<PlayerInputSystem>();
@@ -28,7 +28,7 @@ MainWorld::MainWorld(BadEngine::GameTime& a_GameTime, BadEngine::Game* a_Current
     addSystem<ScoreSystem>();
     m_EntitySystem.createEntity<Enemy>();
     auto enemy2 = m_EntitySystem.createEntity<Enemy>();
-    enemy2.getComponent<BadEngine::Transform>()->setPosition(glm::vec2(0.5f, 1.0f));
+    enemy2.getComponent<Artifact::Transform>()->setPosition(glm::vec2(0.5f, 1.0f));
 
     auto player = m_EntitySystem.createEntity<Player>();
     player.getComponent<HealthComponent>()->OnDeath += [this](const HealthComponent*) 

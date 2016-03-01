@@ -1,10 +1,9 @@
 #pragma once
-#include <BadEngine/Core/GameObject.h>
-#include <BadEngine/Rendering/SpriteRenderer.h>
+#include <Artifact/Core/GameObject.h>
 
-class Player : public BadEngine::GameObject
+class Player : public Artifact::GameObject
 {
 public:
-    Player(unsigned a_ID, BadEngine::EntitySystem& a_EntitySystem);
+    Player(unsigned a_ID, Artifact::EntitySystem& a_EntitySystem);
 };
 

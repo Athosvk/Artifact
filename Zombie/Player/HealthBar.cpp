@@ -1,7 +1,7 @@
-#include <BadEngine/Rendering/SpriteRenderer.h>
-#include <BadEngine/Core/EntitySystem.h>
-#include <BadEngine/Transform.h>
-#include <BadEngine/IO/ResourceManager.h>
+#include <Artifact/Rendering/SpriteRenderer.h>
+#include <Artifact/Core/EntitySystem.h>
+#include <Artifact/Transform.h>
+#include <Artifact/IO/ResourceManager.h>
 
 #include "PlayerComponent.h"
 #include "../HealthComponent.h"
@@ -11,15 +11,15 @@
 const float HealthBar::MaxWidth = 2.0f;
 const float HealthBar::Height = 0.3f;
 
-HealthBar::HealthBar(BadEngine::EntitySystem& a_EntitySystem)
+HealthBar::HealthBar(Artifact::EntitySystem& a_EntitySystem)
 {
-    m_HealthRenderer = a_EntitySystem.createEntity().addComponent<BadEngine::SpriteRenderer>();
+    m_HealthRenderer = a_EntitySystem.createEntity().addComponent<Artifact::SpriteRenderer>();
     initialiseHealthbar();
 
-    auto backgroundRenderer = a_EntitySystem.createEntity().addComponent<BadEngine::SpriteRenderer>();
+    auto backgroundRenderer = a_EntitySystem.createEntity().addComponent<Artifact::SpriteRenderer>();
 
-    backgroundRenderer->setTexture(BadEngine::ResourceManager::getTexture("Textures/Healthbar_background.png"));
-    backgroundRenderer->getComponent<BadEngine::Transform>()->setPosition(glm::vec2(1.45f, 2.45f));
+    backgroundRenderer->setTexture(Artifact::ResourceManager::getTexture("Textures/Healthbar_background.png"));
+    backgroundRenderer->getComponent<Artifact::Transform>()->setPosition(glm::vec2(1.45f, 2.45f));
     backgroundRenderer->Width = MaxWidth + 0.1f;
     backgroundRenderer->Height = Height + 0.1f;
     backgroundRenderer->Depth = 10;
@@ -34,8 +34,8 @@ void HealthBar::render(HealthComponent* a_Health)
 
 void HealthBar::initialiseHealthbar()
 {
-    m_HealthRenderer->getComponent<BadEngine::Transform>()->setPosition(glm::vec2(1.5f, 2.5f));
-    m_HealthRenderer->setTexture(BadEngine::ResourceManager::getTexture("Textures/Healthbar.png"));
+    m_HealthRenderer->getComponent<Artifact::Transform>()->setPosition(glm::vec2(1.5f, 2.5f));
+    m_HealthRenderer->setTexture(Artifact::ResourceManager::getTexture("Textures/Healthbar.png"));
     m_HealthRenderer->Width = MaxWidth;
     m_HealthRenderer->Height = Height;
     m_HealthRenderer->Pivot = glm::vec2(0.0f, 0.0f);

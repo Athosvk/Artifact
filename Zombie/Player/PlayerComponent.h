@@ -1,9 +1,9 @@
 #pragma once
-#include <BadEngine/Core/Component.h>
+#include <Artifact/Core/Component.h>
 
-class PlayerComponent : public BadEngine::Component
+class PlayerComponent : public Artifact::Component
 {
 public:
-    PlayerComponent(BadEngine::GameObject a_GameObject);
+    PlayerComponent(Artifact::GameObject a_GameObject);
 };
 

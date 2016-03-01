@@ -1,12 +1,12 @@
 #pragma once
-#include <BadEngine/Core/Component.h>
+#include <Artifact/Core/Component.h>
 
-class PlayerScoreComponent : public BadEngine::Component
+class PlayerScoreComponent : public Artifact::Component
 {
 public:
     unsigned CurrentScore = 0;
 
 public:
-    PlayerScoreComponent(BadEngine::GameObject a_Entity);
+    PlayerScoreComponent(Artifact::GameObject a_Entity);
 };
 
