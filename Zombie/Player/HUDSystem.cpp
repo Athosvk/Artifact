@@ -20,6 +20,7 @@ HUDSystem::HUDSystem(Artifact::EntitySystem& a_EntitySystem, Artifact::Messaging
     m_ScoreDisplay->getComponent<Artifact::Transform>()->setPosition(glm::vec2(-4.9f, 3.4f));
     m_ScoreDisplay->Justification = Artifact::EJustification::Left;
     m_ScoreDisplay->Scaling = 0.4f;
+    m_ScoreDisplay->Depth = 100.0f;
 }
 
 void HUDSystem::registerListeners()

@@ -46,9 +46,12 @@ void WeaponSystem::fire(WeaponComponent* a_Weapon)
 
 void WeaponSystem::createBullet(const Artifact::Transform* a_MuzzleTransform)
 {
+    auto offset = Artifact::MathHelper::rotate(glm::vec2(0.4f, -0.25f), 
+        a_MuzzleTransform->getRotation(), glm::vec2(0.0f));
+
     auto bullet = m_EntitySystem.createEntity<Bullet>();
     auto bulletTransform = bullet.getComponent<Artifact::Transform>();
-    bulletTransform->setPosition(a_MuzzleTransform->getPosition());
+    bulletTransform->setPosition(a_MuzzleTransform->getPosition() + offset);
     bulletTransform->setRotation(a_MuzzleTransform->getRotation());
     auto targetDirection = Artifact::MathHelper::directionFromAngle(a_MuzzleTransform->getRotation());
     auto bulletSpeed = bullet.getComponent<BulletComponent>()->Speed;
