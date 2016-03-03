@@ -30,6 +30,7 @@ Player::Player(unsigned a_ID, Artifact::EntitySystem& a_EntitySystem)
 
     renderer->Width = 1;
     renderer->Height = 1;
+    renderer->Depth = 2.0f;
 
     weapon->FireDelayTimer->Duration = 0.1f;
     weapon->MuzzleTransform = getComponent<Artifact::Transform>();

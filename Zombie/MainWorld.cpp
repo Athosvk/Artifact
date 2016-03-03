@@ -1,4 +1,6 @@
 #include <Artifact/Game.h>
+#include <Artifact/Random.h>
+#include <Artifact/Rendering/SpriteRenderer.h>
 
 #include "MainWorld.h"
 #include "Player/PlayerInputSystem.h"
@@ -30,18 +32,27 @@ MainWorld::MainWorld(Artifact::GameTime& a_GameTime, Artifact::Game* a_CurrentGa
     addSystem<ScoreSystem>();
     addSystem<SpawnerSystem>();
 
-    m_EntitySystem.createEntity<Enemy>();
-    auto enemy2 = m_EntitySystem.createEntity<Enemy>();
-    enemy2.getComponent<Artifact::Transform>()->setPosition(glm::vec2(0.5f, 1.0f));
-
     auto player = m_EntitySystem.createEntity<Player>();
     player.getComponent<HealthComponent>()->OnDeath += [this](const HealthComponent*)
     { 
         loadGameoverScreen(); 
     };
 
-    auto spawner = m_EntitySystem.createEntity<Spawner>();
-    spawner.getComponent<Artifact::Transform>()->setPosition(glm::vec2(3.0f, 3.0f));
+    for(int i = 0; i < 6; i++)
+    {
+        auto spawner = m_EntitySystem.createEntity<Spawner>();
+        auto spawnPosition = glm::vec2(Artifact::Random::range(-4.5f, 4.5f),
+            Artifact::Random::range(-4.5f, 4.5f));
+        spawner.getComponent<Artifact::Transform>()->setPosition(spawnPosition);
+    }
+
+    auto background = m_EntitySystem.createEntity().addComponent<Artifact::SpriteRenderer>();
+    background->setTexture(Artifact::ResourceManager::getTexture("Textures/Background.png"));
+    background->Width = 12.0f;
+    background->Height = 8.0f;
+    background->Depth = -20.0f;
+    background->UVRectangle = Artifact::Rectangle(glm::vec2(0.0f, 0.0f), 10.0f, 10.0f);
+    background->Color = Artifact::Color(0.45f, 0.45f, 0.45f);
 }
 
 void MainWorld::loadGameoverScreen() const

@@ -24,7 +24,7 @@ HealthBar::HealthBar(Artifact::EntitySystem& a_EntitySystem, glm::vec2 a_Positio
     backgroundRenderer->getComponent<Artifact::Transform>()->setPosition(a_Position + BackgroundOffset);
     backgroundRenderer->Width = MaxWidth + 0.1f;
     backgroundRenderer->Height = Height + 0.1f;
-    backgroundRenderer->Depth = 10;
+    backgroundRenderer->Depth = 100.0f;
     backgroundRenderer->Pivot = glm::vec2(0.0f, 0.0f);
 }
 
@@ -41,5 +41,5 @@ void HealthBar::initialiseHealthbar()
     m_HealthRenderer->Width = MaxWidth;
     m_HealthRenderer->Height = Height;
     m_HealthRenderer->Pivot = glm::vec2(0.0f, 0.0f);
-    m_HealthRenderer->Depth = 11;
+    m_HealthRenderer->Depth = 101.0f;
 }
