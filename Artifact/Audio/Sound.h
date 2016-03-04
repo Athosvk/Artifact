@@ -6,11 +6,17 @@ namespace Artifact
 {
     class Sound
     {
+    public:
+        static const int LoopForever;
     private:
+        static const int PlayFailed;
+
         Mix_Chunk* m_SoundChunk;
 
     public:
         Sound(const std::string a_FilePath);
         ~Sound();
+
+        void play(int a_LoopCount = 0);
     };
 }

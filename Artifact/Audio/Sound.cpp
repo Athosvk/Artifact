@@ -3,6 +3,9 @@
 
 namespace Artifact
 {
+    const int Sound::LoopForever = -1;
+    const int Sound::PlayFailed = -1;
+
     Sound::Sound(const std::string a_FilePath)
     {
         m_SoundChunk = Mix_LoadWAV(a_FilePath.c_str());
@@ -15,5 +18,14 @@ namespace Artifact
     Sound::~Sound()
     {
         Mix_FreeChunk(m_SoundChunk);
+    }
+
+    void Sound::play(int a_LoopCount)
+    {
+        const int DefaultChannel = -1;
+        if(Mix_PlayChannel(DefaultChannel, m_SoundChunk, a_LoopCount) == PlayFailed)
+        {
+            throwFatalError("SDL_Mixer sound could not be played: " + std::string(Mix_GetError()));
+        }
     }
 }
