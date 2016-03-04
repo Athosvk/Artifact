@@ -25,10 +25,16 @@ namespace Artifact
     void Sound::play(int a_LoopCount)
     {
         const int DefaultChannel = -1;
-        if(Mix_PlayChannel(DefaultChannel, m_SoundChunk, a_LoopCount) == PlayFailed)
+        m_CurrentChannel = Mix_PlayChannel(DefaultChannel, m_SoundChunk, a_LoopCount);
+        if(m_CurrentChannel == PlayFailed)
         {
             throwFatalError("SDL_Mixer sound could not be played: " + std::string(Mix_GetError()));
         }
+    }
+
+    void Sound::stop()
+    {
+        Mix_HaltChannel(m_CurrentChannel);
     }
 
     void Sound::setVolume(unsigned a_Volume)

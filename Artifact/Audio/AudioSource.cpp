@@ -21,6 +21,11 @@ namespace Artifact
         }
     }
 
+    void AudioSource::stop()
+    {
+        Sound->stop();
+    }
+
     void AudioSource::enableLooping()
     {
         m_Loop = true;

@@ -11,6 +11,7 @@ namespace Artifact
     private:
         static const int PlayFailed;
 
+        int m_CurrentChannel = -1;
         Mix_Chunk* m_SoundChunk;
 
     public:
@@ -18,6 +19,7 @@ namespace Artifact
         ~Sound();
 
         void play(int a_LoopCount = 0);
+        void stop();
         void setVolume(unsigned a_Volume);
     };
 }

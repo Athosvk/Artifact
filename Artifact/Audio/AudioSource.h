@@ -17,6 +17,7 @@ namespace Artifact
         AudioSource(GameObject a_Entity);
 
         void play();
+        void stop();
         void enableLooping();
         void disableLooping();
     };
