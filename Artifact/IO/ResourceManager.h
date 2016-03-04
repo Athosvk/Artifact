@@ -4,6 +4,7 @@
 #include "TextureCache.h"
 #include "ResourceCache.h"
 #include "../Rendering/SpriteFont.h"
+#include "../Audio/Sound.h"
 
 namespace Artifact
 {
@@ -12,6 +13,7 @@ namespace Artifact
     private:
         static TextureCache s_TextureCache;
         static ResourceCache<SpriteFont> s_FontCache;
+        static ResourceCache<Sound> s_SoundCache;
 
     public:
         ResourceManager() = delete;
@@ -20,5 +22,6 @@ namespace Artifact
 
         static GLTexture* getTexture(const std::string& a_FilePath);
         static SpriteFont* getFont(const std::string& a_FilePath);
+        static Sound* getSound(const std::string& a_FilePath);
     };
 }

@@ -11,6 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Audio\AudioSource.cpp" />
+    <ClCompile Include="Audio\AudioSystem.cpp" />
+    <ClCompile Include="Audio\Sound.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Core\Component.cpp" />
     <ClCompile Include="Core\MessageQueue.cpp" />
@@ -57,6 +60,9 @@
     <ClCompile Include="Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Audio\AudioSource.h" />
+    <ClInclude Include="Audio\AudioSystem.h" />
+    <ClInclude Include="Audio\Sound.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Core\Component.h" />
     <ClInclude Include="Core\MessageQueue.h" />
