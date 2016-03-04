@@ -2,7 +2,7 @@
 #include <memory>
 #include <vector>
 #include <utility>
-#include <SDL2.0.3/SDL.h>
+#include <SDL/SDL.h>
 
 #include "EntitySystem.h"
 #include "MessagingSystem.h"

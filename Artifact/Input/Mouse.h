@@ -1,6 +1,6 @@
 #pragma once
 #include <glm/glm.hpp>
-#include <SDL2.0.3/SDL.h>
+#include <SDL/SDL.h>
 #include <vector>
 #include <array>
 

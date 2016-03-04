@@ -1,5 +1,5 @@
 #pragma once
-#include <SDL2.0.3/SDL.h>
+#include <SDL/SDL.h>
 #include <vector>
 
 #include "Keycode.h"
