@@ -37,16 +37,16 @@ namespace Artifact
 
         void run();
 
-        template<typename T>
-        void loadWorld()
+        template<typename T, typename ...TArguments>
+        void loadWorld(TArguments&&... a_Arguments)
         {
             if(m_CurrentWorld == nullptr)
             {
-                m_CurrentWorld = std::make_unique<T>(m_GameTime, this);
+                m_CurrentWorld = std::make_unique<T>(m_GameTime, this, std::forward<TArguments>(a_Arguments)...);
             }
             else
             {
-                m_StagingWorld = std::make_unique<T>(m_GameTime, this);
+                m_StagingWorld = std::make_unique<T>(m_GameTime, this, std::forward<TArguments>(a_Arguments)...);
             }
         }
 

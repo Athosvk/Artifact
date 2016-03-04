@@ -8,7 +8,7 @@ class MainWorld : public Artifact::World
 public:
     MainWorld(Artifact::GameTime& a_GameTime, Artifact::Game* a_CurrentGame);
 
-    void loadGameoverScreen() const;
+    void loadGameoverScreen(unsigned a_Score) const;
 private:
     void placeBarriers();
 };

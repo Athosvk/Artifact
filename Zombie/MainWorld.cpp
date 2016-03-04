@@ -19,6 +19,7 @@
 #include "Enemy/SpawnerSystem.h"
 #include "Enemy/Spawner.h"
 #include "Level/Wall.h"
+#include "Player/PlayerScoreComponent.h"
 
 MainWorld::MainWorld(Artifact::GameTime& a_GameTime, Artifact::Game* a_CurrentGame)
     : World(a_GameTime, a_CurrentGame)
@@ -35,9 +36,10 @@ MainWorld::MainWorld(Artifact::GameTime& a_GameTime, Artifact::Game* a_CurrentGa
     addSystem<SpawnerSystem>();
 
     auto player = m_EntitySystem.createEntity<Player>();
-    player.getComponent<HealthComponent>()->OnDeath += [this](const HealthComponent*)
+    player.getComponent<HealthComponent>()->OnDeath += [this](const HealthComponent* a_HealthComponent)
     { 
-        loadGameoverScreen(); 
+        auto score = a_HealthComponent->getComponent<PlayerScoreComponent>()->CurrentScore;
+        loadGameoverScreen(score); 
     };
 
     for(int i = 0; i < 6; i++)
@@ -64,9 +66,9 @@ MainWorld::MainWorld(Artifact::GameTime& a_GameTime, Artifact::Game* a_CurrentGa
     placeBarriers();
 }
 
-void MainWorld::loadGameoverScreen() const
+void MainWorld::loadGameoverScreen(unsigned a_Score) const
 {
-    m_CurrentGame->loadWorld<GameOverScreen>();
+    m_CurrentGame->loadWorld<GameOverScreen>(a_Score);
 }
 
 void MainWorld::placeBarriers()
