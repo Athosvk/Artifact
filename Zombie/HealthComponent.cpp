@@ -16,6 +16,7 @@ void HealthComponent::initialise(unsigned a_MaxHealth)
 void HealthComponent::dealDamage(unsigned a_Amount)
 {
     m_CurrentHealth = Artifact::MathHelper::max(m_CurrentHealth - a_Amount, 0u);
+    OnHit();
     if(m_CurrentHealth == 0)
     {
         OnDeath(this);

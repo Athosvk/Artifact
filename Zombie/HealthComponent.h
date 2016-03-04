@@ -7,8 +7,10 @@ class HealthComponent : public Artifact::Component
 private:
     unsigned m_CurrentHealth;
 public:
+    
     unsigned MaxHealth;
     Delegate<void(HealthComponent* a_HealthComponent)> OnDeath;
+    Delegate<void()> OnHit;
 
 public:
     HealthComponent(Artifact::GameObject a_GameObject);

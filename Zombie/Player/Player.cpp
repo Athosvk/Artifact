@@ -53,4 +53,8 @@ Player::Player(unsigned a_ID, Artifact::EntitySystem& a_EntitySystem)
     tag->Type = EType::Player;
 
     addComponent<PlayerScoreComponent>();
+
+    auto hitSound = a_EntitySystem.createEntity().addComponent<Artifact::AudioSource>();
+    hitSound->Sound = Artifact::ResourceManager::getSound("Sounds/hit.mp3");
+    health->OnHit += [hitSound]() { hitSound->play(); };
 }
