@@ -79,6 +79,7 @@ namespace Artifact
 
     void Game::switchWorld()
     {
+        m_CurrentWorld = nullptr;
         m_CurrentWorld = std::move(m_StagingWorld);
         m_StagingWorld = nullptr;
     }

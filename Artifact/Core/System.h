@@ -15,6 +15,7 @@ namespace Artifact
 
     public:
         System(EntitySystem& a_EntitySystem, MessagingSystem& a_MessagingSystem);
+        virtual ~System() = default;
 
         virtual void registerListeners() = 0;
     };

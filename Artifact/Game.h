@@ -24,8 +24,8 @@ namespace Artifact
         Window m_Window;
         GameState m_CurrentGameState = GameState::Play;
         GameTime m_GameTime;
-        std::unique_ptr<World> m_CurrentWorld;
-        std::unique_ptr<World> m_StagingWorld;
+        std::unique_ptr<World> m_CurrentWorld = nullptr;
+        std::unique_ptr<World> m_StagingWorld = nullptr;
         
     private:
         double m_FixedUpdateTimer = 0.0;
