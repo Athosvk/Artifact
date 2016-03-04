@@ -10,6 +10,7 @@ namespace Artifact
 
     void AudioSource::play()
     {
+        Sound->setVolume(static_cast<unsigned>(Volume * MIX_MAX_VOLUME));
         if(m_Loop)
         {
             Sound->play(Sound::LoopForever);

@@ -18,5 +18,6 @@ namespace Artifact
         ~Sound();
 
         void play(int a_LoopCount = 0);
+        void setVolume(unsigned a_Volume);
     };
 }

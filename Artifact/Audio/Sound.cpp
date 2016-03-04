@@ -1,3 +1,5 @@
+#include <exception>
+
 #include "Sound.h"
 #include "../ErrorHandler.h"
 
@@ -27,5 +29,14 @@ namespace Artifact
         {
             throwFatalError("SDL_Mixer sound could not be played: " + std::string(Mix_GetError()));
         }
+    }
+
+    void Sound::setVolume(unsigned a_Volume)
+    {
+        if(a_Volume > MIX_MAX_VOLUME)
+        {
+            throw std::out_of_range("Volume exceeds maximum volume");
+        }
+        Mix_VolumeChunk(m_SoundChunk, a_Volume);
     }
 }
