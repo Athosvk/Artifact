@@ -1,6 +1,7 @@
 #include <Artifact/Game.h>
 #include <Artifact/Random.h>
 #include <Artifact/Rendering/SpriteRenderer.h>
+#include <Artifact/Audio/AudioSource.h>
 
 #include "MainWorld.h"
 #include "Player/PlayerInputSystem.h"
@@ -53,6 +54,10 @@ MainWorld::MainWorld(Artifact::GameTime& a_GameTime, Artifact::Game* a_CurrentGa
     background->Depth = -20.0f;
     background->UVRectangle = Artifact::Rectangle(glm::vec2(0.0f, 0.0f), 10.0f, 10.0f);
     background->Color = Artifact::Color(0.45f, 0.45f, 0.45f);
+    auto backgroundMusic = background->addComponent<Artifact::AudioSource>();
+    backgroundMusic->enableLooping();
+    backgroundMusic->Sound = Artifact::ResourceManager::getSound("Sounds/XYZ.ogg");
+    backgroundMusic->play();
 }
 
 void MainWorld::loadGameoverScreen() const

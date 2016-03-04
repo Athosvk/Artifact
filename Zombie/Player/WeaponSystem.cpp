@@ -1,6 +1,7 @@
 #include <Artifact/Core/EntitySystem.h>
 #include <Artifact/Physics/RigidBody2D.h>
 #include <Artifact/MathHelper.h>
+#include <Artifact/Audio/AudioSource.h>
 
 #include "WeaponSystem.h"
 #include "../Bullet.h"
@@ -41,6 +42,7 @@ void WeaponSystem::tryFire(const FireWeaponMessage* a_FireMessage)
 void WeaponSystem::fire(WeaponComponent* a_Weapon)
 {
     createBullet(a_Weapon->getComponent<Artifact::Transform>());
+    a_Weapon->getComponent<Artifact::AudioSource>()->play();
     a_Weapon->FireDelayTimer->start();
 }
 

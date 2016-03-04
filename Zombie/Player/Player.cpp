@@ -3,6 +3,7 @@
 #include <Artifact/Physics/BoxCollider2D.h>
 #include <Artifact/Physics/RigidBody2D.h>
 #include <Artifact/Rendering/SpriteRenderer.h>
+#include <Artifact/Audio/AudioSource.h>
 
 #include "Player.h"
 #include "PlayerInputComponent.h"
@@ -20,6 +21,8 @@ Player::Player(unsigned a_ID, Artifact::EntitySystem& a_EntitySystem)
 
     auto inputController = addComponent<PlayerInputComponent>();
     auto weapon = addComponent<WeaponComponent>();
+    auto weaponSound = addComponent<Artifact::AudioSource>();
+    weaponSound->Sound = Artifact::ResourceManager::getSound("Sounds/shots/cg1.wav");
 
     inputController->MoveUpKey = Artifact::KeyCode::W;
     inputController->MoveDownKey = Artifact::KeyCode::S;
@@ -32,7 +35,7 @@ Player::Player(unsigned a_ID, Artifact::EntitySystem& a_EntitySystem)
     renderer->Height = 1;
     renderer->Depth = 2.0f;
 
-    weapon->FireDelayTimer->Duration = 0.1f;
+    weapon->FireDelayTimer->Duration = 0.5f;
     weapon->MuzzleTransform = getComponent<Artifact::Transform>();
     
     auto rigidBody = addComponent<Artifact::RigidBody2D>();
