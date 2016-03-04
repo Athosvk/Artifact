@@ -6,6 +6,7 @@ namespace Artifact
 {
     TextureCache ResourceManager::s_TextureCache;
     ResourceCache<SpriteFont> ResourceManager::s_FontCache;
+    ResourceCache<Sound> ResourceManager::s_SoundCache;
 
     GLTexture* ResourceManager::getTexture(const std::string& a_FilePath)
     {
