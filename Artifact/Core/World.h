@@ -59,9 +59,9 @@ namespace Artifact
         World(GameTime& a_GameTime, Game* a_CurrentGame);
         virtual ~World() = default;
 
-        void update();
-        void fixedUpdate();
-        void processEvents(std::vector<SDL_Event>& a_Events);
+        virtual void update();
+        virtual void fixedUpdate();
+        virtual void processEvents(std::vector<SDL_Event>& a_Events);
     protected:
         template<typename T>
         void addSystem()
