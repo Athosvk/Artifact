@@ -57,6 +57,7 @@ namespace Artifact
 
     public:
         World(GameTime& a_GameTime, Game* a_CurrentGame);
+        virtual ~World() = default;
 
         void update();
         void fixedUpdate();
