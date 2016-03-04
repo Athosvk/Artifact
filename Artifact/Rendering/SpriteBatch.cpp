@@ -6,8 +6,8 @@
 
 namespace Artifact
 {
-    const std::string SpriteBatch::s_DefaultVertexShader = "Vertex shaders/colorShading.vert";
-    const std::string SpriteBatch::s_DefaultFragmentShader = "Fragment shaders/colorShading.frag";
+    const std::string SpriteBatch::s_DefaultVertexShader = "Vertex shaders/StandardTextured.vert";
+    const std::string SpriteBatch::s_DefaultFragmentShader = "Fragment shaders/StandardTextured.frag";
 
     SpriteBatch::RenderBatch::RenderBatch(const GLTexture* a_Texture, GLuint a_Offset, GLuint a_IndexCount)
         : Texture(a_Texture),
