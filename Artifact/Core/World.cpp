@@ -4,6 +4,7 @@
 #include "../Physics/PhysicsSystem.h"
 #include "../Input/InputSystem.h"
 #include "../Rendering/UIRenderingSystem.h"
+#include "../Audio/AudioSystem.h"
 
 namespace Artifact
 {
@@ -44,6 +45,7 @@ namespace Artifact
         addSystem<SpriteRenderSystem>();
         addSystem<PhysicsSystem>();
         addSystem<UIRenderingSystem>();
+        addSystem<AudioSystem>();
     }
 
     void World::update()
