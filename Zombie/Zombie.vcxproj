@@ -133,6 +133,7 @@
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="BulletComponent.h" />
     <ClInclude Include="BulletSystem.h" />
+    <ClInclude Include="CollisionLayers.h" />
     <ClInclude Include="Enemy\AttackComponent.h" />
     <ClInclude Include="Enemy\AttackSystem.h" />
     <ClInclude Include="Enemy\Enemy.h" />

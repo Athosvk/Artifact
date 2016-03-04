@@ -233,6 +233,9 @@
     <ClInclude Include="Menu\StartScreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CollisionLayers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Fragment shaders\colorShading.frag" />

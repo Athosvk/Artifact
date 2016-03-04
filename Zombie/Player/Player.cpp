@@ -12,6 +12,7 @@
 #include "../HealthComponent.h"
 #include "../TagComponent.h"
 #include "PlayerScoreComponent.h"
+#include "../CollisionLayers.h"
 
 Player::Player(unsigned a_ID, Artifact::EntitySystem& a_EntitySystem)
     : GameObject(a_ID, a_EntitySystem)
@@ -41,7 +42,9 @@ Player::Player(unsigned a_ID, Artifact::EntitySystem& a_EntitySystem)
     auto rigidBody = addComponent<Artifact::RigidBody2D>();
     auto collider = addComponent<Artifact::BoxCollider2D>();
     collider->setDimensions(glm::vec2(0.8f, 0.8f));
-    collider->enableTriggerState();
+
+    collider->setLayer(static_cast<uint16>(ECollisionLayer::Player));
+    collider->setMask(static_cast<uint16>(ECollisionLayer::All ^ (ECollisionLayer::Bullet ^ ECollisionLayer::Enemy)));
     rigidBody->setGravityScale(0.0f);
 
     addComponent<PlayerComponent>();

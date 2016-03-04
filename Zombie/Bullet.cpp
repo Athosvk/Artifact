@@ -8,6 +8,7 @@
 #include "TimerComponent.h"
 #include "HealthComponent.h"
 #include "BulletComponent.h"
+#include "CollisionLayers.h"
 
 Bullet::Bullet(unsigned a_ID, Artifact::EntitySystem& a_EntitySystem)
     : GameObject(a_ID, a_EntitySystem)
@@ -17,6 +18,8 @@ Bullet::Bullet(unsigned a_ID, Artifact::EntitySystem& a_EntitySystem)
 
     auto collider = addComponent<Artifact::BoxCollider2D>();
     collider->setDimensions(glm::vec2(0.1f, 0.1f));
+    collider->setLayer(static_cast<uint16>(ECollisionLayer::Bullet));
+    collider->setMask(static_cast<uint16>(ECollisionLayer::Enemy | ECollisionLayer::Wall));
 
     auto renderer = addComponent<Artifact::SpriteRenderer>();
     renderer->Width = 0.1f;
