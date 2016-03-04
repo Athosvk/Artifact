@@ -41,6 +41,7 @@ Player::Player(unsigned a_ID, Artifact::EntitySystem& a_EntitySystem)
     auto rigidBody = addComponent<Artifact::RigidBody2D>();
     auto collider = addComponent<Artifact::BoxCollider2D>();
     collider->setDimensions(glm::vec2(0.8f, 0.8f));
+    collider->enableTriggerState();
     rigidBody->setGravityScale(0.0f);
 
     addComponent<PlayerComponent>();
