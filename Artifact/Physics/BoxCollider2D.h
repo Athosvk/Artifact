@@ -20,6 +20,8 @@ namespace Artifact
         bool m_ShapeDirty = true;
         glm::vec2 m_Dimensions = glm::vec2(0, 0);
         b2FixtureDef m_FixtureDefinition;
+        uint16 m_Layer = 0;
+        uint16 m_Mask = 0;
 
     public:
         BoxCollider2D(GameObject a_GameObject);
@@ -30,6 +32,10 @@ namespace Artifact
         bool isTrigger() const;
         void enableTriggerState();
         void disableTriggerState();
+        uint16 getLayer();
+        void setLayer(uint16 a_Layer);
+        uint16 getMask();
+        void setMask(uint16 a_Mask);
 
     private:
         void attachFixture();
