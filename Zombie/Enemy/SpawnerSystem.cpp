@@ -21,7 +21,7 @@ void SpawnerSystem::registerListeners()
     });
 }
 
-void SpawnerSystem::update(float a_DeltaTime)
+void SpawnerSystem::update(double a_DeltaTime)
 {
     auto spawners = m_EntitySystem.getComponentsOfType<SpawnerComponent>();
     m_TimeSinceSpawn += a_DeltaTime;
