@@ -61,6 +61,7 @@ MainWorld::MainWorld(Artifact::GameTime& a_GameTime, Artifact::Game* a_CurrentGa
     auto backgroundMusic = background->addComponent<Artifact::AudioSource>();
     backgroundMusic->enableLooping();
     backgroundMusic->Sound = Artifact::ResourceManager::getSound("Sounds/XYZ.ogg");
+    backgroundMusic->Volume = 0.2f;
     backgroundMusic->play();
 
     placeBarriers();
