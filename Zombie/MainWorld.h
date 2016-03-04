@@ -9,5 +9,7 @@ public:
     MainWorld(Artifact::GameTime& a_GameTime, Artifact::Game* a_CurrentGame);
 
     void loadGameoverScreen() const;
+private:
+    void placeBarriers();
 };
 
