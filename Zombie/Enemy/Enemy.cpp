@@ -30,7 +30,7 @@ Enemy::Enemy(unsigned a_ID, Artifact::EntitySystem& a_EntitySystem)
     tag->Type = EType::Enemy;
 
     auto collider = addComponent<Artifact::BoxCollider2D>();
-    collider->enableTriggerState();
+   // collider->enableTriggerState();
     collider->setDimensions(glm::vec2(0.8f, 0.8f));
 
     auto followComponent = addComponent<FollowComponent>();

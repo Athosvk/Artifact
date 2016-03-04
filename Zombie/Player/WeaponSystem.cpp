@@ -4,7 +4,6 @@
 #include <Artifact/Audio/AudioSource.h>
 
 #include "WeaponSystem.h"
-#include "../Bullet.h"
 #include "../BulletComponent.h"
 
 FireWeaponMessage::FireWeaponMessage(WeaponComponent* a_WeaponComponent)
@@ -18,7 +17,8 @@ WeaponComponent* FireWeaponMessage::getWeapon() const
 }
 
 WeaponSystem::WeaponSystem(Artifact::EntitySystem& a_EntitySystem, Artifact::MessagingSystem& a_MessagingSystem)
-    : System(a_EntitySystem, a_MessagingSystem)
+    : System(a_EntitySystem, a_MessagingSystem),
+    m_BulletPool(m_EntitySystem)
 {
 }
 
@@ -51,7 +51,8 @@ void WeaponSystem::createBullet(const Artifact::Transform* a_MuzzleTransform)
     auto offset = Artifact::MathHelper::rotate(glm::vec2(0.4f, -0.25f), 
         a_MuzzleTransform->getRotation(), glm::vec2(0.0f));
 
-    auto bullet = m_EntitySystem.createEntity<Bullet>();
+    auto bullet = m_BulletPool.getEntity();
+
     auto bulletTransform = bullet.getComponent<Artifact::Transform>();
     bulletTransform->setPosition(a_MuzzleTransform->getPosition() + offset);
     bulletTransform->setRotation(a_MuzzleTransform->getRotation());

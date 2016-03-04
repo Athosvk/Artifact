@@ -4,6 +4,7 @@
 #include <Artifact/Transform.h>
 
 #include "Wall.h"
+#include "../TagComponent.h"
 
 Wall::Wall(Artifact::EntitySystem& a_EntitySystem, Artifact::GLTexture* a_Texture, glm::vec2 a_Dimensions)
     : m_Entity(a_EntitySystem.createEntity())
@@ -18,6 +19,8 @@ Wall::Wall(Artifact::EntitySystem& a_EntitySystem, Artifact::GLTexture* a_Textur
     }
     auto collider = m_Entity.addComponent<Artifact::BoxCollider2D>();
     collider->setDimensions(a_Dimensions);
+    auto tag = m_Entity.addComponent<TagComponent>();
+    tag->Type = EType::Wall;
 }
 
 void Wall::setPosition(glm::vec2 a_Position)

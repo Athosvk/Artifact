@@ -8,7 +8,8 @@ enum class EType
 {
     Player = 1,
     Enemy = 2,
-    All = Enemy | Player
+    Wall = 4,
+    All = Enemy | Player | Wall
 };
 EnumFlagOperators(EType)
 

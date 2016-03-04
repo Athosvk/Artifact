@@ -8,7 +8,7 @@ class BulletComponent : public Artifact::Component
 public:
     float Speed = 1.0f;
     int Damage = 1;
-    EType BlockingTag;
+    EType BlockingTag = EType::Wall;
     EType TargetTag = EType::Enemy;
 
 public:

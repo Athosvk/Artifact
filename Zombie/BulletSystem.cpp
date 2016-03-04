@@ -26,14 +26,14 @@ void BulletSystem::registerListeners()
 
 void BulletSystem::registerCollisionListener(const Artifact::GameObject a_Target)
 {
-    m_MessagingSystem.registerListener<Artifact::TriggerEnter2DMessage>([this](const Artifact::Message* a_Message)
+    m_MessagingSystem.registerListener<Artifact::CollisionEnter2DMessage>([this](const Artifact::Message* a_Message)
     {
-        auto triggerMessage = static_cast<const Artifact::TriggerEnter2DMessage*>(a_Message);
-        onTriggerEnter(triggerMessage->getCollider(), triggerMessage->getOther());
+        auto triggerMessage = static_cast<const Artifact::CollisionEnter2DMessage*>(a_Message);
+        onCollisionEnter(triggerMessage->getCollider(), triggerMessage->getOther());
     }, a_Target);
 }
 
-void BulletSystem::onTriggerEnter(Artifact::BoxCollider2D* a_Collider, Artifact::BoxCollider2D* a_Other)
+void BulletSystem::onCollisionEnter(Artifact::BoxCollider2D* a_Collider, Artifact::BoxCollider2D* a_Other)
 {
     auto collidingTag = a_Other->getComponent<TagComponent>();
     if(collidingTag != nullptr)

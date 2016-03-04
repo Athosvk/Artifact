@@ -14,5 +14,5 @@ public:
     virtual void registerListeners() override;
 private:
     void registerCollisionListener(const Artifact::GameObject a_Target);
-    void onTriggerEnter(Artifact::BoxCollider2D* a_Collider, Artifact::BoxCollider2D* a_Other);
+    void onCollisionEnter(Artifact::BoxCollider2D* a_Collider, Artifact::BoxCollider2D* a_Other);
 };

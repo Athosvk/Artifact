@@ -2,6 +2,8 @@
 #include <Artifact/Core/System.h>
 
 #include "WeaponComponent.h" 
+#include "../EntityPool.h"
+#include "../Bullet.h"
 
 class BulletComponent;
 
@@ -17,6 +19,8 @@ public:
 
 class WeaponSystem : public Artifact::System
 {
+private:
+    EntityPool<Bullet> m_BulletPool;
 public:
     WeaponSystem(Artifact::EntitySystem& a_EntitySystem, Artifact::MessagingSystem& a_MessagingSystem);
 

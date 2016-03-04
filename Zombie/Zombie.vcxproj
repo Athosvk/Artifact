@@ -154,7 +154,7 @@
     <ClInclude Include="Player\PlayerScoreComponent.h" />
     <ClInclude Include="Player\WeaponComponent.h" />
     <ClInclude Include="Player\WeaponSystem.h" />
-    <ClInclude Include="Pool.h" />
+    <ClInclude Include="EntityPool.h" />
     <ClInclude Include="ScoreComponent.h" />
     <ClInclude Include="ScoreSystem.h" />
     <ClInclude Include="TagComponent.h" />
