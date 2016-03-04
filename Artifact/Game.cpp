@@ -10,7 +10,7 @@ namespace Artifact
     const double Game::FixedUpdateInterval = 0.008;
     const double Game::SpiralOfDeathThreshold = 0.075;
 
-    Game::Game(int a_ScreenWidth, int a_ScreenHeight, Uint32 a_WindowFlags, std::string a_WindowName)
+    Game::Game(int a_ScreenWidth, int a_ScreenHeight, Uint32 a_WindowFlags, const std::string& a_WindowName)
         : m_Window(a_ScreenWidth, a_ScreenHeight, a_WindowFlags, a_WindowName)
     {
     }
@@ -79,6 +79,7 @@ namespace Artifact
 
     void Game::switchWorld()
     {
+        m_CurrentWorld = nullptr;
         m_CurrentWorld = std::move(m_StagingWorld);
         m_StagingWorld = nullptr;
     }

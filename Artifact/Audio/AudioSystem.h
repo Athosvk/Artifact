@@ -7,7 +7,7 @@ namespace Artifact
     {
     public:
         AudioSystem(EntitySystem& a_EntitySystem, MessagingSystem& a_MessagingSystem);
-        ~AudioSystem();
+        virtual ~AudioSystem() override;
 
         virtual void registerListeners() override;
     private:

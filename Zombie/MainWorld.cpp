@@ -18,6 +18,8 @@
 #include "ScoreSystem.h"
 #include "Enemy/SpawnerSystem.h"
 #include "Enemy/Spawner.h"
+#include "Level/Wall.h"
+#include "Player/PlayerScoreComponent.h"
 
 MainWorld::MainWorld(Artifact::GameTime& a_GameTime, Artifact::Game* a_CurrentGame)
     : World(a_GameTime, a_CurrentGame)
@@ -34,9 +36,10 @@ MainWorld::MainWorld(Artifact::GameTime& a_GameTime, Artifact::Game* a_CurrentGa
     addSystem<SpawnerSystem>();
 
     auto player = m_EntitySystem.createEntity<Player>();
-    player.getComponent<HealthComponent>()->OnDeath += [this](const HealthComponent*)
+    player.getComponent<HealthComponent>()->OnDeath += [this](const HealthComponent* a_HealthComponent)
     { 
-        loadGameoverScreen(); 
+        auto score = a_HealthComponent->getComponent<PlayerScoreComponent>()->CurrentScore;
+        loadGameoverScreen(score); 
     };
 
     for(int i = 0; i < 6; i++)
@@ -54,13 +57,28 @@ MainWorld::MainWorld(Artifact::GameTime& a_GameTime, Artifact::Game* a_CurrentGa
     background->Depth = -20.0f;
     background->UVRectangle = Artifact::Rectangle(glm::vec2(0.0f, 0.0f), 10.0f, 10.0f);
     background->Color = Artifact::Color(0.45f, 0.45f, 0.45f);
+
     auto backgroundMusic = background->addComponent<Artifact::AudioSource>();
     backgroundMusic->enableLooping();
     backgroundMusic->Sound = Artifact::ResourceManager::getSound("Sounds/XYZ.ogg");
     backgroundMusic->play();
+
+    placeBarriers();
 }
 
-void MainWorld::loadGameoverScreen() const
+void MainWorld::loadGameoverScreen(unsigned a_Score) const
 {
-    m_CurrentGame->loadWorld<GameOverScreen>();
+    m_CurrentGame->loadWorld<GameOverScreen>(a_Score);
+}
+
+void MainWorld::placeBarriers()
+{
+    auto leftBarrier = Wall(m_EntitySystem, nullptr, glm::vec2(2, 10));
+    leftBarrier.setPosition(glm::vec2(-6.25f, 0.0f));
+    auto rightBarrier = Wall(m_EntitySystem, nullptr, glm::vec2(2, 10));
+    rightBarrier.setPosition(glm::vec2(6.25f, 0.0f));
+    auto topBarrier = Wall(m_EntitySystem, nullptr, glm::vec2(10, 2));
+    topBarrier.setPosition(glm::vec2(0.0f, 4.9f));
+    auto lowerBarrier = Wall(m_EntitySystem, nullptr, glm::vec2(10, 2));
+    lowerBarrier.setPosition(glm::vec2(0.0f, -4.9f));
 }

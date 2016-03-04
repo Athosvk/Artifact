@@ -26,7 +26,7 @@ namespace Artifact
         std::string m_Name;
 
     public:
-        Window(int a_ScreenWidth, int a_ScreenHeight, unsigned int a_Flags, std::string a_Name);
+        Window(int a_ScreenWidth, int a_ScreenHeight, unsigned int a_Flags, const std::string& a_Name);
         ~Window();
 
         Window& operator=(const Window& a_Other) = delete;
