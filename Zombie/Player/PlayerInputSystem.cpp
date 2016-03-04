@@ -54,7 +54,8 @@ void PlayerInputSystem::updatePlayerMovement(PlayerInputComponent* a_Player)
     if(displacement != glm::vec2(0.0f, 0.0f))
     {
         glm::normalize(displacement);
-        a_Player->getComponent<Artifact::Transform>()->setRotation(Artifact::MathHelper::directionToAngle(displacement));
+        a_Player->getComponent<Artifact::Transform>()->
+            setRotation(Artifact::MathHelper::directionToAngle(displacement));
     }
     a_Player->getComponent<Artifact::RigidBody2D>()->setVelocity(displacement * a_Player->MovementSpeed);
 }
