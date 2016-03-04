@@ -31,7 +31,7 @@ namespace Artifact
         double m_FixedUpdateTimer = 0.0;
 
     protected:
-        Game(int a_ScreenWidth, int a_ScreenHeight, unsigned int a_WindowFlags, std::string a_WindowName);
+        Game(int a_ScreenWidth, int a_ScreenHeight, unsigned int a_WindowFlags, const std::string& a_WindowName);
     public:
         virtual ~Game() = default;
 
