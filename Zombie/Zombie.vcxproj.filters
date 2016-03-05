@@ -1,0 +1,640 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MainGame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TimerComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TimerSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player\WeaponComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player\WeaponSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MainWorld.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player\PlayerInputSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player\PlayerInputComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player\Player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy\Enemy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HealthComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy\FollowComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy\FollowSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player\PlayerComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BulletSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BulletComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TagComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy\AttackComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy\AttackSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy\ZombieBehaviourSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy\ZombieBehaviour.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOverScreen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player\HUDSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player\HealthBar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ScoreComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ScoreSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player\PlayerScoreComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy\SpawnerSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy\Spawner.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy\SpawnerComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu\OptionSelectSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu\OptionComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Level\Wall.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu\StartScreen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MainGame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TimerComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TimerSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player\WeaponSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player\WeaponComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MainWorld.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player\PlayerInputSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player\PlayerInputComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player\Player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy\Enemy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HealthComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy\FollowComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy\FollowSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player\PlayerComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TagComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy\AttackComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy\AttackSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy\ZombieBehaviourSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy\ZombieBehaviour.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player\HUDSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player\HealthBar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ScoreComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ScoreSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player\PlayerScoreComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy\SpawnerSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy\SpawnerComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy\Spawner.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityPool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu\OptionSelectSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu\OptionComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Level\Wall.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu\StartScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionLayers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Fragment shaders\colorShading.frag" />
+    <None Include="Fragment shaders\radialShading.frag" />
+    <None Include="Vertex shaders\colorShading.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Textures\PNG\AngryCloud.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\Background.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\BrokenLandPiece_Beige.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\BrokenLandPiece_Blue.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\BrokenLandPiece_Gray.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\BrokenLandPiece_Green.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\BrokenLandPiece_Multicolored.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\BrokenLandPiece_Pink.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\Bubble_Big.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\Bubble_Small.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\Bullet.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\CharacterLeft_Jump.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\CharacterLeft_Standing.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\CharacterLeft_Walk1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\CharacterLeft_Walk2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\CharacterRight_Jump.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\CharacterRight_Standing.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\CharacterRight_Walk1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\CharacterRight_Walk2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\CloudWind.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\Coin.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\HalfLandPiece_Left_Beige.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\HalfLandPiece_Left_Blue.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\HalfLandPiece_Left_Gray.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\HalfLandPiece_Left_Green.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\HalfLandPiece_Left_Multicolored.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\HalfLandPiece_Left_Pink.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\HalfLandPiece_Right_Beige.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\HalfLandPiece_Right_Blue.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\HalfLandPiece_Right_Gray.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\HalfLandPiece_Right_Green.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\HalfLandPiece_Right_Multicolored.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\HalfLandPiece_Right_Pink.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\HappyCloud.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\HearthEnemy1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\HearthEnemy2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\JetFire1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\JetFire2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\Jetpack_Big.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\Jetpack_Small.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\LandPiece_DarkBeige.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\LandPiece_DarkBlue.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\LandPiece_DarkGray.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\LandPiece_DarkGreen.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\LandPiece_DarkMulticolored.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\LandPiece_DarkPing.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\LandPiece_LightBeige.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\LandPiece_LightBlue.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\LandPiece_LightGray.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\LandPiece_LightGreen.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\LandPiece_LightMulticolored.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\LandPiece_LightPing.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\Lightning1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\Lightning2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\Mushroom.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\Number_0.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\Number_1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\Number_2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\Number_3.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\Number_4.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\Number_5.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\Number_6.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\Number_7.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\Number_8.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\Number_9.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\Number_Point.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\Pistol.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\PNG\Spring.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-attack_0.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-attack_1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-attack_2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-attack_3.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-attack_4.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-attack_5.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-attack_6.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-attack_7.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-attack_8.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-idle_0.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-idle_1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-idle_2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-idle_3.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-idle_4.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-idle_5.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-idle_6.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-idle_7.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-idle_8.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-idle_9.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-idle_10.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-idle_11.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-idle_12.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-idle_13.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-idle_14.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-idle_15.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-idle_16.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-move_0.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-move_1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-move_2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-move_3.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-move_4.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-move_5.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-move_6.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-move_7.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-move_8.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-move_9.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-move_10.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-move_11.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-move_12.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-move_13.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-move_14.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-move_15.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Zombie textures\skeleton-move_16.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_0.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_3.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_4.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_5.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_6.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_7.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_8.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_9.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_10.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_11.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_12.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_13.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_14.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_15.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_16.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_17.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_18.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_19.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

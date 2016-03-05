@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{60AA1847-6EA4-4E4E-9E01-C7C3A935EF56}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>Zombie</RootNamespace>
+    <ProjectName>Zombie</ProjectName>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(SolutionDir)dependencies\include;$(SolutionDir);$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)dependencies\lib\Debug;$(SolutionDir)Debug/;$(LibraryPath)</LibraryPath>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(SolutionDir)dependencies/include/;$(SolutionDir);$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)dependencies\lib\Release;$(SolutionDir)Release/;$(LibraryPath)</LibraryPath>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <EnablePREfast>true</EnablePREfast>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;glew32.lib;opengl32.lib;Artifact.lib;Box2D.lib;SDL2_ttf.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <EnablePREfast>true</EnablePREfast>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;glew32.lib;opengl32.lib;Artifact.lib;Box2D.lib;SDL2_ttf.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="BulletComponent.cpp" />
+    <ClCompile Include="BulletSystem.cpp" />
+    <ClCompile Include="Enemy\AttackComponent.cpp" />
+    <ClCompile Include="Enemy\AttackSystem.cpp" />
+    <ClCompile Include="Enemy\Enemy.cpp" />
+    <ClCompile Include="Enemy\FollowComponent.cpp" />
+    <ClCompile Include="Enemy\FollowSystem.cpp" />
+    <ClCompile Include="Enemy\Spawner.cpp" />
+    <ClCompile Include="Enemy\SpawnerComponent.cpp" />
+    <ClCompile Include="Enemy\SpawnerSystem.cpp" />
+    <ClCompile Include="Enemy\ZombieBehaviour.cpp" />
+    <ClCompile Include="Enemy\ZombieBehaviourSystem.cpp" />
+    <ClCompile Include="GameOverScreen.cpp" />
+    <ClCompile Include="HealthComponent.cpp" />
+    <ClCompile Include="Level\Wall.cpp" />
+    <ClCompile Include="MainWorld.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MainGame.cpp" />
+    <ClCompile Include="Menu\OptionComponent.cpp" />
+    <ClCompile Include="Menu\OptionSelectSystem.cpp" />
+    <ClCompile Include="Menu\StartScreen.cpp" />
+    <ClCompile Include="Player\HealthBar.cpp" />
+    <ClCompile Include="Player\HUDSystem.cpp" />
+    <ClCompile Include="Player\Player.cpp" />
+    <ClCompile Include="Player\PlayerComponent.cpp" />
+    <ClCompile Include="Player\PlayerInputComponent.cpp" />
+    <ClCompile Include="Player\PlayerInputSystem.cpp" />
+    <ClCompile Include="Player\PlayerScoreComponent.cpp" />
+    <ClCompile Include="Player\WeaponComponent.cpp" />
+    <ClCompile Include="Player\WeaponSystem.cpp" />
+    <ClCompile Include="ScoreComponent.cpp" />
+    <ClCompile Include="ScoreSystem.cpp" />
+    <ClCompile Include="TagComponent.cpp" />
+    <ClCompile Include="TimerComponent.cpp" />
+    <ClCompile Include="TimerSystem.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Bullet.h" />
+    <ClInclude Include="BulletComponent.h" />
+    <ClInclude Include="BulletSystem.h" />
+    <ClInclude Include="CollisionLayers.h" />
+    <ClInclude Include="Enemy\AttackComponent.h" />
+    <ClInclude Include="Enemy\AttackSystem.h" />
+    <ClInclude Include="Enemy\Enemy.h" />
+    <ClInclude Include="Enemy\FollowComponent.h" />
+    <ClInclude Include="Enemy\FollowSystem.h" />
+    <ClInclude Include="Enemy\Spawner.h" />
+    <ClInclude Include="Enemy\SpawnerComponent.h" />
+    <ClInclude Include="Enemy\SpawnerSystem.h" />
+    <ClInclude Include="Enemy\ZombieBehaviour.h" />
+    <ClInclude Include="Enemy\ZombieBehaviourSystem.h" />
+    <ClInclude Include="GameOverScreen.h" />
+    <ClInclude Include="Level\Wall.h" />
+    <ClInclude Include="Menu\OptionComponent.h" />
+    <ClInclude Include="Menu\OptionSelectSystem.h" />
+    <ClInclude Include="Menu\StartScreen.h" />
+    <ClInclude Include="Player\HealthBar.h" />
+    <ClInclude Include="HealthComponent.h" />
+    <ClInclude Include="MainWorld.h" />
+    <ClInclude Include="MainGame.h" />
+    <ClInclude Include="Player\HUDSystem.h" />
+    <ClInclude Include="Player\Player.h" />
+    <ClInclude Include="Player\PlayerComponent.h" />
+    <ClInclude Include="Player\PlayerInputComponent.h" />
+    <ClInclude Include="Player\PlayerInputSystem.h" />
+    <ClInclude Include="Player\PlayerScoreComponent.h" />
+    <ClInclude Include="Player\WeaponComponent.h" />
+    <ClInclude Include="Player\WeaponSystem.h" />
+    <ClInclude Include="EntityPool.h" />
+    <ClInclude Include="ScoreComponent.h" />
+    <ClInclude Include="ScoreSystem.h" />
+    <ClInclude Include="TagComponent.h" />
+    <ClInclude Include="TimerComponent.h" />
+    <ClInclude Include="TimerSystem.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Fragment shaders\colorShading.frag" />
+    <None Include="Fragment shaders\radialShading.frag" />
+    <None Include="Vertex shaders\colorShading.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Textures\PNG\AngryCloud.png" />
+    <Image Include="Textures\PNG\Background.png" />
+    <Image Include="Textures\PNG\BrokenLandPiece_Beige.png" />
+    <Image Include="Textures\PNG\BrokenLandPiece_Blue.png" />
+    <Image Include="Textures\PNG\BrokenLandPiece_Gray.png" />
+    <Image Include="Textures\PNG\BrokenLandPiece_Green.png" />
+    <Image Include="Textures\PNG\BrokenLandPiece_Multicolored.png" />
+    <Image Include="Textures\PNG\BrokenLandPiece_Pink.png" />
+    <Image Include="Textures\PNG\Bubble_Big.png" />
+    <Image Include="Textures\PNG\Bubble_Small.png" />
+    <Image Include="Textures\PNG\Bullet.png" />
+    <Image Include="Textures\PNG\CharacterLeft_Jump.png" />
+    <Image Include="Textures\PNG\CharacterLeft_Standing.png" />
+    <Image Include="Textures\PNG\CharacterLeft_Walk1.png" />
+    <Image Include="Textures\PNG\CharacterLeft_Walk2.png" />
+    <Image Include="Textures\PNG\CharacterRight_Jump.png" />
+    <Image Include="Textures\PNG\CharacterRight_Standing.png" />
+    <Image Include="Textures\PNG\CharacterRight_Walk1.png" />
+    <Image Include="Textures\PNG\CharacterRight_Walk2.png" />
+    <Image Include="Textures\PNG\CloudWind.png" />
+    <Image Include="Textures\PNG\Coin.png" />
+    <Image Include="Textures\PNG\HalfLandPiece_Left_Beige.png" />
+    <Image Include="Textures\PNG\HalfLandPiece_Left_Blue.png" />
+    <Image Include="Textures\PNG\HalfLandPiece_Left_Gray.png" />
+    <Image Include="Textures\PNG\HalfLandPiece_Left_Green.png" />
+    <Image Include="Textures\PNG\HalfLandPiece_Left_Multicolored.png" />
+    <Image Include="Textures\PNG\HalfLandPiece_Left_Pink.png" />
+    <Image Include="Textures\PNG\HalfLandPiece_Right_Beige.png" />
+    <Image Include="Textures\PNG\HalfLandPiece_Right_Blue.png" />
+    <Image Include="Textures\PNG\HalfLandPiece_Right_Gray.png" />
+    <Image Include="Textures\PNG\HalfLandPiece_Right_Green.png" />
+    <Image Include="Textures\PNG\HalfLandPiece_Right_Multicolored.png" />
+    <Image Include="Textures\PNG\HalfLandPiece_Right_Pink.png" />
+    <Image Include="Textures\PNG\HappyCloud.png" />
+    <Image Include="Textures\PNG\HearthEnemy1.png" />
+    <Image Include="Textures\PNG\HearthEnemy2.png" />
+    <Image Include="Textures\PNG\JetFire1.png" />
+    <Image Include="Textures\PNG\JetFire2.png" />
+    <Image Include="Textures\PNG\Jetpack_Big.png" />
+    <Image Include="Textures\PNG\Jetpack_Small.png" />
+    <Image Include="Textures\PNG\LandPiece_DarkBeige.png" />
+    <Image Include="Textures\PNG\LandPiece_DarkBlue.png" />
+    <Image Include="Textures\PNG\LandPiece_DarkGray.png" />
+    <Image Include="Textures\PNG\LandPiece_DarkGreen.png" />
+    <Image Include="Textures\PNG\LandPiece_DarkMulticolored.png" />
+    <Image Include="Textures\PNG\LandPiece_DarkPing.png" />
+    <Image Include="Textures\PNG\LandPiece_LightBeige.png" />
+    <Image Include="Textures\PNG\LandPiece_LightBlue.png" />
+    <Image Include="Textures\PNG\LandPiece_LightGray.png" />
+    <Image Include="Textures\PNG\LandPiece_LightGreen.png" />
+    <Image Include="Textures\PNG\LandPiece_LightMulticolored.png" />
+    <Image Include="Textures\PNG\LandPiece_LightPing.png" />
+    <Image Include="Textures\PNG\Lightning1.png" />
+    <Image Include="Textures\PNG\Lightning2.png" />
+    <Image Include="Textures\PNG\Mushroom.png" />
+    <Image Include="Textures\PNG\Number_0.png" />
+    <Image Include="Textures\PNG\Number_1.png" />
+    <Image Include="Textures\PNG\Number_2.png" />
+    <Image Include="Textures\PNG\Number_3.png" />
+    <Image Include="Textures\PNG\Number_4.png" />
+    <Image Include="Textures\PNG\Number_5.png" />
+    <Image Include="Textures\PNG\Number_6.png" />
+    <Image Include="Textures\PNG\Number_7.png" />
+    <Image Include="Textures\PNG\Number_8.png" />
+    <Image Include="Textures\PNG\Number_9.png" />
+    <Image Include="Textures\PNG\Number_Point.png" />
+    <Image Include="Textures\PNG\Pistol.png" />
+    <Image Include="Textures\PNG\Spring.png" />
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_0.png" />
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_1.png" />
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_10.png" />
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_11.png" />
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_12.png" />
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_13.png" />
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_14.png" />
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_15.png" />
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_16.png" />
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_17.png" />
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_18.png" />
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_19.png" />
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_2.png" />
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_3.png" />
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_4.png" />
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_5.png" />
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_6.png" />
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_7.png" />
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_8.png" />
+    <Image Include="Textures\Top_Down_Survivor\handgun\idle\survivor-idle_handgun_9.png" />
+    <Image Include="Textures\Zombie textures\skeleton-attack_0.png" />
+    <Image Include="Textures\Zombie textures\skeleton-attack_1.png" />
+    <Image Include="Textures\Zombie textures\skeleton-attack_2.png" />
+    <Image Include="Textures\Zombie textures\skeleton-attack_3.png" />
+    <Image Include="Textures\Zombie textures\skeleton-attack_4.png" />
+    <Image Include="Textures\Zombie textures\skeleton-attack_5.png" />
+    <Image Include="Textures\Zombie textures\skeleton-attack_6.png" />
+    <Image Include="Textures\Zombie textures\skeleton-attack_7.png" />
+    <Image Include="Textures\Zombie textures\skeleton-attack_8.png" />
+    <Image Include="Textures\Zombie textures\skeleton-idle_0.png" />
+    <Image Include="Textures\Zombie textures\skeleton-idle_1.png" />
+    <Image Include="Textures\Zombie textures\skeleton-idle_10.png" />
+    <Image Include="Textures\Zombie textures\skeleton-idle_11.png" />
+    <Image Include="Textures\Zombie textures\skeleton-idle_12.png" />
+    <Image Include="Textures\Zombie textures\skeleton-idle_13.png" />
+    <Image Include="Textures\Zombie textures\skeleton-idle_14.png" />
+    <Image Include="Textures\Zombie textures\skeleton-idle_15.png" />
+    <Image Include="Textures\Zombie textures\skeleton-idle_16.png" />
+    <Image Include="Textures\Zombie textures\skeleton-idle_2.png" />
+    <Image Include="Textures\Zombie textures\skeleton-idle_3.png" />
+    <Image Include="Textures\Zombie textures\skeleton-idle_4.png" />
+    <Image Include="Textures\Zombie textures\skeleton-idle_5.png" />
+    <Image Include="Textures\Zombie textures\skeleton-idle_6.png" />
+    <Image Include="Textures\Zombie textures\skeleton-idle_7.png" />
+    <Image Include="Textures\Zombie textures\skeleton-idle_8.png" />
+    <Image Include="Textures\Zombie textures\skeleton-idle_9.png" />
+    <Image Include="Textures\Zombie textures\skeleton-move_0.png" />
+    <Image Include="Textures\Zombie textures\skeleton-move_1.png" />
+    <Image Include="Textures\Zombie textures\skeleton-move_10.png" />
+    <Image Include="Textures\Zombie textures\skeleton-move_11.png" />
+    <Image Include="Textures\Zombie textures\skeleton-move_12.png" />
+    <Image Include="Textures\Zombie textures\skeleton-move_13.png" />
+    <Image Include="Textures\Zombie textures\skeleton-move_14.png" />
+    <Image Include="Textures\Zombie textures\skeleton-move_15.png" />
+    <Image Include="Textures\Zombie textures\skeleton-move_16.png" />
+    <Image Include="Textures\Zombie textures\skeleton-move_2.png" />
+    <Image Include="Textures\Zombie textures\skeleton-move_3.png" />
+    <Image Include="Textures\Zombie textures\skeleton-move_4.png" />
+    <Image Include="Textures\Zombie textures\skeleton-move_5.png" />
+    <Image Include="Textures\Zombie textures\skeleton-move_6.png" />
+    <Image Include="Textures\Zombie textures\skeleton-move_7.png" />
+    <Image Include="Textures\Zombie textures\skeleton-move_8.png" />
+    <Image Include="Textures\Zombie textures\skeleton-move_9.png" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

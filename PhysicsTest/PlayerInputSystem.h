@@ -1,12 +1,13 @@
 #pragma once
-#include <BadEngine/Core/System.h>
+#include <Artifact/Core/System.h>
+#include <Artifact/Physics/BoxCollider2D.h>
 
 class PlayerInputComponent;
 
-class PlayerInputSystem : public BadEngine::System
+class PlayerInputSystem : public Artifact::System
 {
 public:
-    PlayerInputSystem(BadEngine::EntitySystem& a_EntitySystem, BadEngine::MessagingSystem& a_MessagingSystem);
+    PlayerInputSystem(Artifact::EntitySystem& a_EntitySystem, Artifact::MessagingSystem& a_MessagingSystem);
 
     virtual void registerListeners() override;
 

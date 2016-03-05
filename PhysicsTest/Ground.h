@@ -1,9 +1,9 @@
 #pragma once
-#include <BadEngine/Core/GameObject.h>
+#include <Artifact/Core/GameObject.h>
 
-class Ground : public BadEngine::GameObject
+class Ground : public Artifact::GameObject
 {
 public:
-    Ground(unsigned a_ID, BadEngine::EntitySystem& a_EntitySystem);
+    Ground(unsigned a_ID, Artifact::EntitySystem& a_EntitySystem);
 };
 

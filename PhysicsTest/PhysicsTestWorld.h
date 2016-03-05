@@ -1,9 +1,9 @@
 #pragma once
-#include <BadEngine/Core/World.h>
+#include <Artifact/Core/World.h>
 
-class PhysicsTestWorld : public BadEngine::World
+class PhysicsTestWorld : public Artifact::World
 {
 public:
-    PhysicsTestWorld(BadEngine::Window& a_Window, BadEngine::GameTime& a_GameTime);
+    PhysicsTestWorld(Artifact::GameTime& a_GameTime);
 };
 

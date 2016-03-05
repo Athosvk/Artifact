@@ -1,16 +1,16 @@
 #pragma once
-#include <BadEngine/Core/GameObject.h>
-#include <BadEngine/Physics/BoxCollider2D.h>
-#include <BadEngine/Rendering/SpriteRenderer.h>
+#include <Artifact/Core/GameObject.h>
+#include <Artifact/Physics/BoxCollider2D.h>
+#include <Artifact/Rendering/SpriteRenderer.h>
 
-class Box : public BadEngine::GameObject
+class Box : public Artifact::GameObject
 {
 private:
-    BadEngine::BoxCollider2D* m_Collider;
-    BadEngine::SpriteRenderer* m_Renderer;
+    Artifact::BoxCollider2D* m_Collider;
+    Artifact::SpriteRenderer* m_Renderer;
 
 public:
-    Box(unsigned a_ID, BadEngine::EntitySystem& a_EntitySystem);
+    Box(unsigned a_ID, Artifact::EntitySystem& a_EntitySystem);
 
     void setDimensions(float a_Width, float a_Height);
 };
