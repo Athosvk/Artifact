@@ -39,10 +39,11 @@ public:
     }
 
 private:
-    TEntityType createNew()
+    TEntityType& createNew()
     {
-        m_Items.push_back(m_EntitySystem.createEntity<TEntityType>());
-        return m_Items.back();
+        auto newEntity = m_EntitySystem.createEntity<TEntityType>();
+        m_Items.push_back(newEntity);
+        return newEntity;
     }
 
     bool tryFindInactive(TEntityType*& a_Entity)
