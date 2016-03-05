@@ -21,6 +21,9 @@ namespace Artifact
         glm::vec2 getVelocity() const;
         void setVelocity(glm::vec2 a_Velocity);
         void setGravityScale(float a_Scale);
+        void makeKinematic();
+        void makeDynamic();
+        bool isKinematic() const;
     private:
         void updateState();
     };

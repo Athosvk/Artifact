@@ -23,6 +23,21 @@ namespace Artifact
     {
         m_Body->SetGravityScale(a_Scale);
     }
+
+    void RigidBody2D::makeKinematic()
+    {
+        m_Body->SetType(b2BodyType::b2_kinematicBody);
+    }
+
+    void RigidBody2D::makeDynamic()
+    {
+        m_Body->SetType(b2BodyType::b2_dynamicBody);
+    }
+
+    bool RigidBody2D::isKinematic() const
+    {
+        return m_Body->GetType() == b2BodyType::b2_kinematicBody;
+    }
      
     void RigidBody2D::updateState()
     {
