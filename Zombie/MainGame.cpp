@@ -1,5 +1,3 @@
-#include <Artifact/StopWatch.h>
-
 #include "MainGame.h"
 #include "Menu/StartScreen.h"
 
