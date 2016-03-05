@@ -15,6 +15,7 @@ namespace Artifact
 
     public:
         GLSLProgram(const std::string& a_VertexShaderPath, const std::string& a_FragmentShaderPath);
+        ~GLSLProgram();
 
         void createAndCompileShaders();
         void linkShaders() const;
