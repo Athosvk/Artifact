@@ -10,6 +10,7 @@ class StartScreen : public Artifact::World
 {
 private:
     Artifact::AudioSource* m_BackgroundMusic;
+    Artifact::GameObject m_ControlsPopup;
 
 public:
     StartScreen(Artifact::GameTime& a_GameTime, Artifact::Game* a_CurrentGame);
@@ -17,5 +18,7 @@ public:
 
 private:
     void handleInput();
+    void initializeOptions();
+    void initializePopup();
 };
 

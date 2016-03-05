@@ -7,8 +7,8 @@
 #include "OptionSelectSystem.h"
 #include "OptionComponent.h"
 
-OptionSelectSystem::OptionSelectSystem(Artifact::EntitySystem & a_EntitySystem, 
-    Artifact::MessagingSystem a_MessagingSystem)
+OptionSelectSystem::OptionSelectSystem(Artifact::EntitySystem& a_EntitySystem, 
+    Artifact::MessagingSystem& a_MessagingSystem)
     : System(a_EntitySystem, a_MessagingSystem)
 {
 }
@@ -23,17 +23,24 @@ void OptionSelectSystem::registerListeners()
 
 void OptionSelectSystem::handleInput()
 {
-    if(Artifact::Keyboard::isPressed(Artifact::KeyCode::Down))
+    if(m_SelectedIndex == -1)
     {
-        m_Selected->OnDeselect();
-        m_SelectedIndex++;
+        m_SelectedIndex = 0;
         refreshSelectedOption();
         m_Selected->OnSelect();
     }
-    if(Artifact::Keyboard::isPressed(Artifact::KeyCode::Up))
+
+    if(Artifact::Keyboard::isPressed(Artifact::KeyCode::Down))
     {
         m_Selected->OnDeselect();
-        m_SelectedIndex--;
+        m_SelectedIndex = (m_SelectedIndex + 1) % getOptionCount();
+        refreshSelectedOption();
+        m_Selected->OnSelect();
+    }
+    else if(Artifact::Keyboard::isPressed(Artifact::KeyCode::Up))
+    {
+        m_Selected->OnDeselect();
+        m_SelectedIndex = (m_SelectedIndex - 1) % getOptionCount();
         refreshSelectedOption();
         m_Selected->OnSelect();
     }
@@ -56,4 +63,9 @@ void OptionSelectSystem::refreshSelectedOption()
     {
         throw std::logic_error("Invalid option index " + std::to_string(m_SelectedIndex));
     }
+}
+
+unsigned OptionSelectSystem::getOptionCount()
+{
+    return m_EntitySystem.getComponentsOfType<OptionComponent>().size();
 }
