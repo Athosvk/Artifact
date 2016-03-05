@@ -1,3 +1,5 @@
+#include <exception>
+
 #include "Sound.h"
 #include "../ErrorHandler.h"
 
@@ -23,9 +25,24 @@ namespace Artifact
     void Sound::play(int a_LoopCount)
     {
         const int DefaultChannel = -1;
-        if(Mix_PlayChannel(DefaultChannel, m_SoundChunk, a_LoopCount) == PlayFailed)
+        m_CurrentChannel = Mix_PlayChannel(DefaultChannel, m_SoundChunk, a_LoopCount);
+        if(m_CurrentChannel == PlayFailed)
         {
             throwFatalError("SDL_Mixer sound could not be played: " + std::string(Mix_GetError()));
         }
+    }
+
+    void Sound::stop()
+    {
+        Mix_HaltChannel(m_CurrentChannel);
+    }
+
+    void Sound::setVolume(unsigned a_Volume)
+    {
+        if(a_Volume > MIX_MAX_VOLUME)
+        {
+            throw std::out_of_range("Volume exceeds maximum volume");
+        }
+        Mix_VolumeChunk(m_SoundChunk, a_Volume);
     }
 }

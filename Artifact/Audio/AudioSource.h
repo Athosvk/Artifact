@@ -11,11 +11,13 @@ namespace Artifact
         bool m_Loop = false;
     public:
         Sound* Sound = nullptr;
+        float Volume = 1.0f;
 
     public:
         AudioSource(GameObject a_Entity);
 
         void play();
+        void stop();
         void enableLooping();
         void disableLooping();
     };

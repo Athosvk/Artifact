@@ -12,6 +12,7 @@
 #include "../TimerComponent.h"
 #include "ZombieBehaviour.h"
 #include "../ScoreComponent.h"
+#include "../CollisionLayers.h"
 
 Enemy::Enemy(unsigned a_ID, Artifact::EntitySystem& a_EntitySystem)
     : GameObject(a_ID, a_EntitySystem)
@@ -30,8 +31,9 @@ Enemy::Enemy(unsigned a_ID, Artifact::EntitySystem& a_EntitySystem)
     tag->Type = EType::Enemy;
 
     auto collider = addComponent<Artifact::BoxCollider2D>();
-   // collider->enableTriggerState();
-    collider->setDimensions(glm::vec2(0.8f, 0.8f));
+    collider->setDimensions(glm::vec2(0.5f, 0.5f));
+    collider->setLayer(static_cast<uint16>(ECollisionLayer::Enemy));
+    collider->setMask(static_cast<uint16>(ECollisionLayer::All ^ (ECollisionLayer::Player | ECollisionLayer::Enemy)));
 
     auto followComponent = addComponent<FollowComponent>();
     followComponent->FollowSpeed = 0.5f;

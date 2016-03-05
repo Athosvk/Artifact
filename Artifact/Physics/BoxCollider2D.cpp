@@ -46,6 +46,26 @@ namespace Artifact
         m_FixtureDefinition.isSensor = false;
     }
 
+    uint16 BoxCollider2D::getLayer()
+    {
+        return m_FixtureDefinition.filter.categoryBits;
+    }
+
+    void BoxCollider2D::setLayer(uint16 a_Layer)
+    {
+        m_FixtureDefinition.filter.categoryBits = a_Layer;
+    }
+
+    uint16 BoxCollider2D::getMask()
+    {
+        return m_FixtureDefinition.filter.maskBits;
+    }
+
+    void BoxCollider2D::setMask(uint16 a_Mask)
+    {
+        m_FixtureDefinition.filter.maskBits = a_Mask;
+    }
+
     void BoxCollider2D::attachFixture()
     {
         if(m_Fixture != nullptr)

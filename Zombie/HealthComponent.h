@@ -9,8 +9,8 @@ private:
 public:
     
     unsigned MaxHealth;
-    Delegate<void(HealthComponent* a_HealthComponent)> OnDeath;
-    Delegate<void()> OnHit;
+    Artifact::Delegate<void(HealthComponent* a_HealthComponent)> OnDeath;
+    Artifact::Delegate<void()> OnHit;
 
 public:
     HealthComponent(Artifact::GameObject a_GameObject);

@@ -35,7 +35,7 @@ GameOverScreen::GameOverScreen(Artifact::GameTime& a_GameTime, Artifact::Game* a
 
     auto background = m_EntitySystem.createEntity().addComponent<Artifact::SpriteRenderer>();
     background->Height = 9.0f;
-    background->Width = 10.0f;
+    background->Width = 11.0f;
     background->Depth = -10.0f;
     background->setTexture(Artifact::ResourceManager::getTexture("Textures/Gameover_background.png"));
 

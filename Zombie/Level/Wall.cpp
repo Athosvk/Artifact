@@ -5,6 +5,7 @@
 
 #include "Wall.h"
 #include "../TagComponent.h"
+#include "../CollisionLayers.h"
 
 Wall::Wall(Artifact::EntitySystem& a_EntitySystem, Artifact::GLTexture* a_Texture, glm::vec2 a_Dimensions)
     : m_Entity(a_EntitySystem.createEntity())
@@ -19,6 +20,9 @@ Wall::Wall(Artifact::EntitySystem& a_EntitySystem, Artifact::GLTexture* a_Textur
     }
     auto collider = m_Entity.addComponent<Artifact::BoxCollider2D>();
     collider->setDimensions(a_Dimensions);
+    collider->setLayer(static_cast<uint16>(ECollisionLayer::Wall));
+    collider->setMask(static_cast<uint16>(ECollisionLayer::Player | ECollisionLayer::Bullet));
+
     auto tag = m_Entity.addComponent<TagComponent>();
     tag->Type = EType::Wall;
 }
