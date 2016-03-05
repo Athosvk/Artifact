@@ -39,7 +39,7 @@ public:
     }
 
 private:
-    TEntityType& createNew()
+    TEntityType createNew()
     {
         auto newEntity = m_EntitySystem.createEntity<TEntityType>();
         m_Items.push_back(newEntity);
