@@ -14,6 +14,11 @@ namespace Artifact
     {
     }
 
+    GLSLProgram::~GLSLProgram()
+    {
+        glDeleteProgram(m_ProgramID);
+    }
+
     void GLSLProgram::createAndCompileShaders()
     {
         createVertexShader();
