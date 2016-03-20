@@ -4,6 +4,7 @@
 #include <Artifact/Audio/AudioSource.h>
 
 #include "WeaponSystem.h"
+#include "WeaponComponent.h"
 #include "../BulletComponent.h"
 
 FireWeaponMessage::FireWeaponMessage(WeaponComponent* a_WeaponComponent)

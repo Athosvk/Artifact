@@ -1,11 +1,11 @@
 #pragma once
 #include <Artifact/Core/System.h>
 
-#include "WeaponComponent.h" 
 #include "../EntityPool.h"
 #include "../Bullet.h"
 
 class BulletComponent;
+class WeaponComponent;
 
 class FireWeaponMessage : public Artifact::Message
 {

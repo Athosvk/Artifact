@@ -2,6 +2,10 @@
 #include <Artifact/Core/System.h>
 
 class TimerComponent;
+namespace Artifact
+{
+    class UpdateMessage;
+}
 
 class TimerSystem : public Artifact::System
 {
