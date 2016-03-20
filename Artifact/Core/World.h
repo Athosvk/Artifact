@@ -44,6 +44,10 @@ namespace Artifact
     {
     };
 
+    class AwakeMessage : public Message
+    {
+    };
+
     class World
     {
     protected:
