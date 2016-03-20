@@ -48,6 +48,11 @@ namespace Artifact
         addSystem<AudioSystem>();
     }
 
+    void World::awake()
+    {
+        m_MessagingSystem.broadcast<AwakeMessage>();
+    }
+
     void World::update()
     {
         broadcast<UpdateMessage>(m_GameTime);

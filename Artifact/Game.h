@@ -43,6 +43,7 @@ namespace Artifact
             if(m_CurrentWorld == nullptr)
             {
                 m_CurrentWorld = std::make_unique<T>(m_GameTime, this, std::forward<TArguments>(a_Arguments)...);
+                m_CurrentWorld->awake();
             }
             else
             {
