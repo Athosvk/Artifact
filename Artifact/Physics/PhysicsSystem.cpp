@@ -24,13 +24,13 @@ namespace Artifact
         {
             onRigidBodyAdd(static_cast<const ComponentAddedMessage<RigidBody2D>*>(a_Message)->getAddedComponent());
         });
-        m_MessagingSystem.registerListener<FixedUpdateMessage>([this](const Message*)
+        m_MessagingSystem.registerListener<PhysicsUpdateMessage>([this](const Message*)
         {
-            fixedUpdate();
+            updatePhysics();
         });
     }
 
-    void PhysicsSystem::fixedUpdate()
+    void PhysicsSystem::updatePhysics()
     {
         for(auto collider : m_EntitySystem.getComponentsOfType<BoxCollider2D>())
         {

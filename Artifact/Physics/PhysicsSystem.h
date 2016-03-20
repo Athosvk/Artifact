@@ -22,7 +22,7 @@ namespace Artifact
         void onRigidBodyAdd(RigidBody2D* a_RigidBody);
         void onColliderAdd(BoxCollider2D* a_Collider);
         void registerActiveMessages(GameObject a_Entity);
-        void fixedUpdate();
+        void updatePhysics();
         void postPhysicsUpdate();
         void updateTransforms();
     };
