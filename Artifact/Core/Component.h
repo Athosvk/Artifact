@@ -10,7 +10,6 @@ namespace Artifact
 
     protected:
         Component(GameObject a_GameObject);
-        ~Component() = default;
 
     public:
         template<typename T>

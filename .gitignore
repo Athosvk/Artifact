@@ -3,6 +3,7 @@
 
 */Performance reports/
 *.opendb
+*.db
 "BadEngine/Performance Reports/"
 
 #Performance reports
