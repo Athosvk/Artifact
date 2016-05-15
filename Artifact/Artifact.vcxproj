@@ -122,13 +122,6 @@
     <ClInclude Include="StopWatch.h" />
     <ClInclude Include="Transform.h" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Performance reports\Memory - 01-11-2015.diagsession" />
-    <None Include="Performance reports\Memory - 23-10-2015.diagsession" />
-    <None Include="Performance reports\Spritebatch test\CPU - 4K sprites no opt.diagsession" />
-    <None Include="Performance reports\Spritebatch test\CPU - 4K sprites reg sort and copies over new.diagsession" />
-    <None Include="Performance reports\Spritebatch test\CPU - 4K sprites reg sort.diagsession" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{29FAAF6B-4662-4721-922A-6AC1DD8E2908}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>

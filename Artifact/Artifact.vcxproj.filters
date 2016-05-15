@@ -314,11 +314,4 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Performance reports\Memory - 01-11-2015.diagsession" />
-    <None Include="Performance reports\Memory - 23-10-2015.diagsession" />
-    <None Include="Performance reports\Spritebatch test\CPU - 4K sprites no opt.diagsession" />
-    <None Include="Performance reports\Spritebatch test\CPU - 4K sprites reg sort.diagsession" />
-    <None Include="Performance reports\Spritebatch test\CPU - 4K sprites reg sort and copies over new.diagsession" />
-  </ItemGroup>
 </Project>
