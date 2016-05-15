@@ -10,5 +10,5 @@ uniform sampler2D sampler;
 
 void main() 
 {
-	color = texture(sampler, fragmentUVCoordinate) * fragmentColor * 0.8;
+	color = texture(sampler, fragmentUVCoordinate) * fragmentColor;
 }

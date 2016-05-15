@@ -7,8 +7,8 @@
 #include "Ground.h"
 #include "Box.h"
 
-PhysicsTestWorld::PhysicsTestWorld(Artifact::GameTime& a_GameTime)
-    : World(a_GameTime, nullptr)
+PhysicsTestWorld::PhysicsTestWorld(Artifact::GameTime& a_GameTime, Artifact::Game* a_Game)
+    : World(a_GameTime, a_Game)
 {
     addSystem<PlayerInputSystem>();
     m_EntitySystem.createEntity<Player>();
