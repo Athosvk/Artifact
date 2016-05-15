@@ -24,6 +24,7 @@
     <ClCompile Include="Audio\Sound.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Core\Component.cpp" />
+    <ClCompile Include="Core\ComponentMapper.cpp" />
     <ClCompile Include="Core\MessageQueue.cpp" />
     <ClCompile Include="Core\MessagingSystem.cpp" />
     <ClCompile Include="Core\World.cpp" />
@@ -73,6 +74,9 @@
     <ClInclude Include="Audio\Sound.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Core\Component.h" />
+    <ClInclude Include="Core\ComponentHandle.h" />
+    <ClInclude Include="Core\ComponentMap.h" />
+    <ClInclude Include="Core\ComponentMapper.h" />
     <ClInclude Include="Core\MessageQueue.h" />
     <ClInclude Include="Core\MessagingSystem.h" />
     <ClInclude Include="Core\World.h" />
