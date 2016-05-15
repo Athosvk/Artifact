@@ -22,17 +22,32 @@ namespace ArtifactTest
 			}
 		}
 
+		TEST_METHOD(TestComponentByTypeFetch)
+		{
+			auto timeTaken = TestUtility::measureNS([this]
+			{
+				performComponentTypeFetch();
+			});
+			std::string output = "Fetch test time taken: " +
+				std::to_string(timeTaken / 1e6) + " ms\n";
+			Logger::WriteMessage(output.c_str());
+			Assert::IsTrue(timeTaken <= 1e8);
+		}
+
 		TEST_METHOD(TestIteration)
 		{
 			auto timeTaken = TestUtility::measureNS([this]
 			{
 				performIteration();
 			});
-
+			timeTaken -= TestUtility::measureNS([this]
+			{
+				performComponentTypeFetch();
+			});
 			std::string output = "Iteration test time taken: " + 
 				std::to_string(timeTaken / 1e6) + " ms\n";
 			Logger::WriteMessage(output.c_str());
-			//Assert::IsTrue(timeTaken <= 5e6);
+			Assert::IsTrue(timeTaken <= 1e6);
 		}
 
 		void performIteration()
@@ -41,6 +56,11 @@ namespace ArtifactTest
 			{
 				component->setPosition(glm::vec2(0.0f, 0.0f));
 			}
+		}
+
+		void performComponentTypeFetch()
+		{
+			m_EntitySystem.getComponentsOfType<Artifact::Transform>();
 		}
 	};
 }
