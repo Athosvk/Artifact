@@ -20,8 +20,7 @@ namespace Artifact
 		{
 			auto componentMap = static_cast<ComponentMap<TComponentType>*>
 				(m_Components[typeid(TComponentType)].get());
-			return ComponentHandle<TComponentType>(componentMap->addComponent(a_GameObject), 
-				*componentMap);
+			return ComponentHandle<TComponentType>(componentMap->addComponent(a_GameObject), componentMap);
 		}
 
 		template<typename TComponentType>
