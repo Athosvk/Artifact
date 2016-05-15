@@ -8,11 +8,11 @@ namespace Artifact
 	{
 	private:
 		size_t m_Index;
-		ComponentMap<TComponentType>& m_ComponentMapper;
+		ComponentMap<TComponentType>& m_ComponentMap;
 
 	public:
-		ComponentHandle(size_t a_Index,  ComponentMapper<TComponentType>& a_ComponentMapper)
-			: m_ComponentMapper(a_ComponentMapper)
+		ComponentHandle(size_t a_Index,  ComponentMap<TComponentType>& a_ComponentMap)
+			: m_ComponentMap(a_ComponentMap)
 		{
 		}
 	};
