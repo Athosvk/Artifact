@@ -15,5 +15,10 @@ namespace Artifact
 			: m_ComponentMap(a_ComponentMap)
 		{
 		}
+
+		TComponentType* operator->()
+		{
+			return &m_ComponentMap.getComponent(m_Index);
+		}
 	};
 }
