@@ -6,21 +6,22 @@
 
 #include "Component.h"
 #include "MessagingSystem.h"
+#include "ComponentMapper.h"
 
 namespace Artifact
 {
-    template<typename T>
+    template<typename TComponentType>
     class ComponentAddedMessage : public Message
     {
-        T* m_AddedComponent;
+		TComponentType* m_AddedComponent;
 
     public:
-        ComponentAddedMessage(T* a_AddedComponent)
+        ComponentAddedMessage(TComponentType* a_AddedComponent)
             : m_AddedComponent(a_AddedComponent)
         {
         }
 
-        T* getAddedComponent() const
+		TComponentType* getAddedComponent() const
         {
             return m_AddedComponent;
         }
@@ -60,6 +61,7 @@ namespace Artifact
         std::map<unsigned, EntityState> m_EntityStates;
         MessagingSystem& m_MessagingSystem;
         unsigned m_LastID = 0;
+		ComponentMapper m_ComponentMapper;
 
     public:
         EntitySystem(MessagingSystem& a_MessagingSystem);
