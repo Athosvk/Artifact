@@ -5,36 +5,35 @@
 #include <chrono>
 #endif
 
-namespace Artifact
+namespace ArtifactTest
 {
-    class StopWatch
-    {
-    private:
-        bool m_Finished;
+	class StopWatch
+	{
+	private:
+		bool m_Finished;
 
 #if defined(WIN32) || defined(_WIN32) || defined(_WIN64)
-        LARGE_INTEGER m_StartTime;
-        LARGE_INTEGER m_EndTime;
+		LARGE_INTEGER m_StartTime;
+		LARGE_INTEGER m_EndTime;
 #else
-        std::chrono::high_resolution_clock::time_point m_StartTime;
-        std::chrono::high_resolution_clock::time_point m_EndTime;
+		std::chrono::high_resolution_clock::time_point m_StartTime;
+		std::chrono::high_resolution_clock::time_point m_EndTime;
 #endif
+	public:
+		StopWatch();
 
-    public:
-        StopWatch();
+		static StopWatch startNew();
+		void start();
+		void end();
 
-        static StopWatch startNew();
-        void start();
-        void end();
+	public:
+		long long toNanoseconds();
 
-    public:
-        long long toNanoseconds();
-
-    private:
+	private:
 #if defined(WIN32) || defined(_WIN32) || defined(_WIN64)
-        LARGE_INTEGER getCurrentTime();
+		LARGE_INTEGER getCurrentTime();
 #else
-        std::chrono::system_clock::time_point getCurrentTime();
+		std::chrono::high_resolution_clock::time_point getCurrentTime();
 #endif
-    };
+	};
 };
