@@ -14,9 +14,9 @@ namespace Artifact
 	class ComponentHandle : public BaseComponentHandle
 	{
 	private:
-		static const NullIndex = std::numeric_limits<size_t>();
+		static const size_t NullIndex = std::numeric_limits<size_t>();
 	public:
-		static const NullHandle = ComponentHandle<TComponentType>(NullIndex, nullptr);
+		static const ComponentHandle<TComponentType> NullHandle = ComponentHandle<TComponentType>(NullIndex, nullptr);
 	private:
 		size_t m_Index;
 		ComponentMap<TComponentType>* m_ComponentMap;
