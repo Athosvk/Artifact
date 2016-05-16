@@ -39,6 +39,13 @@ namespace Artifact
 	};
 
 	template<typename TComponentType>
+	const size_t ComponentHandle<TComponentType>::NullIndex = std::numeric_limits<size_t>::max();
+
+	template<typename TComponentType>
+	const ComponentHandle<TComponentType> ComponentHandle<TComponentType>::NullHandle =
+		ComponentHandle<TComponentType>(NullIndex, nullptr);
+
+	template<typename TComponentType>
 	bool operator ==(ComponentHandle<TComponentType> a_Handle, std::nullptr_t a_Null)
 	{
 		return a_Handle == ComponentHandle<TComponentType>::NullHandle;
