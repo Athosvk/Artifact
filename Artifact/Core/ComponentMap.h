@@ -1,10 +1,10 @@
 #pragma once
 #include <vector>
 
-#include "GameObject.h"
-
 namespace Artifact
 {
+	class GameObject;
+
 	class BaseComponentMap
 	{
 	protected:
@@ -20,7 +20,7 @@ namespace Artifact
 		std::vector<TComponentType> m_Components;
 
 	public:
-		size_t addComponent(GameObject a_GameObject)
+		size_t addComponent(GameObject& a_GameObject)
 		{
 			m_Components.emplace_back(a_GameObject);
 			return m_Components.size() - 1;

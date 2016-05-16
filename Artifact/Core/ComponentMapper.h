@@ -5,7 +5,6 @@
 
 #include "ComponentMap.h"
 #include "ComponentHandle.h"
-#include "GameObject.h"
 
 namespace Artifact
 {
@@ -28,7 +27,7 @@ namespace Artifact
 		
 	public:
 		template<typename TComponentType>
-		ComponentHandle<TComponentType> addComponent(GameObject a_GameObject)
+		ComponentHandle<TComponentType> addComponent(GameObject& a_GameObject)
 		{
 			auto iterator = m_Components.find(typeid(TComponentType));
 			if(iterator == m_Components.end())

@@ -1,10 +1,10 @@
 #pragma once
+#include "ComponentHandle.h"
+
 namespace Artifact
 {
     class EntitySystem;
 	class Transform;
-	template<typename T>
-	class ComponentHandle;
 
     class GameObject
     {
@@ -23,19 +23,19 @@ namespace Artifact
         void deactivate();
 
         template<typename TComponentType>
-        ComponentHandle<TComponentType>& getComponent() const
+        ComponentHandle<TComponentType> getComponent() const
         {
             return m_EntitySystem.getComponent<TComponentType>(*this);
         }
 
         template<>
-        ComponentHandle<Transform>& getComponent() const
+        ComponentHandle<Transform> getComponent() const
         {
             return m_Transform;
         }
 
         template<typename TComponentType>
-        ComponentHandle<TComponentType>& addComponent()
+        ComponentHandle<TComponentType> addComponent()
         {
             return m_EntitySystem.addComponent<TComponentType>(*this);
         }

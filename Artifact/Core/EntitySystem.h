@@ -67,7 +67,7 @@ namespace Artifact
         EntitySystem(MessagingSystem& a_MessagingSystem);
 
         template<typename TComponentType>
-        ComponentHandle<TComponentType>& addComponent(GameObject a_GameObject)
+        ComponentHandle<TComponentType> addComponent(GameObject& a_GameObject)
         {
 			ComponentHandle<TComponentType> componentHandle = m_ComponentMapper.addComponent<TComponentType>(a_GameObject);
             m_MessagingSystem.broadcast<ComponentAddedMessage<TComponentType>>(componentHandle);
