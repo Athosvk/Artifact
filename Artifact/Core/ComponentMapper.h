@@ -7,25 +7,45 @@
 #include "ComponentHandle.h"
 
 namespace Artifact
-{
+{	
+	/// <summary> Maps component types to the matching ComponentMap instance </summary>
 	class ComponentMapper
 	{
-	private:
+	private:		
+		/// <summary>
+		/// The base type for the HandleManager class, so that pointers can be hold without knowing
+		/// the underlying template type of a HandleManager instance
+		/// </summary>
 		class BaseHandleManager
 		{
+		protected:
+			/// <summary> Initializes a new instance of the <see cref="BaseHandleManager"/> class. </summary>
+			BaseHandleManager() = default;
+		public:
+			/// <summary> Finalizes an instance of the <see cref="BaseHandleManager"/> class. </summary>
+			virtual ~BaseHandleManager() = default;
 		};
 
+		/// <summary>
+		/// Represents a collection of component handles that can be used to distribute around for linear access
+		/// </summary>
 		template<typename TComponentType>
 		class HandleManager : public BaseHandleManager
 		{
-		public:
+		public:			
+			/// <summary> The handles for each Component instance of TComponentType </summary>
 			std::vector<ComponentHandle<TComponentType>> Handles;
 		};
-
-		std::unordered_map<std::type_index, std::unique_ptr<BaseComponentMap>> m_Components;
+		
+		/// <summary> The component maps ordered by component type </summary>
+		std::unordered_map<std::type_index, std::unique_ptr<BaseComponentMap>> m_Components;		
+		/// <summary> The handle managers ordered by component type</summary>
 		std::unordered_map<std::type_index, std::unique_ptr<BaseHandleManager>> m_Handles;
 		
 	public:
+		/// <summary> Creates and adds a component of given type to the matching ComponentMap instance </summary>
+		/// <param name="a_GameObject">The GameObject to create the component for</param>
+		/// <returns> A ComponentHandle to the newly created component </returns>
 		template<typename TComponentType>
 		ComponentHandle<TComponentType> addComponent(GameObject& a_GameObject)
 		{
@@ -41,6 +61,8 @@ namespace Artifact
 			return handle;
 		}
 
+		/// <summary> Retrieves the component handles to all the components of TComponentType </summary>
+		/// <returns> The component handles </returns>
 		template<typename TComponentType>
 		std::vector<ComponentHandle<TComponentType>>& getComponentsOfType()
 		{
@@ -53,6 +75,9 @@ namespace Artifact
 			return toHandleManager<TComponentType>(iterator)->Handles;
 		}
 
+		/// <summary> 
+		/// Adds the given type as a ComponentType, so that Handles and Components can be created for that type 
+		/// </summary>
 		template<typename TComponentType>
 		void addType()
 		{
@@ -60,6 +85,9 @@ namespace Artifact
 			m_Handles.emplace(typeid(TComponentType), std::make_unique<HandleManager<TComponentType>>());
 		}
 	private:
+		/// <summary> Gets the matching handle manager from the given iterator </summary>
+		/// <param name="a_Iterator">The iterator pointing to a BaseHandleManager </param>
+		/// <returns> The raw pointer to the HandleManager </returns>
 		template<typename TComponentType>
 		HandleManager<TComponentType>* toHandleManager(std::unordered_map<std::type_index, 
 			std::unique_ptr<BaseHandleManager>>::iterator a_Iterator)

@@ -66,6 +66,9 @@ namespace Artifact
     public:
         EntitySystem(MessagingSystem& a_MessagingSystem);
 
+		/// <summary> Creates and adds a component of given TComponentType </summary>
+		/// <param name="a_GameObject">The GameObject to create the component for</param>
+		/// <returns> A ComponentHandle to the newly created component </returns>
         template<typename TComponentType>
         ComponentHandle<TComponentType> addComponent(GameObject& a_GameObject)
         {
@@ -76,6 +79,9 @@ namespace Artifact
             return *static_cast<ComponentHandle<TComponentType>*>(result.first->second.get());
         }
 
+		/// <summary> Returns a ComponentHandle to the GameObject's TComponentType instnace </summary>
+		/// <param name="a_GameObject">The GameObject owning the component </param>
+		/// <returns> A ComponentHandle to the component or a NullHandle if it does not exist</returns>
         template<typename TComponentType>
         ComponentHandle<TComponentType> getComponent(GameObject a_GameObject) const
         {
@@ -89,6 +95,8 @@ namespace Artifact
             return handle;
         }
 
+		/// <summary> Retreives the vector of all the ComponentHandles for a given type </summary>
+		/// <returns> The vector of ComponentHandle of type TComponentType </returns>
         template<typename TComponentType>
         std::vector<ComponentHandle<TComponentType>>& getComponentsOfType()
         {            
