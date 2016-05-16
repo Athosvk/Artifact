@@ -15,10 +15,12 @@ namespace ArtifactTest
 	public:
 		ECSPerformanceTest()
 		{
-			for(int i = 0; i < 1000000; i++)
+			for(int i = 0; i < 32000; i++)
 			{
 				auto entity = m_EntitySystem.createEntity();
 				entity.addComponent<Artifact::SpriteRenderer>();
+				entity.addComponent<Artifact::AudioSource>();
+				entity.addComponent<Artifact::TextComponent>();
 			}
 		}
 
@@ -31,10 +33,10 @@ namespace ArtifactTest
 			std::string output = "Fetch test time taken: " +
 				std::to_string(timeTaken / 1e6) + " ms\n";
 			Logger::WriteMessage(output.c_str());
-			Assert::IsTrue(timeTaken <= 1e8);
+			Assert::IsTrue(timeTaken <= 1e3);
 		}
 
-		TEST_METHOD(TestIteration)
+		TEST_METHOD(TestIterationSingleType)
 		{
 			auto timeTaken = TestUtility::measureNS([this]
 			{
@@ -47,14 +49,27 @@ namespace ArtifactTest
 			std::string output = "Iteration test time taken: " + 
 				std::to_string(timeTaken / 1e6) + " ms\n";
 			Logger::WriteMessage(output.c_str());
-			Assert::IsTrue(timeTaken <= 1e6);
+			Assert::IsTrue(timeTaken <= 1.5e7);
 		}
 
 		void performIteration()
 		{
-			for(auto component : m_EntitySystem.getComponentsOfType<Artifact::Transform>())
+			for(auto component : m_EntitySystem.getComponentsOfType<Artifact::SpriteRenderer>())
 			{
-				component->setPosition(glm::vec2(0.0f, 0.0f));
+				component->Color = Artifact::Color::Black;
+				component->Depth++;
+				component->Height *= 1.0001f;
+			}
+			for(auto component : m_EntitySystem.getComponentsOfType<Artifact::AudioSource>())
+			{
+				component->Volume++;
+				component->Sound = nullptr;
+			}
+			for(auto component : m_EntitySystem.getComponentsOfType<Artifact::TextComponent>())
+			{
+				component->Color.r *= 1.11f;
+				component->Color.g += 1.0f;
+				component->Depth = 1.0f;
 			}
 		}
 

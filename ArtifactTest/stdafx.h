@@ -19,3 +19,5 @@
 #include <Artifact/Core/System.h>
 #include <Artifact/Core/World.h>
 #include <Artifact/Rendering/SpriteRenderer.h>
+#include <Artifact/Audio/AudioSource.h>
+#include <Artifact/Rendering/TextComponent.h>
