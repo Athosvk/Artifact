@@ -19,8 +19,8 @@ namespace Artifact
 
         void registerListeners();
     private:
-        void onRigidBodyAdd(RigidBody2D* a_RigidBody);
-        void onColliderAdd(BoxCollider2D* a_Collider);
+        void onRigidBodyAdd(ComponentHandle<RigidBody2D> a_RigidBody);
+        void onColliderAdd(ComponentHandle<BoxCollider2D> a_Collider);
         void registerActiveMessages(GameObject a_Entity);
         void updatePhysics();
         void postPhysicsUpdate();

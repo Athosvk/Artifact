@@ -2,14 +2,15 @@
 #include "Component.h"
 #include "EntitySystem.h"
 #include "../Transform.h"
+#include "ComponentHandle.h"
 
 namespace Artifact
 {
     GameObject::GameObject(unsigned a_ID, EntitySystem& a_EntitySystem)
         : m_ID(a_ID),
-        m_EntitySystem(a_EntitySystem)
+        m_EntitySystem(a_EntitySystem),
+		m_Transform(addComponent<Transform>())
     {
-        m_Transform = addComponent<Transform>();
     }
 
     unsigned GameObject::getID()

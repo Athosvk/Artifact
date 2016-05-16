@@ -16,6 +16,6 @@ namespace Artifact
         virtual void registerListeners() override;
     private:
         void renderUI();
-        Camera2D* getCurrentCamera() const;
+        ComponentHandle<Camera2D> getCurrentCamera() const;
     };
 }

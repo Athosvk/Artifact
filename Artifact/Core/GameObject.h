@@ -2,7 +2,9 @@
 namespace Artifact
 {
     class EntitySystem;
-    class Transform;
+	class Transform;
+	template<typename T>
+	class ComponentHandle;
 
     class GameObject
     {
@@ -10,7 +12,7 @@ namespace Artifact
         unsigned m_ID;
         EntitySystem& m_EntitySystem;
     protected:
-        Transform* m_Transform;
+        ComponentHandle<Transform>& m_Transform;
 
     public:
         GameObject(unsigned a_ID, EntitySystem& a_EntitySystem);
@@ -20,22 +22,22 @@ namespace Artifact
         void activate();
         void deactivate();
 
-        template<typename T>
-        T* getComponent() const
+        template<typename TComponentType>
+        ComponentHandle<TComponentType>& getComponent() const
         {
-            return m_EntitySystem.getComponent<T>(m_ID);
+            return m_EntitySystem.getComponent<TComponentType>(*this);
         }
 
         template<>
-        Transform* getComponent() const
+        ComponentHandle<Transform>& getComponent() const
         {
             return m_Transform;
         }
 
-        template<typename T>
-        T* addComponent()
+        template<typename TComponentType>
+        ComponentHandle<TComponentType>& addComponent()
         {
-            return m_EntitySystem.addComponent<T>(*this);
+            return m_EntitySystem.addComponent<TComponentType>(*this);
         }
     };
 }

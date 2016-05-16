@@ -26,17 +26,17 @@ namespace Artifact
         m_CollisionListener.postStep();
     }
 
-    void PhysicsWorld::emplace(BoxCollider2D* a_Collider)
+    void PhysicsWorld::emplace(ComponentHandle<BoxCollider2D> a_Collider)
     {
         a_Collider->m_Body = createBody(a_Collider->getComponent<Transform>(), b2BodyType::b2_staticBody);
     }
 
-    void PhysicsWorld::emplace(RigidBody2D* a_RigidBody)
+    void PhysicsWorld::emplace(ComponentHandle<RigidBody2D> a_RigidBody)
     {
         a_RigidBody->m_Body = createBody(a_RigidBody->getComponent<Transform>(), b2BodyType::b2_dynamicBody);
     }
 
-    b2Body* PhysicsWorld::createBody(Transform* a_Transform, b2BodyType a_BodyType)
+    b2Body* PhysicsWorld::createBody(ComponentHandle<Transform> a_Transform, b2BodyType a_BodyType)
     {
         b2BodyDef bodyDefinition;
         bodyDefinition.position.Set(a_Transform->getPosition().x, a_Transform->getPosition().y);

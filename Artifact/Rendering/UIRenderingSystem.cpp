@@ -33,7 +33,7 @@ namespace Artifact
         m_SpriteBatch.end();
     }
 
-    Camera2D* UIRenderingSystem::getCurrentCamera() const
+    ComponentHandle<Camera2D> UIRenderingSystem::getCurrentCamera() const
     {
         return m_EntitySystem.getComponentsOfType<Camera2D>()[0];
     }

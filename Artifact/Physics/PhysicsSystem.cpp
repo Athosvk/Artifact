@@ -54,7 +54,7 @@ namespace Artifact
         }
     }
 
-    void PhysicsSystem::onColliderAdd(BoxCollider2D* a_Collider)
+    void PhysicsSystem::onColliderAdd(ComponentHandle<BoxCollider2D> a_Collider)
     {
         auto rigidBody = a_Collider->getComponent<RigidBody2D>();
         if(rigidBody != nullptr)
@@ -68,7 +68,7 @@ namespace Artifact
         registerActiveMessages(a_Collider->getGameObject());
     }
 
-    void PhysicsSystem::onRigidBodyAdd(RigidBody2D* a_RigidBody)
+    void PhysicsSystem::onRigidBodyAdd(ComponentHandle<RigidBody2D> a_RigidBody)
     {
         auto collider = a_RigidBody->getComponent<BoxCollider2D>();
         if(collider != nullptr)

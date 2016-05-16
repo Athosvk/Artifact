@@ -24,7 +24,7 @@
     <ClCompile Include="Audio\Sound.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Core\Component.cpp" />
-    <ClCompile Include="Core\ComponentMapper.cpp" />
+    <ClCompile Include="Core\ComponentHandle.cpp" />
     <ClCompile Include="Core\MessageQueue.cpp" />
     <ClCompile Include="Core\MessagingSystem.cpp" />
     <ClCompile Include="Core\World.cpp" />

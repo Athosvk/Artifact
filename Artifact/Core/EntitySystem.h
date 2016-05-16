@@ -1,27 +1,27 @@
 #pragma once
 #include <unordered_map>
-#include <map>
 #include <typeindex>
 #include <memory>
 
 #include "Component.h"
 #include "MessagingSystem.h"
 #include "ComponentMapper.h"
+#include "ComponentHandle.h"
 
 namespace Artifact
 {
     template<typename TComponentType>
     class ComponentAddedMessage : public Message
     {
-		TComponentType* m_AddedComponent;
+		ComponentHandle<TComponentType> m_AddedComponent;
 
     public:
-        ComponentAddedMessage(TComponentType* a_AddedComponent)
+        ComponentAddedMessage(ComponentHandle<TComponentType> a_AddedComponent)
             : m_AddedComponent(a_AddedComponent)
         {
         }
 
-		TComponentType* getAddedComponent() const
+		ComponentHandle<TComponentType> getAddedComponent() const
         {
             return m_AddedComponent;
         }
@@ -54,11 +54,11 @@ namespace Artifact
         {
         public:
             bool Active = true;
+			std::unordered_map<std::type_index, std::unique_ptr<BaseComponentHandle>> ComponentHandles;
         };
 
         //Unsigned used for game object id
-        std::unordered_map<std::type_index, std::map<unsigned, std::unique_ptr<Component>>> m_Components;
-        std::map<unsigned, EntityState> m_EntityStates;
+        std::unordered_map<unsigned, EntityState> m_EntityStates;
         MessagingSystem& m_MessagingSystem;
         unsigned m_LastID = 0;
 		ComponentMapper m_ComponentMapper;
@@ -66,45 +66,33 @@ namespace Artifact
     public:
         EntitySystem(MessagingSystem& a_MessagingSystem);
 
-        template<typename T>
-        T* addComponent(GameObject a_GameObject)
+        template<typename TComponentType>
+        ComponentHandle<TComponentType>& addComponent(GameObject a_GameObject)
         {
-            std::unique_ptr<Component> newComponent = std::make_unique<T>(a_GameObject);
-            T* componentHandle = static_cast<T*>(newComponent.get());
-            m_Components[std::type_index(typeid(T))].emplace(a_GameObject.getID(), std::move(newComponent));
-            m_MessagingSystem.broadcast<ComponentAddedMessage<T>>(componentHandle);
-            return componentHandle;
+			ComponentHandle<TComponentType> componentHandle = m_ComponentMapper.addComponent<TComponentType>(a_GameObject);
+            m_MessagingSystem.broadcast<ComponentAddedMessage<TComponentType>>(componentHandle);
+			auto result = m_EntityStates.at(a_GameObject.getID()).
+				ComponentHandles.emplace(typeid(TComponentType), std::make_unique<ComponentHandle<TComponentType>>(componentHandle));
+            return *static_cast<ComponentHandle<TComponentType>*>(result.first->second.get());
         }
 
-        template<typename T>
-        T* getComponent(unsigned a_GameObjectID) const
+        template<typename TComponentType>
+        ComponentHandle<TComponentType> getComponent(GameObject a_GameObject) const
         {
-            auto iterator = m_Components.find(typeid(T));
-            if(iterator != m_Components.end())
-            {
-                auto componentIterator = iterator->second.find(a_GameObjectID);
-                return componentIterator != iterator->second.end() ? static_cast<T*>(componentIterator->second.get()) : nullptr;
-            }
-            return nullptr;
+			auto entityIterator = m_EntityStates.find(a_GameObject.getID());
+			auto componentIterator = entityIterator->second.ComponentHandles.find(typeid(TComponentType));
+			ComponentHandle<TComponentType> handle = ComponentHandle<TComponentType>::NullHandle;
+			if(componentIterator != entityIterator->second.ComponentHandles.end())
+			{
+				handle = *static_cast<ComponentHandle<TComponentType>*>(componentIterator->second.get());
+			}
+            return handle;
         }
 
-        template<typename T>
-        std::vector<T*> getComponentsOfType() const
+        template<typename TComponentType>
+        std::vector<ComponentHandle<TComponentType>>& getComponentsOfType()
         {            
-            std::vector<T*> components;
-            auto iterator = m_Components.find(typeid(T));
-            if(iterator != m_Components.end())
-            {
-                components.reserve(iterator->second.size());
-                for(auto& keyValue : iterator->second)
-                {
-                    if(keyValue.second->isEnabled() && keyValue.second->getGameObject().isActive())
-                    {
-                        components.push_back(static_cast<T*>(keyValue.second.get()));
-                    }
-                }
-            }
-            return components;
+			return m_ComponentMapper.getComponentsOfType<TComponentType>();
         }
 
         template<typename T = GameObject>
@@ -115,9 +103,9 @@ namespace Artifact
             return T(id, *(this));
         }
 
-        bool isActive(GameObject a_EntityID);
-        void activate(GameObject a_EntityID);
-        void deactivate(GameObject a_EnittyID);
+        bool isActive(GameObject a_Entity);
+        void activate(GameObject a_Entity);
+        void deactivate(GameObject a_Enitty);
 
     private:
         unsigned generateNextID();

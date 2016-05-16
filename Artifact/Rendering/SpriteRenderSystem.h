@@ -10,7 +10,7 @@ namespace Artifact
     {
     private:
         SpriteBatch m_SpriteBatch;
-        Camera2D* m_CurrentCamera;
+        ComponentHandle<Camera2D> m_CurrentCamera = ComponentHandle<Camera2D>::NullHandle;
 
     public:
         SpriteRenderSystem(EntitySystem& a_EntitySystem, MessagingSystem& a_MessagingSystem);
