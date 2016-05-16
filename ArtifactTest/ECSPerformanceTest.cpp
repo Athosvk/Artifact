@@ -15,7 +15,7 @@ namespace ArtifactTest
 	public:
 		ECSPerformanceTest()
 		{
-			for(int i = 0; i < 32000; i++)
+			for(int i = 0; i < 100000; i++)
 			{
 				auto entity = m_EntitySystem.createEntity();
 				entity.addComponent<Artifact::SpriteRenderer>();
@@ -45,7 +45,7 @@ namespace ArtifactTest
 			timeTaken -= TestUtility::measureNS([this]
 			{
 				performComponentTypeFetch();
-			});
+			}) * 3;
 			std::string output = "Iteration test time taken: " + 
 				std::to_string(timeTaken / 1e6) + " ms\n";
 			Logger::WriteMessage(output.c_str());
