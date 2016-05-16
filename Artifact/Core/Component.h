@@ -1,6 +1,5 @@
 #pragma once
 #include "GameObject.h"
-#include "ComponentHandle.h"
 
 namespace Artifact
 {

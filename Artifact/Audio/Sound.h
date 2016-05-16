@@ -1,6 +1,7 @@
 #pragma once
-#include <SDLMixer/SDL_mixer.h>
 #include <string>
+
+struct Mix_Chunk;
 
 namespace Artifact
 {

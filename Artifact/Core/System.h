@@ -1,11 +1,10 @@
 #pragma once
 #include <vector>
 
-#include "MessagingSystem.h"
-
 namespace Artifact
 {
     class EntitySystem;
+	class MessagingSystem;
 
     class System
     {

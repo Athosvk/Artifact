@@ -1,5 +1,6 @@
 #include "System.h"
 #include "EntitySystem.h"
+#include "MessagingSystem.h"
 
 namespace Artifact
 {

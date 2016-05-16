@@ -1,4 +1,5 @@
 #include <exception>
+#include <SDLMixer/SDL_mixer.h>
 
 #include "Sound.h"
 #include "../ErrorHandler.h"

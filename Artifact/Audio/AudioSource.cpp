@@ -1,3 +1,5 @@
+#include <SDLMixer/SDL_mixer.h>
+
 #include "AudioSource.h"
 #include "Sound.h"
 
