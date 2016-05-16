@@ -23,7 +23,8 @@ namespace Artifact
 
 	public:
 		ComponentHandle(size_t a_Index, ComponentMap<TComponentType>* a_ComponentMap)
-			: m_ComponentMap(a_ComponentMap)
+			: m_ComponentMap(a_ComponentMap),
+			m_Index(a_Index)
 		{
 		}
 

@@ -33,6 +33,7 @@ namespace Artifact
 			if(iterator == m_Components.end())
 			{
 				addType<TComponentType>();
+				iterator = m_Components.find(typeid(TComponentType));
 			}
 			auto componentMap = static_cast<ComponentMap<TComponentType>*>(iterator->second.get());
 			auto handle = ComponentHandle<TComponentType>(componentMap->addComponent(a_GameObject), componentMap);

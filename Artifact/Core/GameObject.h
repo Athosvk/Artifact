@@ -12,7 +12,7 @@ namespace Artifact
         unsigned m_ID;
         EntitySystem& m_EntitySystem;
     protected:
-        ComponentHandle<Transform>& m_Transform;
+        ComponentHandle<Transform> m_Transform;
 
     public:
         GameObject(unsigned a_ID, EntitySystem& a_EntitySystem);

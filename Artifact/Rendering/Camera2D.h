@@ -26,8 +26,8 @@ namespace Artifact
     public:
         static const int PixelsPerMeter;
     private:
+		ComponentHandle<Transform> m_Transform;
         glm::mat4 m_ProjectionMatrix = glm::mat4(1.0f);
-        ComponentHandle<Transform> m_Transform;
         mutable bool m_Dirty = true;
         mutable glm::mat4 m_ViewProjection = glm::mat4(1.0f);
         mutable glm::mat4 m_InverseViewProjection = glm::mat4(1.0f);

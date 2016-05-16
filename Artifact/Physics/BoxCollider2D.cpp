@@ -16,7 +16,7 @@ namespace Artifact
 
     BoxCollider2D::~BoxCollider2D()
     {
-        m_Body->DestroyFixture(m_Fixture);
+        //m_Body->DestroyFixture(m_Fixture);
     }
 
     glm::vec2 BoxCollider2D::getDimensions() const
