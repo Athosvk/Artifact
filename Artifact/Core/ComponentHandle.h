@@ -27,7 +27,12 @@ namespace Artifact
 		{
 		}
 
-		TComponentType* operator-> ()
+		bool operator==(const ComponentHandle<TComponentType>& a_Other)
+		{
+			return m_Index == a_Other.m_Index && m_ComponentMap == a_Other.m_ComponentMap;
+		}
+
+		TComponentType* operator ->() const
 		{
 			return &m_ComponentMap->getComponent(m_Index);
 		}
@@ -36,7 +41,7 @@ namespace Artifact
 	template<typename TComponentType>
 	bool operator ==(ComponentHandle<TComponentType> a_Handle, std::nullptr_t a_Null)
 	{
-		return this == ComponentHandle<TComponentType>::NullHandle;
+		return a_Handle == ComponentHandle<TComponentType>::NullHandle;
 	}
 
 	template<typename TComponentType>
