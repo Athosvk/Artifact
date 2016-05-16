@@ -20,16 +20,6 @@ namespace Artifact
 		std::vector<TComponentType> m_Components;
 
 	public:
-		auto begin()->decltype(m_Components.begin())
-		{
-			return m_Components.begin();
-		}
-
-		auto end()->decltype(m_Components.end())
-		{
-			return m_Components.end();
-		}
-
 		size_t addComponent(GameObject a_GameObject)
 		{
 			m_Components.emplace_back(a_GameObject);
