@@ -33,21 +33,24 @@ namespace Artifact
         m_SpriteBatch.begin(m_CurrentCamera->getViewProjection(), ESpriteSortMode::BackToFront);
         for(auto sprite : m_EntitySystem.getComponentsOfType<SpriteRenderer>())
         {
-            auto transform = sprite->getComponent<Transform>();
-            auto dimensions = glm::vec2(sprite->Width, sprite->Height);
-            auto destinationRectangle = Rectangle(transform->getPosition() - dimensions * sprite->Pivot,
-                dimensions.x, dimensions.y);
+			if(sprite->isEnabled())
+			{
+				auto transform = sprite->getComponent<Transform>();
+				auto dimensions = glm::vec2(sprite->Width, sprite->Height);
+				auto destinationRectangle = Rectangle(transform->getPosition() - dimensions * sprite->Pivot,
+					dimensions.x, dimensions.y);
 
-            if(transform->getRotation() > 0.0f || transform->getRotation() < 0.0f)
-            {
-                m_SpriteBatch.draw(sprite->getTexture(), destinationRectangle, transform->getRotation(), 
-                    destinationRectangle.getPosition(), sprite->Color, sprite->UVRectangle, sprite->Depth);
-            }
-            else
-            {
-                m_SpriteBatch.draw(sprite->getTexture(), destinationRectangle, sprite->Color, sprite->UVRectangle, 
-                    sprite->Depth);
-            }
+				if(transform->getRotation() > 0.0f || transform->getRotation() < 0.0f)
+				{
+					m_SpriteBatch.draw(sprite->getTexture(), destinationRectangle, transform->getRotation(),
+						destinationRectangle.getPosition(), sprite->Color, sprite->UVRectangle, sprite->Depth);
+				}
+				else
+				{
+					m_SpriteBatch.draw(sprite->getTexture(), destinationRectangle, sprite->Color, sprite->UVRectangle,
+						sprite->Depth);
+				}
+			}
         }
         m_SpriteBatch.end();
     }

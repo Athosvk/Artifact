@@ -24,7 +24,10 @@ void PlayerInputSystem::handleInput()
 {
     for(auto player : m_EntitySystem.getComponentsOfType<PlayerInputComponent>())
     {
-        updatePlayerMovement(player);
+		if(player->isEnabled())
+		{
+			updatePlayerMovement(player);
+		}
     }
 }
 
