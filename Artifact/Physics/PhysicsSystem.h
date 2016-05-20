@@ -1,6 +1,4 @@
 #pragma once
-#include <Box2D/Box2D.h>
-
 #include "../Core/System.h"
 #include "PhysicsWorld.h"
 
@@ -17,13 +15,13 @@ namespace Artifact
     public:
         PhysicsSystem(EntitySystem& a_EntitySystem, MessagingSystem& a_MessagingSystem);
 
-        void registerListeners();
+	    virtual void registerListeners() override;
     private:
         void onRigidBodyAdd(ComponentHandle<RigidBody2D> a_RigidBody);
         void onColliderAdd(ComponentHandle<BoxCollider2D> a_Collider);
-        void registerActiveMessages(GameObject a_Entity);
+        void registerActiveMessages(GameObject a_Entity) const;
         void updatePhysics();
         void postPhysicsUpdate();
-        void updateTransforms();
+        void updateTransforms() const;
     };
 }

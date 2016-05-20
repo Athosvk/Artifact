@@ -1,7 +1,6 @@
 #pragma once
 #include <memory>
 #include <vector>
-#include <utility>
 #include <SDL/SDL.h>
 
 #include "EntitySystem.h"
@@ -21,7 +20,7 @@ namespace Artifact
         const GameTime& m_GameTime;
         
     public:
-        UpdateMessage(const GameTime& a_GameTime);
+	    explicit UpdateMessage(const GameTime& a_GameTime);
 
         const GameTime& getGameTime() const;
     };
@@ -35,7 +34,7 @@ namespace Artifact
         const std::vector<SDL_Event>& m_Events;
 
     public:
-        ProcessEventsMessage(const std::vector<SDL_Event>& a_Events);
+	    explicit ProcessEventsMessage(const std::vector<SDL_Event>& a_Events);
 
         const std::vector<SDL_Event>& getEvents() const;
     };

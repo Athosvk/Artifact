@@ -1,6 +1,4 @@
 #pragma once
-#include <vector>
-
 #include "MessagingSystem.h"
 
 namespace Artifact

@@ -3,7 +3,6 @@
 #include <typeindex>
 #include <memory>
 
-#include "Component.h"
 #include "MessagingSystem.h"
 #include "ComponentMapper.h"
 #include "ComponentHandle.h"
@@ -16,7 +15,7 @@ namespace Artifact
 		ComponentHandle<TComponentType> m_AddedComponent;
 
     public:
-        ComponentAddedMessage(ComponentHandle<TComponentType> a_AddedComponent)
+	    explicit ComponentAddedMessage(ComponentHandle<TComponentType> a_AddedComponent)
             : m_AddedComponent(a_AddedComponent)
         {
         }
@@ -32,7 +31,7 @@ namespace Artifact
         GameObject m_ActivatedEntity;
 
     public:
-        EntityActivatedMessage(GameObject a_Entity);
+	    explicit EntityActivatedMessage(GameObject a_Entity);
 
         GameObject getActivatedEntity() const;
     };
@@ -42,7 +41,7 @@ namespace Artifact
         GameObject m_DeactivatedEntity;
         
     public:
-        EntityDeactivatedMessage(GameObject a_Entity);
+	    explicit EntityDeactivatedMessage(GameObject a_Entity);
 
         GameObject getDeactivatedEntity() const;
     };
@@ -64,7 +63,7 @@ namespace Artifact
 		ComponentMapper m_ComponentMapper;
 
     public:
-        EntitySystem(MessagingSystem& a_MessagingSystem);
+	    explicit EntitySystem(MessagingSystem& a_MessagingSystem);
 
         template<typename TComponentType>
         ComponentHandle<TComponentType> addComponent(GameObject& a_GameObject)

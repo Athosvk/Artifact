@@ -6,8 +6,7 @@ namespace ArtifactTest
 	using namespace std::chrono;
 #endif
 
-	StopWatch::StopWatch()
-	{
+	StopWatch::StopWatch(): m_Finished(false) {
 	}
 
 	StopWatch StopWatch::startNew()

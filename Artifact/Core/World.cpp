@@ -30,8 +30,8 @@ namespace Artifact
 
     World::World(GameTime& a_GameTime, Game* a_CurrentGame)
         : m_EntitySystem(m_MessagingSystem),
-        m_GameTime(a_GameTime),
-        m_CurrentGame(a_CurrentGame)
+        m_CurrentGame(a_CurrentGame),
+        m_GameTime(a_GameTime)
     {
         addDefaultSystems();
     }

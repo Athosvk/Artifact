@@ -23,8 +23,8 @@ namespace Artifact
 
 	public:
 		ComponentHandle(size_t a_Index, ComponentMap<TComponentType>* a_ComponentMap)
-			: m_ComponentMap(a_ComponentMap),
-			m_Index(a_Index)
+			: m_Index(a_Index),
+			m_ComponentMap(a_ComponentMap)
 		{
 		}
 
@@ -47,25 +47,25 @@ namespace Artifact
 		ComponentHandle<TComponentType>(NullIndex, nullptr);
 
 	template<typename TComponentType>
-	bool operator ==(ComponentHandle<TComponentType> a_Handle, std::nullptr_t a_Null)
+	bool operator ==(ComponentHandle<TComponentType> a_Handle, std::nullptr_t)
 	{
 		return a_Handle == ComponentHandle<TComponentType>::NullHandle;
 	}
 
 	template<typename TComponentType>
-	bool operator ==(std::nullptr_t a_Null, ComponentHandle<TComponentType> a_Handle)
+	bool operator ==(std::nullptr_t, ComponentHandle<TComponentType> a_Handle)
 	{
 		return a_Handle == nullptr;
 	}
 
 	template<typename TComponentType>
-	bool operator !=(ComponentHandle<TComponentType> a_Handle, std::nullptr_t a_Null)
+	bool operator !=(ComponentHandle<TComponentType> a_Handle, std::nullptr_t)
 	{
 		return !(a_Handle == nullptr);
 	}
 
 	template<typename TComponentType>
-	bool operator !=(std::nullptr_t a_Null, ComponentHandle<TComponentType> a_Handle)
+	bool operator !=(std::nullptr_t, ComponentHandle<TComponentType> a_Handle)
 	{
 		return !(a_Handle == nullptr);
 	}

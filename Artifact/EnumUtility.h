@@ -25,29 +25,29 @@ namespace Artifact
         template<typename TEnumType>
         static TEnumType bitwiseEnumOR(TEnumType a_Value1, TEnumType a_Value2)
         {
-            return static_cast<TEnumType>(static_cast<std::underlying_type<TEnumType>::type>(a_Value1) |
-                static_cast<std::underlying_type<TEnumType>::type>(a_Value2));
+            return static_cast<TEnumType>(static_cast<typename std::underlying_type<TEnumType>::type>(a_Value1) |
+                static_cast<typename std::underlying_type<TEnumType>::type>(a_Value2));
         }
 
         template<typename TEnumType>
         static TEnumType bitwiseEnumAND(TEnumType a_Value1, TEnumType a_Value2)
         {
-            return static_cast<TEnumType>(static_cast<std::underlying_type<TEnumType>::type>(a_Value1) &
-                static_cast<std::underlying_type<TEnumType>::type>(a_Value2));
+            return static_cast<TEnumType>(static_cast<typename std::underlying_type<TEnumType>::type>(a_Value1) &
+                static_cast<typename std::underlying_type<TEnumType>::type>(a_Value2));
         }
 
         template<typename TEnumType>
         static TEnumType bitwiseEnumXOR(TEnumType a_Value1, TEnumType a_Value2)
         {
-            return static_cast<TEnumType>(static_cast<std::underlying_type<TEnumType>::type>(a_Value1) ^
-                static_cast<std::underlying_type<TEnumType>::type>(a_Value2));
+            return static_cast<TEnumType>(static_cast<typename std::underlying_type<TEnumType>::type>(a_Value1) ^
+                static_cast<typename std::underlying_type<TEnumType>::type>(a_Value2));
         }
 
         template<typename TEnumType>
         static bool hasFlag(TEnumType a_Value, TEnumType a_Flag)
         {
-            auto returnValue = static_cast<std::underlying_type<TEnumType>::type>(a_Value & a_Flag)
-                != static_cast<std::underlying_type<TEnumType>::type>(0);
+            auto returnValue = static_cast<typename std::underlying_type<TEnumType>::type>(a_Value & a_Flag)
+                != static_cast<typename std::underlying_type<TEnumType>::type>(0);
             return returnValue;
         }
     };

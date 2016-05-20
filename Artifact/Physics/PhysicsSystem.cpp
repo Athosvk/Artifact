@@ -3,8 +3,6 @@
 #include "RigidBody2D.h"
 #include "../Core/EntitySystem.h"
 #include "../Core/World.h"
-#include "../Transform.h"
-#include "../Game.h"
 
 namespace Artifact
 {
@@ -46,7 +44,7 @@ namespace Artifact
         m_PhysicsWorld.postPhysicsUpdate();
     }
 
-    void PhysicsSystem::updateTransforms()
+    void PhysicsSystem::updateTransforms() const
     {
         for(auto rigidBody : m_EntitySystem.getComponentsOfType<RigidBody2D>())
         {
@@ -82,7 +80,7 @@ namespace Artifact
         }
     }
 
-    void PhysicsSystem::registerActiveMessages(GameObject a_Entity)
+    void PhysicsSystem::registerActiveMessages(GameObject a_Entity) const
     {
         m_MessagingSystem.registerListener<EntityActivatedMessage>([](const Message* a_Message)
         {

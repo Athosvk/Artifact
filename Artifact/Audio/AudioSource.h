@@ -14,10 +14,10 @@ namespace Artifact
         float Volume = 1.0f;
 
     public:
-        AudioSource(GameObject a_Entity);
+        explicit AudioSource(GameObject a_Entity);
 
-        void play();
-        void stop();
+        void play() const;
+        void stop() const;
         void enableLooping();
         void disableLooping();
     };

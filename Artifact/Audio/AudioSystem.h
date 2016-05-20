@@ -11,6 +11,6 @@ namespace Artifact
 
         virtual void registerListeners() override;
     private:
-        void initialize();
+        void initialize() const;
     };
 }
