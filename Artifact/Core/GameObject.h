@@ -17,10 +17,10 @@ namespace Artifact
     public:
         GameObject(unsigned a_ID, EntitySystem& a_EntitySystem);
 
-        unsigned getID();
-        bool isActive();
-        void activate();
-        void deactivate();
+        unsigned getID() const;
+        bool isActive() const;
+        void activate() const;
+        void deactivate() const;
 
         template<typename TComponentType>
         ComponentHandle<TComponentType> getComponent() const

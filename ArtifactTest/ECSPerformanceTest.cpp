@@ -10,7 +10,7 @@ namespace ArtifactTest
 	TEST_CLASS(ECSPerformanceTest)
 	{
 		Artifact::MessagingSystem m_MessagingSystem;
-		Artifact::EntitySystem m_EntitySystem = (m_MessagingSystem);
+		Artifact::EntitySystem m_EntitySystem = Artifact::EntitySystem(m_MessagingSystem);
 
 	public:
 		ECSPerformanceTest()
