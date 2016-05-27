@@ -1,8 +1,6 @@
 #include "GameObject.h"
-#include "Component.h"
 #include "EntitySystem.h"
 #include "../Transform.h"
-#include "ComponentHandle.h"
 
 namespace Artifact
 {
@@ -13,22 +11,22 @@ namespace Artifact
     {
     }
 
-    unsigned GameObject::getID()
+    unsigned GameObject::getID() const
     {
         return m_ID;
     }
 
-    bool GameObject::isActive()
+    bool GameObject::isActive() const
     {
         return m_EntitySystem.isActive(*this);
     }
 
-    void GameObject::activate()
+    void GameObject::activate() const
     {
         m_EntitySystem.activate(*this);
     }
 
-    void GameObject::deactivate()
+    void GameObject::deactivate() const
     {
         m_EntitySystem.deactivate(*this);
     }

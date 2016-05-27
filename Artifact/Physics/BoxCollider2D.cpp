@@ -1,4 +1,4 @@
-#include <Box2D\Box2D.h>
+#include <Box2D/Box2D.h>
 
 #include "BoxCollider2D.h"
 #include "../Rendering/SpriteRenderer.h"
@@ -46,7 +46,7 @@ namespace Artifact
         m_FixtureDefinition.isSensor = false;
     }
 
-    uint16 BoxCollider2D::getLayer()
+    uint16 BoxCollider2D::getLayer() const
     {
         return m_FixtureDefinition.filter.categoryBits;
     }
@@ -56,7 +56,7 @@ namespace Artifact
         m_FixtureDefinition.filter.categoryBits = a_Layer;
     }
 
-    uint16 BoxCollider2D::getMask()
+    uint16 BoxCollider2D::getMask() const
     {
         return m_FixtureDefinition.filter.maskBits;
     }
@@ -77,7 +77,7 @@ namespace Artifact
         m_ShapeDirty = false;
     }
 
-    void BoxCollider2D::refreshFixtureData()
+    void BoxCollider2D::refreshFixtureData() const
     {
         m_Fixture->SetSensor(m_FixtureDefinition.isSensor);
     }

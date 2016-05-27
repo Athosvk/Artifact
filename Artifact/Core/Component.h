@@ -9,7 +9,7 @@ namespace Artifact
         bool m_Enabled = true;
 
     protected:
-        Component(GameObject a_GameObject);
+	    explicit Component(GameObject a_GameObject);
 
     public:
         template<typename TComponentType>

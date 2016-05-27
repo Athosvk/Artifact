@@ -1,6 +1,4 @@
 #pragma once
-#include <string>
-
 #include "TextureCache.h"
 #include "ResourceCache.h"
 #include "../Rendering/SpriteFont.h"

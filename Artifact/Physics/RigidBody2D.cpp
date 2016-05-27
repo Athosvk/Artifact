@@ -9,7 +9,7 @@ namespace Artifact
     {
     }
 
-    void RigidBody2D::setVelocity(glm::vec2 a_Velocity)
+    void RigidBody2D::setVelocity(glm::vec2 a_Velocity) const
     {
         m_Body->SetLinearVelocity(b2Vec2(a_Velocity.x, a_Velocity.y));
     }

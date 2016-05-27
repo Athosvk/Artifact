@@ -10,7 +10,7 @@ namespace ArtifactTest
 	class StopWatch
 	{
 	private:
-		bool m_Finished;
+		bool m_Finished = false;
 
 #if defined(WIN32) || defined(_WIN32) || defined(_WIN64)
 		LARGE_INTEGER m_StartTime;

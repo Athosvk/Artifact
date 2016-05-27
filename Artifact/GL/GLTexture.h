@@ -13,7 +13,7 @@ namespace Artifact
 
     public:
         GLTexture(float a_Width, float a_Height);
-        GLTexture(GLuint a_ID);
+	    explicit GLTexture(GLuint a_ID);
         ~GLTexture();
 
         bool operator >(const GLTexture& a_Other) const;

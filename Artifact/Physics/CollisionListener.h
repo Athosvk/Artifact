@@ -3,7 +3,6 @@
 
 #include "../Core/MessagingSystem.h"
 #include "../Core/MessageQueue.h"
-#include "CollisionMessages.h"
 #include "BoxCollider2D.h"
 
 namespace Artifact
@@ -15,7 +14,7 @@ namespace Artifact
         MessageQueue m_CollisionQueue;
 
     public:
-        CollisionListener(MessagingSystem& a_MessagingSystem);
+	    explicit CollisionListener(MessagingSystem& a_MessagingSystem);
 
         virtual void BeginContact(b2Contact* a_Contact) override;
         virtual void EndContact(b2Contact* a_Contact) override;

@@ -1,5 +1,3 @@
-#include <SDLMixer/SDL_mixer.h>
-
 #include "ResourceManager.h"
 
 namespace Artifact

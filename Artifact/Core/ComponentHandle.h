@@ -43,8 +43,8 @@ namespace Artifact
 		/// <param name="a_Index">Index of the component pointing to</param>
 		/// <param name="a_ComponentMap">The ComponentMap that has the component stored </param>
 		ComponentHandle(size_t a_Index, ComponentMap<TComponentType>* a_ComponentMap)
-			: m_ComponentMap(a_ComponentMap),
-			m_Index(a_Index)
+			: m_Index(a_Index),
+			m_ComponentMap(a_ComponentMap)
 		{
 		}
 		
@@ -76,7 +76,7 @@ namespace Artifact
 	/// <param name="a_Null">The nullptr type to compare to</param>
 	/// <returns> Whether the ComponentHandle instance is equal to nullptr </returns>
 	template<typename TComponentType>
-	bool operator ==(ComponentHandle<TComponentType> a_Handle, std::nullptr_t a_Null)
+	bool operator ==(ComponentHandle<TComponentType> a_Handle, std::nullptr_t)
 	{
 		return a_Handle == ComponentHandle<TComponentType>::NullHandle;
 	}
@@ -86,7 +86,7 @@ namespace Artifact
 	/// <param name="a_Handle">The ComponentHandle to compare</param>
 	/// <returns> Whether the ComponentHandle instance is equal to nullptr </returns>
 	template<typename TComponentType>
-	bool operator ==(std::nullptr_t a_Null, ComponentHandle<TComponentType> a_Handle)
+	bool operator ==(std::nullptr_t, ComponentHandle<TComponentType> a_Handle)
 	{
 		return a_Handle == nullptr;
 	}
@@ -96,7 +96,7 @@ namespace Artifact
 	/// <param name="a_Null">The nullptr type to compare to</param>
 	/// <returns> Whether the ComponentHandle instance is not equal to nullptr </returns>
 	template<typename TComponentType>
-	bool operator !=(ComponentHandle<TComponentType> a_Handle, std::nullptr_t a_Null)
+	bool operator !=(ComponentHandle<TComponentType> a_Handle, std::nullptr_t)
 	{
 		return !(a_Handle == nullptr);
 	}
@@ -106,7 +106,7 @@ namespace Artifact
 	/// <param name="a_Handle">The ComponentHandle to compare</param>
 	/// <returns> Whether the ComponentHandle instance is not equal to nullptr </returns>
 	template<typename TComponentType>
-	bool operator !=(std::nullptr_t a_Null, ComponentHandle<TComponentType> a_Handle)
+	bool operator !=(std::nullptr_t, ComponentHandle<TComponentType> a_Handle)
 	{
 		return !(a_Handle == nullptr);
 	}

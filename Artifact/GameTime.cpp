@@ -1,4 +1,4 @@
-#include <SDL\SDL.h>
+#include <SDL/SDL.h>
 
 #include "GameTime.h"
 

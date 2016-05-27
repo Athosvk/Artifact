@@ -10,7 +10,7 @@ namespace Artifact
     {
     }
 
-    void AudioSource::play()
+    void AudioSource::play() const
     {
         Sound->setVolume(static_cast<unsigned>(Volume * MIX_MAX_VOLUME));
         if(m_Loop)
@@ -23,7 +23,7 @@ namespace Artifact
         }
     }
 
-    void AudioSource::stop()
+    void AudioSource::stop() const
     {
         Sound->stop();
     }
