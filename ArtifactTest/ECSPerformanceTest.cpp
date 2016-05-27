@@ -41,12 +41,8 @@ namespace ArtifactTest
 				entitySystem.addComponent<Artifact::RigidBody2D>(entity);
 				entitySystem.addComponent<Artifact::BoxCollider2D>(entity);
 			});
-			timeTaken -= TestUtility::measureNS([&entitySystem]()
-			{
-				entitySystem.createEntity();
-			});
 			std::string output = "Add component test time taken: " + std::to_string(timeTaken / 1e6) + " ms";
-			Logger::WriteMessage(output.c_str());
+			//Logger::WriteMessage(output.c_str());
 			Assert::IsTrue(timeTaken <= 5e4);
 		}
 		
@@ -69,18 +65,18 @@ namespace ArtifactTest
 		/// </summary>
 		TEST_METHOD(TestIterationSingleType)
 		{
-			auto timeTaken = TestUtility::measureNS([this]
+			auto spriteRenderers = m_EntitySystem.getComponentsOfType<Artifact::SpriteRenderer>();
+			auto timeTaken = TestUtility::measureNS([spriteRenderers]
 			{
-				for(auto component : m_EntitySystem.getComponentsOfType<Artifact::SpriteRenderer>())
+				for(auto component : spriteRenderers)
 				{
-					component->Color = Artifact::Color::White;
 					component->Width = 100.0f;
 					component->Height *= 1.0001f;
+					component->Color = Artifact::Color::White;
+					component->UVRectangle = component->UVRectangle;
+					component->Depth = 1.0f;
+					component->Pivot = glm::vec2(0.0f, 0.0f);
 				}
-			});
-			timeTaken -= TestUtility::measureNS([this]
-			{
-				performComponentTypeFetch();
 			});
 			std::string output = "Single type iteration test time taken: " +
 				std::to_string(timeTaken / 1e6) + " ms";
@@ -94,30 +90,29 @@ namespace ArtifactTest
 		/// </summary>
 		TEST_METHOD(TestIterationMultiType)
 		{
-			auto timeTaken = TestUtility::measureNS([this]
+			auto spriteRenderers = m_EntitySystem.getComponentsOfType<Artifact::SpriteRenderer>();
+			auto sources = m_EntitySystem.getComponentsOfType<Artifact::AudioSource>();
+			auto text = m_EntitySystem.getComponentsOfType<Artifact::TextComponent>();
+			auto timeTaken = TestUtility::measureNS([spriteRenderers, sources, text]
 			{
-				for(auto component : m_EntitySystem.getComponentsOfType<Artifact::SpriteRenderer>())
+				for(auto component : spriteRenderers)
 				{
+					component->Height *= 1.0001f;
 					component->Color = Artifact::Color::Black;
 					component->Depth++;
-					component->Height *= 1.0001f;
 				}
-				for(auto component : m_EntitySystem.getComponentsOfType<Artifact::AudioSource>())
+				for(auto component : sources)
 				{
-					component->Volume++;
 					component->Sound = nullptr;
+					component->Volume++;
 				}
-				for(auto component : m_EntitySystem.getComponentsOfType<Artifact::TextComponent>())
+				for(auto component : text)
 				{
+					component->Depth = 1.0f;
 					component->Color.r *= 1.11f;
 					component->Color.g += 1.0f;
-					component->Depth = 1.0f;
 				}
 			});
-			timeTaken -= TestUtility::measureNS([this]
-			{
-				performComponentTypeFetch();
-			}) * 3;
 			std::string output = "Multitype test time taken: " + 
 				std::to_string(timeTaken / 1e6) + " ms";
 			Logger::WriteMessage(output.c_str());
