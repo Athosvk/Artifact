@@ -1,16 +1,15 @@
 #include "Camera2D.h"
 #include "..\MathHelper.h"
 #include "Window.h"
-#include "../Transform.h"
 
 namespace Artifact
 {
-    OnCameraChangedMessage::OnCameraChangedMessage(Camera2D* a_NewCamera)
+    OnCameraChangedMessage::OnCameraChangedMessage(ComponentHandle<Camera2D> a_NewCamera)
         : m_NewCamera(a_NewCamera)
     {
     }
 
-    Camera2D* OnCameraChangedMessage::getNewCamera() const
+    ComponentHandle<Camera2D> OnCameraChangedMessage::getNewCamera() const
     {
         return m_NewCamera;
     }
@@ -18,9 +17,9 @@ namespace Artifact
     const int Camera2D::PixelsPerMeter = 100;
 
     Camera2D::Camera2D(GameObject a_GameObject)
-        : Component(a_GameObject)
+        : Component(a_GameObject),
+		m_Transform(getComponent<Transform>())
     {
-        m_Transform = getComponent<Transform>();
         constructProjectionMatrix();
         constructMatrix();
     }

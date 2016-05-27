@@ -1,5 +1,4 @@
 #pragma once
-#include <glm/glm.hpp>
 #include <SDL/SDL.h>
 #include <vector>
 #include <array>
@@ -22,7 +21,7 @@ namespace Artifact
         static std::array<bool, ButtonCount> s_CurrentlyPressed;
         static std::array<bool, ButtonCount> s_PreviouslyPressed;
         static glm::vec2 s_Position;
-        static Camera2D* s_CurrentCamera;
+        static ComponentHandle<Camera2D> s_CurrentCamera;
 
         SDL_MouseMotionEvent m_CurrentMotion;
         std::vector<SDL_MouseButtonEvent> m_ButtonEvents;
@@ -33,16 +32,16 @@ namespace Artifact
 
         void process(SDL_MouseButtonEvent a_ButtonEvent);
         void process(SDL_MouseMotionEvent a_MotionEvent);
-        void process(SDL_MouseWheelEvent a_ScrollEvent);
+        void process(SDL_MouseWheelEvent a_ScrollEvent) const;
         void update();
-        void onCameraChange(Camera2D* a_NewCamera);
+        void onCameraChange(ComponentHandle<Camera2D> a_NewCamera) const;
         static bool isButtonPressed(EMouseButton a_MouseButton);
         static bool isButtonDown(EMouseButton a_MouseButton);
         static glm::vec2 getScreenPosition();
         static glm::vec2 getWorldPosition();
 
     private:
-        void updatePosition();
+        void updatePosition() const;
         void updateButtonStates();
     };
 }

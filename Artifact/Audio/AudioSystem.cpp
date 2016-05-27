@@ -21,7 +21,7 @@ namespace Artifact
     {
     }
 
-    void AudioSystem::initialize()
+    void AudioSystem::initialize() const
     {
         const int InitializationFailed = -1;
         if(Mix_Init(MIX_InitFlags::MIX_INIT_MP3 | MIX_InitFlags::MIX_INIT_OGG) == InitializationFailed)

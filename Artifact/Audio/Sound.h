@@ -1,6 +1,7 @@
 #pragma once
-#include <SDLMixer/SDL_mixer.h>
 #include <string>
+
+struct Mix_Chunk;
 
 namespace Artifact
 {
@@ -15,11 +16,11 @@ namespace Artifact
         Mix_Chunk* m_SoundChunk;
 
     public:
-        Sound(const std::string a_FilePath);
+        explicit Sound(const std::string a_FilePath);
         ~Sound();
 
         void play(int a_LoopCount = 0);
-        void stop();
-        void setVolume(unsigned a_Volume);
+        void stop() const;
+        void setVolume(unsigned a_Volume) const;
     };
 }

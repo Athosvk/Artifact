@@ -5,7 +5,7 @@ namespace Artifact
     std::array<bool, Mouse::ButtonCount> Mouse::s_CurrentlyPressed;
     std::array<bool, Mouse::ButtonCount> Mouse::s_PreviouslyPressed;
     glm::vec2 Mouse::s_Position;
-    Camera2D* Mouse::s_CurrentCamera;
+    ComponentHandle<Camera2D> Mouse::s_CurrentCamera = ComponentHandle<Camera2D>::NullHandle;
 
     glm::vec2 Mouse::getScreenPosition()
     {
@@ -27,7 +27,7 @@ namespace Artifact
         m_CurrentMotion = a_MotionEvent;
     }
 
-    void Mouse::process(SDL_MouseWheelEvent)
+    void Mouse::process(SDL_MouseWheelEvent) const
     {
 
     }
@@ -38,7 +38,7 @@ namespace Artifact
         updateButtonStates();
     }
 
-    void Mouse::onCameraChange(Camera2D* a_NewCamera)
+    void Mouse::onCameraChange(ComponentHandle<Camera2D> a_NewCamera) const
     {
         s_CurrentCamera = a_NewCamera;
     }
@@ -53,7 +53,7 @@ namespace Artifact
         return s_CurrentlyPressed[static_cast<int>(a_MouseButton)];
     }
 
-    void Mouse::updatePosition()
+    void Mouse::updatePosition() const
     {
         s_Position.x = static_cast<float>(m_CurrentMotion.x);
         s_Position.y = static_cast<float>(m_CurrentMotion.y);

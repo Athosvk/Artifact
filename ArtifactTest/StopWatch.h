@@ -19,7 +19,6 @@ namespace ArtifactTest
         std::chrono::high_resolution_clock::time_point m_StartTime;
         std::chrono::high_resolution_clock::time_point m_EndTime;
 #endif
-
     public:
         StopWatch();
 
@@ -34,7 +33,7 @@ namespace ArtifactTest
 #if defined(WIN32) || defined(_WIN32) || defined(_WIN64)
         LARGE_INTEGER getCurrentTime();
 #else
-        std::chrono::system_clock::time_point getCurrentTime();
+        std::chrono::high_resolution_clock::time_point getCurrentTime();
 #endif
     };
 };

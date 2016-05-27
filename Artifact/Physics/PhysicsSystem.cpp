@@ -3,8 +3,6 @@
 #include "RigidBody2D.h"
 #include "../Core/EntitySystem.h"
 #include "../Core/World.h"
-#include "../Transform.h"
-#include "../Game.h"
 
 namespace Artifact
 {
@@ -46,7 +44,7 @@ namespace Artifact
         m_PhysicsWorld.postPhysicsUpdate();
     }
 
-    void PhysicsSystem::updateTransforms()
+    void PhysicsSystem::updateTransforms() const
     {
         for(auto rigidBody : m_EntitySystem.getComponentsOfType<RigidBody2D>())
         {
@@ -54,7 +52,7 @@ namespace Artifact
         }
     }
 
-    void PhysicsSystem::onColliderAdd(BoxCollider2D* a_Collider)
+    void PhysicsSystem::onColliderAdd(ComponentHandle<BoxCollider2D> a_Collider)
     {
         auto rigidBody = a_Collider->getComponent<RigidBody2D>();
         if(rigidBody != nullptr)
@@ -68,7 +66,7 @@ namespace Artifact
         registerActiveMessages(a_Collider->getGameObject());
     }
 
-    void PhysicsSystem::onRigidBodyAdd(RigidBody2D* a_RigidBody)
+    void PhysicsSystem::onRigidBodyAdd(ComponentHandle<RigidBody2D> a_RigidBody)
     {
         auto collider = a_RigidBody->getComponent<BoxCollider2D>();
         if(collider != nullptr)
@@ -82,7 +80,7 @@ namespace Artifact
         }
     }
 
-    void PhysicsSystem::registerActiveMessages(GameObject a_Entity)
+    void PhysicsSystem::registerActiveMessages(GameObject a_Entity) const
     {
         m_MessagingSystem.registerListener<EntityActivatedMessage>([](const Message* a_Message)
         {

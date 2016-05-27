@@ -19,3 +19,7 @@
 #include <Artifact/Core/System.h>
 #include <Artifact/Core/World.h>
 #include <Artifact/Rendering/SpriteRenderer.h>
+#include <Artifact/Audio/AudioSource.h>
+#include <Artifact/Rendering/TextComponent.h>
+#include <Artifact/Physics/BoxCollider2D.h>
+#include <Artifact/Physics/RigidBody2D.h>

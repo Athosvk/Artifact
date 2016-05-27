@@ -37,7 +37,7 @@ namespace ArtifactTest
         auto timePassed = (m_Finished ? m_EndTime.QuadPart : getCurrentTime().QuadPart) - m_StartTime.QuadPart;
         LARGE_INTEGER frequency;
         QueryPerformanceFrequency(&frequency);
-        return (timePassed * 1000000) / frequency.QuadPart;
+        return (timePassed * static_cast<long long>(1e9)) / frequency.QuadPart;
     }
     
     LARGE_INTEGER StopWatch::getCurrentTime()
@@ -53,10 +53,9 @@ namespace ArtifactTest
         return duration_cast<nanoseconds>(timePassed).count();
     }
     
-    system_clock::time_point StopWatch::getCurrentTime()
+    high_resolution_clock::time_point StopWatch::getCurrentTime()
     {
         return high_resolution_clock::now();
     }
 #endif
-
 };

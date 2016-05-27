@@ -1,6 +1,5 @@
 #pragma once
 #include <glm/glm.hpp>
-#include <memory>
 
 #include "Core/Component.h"
 
@@ -16,7 +15,7 @@ namespace Artifact
         bool m_Dirty = true;
 
     public:
-        Transform(GameObject a_GameObject);
+	    explicit Transform(GameObject a_GameObject);
 
         void translate(glm::vec2 a_Translation);
         void rotate(float a_Angles);

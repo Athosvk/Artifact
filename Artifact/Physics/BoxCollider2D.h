@@ -1,6 +1,6 @@
 #pragma once
 #include <Box2D/Box2D.h>
-#include <glm\glm.hpp>
+#include <glm/glm.hpp>
 
 #include "../Core/Component.h"
 
@@ -24,7 +24,7 @@ namespace Artifact
         uint16 m_Mask = 0;
 
     public:
-        BoxCollider2D(GameObject a_GameObject);
+	    explicit BoxCollider2D(GameObject a_GameObject);
         ~BoxCollider2D();
 
         glm::vec2 getDimensions() const;
@@ -32,14 +32,14 @@ namespace Artifact
         bool isTrigger() const;
         void enableTriggerState();
         void disableTriggerState();
-        uint16 getLayer();
+        uint16 getLayer() const;
         void setLayer(uint16 a_Layer);
-        uint16 getMask();
+        uint16 getMask() const;
         void setMask(uint16 a_Mask);
 
     private:
         void attachFixture();
-        void refreshFixtureData();
+        void refreshFixtureData() const;
         void onPrePhysicsUpdate();
     };
 }

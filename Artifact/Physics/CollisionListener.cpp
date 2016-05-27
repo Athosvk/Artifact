@@ -1,4 +1,5 @@
 #include "CollisionListener.h"
+#include "CollisionMessages.h"
 
 namespace Artifact
 {

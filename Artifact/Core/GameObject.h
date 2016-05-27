@@ -1,8 +1,10 @@
 #pragma once
+#include "ComponentHandle.h"
+
 namespace Artifact
 {
     class EntitySystem;
-    class Transform;
+	class Transform;
 
     class GameObject
     {
@@ -10,32 +12,32 @@ namespace Artifact
         unsigned m_ID;
         EntitySystem& m_EntitySystem;
     protected:
-        Transform* m_Transform;
+        ComponentHandle<Transform> m_Transform;
 
     public:
         GameObject(unsigned a_ID, EntitySystem& a_EntitySystem);
 
-        unsigned getID();
-        bool isActive();
-        void activate();
-        void deactivate();
+        unsigned getID() const;
+        bool isActive() const;
+        void activate() const;
+        void deactivate() const;
 
-        template<typename T>
-        T* getComponent() const
+        template<typename TComponentType>
+        ComponentHandle<TComponentType> getComponent() const
         {
-            return m_EntitySystem.getComponent<T>(m_ID);
+            return m_EntitySystem.getComponent<TComponentType>(*this);
         }
 
         template<>
-        Transform* getComponent() const
+        ComponentHandle<Transform> getComponent() const
         {
             return m_Transform;
         }
 
-        template<typename T>
-        T* addComponent()
+        template<typename TComponentType>
+        ComponentHandle<TComponentType> addComponent()
         {
-            return m_EntitySystem.addComponent<T>(*this);
+            return m_EntitySystem.addComponent<TComponentType>(*this);
         }
     };
 }
