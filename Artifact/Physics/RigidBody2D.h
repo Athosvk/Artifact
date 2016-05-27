@@ -16,15 +16,15 @@ namespace Artifact
         b2Body* m_Body = nullptr;
 
     public:
-        RigidBody2D(GameObject a_GameObject);
+        explicit RigidBody2D(GameObject a_GameObject);
 
         glm::vec2 getVelocity() const;
-        void setVelocity(glm::vec2 a_Velocity);
-        void setGravityScale(float a_Scale);
-        void makeKinematic();
-        void makeDynamic();
+        void setVelocity(glm::vec2 a_Velocity) const;
+        void setGravityScale(float a_Scale) const;
+        void makeKinematic() const;
+        void makeDynamic() const;
         bool isKinematic() const;
     private:
-        void updateState();
+        void updateState() const;
     };
 }

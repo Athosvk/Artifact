@@ -15,7 +15,7 @@ namespace ArtifactTest
 	public:
 		ECSPerformanceTest()
 		{
-			for(int i = 0; i < 200000; i++)
+			for(int i = 0; i < 100000; i++)
 			{
 				auto entity = m_EntitySystem.createEntity();
 				entity.addComponent<Artifact::SpriteRenderer>();
@@ -30,7 +30,7 @@ namespace ArtifactTest
 		/// </summary>
 		TEST_METHOD(TestCreation)
 		{
-			Artifact::EntitySystem entitySystem = (m_MessagingSystem);
+			Artifact::EntitySystem entitySystem = Artifact::EntitySystem(m_MessagingSystem);
 			long long timeTaken = 0;
 			auto entity = entitySystem.createEntity();
 			timeTaken += TestUtility::measureNS([&entitySystem, &entity]()
@@ -42,7 +42,7 @@ namespace ArtifactTest
 				entitySystem.addComponent<Artifact::BoxCollider2D>(entity);
 			});
 			std::string output = "Add component test time taken: " + std::to_string(timeTaken / 1e6) + " ms";
-			//Logger::WriteMessage(output.c_str());
+			Logger::WriteMessage(output.c_str());
 			Assert::IsTrue(timeTaken <= 5e4);
 		}
 		
@@ -93,7 +93,7 @@ namespace ArtifactTest
 			auto spriteRenderers = m_EntitySystem.getComponentsOfType<Artifact::SpriteRenderer>();
 			auto sources = m_EntitySystem.getComponentsOfType<Artifact::AudioSource>();
 			auto text = m_EntitySystem.getComponentsOfType<Artifact::TextComponent>();
-			auto timeTaken = TestUtility::measureNS([spriteRenderers, sources, text]
+			auto timeTaken = TestUtility::measureNS([&spriteRenderers, &sources, &text]
 			{
 				for(auto component : spriteRenderers)
 				{
@@ -113,7 +113,7 @@ namespace ArtifactTest
 					component->Color.g += 1.0f;
 				}
 			});
-			std::string output = "Multitype test time taken: " + 
+			std::string output = "Multitype test time taken: " +
 				std::to_string(timeTaken / 1e6) + " ms";
 			Logger::WriteMessage(output.c_str());
 			Assert::IsTrue(timeTaken <= 6e6);
