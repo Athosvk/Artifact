@@ -3,14 +3,25 @@
 
 namespace Artifact
 {
-    class AudioSystem : public System
+	/// <summary>
+	/// Represents the overall audio system, managing the interface to the library it encapsulates
+	/// </summary>
+	/// <seealso cref="System" />
+	class AudioSystem : public System
     {
     public:
-        AudioSystem(EntitySystem& a_EntitySystem, MessagingSystem& a_MessagingSystem);
-        virtual ~AudioSystem() override;
+		/// <summary>Initializes a new instance of the <see cref="AudioSystem"/> class.</summary>
+		/// <param name="a_EntitySystem">The entity system to retrieve the components to operate on</param>
+		/// <param name="a_MessagingSystem">The messaging system to use for receiving and sending messages</param>
+		AudioSystem(EntitySystem& a_EntitySystem, MessagingSystem& a_MessagingSystem);
 
-        virtual void registerListeners() override;
+		/// <summary>Finalizes an instance of the <see cref="AudioSystem"/> class.</summary>
+		virtual ~AudioSystem() override;
+
+		/// <summary>Allows for the system to register its listeners to the messagingsystem</summary>
+		virtual void registerListeners() override;
     private:
-        void initialize() const;
+		/// <summary>Initializes the instance of the audio library</summary>
+		void initialize() const;
     };
 }

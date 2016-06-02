@@ -56,7 +56,6 @@ namespace Artifact
 			std::unordered_map<std::type_index, std::unique_ptr<BaseComponentHandle>> ComponentHandles;
         };
 
-        //Unsigned used for game object id
         std::unordered_map<unsigned, EntityState> m_EntityStates;
         MessagingSystem& m_MessagingSystem;
         unsigned m_LastID = 0;

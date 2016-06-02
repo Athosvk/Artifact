@@ -6,8 +6,8 @@
 
 namespace Artifact
 {
-    const int Sound::LoopForever = -1;
-    const int Sound::PlayFailed = -1;
+	const int Sound::LoopForever = -1;
+	const int Sound::PlayFailed = -1;
 
     Sound::Sound(const std::string a_FilePath)
     {
