@@ -2,7 +2,7 @@
 
 namespace Artifact
 {
-    MessageQueue::QueuedMessage::QueuedMessage(std::unique_ptr<Artifact::Message>&& a_Message, 
+    MessageQueue::QueuedMessage::QueuedMessage(std::unique_ptr<Artifact::Message> a_Message, 
         std::type_index a_Type, GameObject a_Target)
         : m_Message(std::move(a_Message)),
         m_MessageType(a_Type),
