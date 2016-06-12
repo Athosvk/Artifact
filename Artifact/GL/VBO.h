@@ -5,18 +5,32 @@
 #include "../Rendering/Vertex.h"
 
 namespace Artifact
-{
-    class VBO
+{	
+	/// <summary>
+	/// Represents an OpenGL vertex buffer object that vertices can be stored in using
+	/// the retrieved ID from the OpenGL API
+	/// </summary>
+	class VBO
     {
-    private:
-        GLuint m_ID = 0;
+    private:		
+		/// <summary>The identifier assigned by OpenGL for this buffer</summary>
+		GLuint m_ID = 0;
 
-    public:
-        VBO();
-        ~VBO();
+    public:		
+		/// <summary>Initializes a new instance of the <see cref="VBO"/> class.</summary>
+		VBO();
 
-        void uploadData(const std::vector<Vertex>& a_Data) const;
-        void bind() const;
-        void unbind() const;
+		/// <summary>Finalizes an instance of the <see cref="VBO"/> class.</summary>
+		~VBO();
+
+		/// <summary>Uploads the vertex data</summary>
+		/// <param name="a_Data">The data to upload</param>
+		void uploadData(const std::vector<Vertex>& a_Data) const;
+		
+		/// <summary>Binds the VBO to make its vertex data part of the current state</summary>
+		void bind() const;
+		
+		/// <summary>Sets the VBO state to its default, unbinding this VBO</summary>
+		void unbind() const;
     };
 }

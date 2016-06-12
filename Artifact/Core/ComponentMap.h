@@ -39,7 +39,7 @@ namespace Artifact
 		/// <summary> Gets the instance of the component at the given index </summary>
 		/// <param name="a_Index">Index of the component</param>
 		/// <returns> A reference to the component at index a_Index </returns>
-		TComponentType& getComponent(size_t a_Index)
+		inline TComponentType& getComponent(size_t a_Index)
 		{
 			return m_Components[a_Index];
 		}

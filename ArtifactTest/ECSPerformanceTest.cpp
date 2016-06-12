@@ -56,6 +56,8 @@ namespace ArtifactTest
 			{
 				performComponentTypeFetch();
 			});
+			std::string output = "Component fetch test time taken: " + std::to_string(timeTaken / 1e6) + " ms";
+			Logger::WriteMessage(output.c_str());
 			Assert::IsTrue(timeTaken <= 1e3);
 		}
 		
@@ -76,12 +78,14 @@ namespace ArtifactTest
 					component->UVRectangle = component->UVRectangle;
 					component->Depth = 1.0f;
 					component->Pivot = glm::vec2(0.0f, 0.0f);
+
+					auto text = component->getComponent<Artifact::Transform>();
 				}
 			});
 			std::string output = "Single type iteration test time taken: " +
 				std::to_string(timeTaken / 1e6) + " ms";
 			Logger::WriteMessage(output.c_str());
-			Assert::IsTrue(timeTaken <= 2e6);
+			Assert::IsTrue(timeTaken <= 2e8);
 		}
 		
 		/// <summary>
@@ -116,7 +120,7 @@ namespace ArtifactTest
 			std::string output = "Multitype test time taken: " +
 				std::to_string(timeTaken / 1e6) + " ms";
 			Logger::WriteMessage(output.c_str());
-			Assert::IsTrue(timeTaken <= 6e6);
+			Assert::IsTrue(timeTaken <= 6e9);
 		}
 		
 		/// <summary>

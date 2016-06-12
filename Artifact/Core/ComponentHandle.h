@@ -58,7 +58,7 @@ namespace Artifact
 		
 		/// <summary> Dereferences the ComponentHandle so that the component itself can be accessed </summary>
 		/// <returns> The underlying component </returns>
-		TComponentType* operator ->() const
+		inline TComponentType* operator ->() const
 		{
 			return &m_ComponentMap->getComponent(m_Index);
 		}
