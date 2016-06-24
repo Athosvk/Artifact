@@ -33,7 +33,7 @@ namespace Artifact
         m_SpriteBatch.begin(m_CurrentCamera->getViewProjection(), ESpriteSortMode::BackToFront);
         for(auto sprite : m_EntitySystem.getComponentsOfType<SpriteRenderer>())
         {
-			if(sprite->isEnabled())
+			if(sprite->isEnabled() && sprite->getGameObject().isActive())
 			{
 				auto transform = sprite->getComponent<Transform>();
 				auto dimensions = glm::vec2(sprite->Width, sprite->Height);
