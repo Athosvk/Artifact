@@ -5,6 +5,7 @@
 #include "../Input/InputSystem.h"
 #include "../Rendering/UIRenderingSystem.h"
 #include "../Audio/AudioSystem.h"
+#include "../Rendering/ParticleSystem.h"
 
 namespace Artifact
 {
@@ -46,6 +47,7 @@ namespace Artifact
         addSystem<PhysicsSystem>();
         addSystem<UIRenderingSystem>();
         addSystem<AudioSystem>();
+		addSystem<ParticleSystem>();
     }
 
     void World::awake()

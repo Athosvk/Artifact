@@ -57,6 +57,8 @@
     <ClCompile Include="Random.cpp" />
     <ClCompile Include="Rectangle.cpp" />
     <ClCompile Include="Rendering\Camera2D.cpp" />
+    <ClCompile Include="Rendering\ParticleEmitter.cpp" />
+    <ClCompile Include="Rendering\ParticleSystem.cpp" />
     <ClCompile Include="Rendering\SpriteFont.cpp" />
     <ClCompile Include="Rendering\SpriteRenderSystem.cpp" />
     <ClCompile Include="Rendering\SpriteRenderer.cpp" />
@@ -113,6 +115,8 @@
     <ClInclude Include="Random.h" />
     <ClInclude Include="Rectangle.h" />
     <ClInclude Include="Rendering\Camera2D.h" />
+    <ClInclude Include="Rendering\ParticleEmitter.h" />
+    <ClInclude Include="Rendering\ParticleSystem.h" />
     <ClInclude Include="Rendering\RenderMessage.h" />
     <ClInclude Include="Rendering\SpriteFont.h" />
     <ClInclude Include="Rendering\SpriteRenderSystem.h" />
