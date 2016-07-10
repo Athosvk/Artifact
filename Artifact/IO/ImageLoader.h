@@ -5,12 +5,21 @@
 
 namespace Artifact
 {
-    class ImageLoader
+	/// <summary>
+	/// Interface for loading images from disks
+	/// </summary>
+	class ImageLoader
     {
     public:
-        ImageLoader() = delete;
-        ~ImageLoader() = delete;
+		/// <summary>Initializes a new instance of the <see cref="ImageLoader"/> class.</summary>
+		ImageLoader() = delete;
 
-        static std::unique_ptr<GLTexture> loadPNG(const std::string& a_FilePath);
+		/// <summary>Finalizes an instance of the <see cref="ImageLoader"/> class.</summary>
+		~ImageLoader() = delete;
+		
+		/// <summary>Loads the the specified PNG format image from disk</summary>
+		/// <param name="a_FilePath">The file path to the PNG image</param>
+		/// <returns>A pointer to the PNG image loaded into memory</returns>
+		static std::unique_ptr<GLTexture> loadPNG(const std::string& a_FilePath);
     };
 }

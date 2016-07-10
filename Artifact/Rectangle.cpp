@@ -20,10 +20,6 @@ namespace Artifact
     {
     }
 
-    Rectangle::Rectangle()
-    {
-    }
-
     float Rectangle::getWidth() const
     {
         return m_MaxPosition.x - m_MinPosition.x;

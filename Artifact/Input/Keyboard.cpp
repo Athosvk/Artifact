@@ -10,10 +10,6 @@ namespace Artifact
         clear();
     }
 
-    Keyboard::~Keyboard()
-    {
-    }
-
     void Keyboard::process(const SDL_KeyboardEvent& a_KeyboardEvent)
     {
         m_KeyboardEvents.push_back(a_KeyboardEvent);

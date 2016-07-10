@@ -18,7 +18,7 @@ namespace Artifact
 
     void Game::startGameLoop()
     {
-        while(m_CurrentGameState == GameState::Play)
+        while(m_CurrentGameState == EGameState::Play)
         {
             m_Window.clear();
             processEvents();
@@ -64,7 +64,7 @@ namespace Artifact
             switch(sdlEvent.type)
             {
             case SDL_QUIT:
-                m_CurrentGameState = GameState::Exit;
+                m_CurrentGameState = EGameState::Exit;
                 break;
             default:
                 unhandledEvents.push_back(sdlEvent);

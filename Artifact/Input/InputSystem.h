@@ -31,10 +31,15 @@ namespace Artifact
 		/// <param name="a_EntitySystem">The entity system to operate on</param>
 		/// <param name="a_MessagingSystem">The messaging system to send messages through</param>
 		InputSystem(EntitySystem& a_EntitySystem, MessagingSystem& a_MessagingSystem);
-
-        virtual void registerListeners() override;
-    private:
-        void processEvents(const std::vector<SDL_Event>& a_Events);
-        void updateInput();
+		
+		/// <summary>Allows the system for registering itself to the messages it wants to listen to	</summary>
+		virtual void registerListeners() override;
+    private:		
+		/// <summary>Processes the incoming events and updates the state of the input devices accordingly</summary>
+		/// <param name="a_Events">The events to process </param>
+		void processEvents(const std::vector<SDL_Event>& a_Events);
+		
+		/// <summary>Updates the input state of the input devices</summary>
+		void updateInput();
     };
 }

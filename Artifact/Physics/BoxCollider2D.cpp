@@ -8,10 +8,11 @@
 namespace Artifact
 {
     BoxCollider2D::BoxCollider2D(GameObject a_GameObject)
-        : Component(a_GameObject)
+        : Component(a_GameObject),
+		m_GameObjectHandle(std::make_shared<GameObject>(getGameObject()))
     {
-        m_FixtureDefinition.userData = this;
         m_FixtureDefinition.density = 1.0f;
+		m_FixtureDefinition.userData = m_GameObjectHandle.get();
     }
 
     BoxCollider2D::~BoxCollider2D()

@@ -113,8 +113,8 @@ namespace ArtifactTest
 				for(auto component : text)
 				{
 					component->Depth = 1.0f;
-					component->Color.r *= 1.11f;
-					component->Color.g += 1.0f;
+					component->Color.R *= 1.11f;
+					component->Color.G += 1.0f;
 				}
 			});
 			std::string output = "Multitype test time taken: " +
