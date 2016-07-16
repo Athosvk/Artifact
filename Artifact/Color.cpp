@@ -19,6 +19,12 @@ namespace Artifact
     {
     }
 
+	bool Color::operator==(const Color& a_Color)
+	{
+		return a_Color.R == R && a_Color.G == G &&
+			a_Color.B == B && a_Color.A == A;
+	}
+
     Color Color::createFromRGBAValue(uint64_t a_Value)
     {
         auto newColor = Color();

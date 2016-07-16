@@ -43,6 +43,6 @@ namespace Artifact
     {
         auto transform = getComponent<Transform>();
         transform->setPosition(glm::vec2(m_Body->GetPosition().x, m_Body->GetPosition().y));
-        transform->setRotation(m_Body->GetAngle());
+        transform->setRotation(glm::degrees(m_Body->GetAngle()));
     }
 }

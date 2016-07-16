@@ -70,8 +70,15 @@ namespace Artifact
 		/// <param name="a_BlueValue">The blue component</param>
 		/// <param name="a_AlphaValue">The alpha/opacity component</param>
 		Color(float a_RedValue, float a_GreenValue, float a_BlueValue, float a_AlphaValue = 1);
+		
+		/// <summary>Initializes a new instance of the <see cref="Color"/> struct.</summary>
 		Color() = default;
-        		
+
+		/// <summary>Compares this instance with the given color instance</summary>
+		/// <param name="a_Color">The color to compare this instance to</param>
+		/// <returns>Whether the objects are equal</returns>
+		bool operator==(const Color& a_Color);
+
 		/// <summary>Creates a color instance from an RGBA integer</summary>
 		/// <param name="a_Value">The value to create the color instance from</param>
 		/// <returns>The created color instance</returns>

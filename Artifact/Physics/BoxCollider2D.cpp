@@ -94,6 +94,7 @@ namespace Artifact
             refreshFixtureData();
         }
         auto transform = getComponent<Transform>();
-        m_Body->SetTransform(b2Vec2(transform->getPosition().x, transform->getPosition().y), transform->getRotation());
+        m_Body->SetTransform(b2Vec2(transform->getPosition().x, transform->getPosition().y), 
+			glm::radians(transform->getRotation()));
     }
 }
