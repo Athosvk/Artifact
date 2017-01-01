@@ -37,7 +37,6 @@ namespace Artifact
 		}
 		for(size_t i = 0; i < m_FirstInactive; ++i)
 		{
-			Particles[i].PreviousLifeTime = Particles[i].LifeTime;
 			Particles[i].LifeTime += static_cast<float>(a_DeltaTime);
 			if(Particles[i].LifeTime >= MaxLifeTime)
 			{

@@ -47,6 +47,12 @@ namespace Artifact
 			m_ComponentMap(a_ComponentMap)
 		{
 		}
+
+		/// <summary> Initializes a new instance of the <see cref="ComponentHandle"/> class with a NullHandle</summary>
+		ComponentHandle()
+			: ComponentHandle(NullHandle)
+		{
+		}
 		
 		/// <summary> Compares the given ComponentHandle with this instance </summary>
 		/// <param name="a_Other">The ComponentHandle to compare to</param>

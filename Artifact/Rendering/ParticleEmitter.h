@@ -23,7 +23,6 @@ namespace Artifact
 			glm::vec2 Direction = { 1.0f, 0.0f };
 			/// <summary> The life time </summary>
 			float LifeTime = 0.0f;
-			float PreviousLifeTime = 0.0f;
 		};
 	private:
 		/// <summary>The index of the first inactive particle</summary>

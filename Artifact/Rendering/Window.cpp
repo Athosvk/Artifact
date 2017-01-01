@@ -77,7 +77,7 @@ namespace Artifact
 
     void Window::setBackgroundColor(Color a_Color)
     {
-        glClearColor(a_Color.R / 255.0f, a_Color.G / 255.0f, a_Color.B / 255.0f, a_Color.A / 255.0f);
+        glClearColor(a_Color.R, a_Color.G, a_Color.B, a_Color.A);
     }
 
     void Window::initialiseGL() const
@@ -89,7 +89,7 @@ namespace Artifact
         }
 
         SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-        SDL_GL_SetSwapInterval(0);
+        SDL_GL_SetSwapInterval(1);
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     }

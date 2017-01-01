@@ -3,7 +3,7 @@
 
 namespace Artifact
 {
-    const double Game::FixedUpdateInterval = 0.008;
+    const double Game::FixedUpdateInterval = 0.01;
     const double Game::SpiralOfDeathThreshold = 0.075;
 
     Game::Game(int a_ScreenWidth, int a_ScreenHeight, Uint32 a_WindowFlags, const std::string& a_WindowName)
