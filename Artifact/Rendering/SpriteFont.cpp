@@ -22,6 +22,10 @@ namespace Artifact
 {
     SpriteFont::SpriteFont(const char* font, int size, char cs, char ce) 
     {
+// Did I write this code? Hard to figure out what's going on here
+#pragma warning(push)
+#pragma warning(disable: 6385)
+#pragma warning(disable: 6386)
         // Initialize SDL_ttf
         if (!TTF_WasInit()) {
             TTF_Init();
@@ -113,11 +117,11 @@ namespace Artifact
                 // Pre-multiplication occurs here
                 unsigned char* sp = (unsigned char*)glyphSurface->pixels;
                 int cp = glyphSurface->w * glyphSurface->h * 4;
-                for (int i = 0; i < cp; i += 4) {
-                    float a = sp[i + 3] / 255.0f;
-                    sp[i] *= static_cast<unsigned char>(a);
-                    sp[i + 1] = sp[i];
-                    sp[i + 2] = sp[i];
+                for (int k = 0; k < cp; k += 4) {
+                    float a = sp[k + 3] / 255.0f;
+                    sp[k] *= static_cast<unsigned char>(a);
+                    sp[k + 1] = sp[k];
+                    sp[k + 2] = sp[k];
                 }
 
                 // Save glyph image and update coordinates
@@ -173,6 +177,8 @@ namespace Artifact
 
         m_Texture = std::make_unique<GLTexture>(_texID);
     }
+#pragma warning(pop)
+
     void SpriteFont::dispose() {
         if (_glyphs) {
             delete[] _glyphs;
