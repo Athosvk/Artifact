@@ -148,7 +148,7 @@ namespace Artifact
         std::vector<GLuint> indices;
         indices.reserve(IndicesPerSprite * m_Glyphs.size());
 
-        for(decltype(m_Glyphs.size()) i = 0; i < m_Glyphs.size(); ++i)
+        for(unsigned i = 0; i < m_Glyphs.size(); ++i)
         {
             auto indexOffset = i * VerticesPerSprite;
 
@@ -224,7 +224,7 @@ namespace Artifact
         std::vector<Vertex> vertices;
         vertices.reserve(m_Glyphs.size() * VerticesPerSprite);
 
-        for(decltype(m_Glyphs.size()) i = 0; i < m_Glyphs.size(); ++i)
+        for(unsigned i = 0; i < m_Glyphs.size(); ++i)
         {
             vertices.push_back(m_Glyphs[i].BottomLeft);
             vertices.push_back(m_Glyphs[i].BottomRight);

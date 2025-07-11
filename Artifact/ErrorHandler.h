@@ -1,6 +1,8 @@
 #pragma once
-
 namespace Artifact
 {
-    extern void throwFatalError(std::string a_ErrorMessage);
+	/// <summary>
+	/// Throws a fatal error, exciting the application after displaying the error message
+	/// </summary>
+    void throwFatalError(std::string a_ErrorMessage);
 }

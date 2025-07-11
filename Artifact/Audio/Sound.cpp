@@ -1,12 +1,13 @@
 #include <exception>
+#include <SDLMixer/SDL_mixer.h>
 
 #include "Sound.h"
 #include "../ErrorHandler.h"
 
 namespace Artifact
 {
-    const int Sound::LoopForever = -1;
-    const int Sound::PlayFailed = -1;
+	const int Sound::LoopForever = -1;
+	const int Sound::PlayFailed = -1;
 
     Sound::Sound(const std::string a_FilePath)
     {
@@ -32,12 +33,12 @@ namespace Artifact
         }
     }
 
-    void Sound::stop()
+    void Sound::stop() const
     {
         Mix_HaltChannel(m_CurrentChannel);
     }
 
-    void Sound::setVolume(unsigned a_Volume)
+    void Sound::setVolume(unsigned a_Volume) const
     {
         if(a_Volume > MIX_MAX_VOLUME)
         {

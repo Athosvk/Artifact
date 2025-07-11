@@ -6,8 +6,8 @@
 class Box : public Artifact::GameObject
 {
 private:
-    Artifact::BoxCollider2D* m_Collider;
-    Artifact::SpriteRenderer* m_Renderer;
+    Artifact::ComponentHandle<Artifact::BoxCollider2D> m_Collider;
+    Artifact::ComponentHandle<Artifact::SpriteRenderer> m_Renderer;
 
 public:
     Box(unsigned a_ID, Artifact::EntitySystem& a_EntitySystem);

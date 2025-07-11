@@ -1,13 +1,9 @@
-#include <GL/glew.h>
-#include <iostream>
-
 #include "MathHelper.h"
-
 #include "Game.h"
 
 namespace Artifact
 {
-    const double Game::FixedUpdateInterval = 0.008;
+    const double Game::FixedUpdateInterval = 0.01;
     const double Game::SpiralOfDeathThreshold = 0.075;
 
     Game::Game(int a_ScreenWidth, int a_ScreenHeight, Uint32 a_WindowFlags, const std::string& a_WindowName)
@@ -22,7 +18,7 @@ namespace Artifact
 
     void Game::startGameLoop()
     {
-        while(m_CurrentGameState == GameState::Play)
+        while(m_CurrentGameState == EGameState::Play)
         {
             m_Window.clear();
             processEvents();
@@ -68,7 +64,7 @@ namespace Artifact
             switch(sdlEvent.type)
             {
             case SDL_QUIT:
-                m_CurrentGameState = GameState::Exit;
+                m_CurrentGameState = EGameState::Exit;
                 break;
             default:
                 unhandledEvents.push_back(sdlEvent);
@@ -82,5 +78,6 @@ namespace Artifact
         m_CurrentWorld = nullptr;
         m_CurrentWorld = std::move(m_StagingWorld);
         m_StagingWorld = nullptr;
+        m_CurrentWorld->awake();
     }
 }

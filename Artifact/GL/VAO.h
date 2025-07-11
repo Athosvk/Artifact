@@ -2,17 +2,27 @@
 #include <GL/glew.h>
 
 namespace Artifact
-{
-    class VAO
+{	
+	/// <summary>
+	/// Represents a vertex array object, for combining attributes
+	/// </summary>
+	class VAO
     {
     private:
-        GLuint m_ID = 0;
+		/// <summary>The ID of the vertex array object</summary>
+		GLuint m_ID = 0;
 
     public:
-        VAO();
-        ~VAO();
+		/// <summary>Initializes a new instance of the <see cref="VAO"/> class.</summary>
+		VAO();
 
-        void bind() const;
-        void unbind() const;
+		/// <summary>Finalizes an instance of the <see cref="VAO"/> class.</summary>
+		~VAO();
+		
+		/// <summary>Binds the VAO for drawing</summary>
+		void bind() const;
+		
+		/// <summary>Resets the VAO bind state to the default</summary>
+		void unbind() const;
     };
 }

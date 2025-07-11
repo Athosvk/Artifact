@@ -9,18 +9,18 @@ namespace Artifact
     int Window::s_Width;
     int Window::s_Height;
 
-    Window::Window(int a_Width, int a_Height, Uint32 a_Flags, const std::string& a_Name) :
+    Window::Window(int a_Width, int a_Height, unsigned int a_Flags, const std::string& a_Name) :
         m_Name(a_Name)
     {
-        if((a_Flags & WindowFlag::FullScreen) == WindowFlag::FullScreen)
+        if((a_Flags & EWindowFlag::FullScreen) == EWindowFlag::FullScreen)
         {
             m_CurrentFlags |= SDL_WindowFlags::SDL_WINDOW_FULLSCREEN;
         }
-        if((a_Flags & WindowFlag::Borderless) == WindowFlag::Borderless)
+        if((a_Flags & EWindowFlag::Borderless) == EWindowFlag::Borderless)
         {
             m_CurrentFlags |= SDL_WindowFlags::SDL_WINDOW_BORDERLESS;
         }
-        if((a_Flags & WindowFlag::Invisible) == WindowFlag::Invisible)
+        if((a_Flags & EWindowFlag::Invisible) == EWindowFlag::Invisible)
         {
             m_CurrentFlags |= SDL_WindowFlags::SDL_WINDOW_HIDDEN;
         }
@@ -31,7 +31,7 @@ namespace Artifact
         initialiseGL();
     }
 
-    Window::~Window()
+	Window::~Window()
     {
         SDL_GL_DeleteContext(m_GLContext);
         SDL_DestroyWindow(m_SDLWindow);
@@ -77,7 +77,7 @@ namespace Artifact
 
     void Window::setBackgroundColor(Color a_Color)
     {
-        glClearColor(a_Color.r / 255.0f, a_Color.g / 255.0f, a_Color.b / 255.0f, a_Color.a / 255.0f);
+        glClearColor(a_Color.R, a_Color.G, a_Color.B, a_Color.A);
     }
 
     void Window::initialiseGL() const
@@ -89,7 +89,7 @@ namespace Artifact
         }
 
         SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-        SDL_GL_SetSwapInterval(0);
+        SDL_GL_SetSwapInterval(1);
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     }

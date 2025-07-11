@@ -1,5 +1,5 @@
-#include <math.h>
 #include <glm/gtc/constants.hpp>
+#include <glm/gtx/vector_angle.hpp>
 
 #include "MathHelper.h"
 
@@ -30,6 +30,11 @@ namespace Artifact
 
         return rotatedVector;
     }
+
+	float MathHelper::getSignedAngle(glm::vec2 a_Vector1, glm::vec2 a_Vector2)
+	{
+		return glm::degrees(glm::orientedAngle(a_Vector1, a_Vector2));
+	}
 
     float MathHelper::pingPong(float a_Value, float a_Min, float a_Max)
     {

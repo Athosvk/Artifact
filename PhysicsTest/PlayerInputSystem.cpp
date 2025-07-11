@@ -24,11 +24,14 @@ void PlayerInputSystem::handleInput()
 {
     for(auto player : m_EntitySystem.getComponentsOfType<PlayerInputComponent>())
     {
-        updatePlayerMovement(player);
+		if(player->isEnabled())
+		{
+			updatePlayerMovement(player);
+		}
     }
 }
 
-void PlayerInputSystem::updatePlayerMovement(PlayerInputComponent* a_Player)
+void PlayerInputSystem::updatePlayerMovement(Artifact::ComponentHandle<PlayerInputComponent> a_Player)
 {
     glm::vec2 displacement = glm::vec2(0, 0);
     if(Artifact::Keyboard::isDown(a_Player->MoveUpKey))

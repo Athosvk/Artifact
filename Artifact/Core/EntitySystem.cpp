@@ -28,20 +28,20 @@ namespace Artifact
     {
     }
 
-    bool EntitySystem::isActive(GameObject a_Entity)
+    bool EntitySystem::isActive(GameObject a_Entity) const
     {
-        return m_EntityStates[a_Entity.getID()].Active;
+        return m_EntityStates.at(a_Entity.getID()).Active;
     }
 
     void EntitySystem::activate(GameObject a_Entity)
     {
-        m_EntityStates[a_Entity.getID()].Active = true;
+        m_EntityStates.at(a_Entity.getID()).Active = true;
         m_MessagingSystem.sendMessage<EntityActivatedMessage>(a_Entity, a_Entity);
     }
 
     void EntitySystem::deactivate(GameObject a_Entity)
     {
-        m_EntityStates[a_Entity.getID()].Active = false;
+        m_EntityStates.at(a_Entity.getID()).Active = false;
         m_MessagingSystem.sendMessage<EntityDeactivatedMessage>(a_Entity, a_Entity);
     }
 

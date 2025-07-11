@@ -1,12 +1,15 @@
 #pragma once
 #include <glm/glm.hpp>
-#include <memory>
 
 #include "Core/Component.h"
 
 namespace Artifact
-{
-    class Transform : public Component
+{	
+	/// <summary>
+	/// Represents a transform, a combination of translation, rotation and scale
+	/// </summary>
+	/// <seealso cref="Component" />
+	class Transform : public Component
     {
     private:
         glm::vec2 LocalPosition = glm::vec2(0.0f, 0.0f);
@@ -16,7 +19,7 @@ namespace Artifact
         bool m_Dirty = true;
 
     public:
-        Transform(GameObject a_GameObject);
+	    explicit Transform(GameObject a_GameObject);
 
         void translate(glm::vec2 a_Translation);
         void rotate(float a_Angles);

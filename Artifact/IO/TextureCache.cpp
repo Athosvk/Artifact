@@ -16,7 +16,7 @@ namespace Artifact
         return iterator->second.get();
     }
 
-    void TextureCache::cacheTexture(const std::string& a_FilePath, std::unique_ptr<GLTexture>&& a_Texture)
+    void TextureCache::cacheTexture(const std::string& a_FilePath, std::unique_ptr<GLTexture> a_Texture)
     {
         m_TextureMap.emplace(a_FilePath, std::forward<std::unique_ptr<GLTexture>>(a_Texture));
     }

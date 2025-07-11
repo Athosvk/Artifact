@@ -5,6 +5,7 @@
 #include "../Input/InputSystem.h"
 #include "../Rendering/UIRenderingSystem.h"
 #include "../Audio/AudioSystem.h"
+#include "../Rendering/ParticleSystem.h"
 
 namespace Artifact
 {
@@ -30,8 +31,8 @@ namespace Artifact
 
     World::World(GameTime& a_GameTime, Game* a_CurrentGame)
         : m_EntitySystem(m_MessagingSystem),
-        m_GameTime(a_GameTime),
-        m_CurrentGame(a_CurrentGame)
+        m_CurrentGame(a_CurrentGame),
+        m_GameTime(a_GameTime)
     {
         addDefaultSystems();
     }
@@ -46,6 +47,12 @@ namespace Artifact
         addSystem<PhysicsSystem>();
         addSystem<UIRenderingSystem>();
         addSystem<AudioSystem>();
+		addSystem<ParticleSystem>();
+    }
+
+    void World::awake()
+    {
+        m_MessagingSystem.broadcast<AwakeMessage>();
     }
 
     void World::update()
